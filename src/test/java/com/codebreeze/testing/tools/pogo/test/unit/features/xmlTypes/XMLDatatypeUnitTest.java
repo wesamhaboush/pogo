@@ -1,16 +1,15 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.xmlTypes;
 
 import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.XMLDatatypePojo;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import org.junit.Test;
 
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
 public class XMLDatatypeUnitTest extends AbstractPodamSteps
 {
-
     @Test
     public void testXMLGregorianCalendarManufacturing() throws Exception
     {

@@ -5,21 +5,22 @@ import com.codebreeze.testing.tools.pogo.test.unit.steps.*;
 public abstract class AbstractPodamSteps
 {
 
-    protected PodamFactorySteps podamFactorySteps;
+    protected PodamFactorySteps podamFactorySteps = new PodamFactorySteps();
 
-    protected PodamInvocationSteps podamInvocationSteps;
+    protected PodamInvocationSteps podamInvocationSteps = new PodamInvocationSteps();
 
-    protected PodamValidationSteps podamValidationSteps;
+    protected PodamValidationSteps podamValidationSteps = new PodamValidationSteps();
 
-    protected OneDimentionalPojoValidationSteps oneDimentionalPojoValidationSteps;
+    protected OneDimentionalPojoValidationSteps oneDimentionalPojoValidationSteps = new OneDimentionalPojoValidationSteps();
 
-    protected PodamStrategySteps podamStrategySteps;
+    protected PodamStrategySteps podamStrategySteps = new PodamStrategySteps();
 
-    protected RecursivePojoValidationSteps recursivePojoValidationSteps;
+    protected RecursivePojoValidationSteps recursivePojoValidationSteps = new RecursivePojoValidationSteps();
 
-    protected ConstructorSelfReferenceValidationSteps constructorSelfReferenceValidationSteps;
+    protected ConstructorSelfReferenceValidationSteps constructorSelfReferenceValidationSteps = new
+    ConstructorSelfReferenceValidationSteps();
 
-    protected ClassInfoValidationSteps classInfoValidationSteps;
+    protected ClassInfoValidationSteps classInfoValidationSteps = new ClassInfoValidationSteps();
 
-    protected WalkThroughSteps walkThroughSteps;
+    protected WalkThroughSteps walkThroughSteps = new WalkThroughSteps();
 }

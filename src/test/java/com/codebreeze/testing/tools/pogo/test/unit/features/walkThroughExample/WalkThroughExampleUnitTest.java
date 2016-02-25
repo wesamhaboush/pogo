@@ -5,8 +5,8 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.walkThroughExample;
 
 import com.codebreeze.testing.tools.pogo.api.PodamFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.docs.example.*;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import org.junit.Test;
 
 /**
  * A set of tests to check the Walk-through example
@@ -16,8 +16,6 @@ import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
  */
 public class WalkThroughExampleUnitTest extends AbstractPodamSteps
 {
-
-
 
     @Test
     public void testCountrySetup() throws Exception

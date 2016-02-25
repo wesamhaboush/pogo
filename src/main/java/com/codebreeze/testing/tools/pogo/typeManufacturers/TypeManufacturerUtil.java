@@ -1,6 +1,5 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
-import com.codebreeze.testing.tools.pogo.common.PodamStrategyValue;
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.api.PodamUtils;
@@ -24,13 +23,6 @@ public final class TypeManufacturerUtil
         throw new AssertionError( "Non instantiable" );
     }
 
-    /**
-     * Obtains a type value
-     * @param strategy The Data Provider strategy
-     * @param attributeMetadata The AttributeMetadata information
-     * @param qualifier The class of the requested type
-     * @return The type value
-     */
     public static Object getTypeValue( DataProviderStrategy strategy,
                                        TypeProcessor processor,
                                        AttributeMetadata attributeMetadata,
@@ -43,13 +35,6 @@ public final class TypeManufacturerUtil
         return retValue;
     }
 
-    /**
-     * Obtains a type value
-     * @param strategy The Data Provider strategy
-     * @param attributeMetadata The AttributeMetadata information
-     * @param genericAttributeType The generic attribute type
-     *@param qualifier The class of the requested type  @return The type value
-     */
     public static Object getTypeValueForGenericTypes( DataProviderStrategy strategy,
             TypeProcessor processor,
             AttributeMetadata attributeMetadata,
@@ -65,25 +50,6 @@ public final class TypeManufacturerUtil
         return retValue;
     }
 
-
-    /**
-     * Fills type agruments map
-     * <p>
-     * This method places required and provided types for object creation into a
-     * map, which will be used for type mapping.
-     * </p>
-     *
-     * @param typeArgsMap
-     *            a map to fill
-     * @param pojoClass
-     *            Typed class
-     * @param genericTypeArgs
-     *            Type arguments provided for a generics object by caller
-     * @return Array of unused provided generic type arguments
-     * @throws IllegalStateException
-     *             If number of typed parameters doesn't match number of
-     *             provided generic types
-     */
     public static Type[] fillTypeArgMap( final Map<String, Type> typeArgsMap,
                                          final Class<?> pojoClass, final Type[] genericTypeArgs )
     {
@@ -169,28 +135,6 @@ public final class TypeManufacturerUtil
         return genericTypeArgsExtra;
     }
 
-    /**
-     * Searches for annotation with information about collection/map size
-     * and filling strategies
-     *
-     * @param annotations
-     *        a list of annotations to inspect
-     * @param collectionElementType
-     *        a collection element type
-     * @param elementStrategyHolder
-     *        a holder to pass found element strategy back to the caller,
-     *        can be null
-     * @param keyStrategyHolder
-     *        a holder to pass found key strategy back to the caller,
-     *        can be null
-     * @return
-     *        A number of element in collection or null, if no annotation was
-     *        found
-     * @throws InstantiationException
-     *        A strategy cannot be instantiated
-     * @throws IllegalAccessException
-     *        A strategy cannot be instantiated
-     */
     public static Integer findCollectionSize( DataProviderStrategy strategy,
             List<Annotation> annotations,
             Class<?> collectionElementType,
@@ -201,15 +145,6 @@ public final class TypeManufacturerUtil
                .getNumberOfCollectionElements( collectionElementType );
     }
 
-    /**
-     * It returns {@code true} if this class is a wrapper class, {@code false}
-     * otherwise
-     *
-     * @param candidateWrapperClass
-     *            The class to check
-     * @return {@code true} if this class is a wrapper class, {@code false}
-     *         otherwise
-     */
     public static boolean isWrapper( Class<?> candidateWrapperClass )
     {
         return candidateWrapperClass.equals( Byte.class ) || ( candidateWrapperClass.equals( Boolean.class ) ? true
@@ -224,20 +159,6 @@ public final class TypeManufacturerUtil
                 .equals( Double.class ) );
     }
 
-    /**
-     * Utility to merge actual types with supplied array of generic type
-     * substitutions
-     *
-     * @param actualTypes
-     *            an array of types used for field or POJO declaration
-     * @param suppliedTypes
-     *            an array of supplied types for generic type substitution
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @return An array of merged actual and supplied types with generic types
-     *            resolved
-     */
     public static Type[] mergeActualAndSuppliedGenericTypes(
         Type[] actualTypes, Type[] suppliedTypes,
         Map<String, Type> typeArgsMap )
@@ -281,15 +202,6 @@ public final class TypeManufacturerUtil
         return mergeTypeArrays( resolved, supplied );
     }
 
-    /**
-     * Utility method to merge two arrays
-     *
-     * @param original
-     *            The main array
-     * @param extra
-     *            The additional array, optionally may be null
-     * @return A merged array of original and extra arrays
-     */
     public static Type[] mergeTypeArrays( Type[] original, Type[] extra )
     {
         Type[] merged;
@@ -308,22 +220,6 @@ public final class TypeManufacturerUtil
         return merged;
     }
 
-
-    /**
-     * Given a collection type it returns an instance
-     *
-     * <ul>
-     * <li>The default type for a {@link List} is an {@link ArrayList}</li>
-     * <li>The default type for a {@link Queue} is a {@link LinkedList}</li>
-     * <li>The default type for a {@link Set} is a {@link HashSet}</li>
-     * </ul>
-     *
-     * @param collectionType
-     *            The collection type *
-     * @param defaultValue
-     *            Default value for the collection, can be null
-     * @return an instance of the collection type or null
-     */
     public static Collection<? super Object> resolveCollectionType(
         Class<?> collectionType, Collection<? super Object> defaultValue )
     {
@@ -370,19 +266,7 @@ public final class TypeManufacturerUtil
 
         return retValue;
     }
-    /**
-     * It resolves generic parameter type
-     *
-     *
-     * @param paramType
-     *            The generic parameter type
-     * @param typeArgsMap
-     *            A map of resolved types
-     * @param methodGenericTypeArgs
-     *            Return value posible generic types of the generic parameter
-     *            type
-     * @return value for class representing the generic parameter type
-     */
+
     public static Class<?> resolveGenericParameter( Type paramType,
             Map<String, Type> typeArgsMap,
             AtomicReference<Type[]> methodGenericTypeArgs )
@@ -413,16 +297,13 @@ public final class TypeManufacturerUtil
         {
             WildcardType wType = ( WildcardType ) paramType;
             Type[] bounds = wType.getLowerBounds();
-            String msg;
 
             if ( bounds != null && bounds.length > 0 )
             {
-                msg = "Lower bounds:";
             }
             else
             {
                 bounds = wType.getUpperBounds();
-                msg = "Upper bounds:";
             }
 
             if ( bounds != null && bounds.length > 0 )
@@ -445,29 +326,6 @@ public final class TypeManufacturerUtil
     }
 
 
-    /**
-     * It manufactures and returns a default instance for each map type
-     *
-     * <p>
-     * The default implementation for a {@link ConcurrentMap} is
-     * {@link ConcurrentHashMap}
-     * </p>
-     *
-     * <p>
-     * The default implementation for a {@link SortedMap} is a {@link TreeMap}
-     * </p>
-     *
-     * <p>
-     * The default Map is none of the above was recognised is a {@link HashMap}
-     * </p>
-     *
-     * @param mapType
-     *            The attribute type implementing Map
-     * @param defaultValue
-     *            Default value for map
-     * @return A default instance for each map type or null
-     *
-     */
     public static Map<? super Object, ? super Object> resolveMapType(
         Class<?> mapType, Map<? super Object, ? super Object> defaultValue )
     {
@@ -507,22 +365,6 @@ public final class TypeManufacturerUtil
         return retValue;
     }
 
-    /**
-     * It retrieves the value for the {@link PodamStrategyValue} annotation with
-     * which the attribute was annotated
-     *
-     * @param attributeType
-     *            The attribute type, used for type checking
-     * @param attributeStrategy
-     *            The {@link AttributeStrategy} to use
-     * @return The value for the {@link PodamStrategyValue} annotation with
-     *         which the attribute was annotated
-     * @throws IllegalArgumentException
-     *             If the type of the data strategy defined for the
-     *             {@link PodamStrategyValue} annotation is not assignable to
-     *             the annotated attribute. This de facto guarantees type
-     *             safety.
-     */
     public static Object returnAttributeDataStrategyValue( Class<?> attributeType,
             AttributeStrategy<?> attributeStrategy )
     throws IllegalArgumentException
