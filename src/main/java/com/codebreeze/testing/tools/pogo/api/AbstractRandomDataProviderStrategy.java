@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.common.*;

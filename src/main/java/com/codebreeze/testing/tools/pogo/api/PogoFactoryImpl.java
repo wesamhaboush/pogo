@@ -1,13 +1,9 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy.Order;
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 import com.codebreeze.testing.tools.pogo.common.ManufacturingContext;
 import com.codebreeze.testing.tools.pogo.common.PogoConstants;
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 import com.codebreeze.testing.tools.pogo.typeManufacturers.TypeManufacturerUtil;
 
@@ -19,18 +15,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicReference;
 
 
-/**
- * The Pogo factory implementation
- *
- * @author mtedone
- *
- * @since 1.0.0
- *
- */
 public class PogoFactoryImpl implements PogoFactory
 {
-
-    // ------------------->> Constants
 
     private static final String RESOLVING_COLLECTION_EXCEPTION_STR = "An exception occurred while resolving the collection";
 
@@ -38,80 +24,35 @@ public class PogoFactoryImpl implements PogoFactory
 
     private static final String UNCHECKED_STR = "unchecked";
 
-    /** The message channel where to send/receive the type request */
     private static final TypeProcessor TYPE_PROCESSOR = new TypeProcessor();
 
 
-    /**
-     * External factory to delegate production this factory cannot handle
-     * <p>
-     * The default is {@link NullExternalFactory}.
-     * </p>
-     */
     private PogoFactory externalFactory
         = NullExternalFactory.getInstance();
 
-    /**
-     * The strategy to use to fill data.
-     * <p>
-     * The default is {@link RandomDataProviderStrategyImpl}.
-     * </p>
-     */
     private DataProviderStrategy strategy
         = new RandomDataProviderStrategyImpl();
 
-    /**
-     * The strategy to use to introspect data.
-     * <p>
-     * The default is {@link DefaultClassInfoStrategy}.
-     * </p>
-     */
     private ClassInfoStrategy classInfoStrategy
         = DefaultClassInfoStrategy.getInstance();
 
-    // ------------------->> Constructors
 
-    /**
-     * Default constructor.
-     */
     public PogoFactoryImpl()
     {
         this( NullExternalFactory.getInstance(),
               new RandomDataProviderStrategyImpl() );
     }
 
-    /**
-     * Constructor with non-default strategy
-     *
-     * @param strategy
-     *            The strategy to use to fill data
-     */
     public PogoFactoryImpl( DataProviderStrategy strategy )
     {
         this( NullExternalFactory.getInstance(), strategy );
     }
 
-    /**
-     * Constructor with non-default external factory
-     *
-     * @param externalFactory
-     *            External factory to delegate production this factory cannot
-     *            handle
-     */
     public PogoFactoryImpl( PogoFactory externalFactory )
     {
         this( externalFactory, new RandomDataProviderStrategyImpl() );
     }
 
-    /**
-     * Full constructor.
-     *
-     * @param externalFactory
-     *            External factory to delegate production this factory cannot
-     *            handle
-     * @param strategy
-     *            The strategy to use to fill data
-     */
     public PogoFactoryImpl( PogoFactory externalFactory,
                             DataProviderStrategy strategy )
     {
@@ -119,11 +60,6 @@ public class PogoFactoryImpl implements PogoFactory
         this.strategy = strategy;
     }
 
-    // ------------------->> Public methods
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public <T> T manufacturePojoWithFullData( Class<T> pojoClass, Type... genericTypeArgs )
     {
@@ -149,9 +85,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public <T> T manufacturePojo( Class<T> pojoClass, Type... genericTypeArgs )
     {
@@ -172,9 +105,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public <T> T populatePojo( T pojo, Type... genericTypeArgs )
     {
@@ -195,20 +125,12 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-    // ------------------->> Getters / Setters
-
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public DataProviderStrategy getStrategy()
     {
         return strategy;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public PogoFactory setStrategy( DataProviderStrategy strategy )
     {
@@ -216,18 +138,12 @@ public class PogoFactoryImpl implements PogoFactory
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ClassInfoStrategy getClassStrategy()
     {
         return classInfoStrategy;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public PogoFactory setClassStrategy( ClassInfoStrategy classInfoStrategy )
     {
@@ -235,18 +151,12 @@ public class PogoFactoryImpl implements PogoFactory
         return this;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public PogoFactory getExternalFactory()
     {
         return externalFactory;
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public PogoFactory setExternalFactory( PogoFactory externalFactory )
     {
@@ -254,45 +164,6 @@ public class PogoFactoryImpl implements PogoFactory
         return this;
     }
 
-    // ------------------->> Private methods
-
-    /**
-     * It attempts to create an instance of the given class
-     * <p>
-     * This method attempts to create an instance of the given argument for
-     * classes without setters. These may be either immutable classes (e.g. with
-     * final attributes and no setters) or Java classes (e.g. belonging to the
-     * java / javax namespace). In case the class does not provide a public,
-     * no-arg constructor (e.g. Calendar), this method attempts to find a ,
-     * no-args, factory method (e.g. getInstance()) and it invokes it
-     * </p>
-     *
-     * @param pojoClass
-     *            The name of the class for which an instance filled with values
-     *            is required
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     *
-     *
-     * @return An instance of the given class
-     * @throws IllegalArgumentException
-     *             If an illegal argument was passed to the constructor
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     */
     private Object instantiatePojoWithoutConstructors(
         Class<?> pojoClass, ManufacturingContext manufacturingCtx,
         Map<String, Type> typeArgsMap, Type... genericTypeArgs )
@@ -342,28 +213,6 @@ public class PogoFactoryImpl implements PogoFactory
         return retValue;
     }
 
-    /**
-     * It creates and returns an instance of the given class if at least one of
-     * its constructors has been annotated with {@link PogoConstructor}
-     *
-     * @param <T>
-     *            The type of the instance to return
-     *
-     * @param pojoClass
-     *            The class of which an instance is required
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return an instance of the given class if at least one of its
-     *         constructors has been annotated with {@link PogoConstructor}
-     * @throws SecurityException
-     *             If an security was violated
-     */
     @SuppressWarnings( { UNCHECKED_STR } )
     private <T> T instantiatePojo( Class<T> pojoClass,
                                    ManufacturingContext manufacturingCtx, Map<String, Type> typeArgsMap,
@@ -424,37 +273,6 @@ public class PogoFactoryImpl implements PogoFactory
         return retValue;
     }
 
-    /**
-     * Generic method which returns an instance of the given class filled with
-     * values dictated by the strategy
-     *
-     * @param <T>
-     *            The type for which a filled instance is required
-     *
-     * @param pojoClass
-     *            The name of the class for which an instance filled with values
-     *            is required
-     * @param pojoMetadata
-     *            attribute metadata for POJOs produced recursively
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return An instance of &lt;T&gt; filled with dummy values
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If manufactured class cannot be loaded
-     * @throws PogoMockeryException
-     *             if a problem occurred while creating a POJO instance or while
-     *             setting its state
-     */
     @SuppressWarnings( UNCHECKED_STR )
     private <T> T manufacturePojoInternal( Class<T> pojoClass,
                                            AttributeMetadata pojoMetadata, ManufacturingContext manufacturingCtx,
@@ -517,32 +335,6 @@ public class PogoFactoryImpl implements PogoFactory
 
 
 
-    /**
-     * Fills given class filled with values dictated by the strategy
-     *
-     * @param <T>
-     *            The type for which should be populated
-     * @param pojo
-     *            An instance to be filled with dummy values
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return An instance of &lt;T&gt; filled with dummy values
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If manufactured class cannot be loaded
-     */
     @SuppressWarnings( UNCHECKED_STR )
     private <T> T populatePojoInternal( T pojo, ManufacturingContext manufacturingCtx,
                                         Map<String, Type> typeArgsMap,
@@ -768,50 +560,6 @@ public class PogoFactoryImpl implements PogoFactory
         return pojo;
     }
 
-    /**
-     * It manufactures and returns the value for a POJO attribute.
-     *
-     *
-     * @param pojo
-     *            The POJO being filled with values
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param attributeType
-     *            The type of the attribute for which a value is being
-     *            manufactured
-     * @param genericAttributeType
-     *            The generic type of the attribute for which a value is being
-     *            manufactured
-     * @param annotations
-     *            The annotations for the attribute being considered
-     * @param attributeName
-     *            The attribute name
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return The value for an attribute
-     *
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     * @throws IllegalArgumentException
-     *             <ul>
-     *             <li>If an illegal argument was passed</li>
-     *             <li>If an invalid value was set for a precise value in an
-     *             annotation and such value could not be converted to the
-     *             desired type</li>
-     *             </ul>
-     *
-     */
     private Object manufactureAttributeValue( Object pojo,
             ManufacturingContext manufacturingCtx, Class<?> attributeType,
             Type genericAttributeType, List<Annotation> annotations,
@@ -911,22 +659,6 @@ public class PogoFactoryImpl implements PogoFactory
         return attributeValue;
     }
 
-    /**
-     * Delegates POJO manufacturing to an external factory
-     *
-     * @param <T>
-     *            The type of the instance to return
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param msg
-     *            Message to log, must contain two parameters
-     * @param pojoClass
-     *            The class of which an instance is required
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return instance of POJO produced by external factory or null
-     */
     private <T> T resortToExternalFactory( ManufacturingContext manufacturingCtx,
                                            String msg, Class<T> pojoClass,
                                            Type... genericTypeArgs )
@@ -941,36 +673,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-
-
-
-    /**
-     * It returns a collection of some sort with some data in it.
-     *
-     *
-     * @param pojo
-     *            The POJO being analyzed
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param collectionType
-     *            The type of the attribute being evaluated
-     * @param annotations
-     *            The set of annotations for the annotated attribute. It might
-     *            be empty
-     * @param attributeName
-     *            The name of the field being set
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return a collection of some sort with some data in it
-     * @throws PogoMockeryException
-     *             An exception occurred while resolving the collection
-     * @throws IllegalArgumentException
-     *             If the field name is null or empty
-     */
     private Collection<? super Object> resolveCollectionValueWhenCollectionIsPojoAttribute(
         Object pojo, ManufacturingContext manufacturingCtx,
         Class<?> collectionType, String attributeName,
@@ -1023,36 +725,6 @@ public class PogoFactoryImpl implements PogoFactory
         return retValue;
     }
 
-    /**
-     * It fills a collection with the required number of elements of the
-     * required type.
-     *
-     * <p>
-     * This method has a so-called side effect. It updates the collection passed
-     * as argument.
-     * </p>
-     *
-     * @param collection
-     *          The Collection to be filled
-     * @param manufacturingCtx
-     *          the manufacturing context
-     * @param typeArgsMap
-     *          a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *          example) with their actual types
-     * @param genericTypeArgs
-     *          The generic type arguments for the current generic class
-     *          instance
-     * @throws InstantiationException
-     *          If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *          If security was violated while creating the object
-     * @throws InvocationTargetException
-     *          If an exception occurred while invoking the constructor or
-     *          factory method
-     * @throws ClassNotFoundException
-     *          If it was not possible to create a class from a string
-     *
-     */
     private void fillCollection( Collection<? super Object> collection,
                                  ManufacturingContext manufacturingCtx, Map<String, Type> typeArgsMap,
                                  Type... genericTypeArgs )
@@ -1111,39 +783,6 @@ public class PogoFactoryImpl implements PogoFactory
                         collection, elementTypeClass, elementGenericArgs );
     }
 
-    /**
-     * It fills a collection with the required number of elements of the
-     * required type.
-     *
-     * <p>
-     * This method has a so-called side effect. It updates the collection passed
-     * as argument.
-     * </p>
-     *
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param annotations
-     *            The annotations for this attribute
-     * @param attributeName
-     *            The attribute name of collection in enclosing POJO class
-     * @param collection
-     *            The Collection to be filled
-     * @param collectionElementType
-     *            The type of the collection element
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     *
-     */
     private void fillCollection( ManufacturingContext manufacturingCtx,
                                  List<Annotation> annotations, String attributeName,
                                  Collection<? super Object> collection,
@@ -1155,7 +794,6 @@ public class PogoFactoryImpl implements PogoFactory
         // we use it
         Holder<AttributeStrategy<?>> elementStrategyHolder
             = new Holder<>();
-        Holder<AttributeStrategy<?>> keyStrategyHolder = null;
         Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy, annotations,
                               collectionElementType, elementStrategyHolder, null );
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
@@ -1201,37 +839,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-    /**
-     * It manufactures and returns a Map with at least one element in it
-     *
-     * @param pojo
-     *            The POJO being initialized
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param attributeType
-     *            The type of the POJO map attribute
-     * @param attributeName
-     *            The POJO attribute name
-     * @param annotations
-     *            The annotations specified for this attribute
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     * @return Map with at least one element in it
-     *
-     * @throws IllegalArgumentException
-     *             <ul>
-     *             <li>If the attribute name is null or empty</li>
-     *             <li>If the array of types of the Map has length different
-     *             from 2</li>
-     *             </ul>
-     *
-     * @throws PogoMockeryException
-     *             If an error occurred while creating the Map object
-     */
     private Map<? super Object, ? super Object> resolveMapValueWhenMapIsPojoAttribute(
         Object pojo, ManufacturingContext manufacturingCtx,
         Class<?> attributeType, String attributeName,
@@ -1301,35 +908,6 @@ public class PogoFactoryImpl implements PogoFactory
         return retValue;
     }
 
-    /**
-     * It fills a Map with the required number of elements of the required type.
-     *
-     * <p>
-     * This method has a so-called side-effect. It updates the Map given as
-     * argument.
-     * </p>
-     *
-     * @param map
-     *          The map being initialised
-     * @param manufacturingCtx
-     *          the manufacturing context
-     * @param typeArgsMap
-     *          a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *          example) with their actual types
-     * @param genericTypeArgs
-     *          The generic type arguments for the current generic class
-     *          instance
-     * @throws InstantiationException
-     *          If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *          If security was violated while creating the object
-     * @throws InvocationTargetException
-     *          If an exception occurred while invoking the constructor or
-     *          factory method
-     * @throws ClassNotFoundException
-     *          If it was not possible to create a class from a string
-     *
-     */
     private void fillMap( Map<? super Object, ? super Object> map,
                           ManufacturingContext manufacturingCtx, Map<String, Type> typeArgsMap,
                           Type... genericTypeArgs )
@@ -1399,29 +977,6 @@ public class PogoFactoryImpl implements PogoFactory
         fillMap( mapArguments, manufacturingCtx );
     }
 
-    /**
-     * It fills a Map with the required number of elements of the required type.
-     *
-     * <p>
-     * This method has a so-called side-effect. It updates the Map given as
-     * argument.
-     * </p>
-     *
-     * @param mapArguments
-     *             The arguments POJO
-     * @param manufacturingCtx
-     *             Manufacturing context
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     *
-     */
     private void fillMap( MapArguments mapArguments, ManufacturingContext manufacturingCtx )
     throws InstantiationException, IllegalAccessException,
         InvocationTargetException, ClassNotFoundException
@@ -1478,32 +1033,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
     }
 
-    /**
-     * It fills a Map key or value with the appropriate value, considering
-     * attribute-level customisation.
-     *
-     * @param keyOrElementsArguments
-     *            The arguments POJO
-     * @param manufacturingCtx
-     *             manufacturing context
-     * @return A Map key or value
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws IllegalArgumentException
-     *             <ul>
-     *             <li>If an illegal argument was passed</li>
-     *             <li>If an invalid value was set for a precise value in an
-     *             annotation and such value could not be converted to the
-     *             desired type</li>
-     *             </ul>
-     * @throws ClassNotFoundException
-     *             If manufactured class could not be loaded
-     */
     private Object getMapKeyOrElementValue(
         MapKeyOrElementsArguments keyOrElementsArguments,
         ManufacturingContext manufacturingCtx )
@@ -1546,38 +1075,6 @@ public class PogoFactoryImpl implements PogoFactory
         return retValue;
     }
 
-    /**
-     * It returns an Array with the first element set
-     *
-     *
-     * @param attributeType
-     *            The array type
-     * @param genericType
-     *            The array generic type
-     * @param attributeName
-     *            The array attribute name in enclosing POJO class
-     * @param manufacturingCtx
-     *          the manufacturing context
-     * @param annotations
-     *            The annotations to be considered
-     * @param pojo
-     *            POJO containing attribute
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @return Array with the first element set
-     * @throws IllegalArgumentException
-     *             If an illegal argument was passed to the constructor
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     */
     private Object resolveArrayElementValue( Class<?> attributeType,
             Type genericType, String attributeName, ManufacturingContext manufacturingCtx,
             List<Annotation> annotations, Object pojo,
@@ -1659,36 +1156,6 @@ public class PogoFactoryImpl implements PogoFactory
     }
 
 
-    /**
-     * Given a constructor it manufactures and returns the parameter values
-     * required to invoke it
-     *
-     * @param constructor
-     *            The constructor for which parameter values are required
-     * @param pojoClass
-     *            The POJO class containing the constructor
-     * @param manufacturingCtx
-     *          the manufacturing context
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     *
-     * @return The parameter values required to invoke the constructor
-     * @throws IllegalArgumentException
-     *             If an illegal argument was passed to the constructor
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     */
     private Object[] getParameterValuesForConstructor(
         Constructor<?> constructor, Class<?> pojoClass,
         ManufacturingContext manufacturingCtx, Map<String, Type> typeArgsMap,
@@ -1724,36 +1191,6 @@ public class PogoFactoryImpl implements PogoFactory
         return parameterValues;
     }
 
-    /**
-     * Given a method it manufactures and returns the parameter values
-     * required to invoke it
-     *
-     * @param method
-     *            The method for which parameter values are required
-     * @param pojoClass
-     *            The POJO class containing the constructor
-     * @param manufacturingCtx
-     *          the manufacturing context
-     * @param typeArgsMap
-     *            a map relating the generic class arguments ("&lt;T, V&gt;" for
-     *            example) with their actual types
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     *
-     * @return The parameter values required to invoke the method
-     * @throws IllegalArgumentException
-     *             If an illegal argument was passed to the method
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     */
     private Object[] getParameterValuesForMethod(
         Method method, Class<?> pojoClass,
         ManufacturingContext manufacturingCtx, Map<String, Type> typeArgsMap,
@@ -1789,34 +1226,6 @@ public class PogoFactoryImpl implements PogoFactory
         return parameterValues;
     }
 
-    /**
-     * Manufactures and returns the parameter value for method required to
-     * invoke it
-     *
-     * @param pojoClass pojo class
-     * @param parameterType type of parameter
-     * @param genericType generic type of parameter
-     * @param annotations parameter annotations
-     * @param typeArgsMap map for resolving generic types
-     * @param manufacturingCtx
-     *            the manufacturing context
-     * @param genericTypeArgs
-     *            The generic type arguments for the current generic class
-     *            instance
-     *
-     * @return The parameter values required to invoke the constructor
-     * @throws IllegalArgumentException
-     *             If an illegal argument was passed to the constructor
-     * @throws InstantiationException
-     *             If an exception occurred during instantiation
-     * @throws IllegalAccessException
-     *             If security was violated while creating the object
-     * @throws InvocationTargetException
-     *             If an exception occurred while invoking the constructor or
-     *             factory method
-     * @throws ClassNotFoundException
-     *             If it was not possible to create a class from a string
-     */
     private Object manufactureParameterValue( Class<?> pojoClass, Class<?> parameterType,
             Type genericType, List<Annotation> annotations,
             final Map<String, Type> typeArgsMap, ManufacturingContext manufacturingCtx,
@@ -1860,7 +1269,6 @@ public class PogoFactoryImpl implements PogoFactory
         }
         else if ( Map.class.isAssignableFrom( parameterType ) )
         {
-            Map<? super Object, ? super Object> defaultValue = null;
             Map<? super Object, ? super Object> map = TypeManufacturerUtil.resolveMapType( parameterType, null );
 
             if ( map != null )
@@ -1928,7 +1336,6 @@ public class PogoFactoryImpl implements PogoFactory
                 typeArgsMapForParam = typeArgsMap;
             }
 
-            String attributeName = null;
             parameterValue = manufactureAttributeValue( pojoClass, manufacturingCtx, parameterType,
                              genericType, annotations, null, typeArgsMapForParam,
                              genericTypeArgs );
@@ -1937,19 +1344,6 @@ public class PogoFactoryImpl implements PogoFactory
         return parameterValue;
     }
 
-    /**
-     * Returns a value for an abstract type or interface if possible.
-     * @param pojoClass The Pojo class
-     * @param pojoMetadata The Pojo metadata
-     * @param manufacturingCtx The manufacturing context
-     * @param genericTypeArgs The generic type arguments map
-     * @param <T> The type of the value to be returned
-     * @return
-     * @throws InstantiationException If a problem occurred while instantiating the object
-     * @throws IllegalAccessException If a problem occurred while instantiating the object
-     * @throws InvocationTargetException If a problem occurred while instantiating the object
-     * @throws ClassNotFoundException If a problem occurred while instantiating the object
-     */
     private <T> T getValueForAbstractType( Class<T> pojoClass,
                                            AttributeMetadata pojoMetadata,
                                            ManufacturingContext manufacturingCtx,

@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.common.PogoExclude;
@@ -11,25 +8,14 @@ import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.util.*;
 
-/**
- * Pogo Utilities class.
- *
- * @author mtedone
- *
- * @since 1.0.0
- *
- */
 public final class PogoUtils
 {
-
-    // ---------------------->> Constants
 
     private static final int SETTER_IDENTIFIER_LENGTH = 3;
 
     private static final String GETTER_PREFIX = "get";
     private static final String GETTER_PREFIX2 = "is";
 
-    /** An array of valid String characters */
     public static final char[] NICE_ASCII_CHARACTERS = new char[] { 'a', 'b',
             'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
             'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
@@ -39,24 +25,11 @@ public final class PogoUtils
                                                                   };
 
 
-    /** Non instantiable constructor */
     private PogoUtils()
     {
         throw new AssertionError();
     }
 
-    /**
-     * It returns a {@link ClassInfo} object for the given class
-     *
-     * @param clazz
-     *            The class to retrieve info from
-     * @param attributeApprover
-     *            a {@link ClassAttributeApprover} implementation,
-     *             which attributes to skip and which to process.
-     *             If one hasn't been provided, Pogo will use the
-     *             default one in the {@link DefaultClassInfoStrategy} class.
-     * @return a {@link ClassInfo} object for the given class
-     */
     public static ClassInfo getClassInfo( Class<?> clazz,
                                           ClassAttributeApprover attributeApprover )
     {
@@ -66,21 +39,6 @@ public final class PogoUtils
                              attributeApprover );
     }
 
-    /**
-     * It returns a {@link ClassInfo} object for the given class
-     *
-     * @param clazz
-     *            The class to retrieve info from
-     * @param excludeFieldAnnotations
-     *            the fields marked with any of these annotations will not be
-     *            included in the class info
-     * @param excludedFields
-     *            the fields matching the given names will not be included in the class info
-     * @param attributeApprover
-     *            a {@link ClassAttributeApprover} implementation,
-     *             which defines which attributes to skip and which to process
-     * @return a {@link ClassInfo} object for the given class
-     */
     public static ClassInfo getClassInfo( Class<?> clazz,
                                           Set<Class<? extends Annotation>> excludeFieldAnnotations,
                                           Set<String> excludedFields,
@@ -198,15 +156,6 @@ public final class PogoUtils
     }
 
 
-    /**
-     * Checks if the given field has any one of the annotations
-     *
-     * @param field
-     *            the field to check for
-     * @param annotations
-     *            the set of annotations to look for in the field
-     * @return true if the field is marked with any of the given annotations
-     */
     public static boolean containsAnyAnnotation( Field field,
             Set<Class<? extends Annotation>> annotations )
     {
@@ -221,15 +170,6 @@ public final class PogoUtils
         return false;
     }
 
-    /**
-     * Checks if the given method has any one of the annotations
-     *
-     * @param method
-     *            the method to check for
-     * @param annotations
-     *            the set of annotations to look for in the field
-     * @return true if the field is marked with any of the given annotations
-     */
     private static boolean containsAnyAnnotation( Method method,
             Set<Class<? extends Annotation>> annotations )
     {
@@ -244,27 +184,6 @@ public final class PogoUtils
         return false;
     }
 
-    /**
-     * Given a class and a set of class declared fields it returns a Set of
-     * setters, getters and fields defined for this class
-     * <p>
-     * Anything present: setter, getter or field will be recorded as three
-     * independent sets available for future analysis
-     * </p>
-     *
-     * @param clazz
-     *            The class to analyze for setters
-     * @param classFields
-     *            The {@link Set} which will be filled with class' fields
-     * @param classGetters
-     *            The {@link Set} which will be filled with class' getters
-     * @param classSetters
-     *            The {@link Set} which will be filled with class' setters
-     * @param excludeAnnotations
-     *            The {@link Set} containing annotations marking fields to be excluded
-     * @param excludedFields
-     *            The {@link Set} containing field names to be excluded
-     */
     public static void fillPojoSets( Class<?> clazz, Set<Field> classFields,
                                      Set<Method> classGetters, Set<Method> classSetters,
                                      Set<Class<? extends Annotation>> excludeAnnotations,
@@ -320,20 +239,6 @@ public final class PogoUtils
         }
     }
 
-    /**
-     * Given a setter {@link Method}, it extracts the field name, according to
-     * JavaBean standards
-     * <p>
-     * This method, given a setter method, it returns the corresponding
-     * attribute name. For example: given setIntField the method would return
-     * intField. The correctness of the return value depends on the adherence to
-     * JavaBean standards.
-     * </p>
-     *
-     * @param method
-     *            The setter method from which the field name is required
-     * @return The field name corresponding to the setter
-     */
     public static String extractFieldNameFromSetterMethod( Method method )
     {
         String candidateField = method.getName().substring( SETTER_IDENTIFIER_LENGTH );
@@ -350,21 +255,6 @@ public final class PogoUtils
         return candidateField;
     }
 
-    /**
-     * Given a getter {@link Method}, it extracts the field name, according to
-     * JavaBean standards
-     * <p>
-     * This method, given a getter method, it returns the corresponding
-     * attribute name. For example: given getIntField the method would return
-     * intField; given isBoolField the method would return boolField. The
-     * correctness of the return value depends on the adherence to JavaBean
-     * standards.
-     * </p>
-     *
-     * @param method
-     *            The setter method from which the field name is required
-     * @return The field name corresponding to the setter
-     */
     public static String extractFieldNameFromGetterMethod( Method method )
     {
         String candidateField = method.getName();
@@ -390,18 +280,6 @@ public final class PogoUtils
         return candidateField;
     }
 
-    /**
-     * It returns a {@link Field} matching the attribute name or null if a field
-     * was not found.
-     *
-     * @param pojoClass
-     *            The class supposed to contain the field
-     * @param attributeName
-     *            The field name
-     *
-     * @return a {@link Field} matching the attribute name or null if a field
-     *         was not found.
-     */
     public static Field getField( Class<?> pojoClass, String attributeName )
     {
         Field field = null;
@@ -423,20 +301,6 @@ public final class PogoUtils
         return field;
     }
 
-    /**
-     * It returns an value for a {@link Field} matching the attribute
-     * name or null if a field was not found.
-     *
-     * @param <T>
-     *            The type of field to be returned
-     * @param pojo
-     *            The class supposed to contain the field
-     * @param attributeName
-     *            The field name
-     *
-     * @return an instance of {@link Field} matching the attribute name or
-     *         null if a field was not found.
-     */
     public static <T> T getFieldValue( Object pojo, String attributeName )
     {
         T retValue = null;
@@ -465,16 +329,6 @@ public final class PogoUtils
         return retValue;
     }
 
-    /**
-     * Given the attribute and setter it combines annotations from them
-     * or an empty collection if no custom annotations were found
-     *
-     * @param attribute
-     *            The class attribute
-     * @param setter
-     *            The class attribute's setter
-     * @return all annotations for the attribute
-     */
     public static List<Annotation> getAttributeAnnotations( final Field attribute,
             final Method setter )
     {
@@ -494,11 +348,6 @@ public final class PogoUtils
         return retValue;
     }
 
-    /**
-     * Generates random character from set valid for identifiers in Java language
-     *
-     * @return random character suitable for identifier
-     */
     public static Character getNiceCharacter()
     {
         int randomCharIdx =
@@ -506,27 +355,11 @@ public final class PogoUtils
         return NICE_ASCII_CHARACTERS[randomCharIdx];
     }
 
-    /**
-     * It returns a long/Long value between min and max value (included).
-     *
-     * @param minValue
-     *            The minimum value for the returned value
-     * @param maxValue
-     *            The maximum value for the returned value
-     * @return A long/Long value between min and max value (included).
-     */
     public static long getLongInRange( long minValue, long maxValue )
     {
         return ( long ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
     }
 
-    /**
-     * Finds boxed type for a primitive type
-     *
-     * @param primitiveType
-     *            Primitive type to find boxed type for
-     * @return A boxed type or the same type, if original type was not primitive
-     */
     public static Class<?> primitiveToBoxedType( Class<?> primitiveType )
     {
         if ( int.class.equals( primitiveType ) )

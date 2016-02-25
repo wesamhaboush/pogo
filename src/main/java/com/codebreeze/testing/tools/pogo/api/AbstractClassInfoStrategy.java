@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.api;
 
 import java.lang.annotation.Annotation;
@@ -51,16 +48,6 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
         return this;
     }
 
-    /**
-     * Adds the specified field to set of excluded fields,
-     * if it is not already present.
-     *
-     * @param pojoClass
-     *        a class for which fields should be skipped
-     * @param fieldName
-     *            the field name to use as an exclusion mark
-     * @return itself
-     */
     public AbstractClassInfoStrategy addExcludedField(
         final Class<?> pojoClass, final String fieldName )
     {
@@ -76,15 +63,6 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
         return this;
     }
 
-    /**
-     * Removes the field name from set of excluded fields.
-     *
-     * @param pojoClass
-     *        a class for which fields should be skipped
-     * @param fieldName
-     *            the field name used as an exlusion mark
-     * @return itself
-     */
     public AbstractClassInfoStrategy removeExcludedField(
         final Class<?> pojoClass, final String fieldName )
     {
@@ -99,19 +77,12 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     }
 
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public boolean approve( ClassAttribute attribute )
     {
         return ( attribute.getAttribute() != null );
     }
 
-    // ------------------->> Getters / Setters
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Set<Class<? extends Annotation>> getExcludedAnnotations()
     {
@@ -119,18 +90,12 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     }
 
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Set<String> getExcludedFields( final Class<?> pojoClass )
     {
         return excludedFields.get( pojoClass );
     }
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public ClassInfo getClassInfo( Class<?> pojoClass )
     {
@@ -163,12 +128,4 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     {
         return extraMethods.get( pojoClass );
     }
-
-
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    // ------------------->> Inner classes
-
 }

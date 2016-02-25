@@ -2,13 +2,6 @@ package com.codebreeze.testing.tools.pogo.api;
 
 import java.lang.reflect.Type;
 
-/**
- * Adapter pattern for boilerplate code when creating an external factory
- *
- * @author Marco Tedone
- *
- * @since 5.2.1
- */
 public abstract class AbstractExternalFactory implements PogoFactory
 {
 
