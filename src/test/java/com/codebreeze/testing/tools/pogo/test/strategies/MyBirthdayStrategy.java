@@ -4,8 +4,8 @@
 package com.codebreeze.testing.tools.pogo.test.strategies;
 
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestUtils;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestUtils;
 
 import java.util.Calendar;
 
@@ -22,9 +22,9 @@ public class MyBirthdayStrategy implements AttributeStrategy<Calendar>
      *
      * {@inheritDoc}
      */
-    public Calendar getValue() throws PodamMockeryException
+    public Calendar getValue() throws PogoMockeryException
     {
-        return PodamTestUtils.getMyBirthday();
+        return PogoTestUtils.getMyBirthday();
     }
 
     // ------------------->> Constants

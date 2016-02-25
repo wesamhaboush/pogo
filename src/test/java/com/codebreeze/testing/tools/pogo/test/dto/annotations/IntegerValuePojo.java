@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamIntValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test the {@link PodamIntValue} annotation
+ * POJO to test the {@link PogoIntValue} annotation
  *
  * @author mtedone
  *
@@ -23,28 +23,28 @@ public class IntegerValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamIntValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private int intFieldWithMinValueOnly;
 
-    @PodamIntValue( numValue = PodamTestConstants.INTEGER_PRECISE_VALUE )
+    @PogoIntValue( numValue = PogoTestConstants.INTEGER_PRECISE_VALUE )
     private int intFieldWithPreciseValue;
 
-    @PodamIntValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoIntValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private int intFieldWithMaxValueOnly;
 
-    @PodamIntValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PodamTestConstants.NUMBER_INT_MAX_VALUE )
+    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PogoTestConstants.NUMBER_INT_MAX_VALUE )
     private int intFieldWithMinAndMaxValue;
 
-    @PodamIntValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Integer integerObjectFieldWithMinValueOnly;
 
-    @PodamIntValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoIntValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Integer integerObjectFieldWithMaxValueOnly;
 
-    @PodamIntValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PodamTestConstants.NUMBER_INT_MAX_VALUE )
+    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PogoTestConstants.NUMBER_INT_MAX_VALUE )
     private Integer integerObjectFieldWithMinAndMaxValue;
 
-    @PodamIntValue( numValue = PodamTestConstants.INTEGER_PRECISE_VALUE )
+    @PogoIntValue( numValue = PogoTestConstants.INTEGER_PRECISE_VALUE )
     private Integer integerObjectFieldWithPreciseValue;
 
     // ------------------->> Constructors

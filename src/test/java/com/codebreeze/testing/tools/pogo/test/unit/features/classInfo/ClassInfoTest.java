@@ -7,7 +7,7 @@ import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoWithExcludeAnnotatio
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.api.ClassAttributeApprover;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.lang.annotation.Annotation;
 import java.util.ArrayList;
@@ -15,27 +15,27 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class ClassInfoTest extends AbstractPodamSteps
+public class ClassInfoTest extends AbstractPogoSteps
 {
 
     @Test
-    public void podamShouldReturnAValidClassInfoForPojoWithNoAttributes()
+    public void PogoShouldReturnAValidClassInfoForPojoWithNoAttributes()
     {
         List<ClassAttribute> attributes = new ArrayList<>();
-        ClassInfo expectedClassInfo = podamFactorySteps.givenAClassInfoForPojoWithNoAttributes( EmptyTestPojo.class,
+        ClassInfo expectedClassInfo = PogoFactorySteps.givenAClassInfoForPojoWithNoAttributes( EmptyTestPojo.class,
                                       attributes );
         ClassAttributeApprover nullApprover = null;
-        ClassInfo actualClassInfo = podamInvocationSteps.getClassInfo( EmptyTestPojo.class, nullApprover );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( expectedClassInfo, actualClassInfo );
+        ClassInfo actualClassInfo = PogoInvocationSteps.getClassInfo( EmptyTestPojo.class, nullApprover );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( expectedClassInfo, actualClassInfo );
     }
 
     @Test
-    public void podamShouldReturnAClassInfoObjectWhichContainsTheSameAttributesAsThePojoBeingProcessed()
+    public void PogoShouldReturnAClassInfoObjectWhichContainsTheSameAttributesAsThePojoBeingProcessed()
     {
         ClassAttributeApprover nullApprover = null;
-        ClassInfo actualClassInfo = podamInvocationSteps.getClassInfo( SimplePojoToTestSetters.class, nullApprover );
-        podamValidationSteps.theObjectShouldNotBeNull( actualClassInfo );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( SimplePojoToTestSetters.class, actualClassInfo.getClassName() );
+        ClassInfo actualClassInfo = PogoInvocationSteps.getClassInfo( SimplePojoToTestSetters.class, nullApprover );
+        PogoValidationSteps.theObjectShouldNotBeNull( actualClassInfo );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( SimplePojoToTestSetters.class, actualClassInfo.getClassName() );
         Set<String> attribs = new HashSet<>();
         attribs.add( "stringField" );
         attribs.add( "intField" );
@@ -46,13 +46,13 @@ public class ClassInfoTest extends AbstractPodamSteps
     public void inPresenceOfExcludeAnnotationsTheClassInfoObjectShouldContainAValidSetOfPojoAttributes()
     {
         Set<Class<? extends Annotation>> excludeAnnotations =
-            podamFactorySteps.givenASetOfExcludedAnnotationsToBeExcluded(
+            PogoFactorySteps.givenASetOfExcludedAnnotationsToBeExcluded(
                 SimplePojoWithExcludeAnnotationToTestSetters.TestExclude.class );
         Set<String> excludeFields = new HashSet<>();
-        ClassInfo classInfo = podamFactorySteps.givenAClassInfoForPojoWithWithExcludedAnnotationsAndFields(
+        ClassInfo classInfo = PogoFactorySteps.givenAClassInfoForPojoWithWithExcludedAnnotationsAndFields(
                                   SimplePojoWithExcludeAnnotationToTestSetters.class,
                                   excludeAnnotations, excludeFields );
-        podamValidationSteps.theObjectShouldNotBeNull( classInfo );
+        PogoValidationSteps.theObjectShouldNotBeNull( classInfo );
         Set<String> attribs = new HashSet<>();
         attribs.add( "stringField" );
         attribs.add( "intField" );
@@ -63,15 +63,15 @@ public class ClassInfoTest extends AbstractPodamSteps
     public void inPresenceOfExcludedAttributesTheClassInfoObjectShouldNotContainThoseAttributes()
     {
         Set<Class<? extends Annotation>> excludeAnnotations =
-            podamFactorySteps.givenASetOfExcludedAnnotationsToBeExcluded();
-        Set<String> excludeFields = podamFactorySteps.givenASetOfExcludedFields(
+            PogoFactorySteps.givenASetOfExcludedAnnotationsToBeExcluded();
+        Set<String> excludeFields = PogoFactorySteps.givenASetOfExcludedFields(
                                         "excludeField1",
                                         "excludeField2",
                                         "excludeField3" );
-        ClassInfo classInfo = podamFactorySteps.givenAClassInfoForPojoWithWithExcludedAnnotationsAndFields(
+        ClassInfo classInfo = PogoFactorySteps.givenAClassInfoForPojoWithWithExcludedAnnotationsAndFields(
                                   SimplePojoWithExcludeAnnotationToTestSetters.class,
                                   excludeAnnotations, excludeFields );
-        podamValidationSteps.theObjectShouldNotBeNull( classInfo );
+        PogoValidationSteps.theObjectShouldNotBeNull( classInfo );
         Set<String> attribs = new HashSet<>();
         attribs.add( "stringField" );
         attribs.add( "intField" );

@@ -1,8 +1,8 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
-import com.codebreeze.testing.tools.pogo.common.PodamFloatValue;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoFloatValue;
 
 import java.lang.annotation.Annotation;
 
@@ -25,9 +25,9 @@ public class FloatTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamFloatValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoFloatValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamFloatValue floatStrategy = ( PodamFloatValue ) annotation;
+                PogoFloatValue floatStrategy = ( PogoFloatValue ) annotation;
                 String numValueStr = floatStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )
@@ -38,7 +38,7 @@ public class FloatTypeManufacturerImpl extends AbstractTypeManufacturer
                     }
                     catch ( NumberFormatException nfe )
                     {
-                        String errMsg = PodamConstants.THE_ANNOTATION_VALUE_STR
+                        String errMsg = PogoConstants.THE_ANNOTATION_VALUE_STR
                                         + numValueStr
                                         + " could not be converted to a Float. An exception will be thrown.";
                         throw new IllegalArgumentException( errMsg, nfe );

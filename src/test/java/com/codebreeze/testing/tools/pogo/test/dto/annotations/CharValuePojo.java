@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCharValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoCharValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test {@link PodamCharValue} annotation
+ * POJO to test {@link PogoCharValue} annotation
  *
  * @author mtedone
  *
@@ -23,30 +23,30 @@ public class CharValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamCharValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private char charFieldWithMinValueOnly;
 
-    @PodamCharValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoCharValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private char charFieldWithMaxValueOnly;
 
-    @PodamCharValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private char charFieldWithMinAndMaxValue;
 
-    @PodamCharValue( charValue = ' ' )
+    @PogoCharValue( charValue = ' ' )
     private char charFieldWithBlankInPreciseValue;
 
-    @PodamCharValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Character charObjectFieldWithMinValueOnly;
 
-    @PodamCharValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoCharValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Character charObjectFieldWithMaxValueOnly;
 
-    @PodamCharValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Character charObjectFieldWithMinAndMaxValue;
 
-    @PodamCharValue( charValue = PodamTestConstants.CHAR_PRECISE_VALUE )
+    @PogoCharValue( charValue = PogoTestConstants.CHAR_PRECISE_VALUE )
     private char charFieldWithPreciseValue;
 
     // ------------------->> Constructors

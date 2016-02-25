@@ -4,7 +4,7 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 /**
- * POJO to test when Podam sets an array.
+ * POJO to test when Pogo sets an array.
  *
  * @author tedonema
  *

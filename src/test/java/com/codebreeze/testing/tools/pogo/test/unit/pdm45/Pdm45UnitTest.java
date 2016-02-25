@@ -3,10 +3,10 @@
  */
 package com.codebreeze.testing.tools.pogo.test.unit.pdm45;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactoryImpl;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.api.RandomDataProviderStrategyImpl;
-import com.codebreeze.testing.tools.pogo.test.dto.PodamParameterizedType;
+import com.codebreeze.testing.tools.pogo.test.dto.PogoParameterizedType;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm45.GenericPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm45.MultiDimensionalConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm45.MultiDimensionalTestPojo;
@@ -30,13 +30,13 @@ import static org.junit.Assert.assertNotNull;
 public class Pdm45UnitTest
 {
 
-    /** The podam factory */
-    private PodamFactory factory;
+    /** The Pogo factory */
+    private PogoFactory factory;
 
     @Before
     public void init()
     {
-        factory = new PodamFactoryImpl( new RandomDataProviderStrategyImpl() );
+        factory = new PogoFactoryImpl( new RandomDataProviderStrategyImpl() );
     }
 
     @Test
@@ -101,11 +101,11 @@ public class Pdm45UnitTest
     public void testMultiDimensionalPojoManufacture()
     {
         ParameterizedType twoDimensionalStringListType =
-            new PodamParameterizedType( List.class,
-                                        new PodamParameterizedType( List.class,
-                                                String.class ) );
+            new PogoParameterizedType( List.class,
+                                       new PogoParameterizedType( List.class,
+                                               String.class ) );
         ParameterizedType longDoubleMapType =
-            new PodamParameterizedType( Map.class, Long.class, Double.class );
+            new PogoParameterizedType( Map.class, Long.class, Double.class );
         final GenericPojo<List<List<String>>, Map<Long, Double>> pojo =
             factory.manufacturePojo( GenericPojo.class, twoDimensionalStringListType, longDoubleMapType );
         assertNotNull( "The GenericPojo object cannot be null!", pojo );

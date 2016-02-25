@@ -50,7 +50,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
 
     public AbstractRandomDataProviderStrategy()
     {
-        this( PodamConstants.DEFAULT_NBR_COLLECTION_ELEMENTS );
+        this( PogoConstants.DEFAULT_NBR_COLLECTION_ELEMENTS );
     }
 
     public AbstractRandomDataProviderStrategy( int nbrOfCollectionElements )
@@ -88,7 +88,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public Character getCharacter( AttributeMetadata attributeMetadata )
     {
-        return PodamUtils.getNiceCharacter();
+        return PogoUtils.getNiceCharacter();
     }
 
     @Override
@@ -200,7 +200,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     public Long getLongInRange( long minValue, long maxValue,
                                 AttributeMetadata attributeMetadata )
     {
-        return PodamUtils.getLongInRange( minValue, maxValue );
+        return PogoUtils.getLongInRange( minValue, maxValue );
     }
 
     @Override
@@ -228,7 +228,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public String getStringValue( AttributeMetadata attributeMetadata )
     {
-        return getStringOfLength( PodamConstants.STR_DEFAULT_LENGTH,
+        return getStringOfLength( PogoConstants.STR_DEFAULT_LENGTH,
                                   attributeMetadata );
     }
 

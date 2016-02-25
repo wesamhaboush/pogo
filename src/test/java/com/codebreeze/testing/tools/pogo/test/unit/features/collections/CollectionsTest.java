@@ -1,120 +1,120 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.collections;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
-public class CollectionsTest extends AbstractPodamSteps
+public class CollectionsTest extends AbstractPogoSteps
 {
 
     @Test
-    public void podamShouldHandleStandardCollections() throws Exception
+    public void PogoShouldHandleStandardCollections() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        CollectionsPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( CollectionsPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        CollectionsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( CollectionsPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         List<String> strList = pojo.getStrList();
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
         ArrayList<String> arrayListStr = pojo.getArrayListStr();
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( arrayListStr );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( arrayListStr );
         List<String> copyOnWriteList = pojo.getCopyOnWriteList();
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( copyOnWriteList );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( copyOnWriteList );
         HashSet<String> hashSetStr = pojo.getHashSetStr();
-        podamValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( hashSetStr );
+        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( hashSetStr );
         List<String> listStrCollection = new ArrayList<>(
             pojo.getStrCollection() );
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( listStrCollection );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( listStrCollection );
         Set<String> setStrCollection = new HashSet<>(
             pojo.getStrCollection() );
-        podamValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( setStrCollection );
+        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( setStrCollection );
         Set<String> strSet = pojo.getStrSet();
-        podamValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( strSet );
+        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( strSet );
         Map<String, OneDimensionalTestPojo> map = pojo.getMap();
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( map );
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( map );
         HashMap<String, OneDimensionalTestPojo> hashMap = pojo.getHashMap();
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( hashMap );
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( hashMap );
         ConcurrentMap<String, OneDimensionalTestPojo> concurrentHashMap = pojo
                 .getConcurrentHashMap();
-        podamValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement( concurrentHashMap );
+        PogoValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement( concurrentHashMap );
         ConcurrentHashMap<String, OneDimensionalTestPojo> concurrentHashMapImpl = pojo
                 .getConcurrentHashMapImpl();
-        podamValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement(
+        PogoValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement(
             concurrentHashMapImpl );
         Queue<SimplePojoToTestSetters> queue = pojo.getQueue();
-        podamValidationSteps.theQueueCannotBeNull( queue );
-        podamValidationSteps.theQueueMustBeAnInstanceOf( queue, LinkedList.class );
+        PogoValidationSteps.theQueueCannotBeNull( queue );
+        PogoValidationSteps.theQueueMustBeAnInstanceOf( queue, LinkedList.class );
         SimplePojoToTestSetters pojoQueueElement = queue.poll();
-        podamValidationSteps.theObjectShouldNotBeNull( pojoQueueElement );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojoQueueElement );
         List nonGenerifiedList = pojo.getNonGenerifiedList();
-        podamValidationSteps.theNonGenerifiedListShouldNotBeNullOrEmpty( nonGenerifiedList );
+        PogoValidationSteps.theNonGenerifiedListShouldNotBeNullOrEmpty( nonGenerifiedList );
         Map<?, ?> nonGenerifiedMap = pojo.getNonGenerifiedMap();
-        podamValidationSteps.theNonGenerifiedMapShouldNotBeNullOrEmpty( nonGenerifiedMap );
+        PogoValidationSteps.theNonGenerifiedMapShouldNotBeNullOrEmpty( nonGenerifiedMap );
         Object object = nonGenerifiedMap.get( nonGenerifiedMap.keySet()
                                               .iterator().next() );
-        podamValidationSteps.theObjectShouldNotBeNull( object );
+        PogoValidationSteps.theObjectShouldNotBeNull( object );
     }
 
     @Test
-    public void podamShouldHandlePojosWithNoSettersAndCollectionsInTheConstructor() throws Exception
+    public void PogoShouldHandlePojosWithNoSettersAndCollectionsInTheConstructor() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         NoSetterWithCollectionInConstructorPojo pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( NoSetterWithCollectionInConstructorPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( NoSetterWithCollectionInConstructorPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         List<String> strList = pojo.getStrList();
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
         int intField = pojo.getIntField();
-        podamValidationSteps.theIntFieldShouldNotBeZero( intField );
+        PogoValidationSteps.theIntFieldShouldNotBeZero( intField );
     }
 
     @Test
-    public void podamShouldHandleImmutablePojosWithNonGenericCollections() throws Exception
+    public void PogoShouldHandleImmutablePojosWithNonGenericCollections() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         ImmutableWithNonGenericCollectionsPojo pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithNonGenericCollectionsPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithNonGenericCollectionsPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         Collection<Object> nonGenerifiedCollection = pojo
                 .getNonGenerifiedCollection();
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getNonGenerifiedCollection() );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedCollection,
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getNonGenerifiedCollection() );
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedCollection,
                 ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
         Set<Object> nonGenerifiedSet = pojo.getNonGenerifiedSet();
-        podamValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( nonGenerifiedSet );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements(
+        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( nonGenerifiedSet );
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements(
             nonGenerifiedSet, ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
         Map<Object, Object> nonGenerifiedMap = pojo.getNonGenerifiedMap();
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( nonGenerifiedMap );
-        podamValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedMap,
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( nonGenerifiedMap );
+        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedMap,
                 ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
     }
 
     @Test
-    public void podamShouldHandleImmutablePojoWithGenerifiedCollectionsInConstructor() throws Exception
+    public void PogoShouldHandleImmutablePojoWithGenerifiedCollectionsInConstructor() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         ImmutableWithGenericCollectionsPojo pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithGenericCollectionsPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithGenericCollectionsPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         Collection<OneDimensionalTestPojo> generifiedCollection = pojo
                 .getGenerifiedCollection();
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedCollection );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedCollection,
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedCollection );
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedCollection,
                 ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
         Map<String, Calendar> generifiedMap = pojo.getGenerifiedMap();
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( generifiedMap );
-        podamValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( generifiedMap,
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( generifiedMap );
+        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( generifiedMap,
                 ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
         Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet = pojo
                 .getGenerifiedSet();
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedSet );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedSet,
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedSet );
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedSet,
                 ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
     }
 
@@ -139,26 +139,26 @@ public class CollectionsTest extends AbstractPodamSteps
 
 
     @Test
-    public void podamShouldFillInPojosWithAttributesContainingWildcards() throws Exception
+    public void PogoShouldFillInPojosWithAttributesContainingWildcards() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ReadOnlyWildcardFieldsPojo pojo	= podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                              ReadOnlyWildcardFieldsPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
-        podamValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ReadOnlyWildcardFieldsPojo pojo	= PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                              ReadOnlyWildcardFieldsPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getMap(), Object.class, Object.class );
     }
 
     @Test
-    public void podamShouldBeAbleToFillInPojosWithRawTypeCollectionAttributesAndDefaultValueToObject() throws Exception
+    public void PogoShouldBeAbleToFillInPojosWithRawTypeCollectionAttributesAndDefaultValueToObject() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ReadOnlyRawFieldsPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                         ReadOnlyRawFieldsPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
-        podamValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ReadOnlyRawFieldsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                         ReadOnlyRawFieldsPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getMap(), Object.class, Object.class );
     }
 
@@ -167,20 +167,20 @@ public class CollectionsTest extends AbstractPodamSteps
 
     private void testMap( Class<? extends Map> mapType )
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        DataProviderStrategy strategy = podamFactory.getStrategy();
-        int mapSize = strategy.getNumberOfCollectionElements( PodamTestInterface.class );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        DataProviderStrategy strategy = PogoFactory.getStrategy();
+        int mapSize = strategy.getNumberOfCollectionElements( PogoTestInterface.class );
 
         if ( mapType.isAssignableFrom( ConcurrentHashMap.class ) )
         {
             mapSize = 0;
         }
 
-        Map<?, ?> pojo = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                             mapType, podamFactory, String.class, PodamTestInterface.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.keySet().size() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.values().size() );
+        Map<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                             mapType, PogoFactory, String.class, PogoTestInterface.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.keySet().size() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.values().size() );
     }
 
 

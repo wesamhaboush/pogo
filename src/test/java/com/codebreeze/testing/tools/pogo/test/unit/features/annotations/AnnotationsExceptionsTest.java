@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.annotations;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactoryImpl;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,50 +9,50 @@ import org.junit.Test;
 public class AnnotationsExceptionsTest
 {
 
-    private PodamFactory podamFactory;
+    private PogoFactory PogoFactory;
 
     @Before
     public void init()
     {
-        podamFactory = new PodamFactoryImpl();
+        PogoFactory = new PogoFactoryImpl();
     }
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamIntegerValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoIntegerValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( IntegerValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( IntegerValueWithErrorPojo.class );
     }
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamLongValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoLongValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( LongValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( LongValueWithErrorPojo.class );
     }
 
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamByteValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoByteValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( ByteValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( ByteValueWithErrorPojo.class );
     }
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamShortValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoShortValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( ShortValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( ShortValueWithErrorPojo.class );
     }
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamFloatValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoFloatValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( FloatValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( FloatValueWithErrorPojo.class );
     }
 
 
 
     @Test( expected = IllegalArgumentException.class )
-    public void podamShouldThrowExceptionWhenPodamDoubleValueContainsInvalidCharacters() throws Exception
+    public void PogoShouldThrowExceptionWhenPogoDoubleValueContainsInvalidCharacters() throws Exception
     {
-        podamFactory.manufacturePojo( DoubleValueWithErrorPojo.class );
+        PogoFactory.manufacturePojo( DoubleValueWithErrorPojo.class );
     }
 }

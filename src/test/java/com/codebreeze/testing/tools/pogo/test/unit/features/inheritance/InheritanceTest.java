@@ -1,51 +1,51 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.inheritance;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassInheritedPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalChildPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm42.B;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm42.A;
 
-public class InheritanceTest extends AbstractPodamSteps
+public class InheritanceTest extends AbstractPogoSteps
 {
 
     @Test
-    public void podamShouldHandleBasicInheritance() throws Exception
+    public void PogoShouldHandleBasicInheritance() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         OneDimensionalChildPojo pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( OneDimensionalChildPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        int maxValue = PodamTestConstants.NUMBER_INT_TEN;
-        podamValidationSteps.theIntFieldShouldHaveValueLessThen( pojo.getParentIntField(), maxValue );
-        podamValidationSteps.theCalendarFieldShouldBeValid( pojo.getParentCalendarField() );
-        podamValidationSteps.theIntFieldShouldNotBeZero( pojo.getIntField() );
-        podamValidationSteps.theStringFieldCannotBeNullOrEmpty( pojo.getStrField() );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( OneDimensionalChildPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        int maxValue = PogoTestConstants.NUMBER_INT_TEN;
+        PogoValidationSteps.theIntFieldShouldHaveValueLessThen( pojo.getParentIntField(), maxValue );
+        PogoValidationSteps.theCalendarFieldShouldBeValid( pojo.getParentCalendarField() );
+        PogoValidationSteps.theIntFieldShouldNotBeZero( pojo.getIntField() );
+        PogoValidationSteps.theStringFieldCannotBeNullOrEmpty( pojo.getStrField() );
     }
 
     @Test
-    public void podamShouldHandleTheManufacturingOfPojosWhichInheritFromOtherClasses() throws Exception
+    public void PogoShouldHandleTheManufacturingOfPojosWhichInheritFromOtherClasses() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ClassInheritedPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                      ClassInheritedPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ClassInheritedPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                      ClassInheritedPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
     }
 
 
     @Test
-    public void podamShouldManufactureAllPojosInATreeHierarchy() throws Exception
+    public void PogoShouldManufactureAllPojosInATreeHierarchy() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        A pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( A.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        A pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( A.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         B b = pojo.getB();
-        podamValidationSteps.theObjectShouldNotBeNull( b );
-        podamValidationSteps.theObjectShouldNotBeNull( b.getCustomValue() );
+        PogoValidationSteps.theObjectShouldNotBeNull( b );
+        PogoValidationSteps.theObjectShouldNotBeNull( b.getCustomValue() );
     }
 }

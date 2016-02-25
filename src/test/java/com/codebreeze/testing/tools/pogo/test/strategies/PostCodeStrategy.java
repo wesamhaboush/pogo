@@ -4,8 +4,8 @@
 package com.codebreeze.testing.tools.pogo.test.strategies;
 
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
  * A test strategy to manufacture UK-like post codes.
@@ -29,9 +29,9 @@ public class PostCodeStrategy implements AttributeStrategy<String>
      *
      * {@inheritDoc}
      */
-    public String getValue() throws PodamMockeryException
+    public String getValue() throws PogoMockeryException
     {
-        return PodamTestConstants.POST_CODE;
+        return PogoTestConstants.POST_CODE;
     }
 
     // ------------------->> Constructors

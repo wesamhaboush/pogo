@@ -1,12 +1,12 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.memoization;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.test.dto.MemoizationPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.RecursivePojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import javax.xml.ws.Holder;
 import java.util.Collections;
@@ -14,96 +14,96 @@ import java.util.Currency;
 import java.util.HashSet;
 import java.util.Set;
 
-public class MemoizationTest extends AbstractPodamSteps
+public class MemoizationTest extends AbstractPogoSteps
 {
 
     @Test
-    public void whenMemoizationIsTruePodamShouldReturnTheSameInstanceForDifferentInvocations() throws Exception
+    public void whenMemoizationIsTruePogoShouldReturnTheSameInstanceForDifferentInvocations() throws Exception
     {
-        DataProviderStrategy strategy = podamFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
-        SimplePojoToTestSetters pojo1 = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            SimplePojoToTestSetters.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        SimplePojoToTestSetters pojo2 = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            SimplePojoToTestSetters.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        podamValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1, pojo2 );
+        DataProviderStrategy strategy = PogoFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
+        SimplePojoToTestSetters pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                            SimplePojoToTestSetters.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        SimplePojoToTestSetters pojo2 = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                            SimplePojoToTestSetters.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        PogoValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1, pojo2 );
     }
 
 
     @Test
-    public void whenMemoizationIsFalsePodamShouldReturnDifferentInstancesForDifferentInvocations() throws Exception
+    public void whenMemoizationIsFalsePogoShouldReturnDifferentInstancesForDifferentInvocations() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        podamFactory.getStrategy().setMemoization( false );
-        SimplePojoToTestSetters pojo1 = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            SimplePojoToTestSetters.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        SimplePojoToTestSetters pojo2 = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            SimplePojoToTestSetters.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        podamValidationSteps.theTwoObjectsShouldBeDifferent( pojo1, pojo2 );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory.getStrategy().setMemoization( false );
+        SimplePojoToTestSetters pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                            SimplePojoToTestSetters.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        SimplePojoToTestSetters pojo2 = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                            SimplePojoToTestSetters.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        PogoValidationSteps.theTwoObjectsShouldBeDifferent( pojo1, pojo2 );
     }
 
     @Test
     public void memoizationShouldWorkForRecursivePojos() throws Exception
     {
-        DataProviderStrategy strategy = podamFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
-        RecursivePojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( RecursivePojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo, pojo.getParent() );
+        DataProviderStrategy strategy = PogoFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
+        RecursivePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( RecursivePojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo, pojo.getParent() );
     }
 
     @Test
     public void memoizationShouldWorkWithGenerics() throws Exception
     {
-        DataProviderStrategy strategy = podamFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
-        Holder<String> pojo1 = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                   Holder.class, podamFactory, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        Holder<String> pojo2 = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                   Holder.class, podamFactory, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo2 );
-        podamValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1, pojo2 );
-        podamValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1.value, pojo2.value );
+        DataProviderStrategy strategy = PogoFactorySteps.givenADataProviderStrategyWithMemoizationSetToTrue();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
+        Holder<String> pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                                   Holder.class, PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        Holder<String> pojo2 = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                                   Holder.class, PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo2 );
+        PogoValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1, pojo2 );
+        PogoValidationSteps.theTwoObjectsShouldBeStrictlyEqual( pojo1.value, pojo2.value );
     }
 
     @Test
     public void evenWhenMemoizationIsTrueIfGenericPojosHaveDifferentTypesObjectsShouldNotBeEqual() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        Holder<String> pojo1 = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                   Holder.class, podamFactory, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo1 );
-        Holder<Integer> pojo2 = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                    Holder.class, podamFactory, Integer.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo2 );
-        podamValidationSteps.theTwoObjectsShouldBeDifferent( pojo1, pojo2 );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        Holder<String> pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                                   Holder.class, PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
+        Holder<Integer> pojo2 = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                                    Holder.class, PogoFactory, Integer.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo2 );
+        PogoValidationSteps.theTwoObjectsShouldBeDifferent( pojo1, pojo2 );
     }
 
     @Test
     public void memoizationShouldWorkCorrectlyForCollectionsAndArrays() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        MemoizationPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( MemoizationPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainElementsOfTheRightType(
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        MemoizationPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( MemoizationPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainElementsOfTheRightType(
             pojo.getArray(), Currency.class );
         Set<Currency> countingSet = new HashSet<>();
         Collections.addAll( countingSet, pojo.getArray() );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements(
-            countingSet, podamFactory.getStrategy().getNumberOfCollectionElements( Currency.class )
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements(
+            countingSet, PogoFactory.getStrategy().getNumberOfCollectionElements( Currency.class )
         );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType(
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getCollection(), Currency.class );
-        podamValidationSteps.theTwoObjectsShouldBeEqual(
-            podamFactory.getStrategy().getNumberOfCollectionElements( Currency.class ), pojo.getCollection().size() );
-        podamValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
+        PogoValidationSteps.theTwoObjectsShouldBeEqual(
+            PogoFactory.getStrategy().getNumberOfCollectionElements( Currency.class ), pojo.getCollection().size() );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getMap(), Currency.class, Currency.class );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( podamFactory.getStrategy().getNumberOfCollectionElements(
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( PogoFactory.getStrategy().getNumberOfCollectionElements(
                     Currency.class ), pojo.getMap().size() );
     }
 

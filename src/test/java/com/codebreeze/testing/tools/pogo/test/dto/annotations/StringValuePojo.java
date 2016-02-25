@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamStringValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test the {@link PodamStringValue}
+ * POJO to test the {@link PogoStringValue}
  *
  * @author mtedone
  *
@@ -23,11 +23,11 @@ public class StringValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamStringValue( length = PodamTestConstants.STR_ANNOTATION_TWENTY_LENGTH )
+    @PogoStringValue( length = PogoTestConstants.STR_ANNOTATION_TWENTY_LENGTH )
     /** A String attribute with length 20 */
     private String twentyLengthString;
 
-    @PodamStringValue( strValue = PodamTestConstants.STR_ANNOTATION_PRECISE_VALUE )
+    @PogoStringValue( strValue = PogoTestConstants.STR_ANNOTATION_PRECISE_VALUE )
     private String preciseValueString;
 
     // ------------------->> Constructors

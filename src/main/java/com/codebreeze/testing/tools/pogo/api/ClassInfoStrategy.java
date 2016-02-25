@@ -9,7 +9,7 @@ import java.util.Collection;
 import java.util.Set;
 
 /**
- * This interface defines the contact for PODAM class info introspection.
+ * This interface defines the contact for Pogo class info introspection.
  * <p>
  * It provides a tool for customization of class introspection process.
  * </p>
@@ -26,7 +26,7 @@ public interface ClassInfoStrategy
      * Identifies {@link Annotation}s for fields to be skipped.
      * <p>
      * Should return set of annotations, which will be treated as notion for
-     * {@link PodamFactory} to skip production of these particular fields.
+     * {@link PogoFactory} to skip production of these particular fields.
      * </p>
      *
      * @return set of annotations, which mark fields to be skipped from populating.
@@ -37,7 +37,7 @@ public interface ClassInfoStrategy
      * Identifies fields to be skipped.
      * <p>
      * Should return set of field names as case-sensitive string, which will
-     * be treated as notion for {@link PodamFactory} to skip production of
+     * be treated as notion for {@link PogoFactory} to skip production of
      * these particular fields.
      * </p>
      *

@@ -5,8 +5,8 @@ package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
-import com.codebreeze.testing.tools.pogo.common.PodamStringValue;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
 
 /**
  * A Country domain Model Object
@@ -35,9 +35,9 @@ public class Country implements Serializable
      * @param description
      *            The description
      */
-    @PodamConstructor( comment = "Immutable-like POJOs must be annotated with @PodamConstructor" )
+    @PogoConstructor( comment = "Immutable-like POJOs must be annotated with @PogoConstructor" )
     public Country( int countryId,
-                    @PodamStringValue( length = 2 ) String countryCode, String description )
+                    @PogoStringValue( length = 2 ) String countryCode, String description )
     {
         super();
         this.countryId = countryId;

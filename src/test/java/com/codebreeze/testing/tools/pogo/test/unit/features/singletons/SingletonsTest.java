@@ -1,31 +1,31 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.singletons;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalTestPojo;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.SingletonWithParametersInStaticFactoryPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.util.List;
 import java.util.Map;
 
-public class SingletonsTest extends AbstractPodamSteps
+public class SingletonsTest extends AbstractPogoSteps
 {
 
 
     @Test
-    public void podamShouldHandleSingletonsWithParametersInPublicStaticMethod() throws Exception
+    public void PogoShouldHandleSingletonsWithParametersInPublicStaticMethod() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         SingletonWithParametersInStaticFactoryPojo pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( SingletonWithParametersInStaticFactoryPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theCalendarFieldShouldNotBeNull( pojo.getCreateDate() );
-        podamValidationSteps.theStringFieldCannotBeNullOrEmpty( pojo.getFirstName() );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( SingletonWithParametersInStaticFactoryPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theCalendarFieldShouldNotBeNull( pojo.getCreateDate() );
+        PogoValidationSteps.theStringFieldCannotBeNullOrEmpty( pojo.getFirstName() );
         List<OneDimensionalTestPojo> pojoList = pojo.getPojoList();
-        podamValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( pojoList );
+        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( pojoList );
         Map<String, OneDimensionalTestPojo> pojoMap = pojo.getPojoMap();
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( pojoMap );
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( pojoMap );
     }
 
 }

@@ -5,9 +5,9 @@ package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
-import com.codebreeze.testing.tools.pogo.common.PodamDoubleValue;
-import com.codebreeze.testing.tools.pogo.common.PodamIntValue;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
+import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
 
 /**
  * @author mtedone
@@ -34,10 +34,10 @@ public class Article implements Serializable
      * @param itemCost
      *            The item cost
      */
-    @PodamConstructor( comment = "Immutable-like POJOs must be annotated with @PodamConstructor" )
-    public Article( @PodamIntValue( maxValue = 100000 ) int id,
+    @PogoConstructor( comment = "Immutable-like POJOs must be annotated with @PogoConstructor" )
+    public Article( @PogoIntValue( maxValue = 100000 ) int id,
                     String description,
-                    @PodamDoubleValue( minValue = 50.0 ) Double itemCost )
+                    @PogoDoubleValue( minValue = 50.0 ) Double itemCost )
     {
         super();
         this.id = id;

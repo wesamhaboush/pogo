@@ -148,8 +148,8 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
             localExtraMethods = Collections.emptyList();
         }
 
-        return PodamUtils.getClassInfo( pojoClass,
-                                        excludedAnnotations, excludedAttributes, this, localExtraMethods );
+        return PogoUtils.getClassInfo( pojoClass,
+                                       excludedAnnotations, excludedAttributes, this, localExtraMethods );
     }
 
     @Override

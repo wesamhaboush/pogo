@@ -1,63 +1,63 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.constructors;
 
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyAbstract;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyComplexTypesPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyGenericComplexTypesPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.beans.beancontext.BeanContextServicesSupport;
 
-public class ReadOnlyComplexTypesTest extends AbstractPodamSteps
+public class ReadOnlyComplexTypesTest extends AbstractPogoSteps
 {
 
     @Test
-    public void podamShouldFillReadOnlyTypes() throws Exception
+    public void PogoShouldFillReadOnlyTypes() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ReadOnlyComplexTypesPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            ReadOnlyComplexTypesPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Integer.class );
-        podamValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ReadOnlyComplexTypesPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                            ReadOnlyComplexTypesPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Integer.class );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getMap(), Long.class, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
     }
 
     @Test
-    public void podamShouldFillReadOnlyComplexTypes() throws Exception
+    public void PogoShouldFillReadOnlyComplexTypes() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
         ReadOnlyGenericComplexTypesPojo<?, ?, ?> pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                ReadOnlyGenericComplexTypesPojo.class, podamFactory, Character.class, Long.class, Integer.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Long.class );
-        podamValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
+            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                ReadOnlyGenericComplexTypesPojo.class, PogoFactory, Character.class, Long.class, Integer.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Long.class );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
             pojo.getMap(), Integer.class, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( Character.class, pojo.getValue().getValue().getClass() );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( Character.class, pojo.getValue().getValue().getClass() );
     }
 
     @Test
-    public void podamShouldFillInPojosWhichContainInternalLoops() throws Exception
+    public void PogoShouldFillInPojosWhichContainInternalLoops() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        BeanContextServicesSupport pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                              BeanContextServicesSupport.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        BeanContextServicesSupport pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                              BeanContextServicesSupport.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
 
 
     @Test
-    public void podamShouldCreateAnInstanceOfAnAbstractClassWithAFactoryMethodWhichReturnsAConcreteType()
+    public void PogoShouldCreateAnInstanceOfAnAbstractClassWithAFactoryMethodWhichReturnsAConcreteType()
     throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ReadOnlyAbstract pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( ReadOnlyAbstract.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ReadOnlyAbstract pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ReadOnlyAbstract.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
 }

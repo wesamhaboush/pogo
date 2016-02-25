@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamBooleanValue;
+import com.codebreeze.testing.tools.pogo.common.PogoBooleanValue;
 
 import java.lang.annotation.Annotation;
 
@@ -24,9 +24,9 @@ public class BooleanTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamBooleanValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoBooleanValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamBooleanValue localStrategy = ( PodamBooleanValue ) annotation;
+                PogoBooleanValue localStrategy = ( PogoBooleanValue ) annotation;
                 retValue = localStrategy.boolValue();
                 break;
             }

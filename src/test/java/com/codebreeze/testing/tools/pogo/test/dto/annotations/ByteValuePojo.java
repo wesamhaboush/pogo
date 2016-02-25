@@ -3,8 +3,8 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PodamByteValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoByteValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 import java.io.Serializable;
 
@@ -21,27 +21,27 @@ public class ByteValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamByteValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private byte byteFieldWithMinValueOnly;
 
-    @PodamByteValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoByteValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private byte byteFieldWithMaxValueOnly;
 
-    @PodamByteValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private byte byteFieldWithMinAndMaxValue;
 
-    @PodamByteValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Byte byteObjectFieldWithMinValueOnly;
 
-    @PodamByteValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoByteValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Byte byteObjectFieldWithMaxValueOnly;
 
-    @PodamByteValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Byte byteObjectFieldWithMinAndMaxValue;
 
-    @PodamByteValue( numValue = PodamTestConstants.BYTE_PRECISE_VALUE )
+    @PogoByteValue( numValue = PogoTestConstants.BYTE_PRECISE_VALUE )
     private byte byteFieldWithPreciseValue;
 
     // ------------------->> Constructors

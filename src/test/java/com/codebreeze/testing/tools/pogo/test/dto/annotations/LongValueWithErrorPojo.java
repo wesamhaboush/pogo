@@ -5,10 +5,10 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamLongValue;
+import com.codebreeze.testing.tools.pogo.common.PogoLongValue;
 
 /**
- * POJO to test that {@link PodamLongValue#numValue()} which contains a non
+ * POJO to test that {@link PogoLongValue#numValue()} which contains a non
  * parseable value triggers exception.
  *
  * @author mtedone
@@ -22,7 +22,7 @@ public class LongValueWithErrorPojo implements Serializable
     private static final long serialVersionUID = 1L;
     // ------------------->> Instance / Static variables
 
-    @PodamLongValue( numValue = "afhafhakflh" )
+    @PogoLongValue( numValue = "afhafhakflh" )
     private long longFieldWithErrorInAnnotation;
 
     // ------------------->> Constructors

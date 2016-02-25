@@ -4,7 +4,7 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 /**
- * POJO to test when Podam sets a boolean.
+ * POJO to test when Pogo sets a boolean.
  *
  * @author daivanov
  *

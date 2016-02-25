@@ -2,7 +2,7 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamStringValue;
+import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
 
 import java.lang.annotation.Annotation;
 import java.util.List;
@@ -34,24 +34,24 @@ public class StringTypeManufacturerImpl extends AbstractTypeManufacturer
         {
             for ( Annotation annotation : annotations )
             {
-                if ( !PodamStringValue.class.isAssignableFrom( annotation
+                if ( !PogoStringValue.class.isAssignableFrom( annotation
                         .getClass() ) )
                 {
                     continue;
                 }
 
                 // A specific value takes precedence over the length
-                PodamStringValue podamAnnotation = ( PodamStringValue ) annotation;
+                PogoStringValue PogoAnnotation = ( PogoStringValue ) annotation;
 
-                if ( podamAnnotation.strValue() != null
-                        && podamAnnotation.strValue().length() > 0 )
+                if ( PogoAnnotation.strValue() != null
+                        && PogoAnnotation.strValue().length() > 0 )
                 {
-                    retValue = podamAnnotation.strValue();
+                    retValue = PogoAnnotation.strValue();
                 }
                 else
                 {
                     retValue = strategy.getStringOfLength(
-                                   podamAnnotation.length(), attributeMetadata );
+                                   PogoAnnotation.length(), attributeMetadata );
                 }
             }
 

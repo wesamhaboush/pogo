@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 
 /**
  * @author mtedone
@@ -25,7 +25,7 @@ public class Order implements Serializable
 
     private double totalAmount;
 
-    @PodamCollection( nbrElements = 5 )
+    @PogoCollection( nbrElements = 5 )
     private List<OrderItem> orderItems = new ArrayList<>();
 
     /**

@@ -15,7 +15,7 @@ public class ExtraMethodsUnitTest
 
     private final AbstractClassInfoStrategy classInfoStrategy = DefaultClassInfoStrategy.getInstance();
 
-    private final PodamFactory podam = new PodamFactoryImpl( dataProviderStrategy );
+    private final PogoFactory Pogo = new PogoFactoryImpl( dataProviderStrategy );
 
     @Before
     public void setup() throws Exception
@@ -27,7 +27,7 @@ public class ExtraMethodsUnitTest
     @Test
     public void testExtraMethods() throws Exception
     {
-        ExtraMethodsPojo pojo = podam.manufacturePojo( ExtraMethodsPojo.class );
+        ExtraMethodsPojo pojo = Pogo.manufacturePojo( ExtraMethodsPojo.class );
         assertNotNull( "The pojo cannot be null", pojo );
         assertNotNull( "The long value cannot be zero", pojo.getMyLong() );
         assertNotNull( "The string value cannot be null", pojo.getMyString() );

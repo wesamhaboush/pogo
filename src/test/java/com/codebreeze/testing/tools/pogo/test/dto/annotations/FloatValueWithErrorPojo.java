@@ -5,10 +5,10 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamFloatValue;
+import com.codebreeze.testing.tools.pogo.common.PogoFloatValue;
 
 /**
- * POJO to test that a {@link PodamFloatValue#numValue()} is non parseable.
+ * POJO to test that a {@link PogoFloatValue#numValue()} is non parseable.
  *
  * @author mtedone
  *
@@ -21,7 +21,7 @@ public class FloatValueWithErrorPojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamFloatValue( numValue = "fafhakljhf" )
+    @PogoFloatValue( numValue = "fafhakljhf" )
     private float floatFieldWithErrorInAnnotation;
 
     // ------------------->> Constructors

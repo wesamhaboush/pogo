@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.Serializable;
 import java.util.Calendar;
@@ -28,11 +28,11 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
 
     // ------------------->> Constructors
 
-    @PodamConstructor
+    @PogoConstructor
     public ImmutableWithGenericCollectionsPojo(
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Collection<OneDimensionalTestPojo> generifiedCollection,
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Map<String, Calendar> generifiedMap,
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet )
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Collection<OneDimensionalTestPojo> generifiedCollection,
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Map<String, Calendar> generifiedMap,
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet )
     {
         super();
         this.generifiedCollection = generifiedCollection;

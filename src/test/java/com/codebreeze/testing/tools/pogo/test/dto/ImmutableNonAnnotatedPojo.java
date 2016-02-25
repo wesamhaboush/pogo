@@ -3,7 +3,7 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.Serializable;
 import java.util.Arrays;
@@ -11,9 +11,9 @@ import java.util.Calendar;
 
 /**
  * This is an immutable POJO which is not annotated with
- * {@link PodamConstructor}.
+ * {@link PogoConstructor}.
  * <p>
- * PODAM should guess how to create an instance.
+ * Pogo should guess how to create an instance.
  * </p>
  *
  * @author mtedone

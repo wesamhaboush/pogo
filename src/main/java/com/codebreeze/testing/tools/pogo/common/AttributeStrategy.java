@@ -3,7 +3,7 @@
  */
 package com.codebreeze.testing.tools.pogo.common;
 
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 
 /**
  * Generic contract for attribute-level data provider strategies.
@@ -19,7 +19,7 @@ public interface AttributeStrategy<T>
      *
      * @return A value of the given type
      *
-     * @throws PodamMockeryException
+     * @throws PogoMockeryException
      *             If an exception occurred while assigning the value specified
      *             by this strategy
      */

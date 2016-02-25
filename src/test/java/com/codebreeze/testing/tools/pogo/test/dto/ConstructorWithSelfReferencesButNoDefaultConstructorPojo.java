@@ -3,7 +3,7 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 
 import java.io.Serializable;
 
@@ -11,8 +11,8 @@ import java.io.Serializable;
  * Immutable-like POJO with constructor which receives self-types but no default
  * constructor.
  * <p>
- * This POJO cannot be reliably built due to infinite loop, so PODAM will throw
- * a {@link PodamMockeryException}
+ * This POJO cannot be reliably built due to infinite loop, so Pogo will throw
+ * a {@link PogoMockeryException}
  * </p>
  *
  * @author mtedone

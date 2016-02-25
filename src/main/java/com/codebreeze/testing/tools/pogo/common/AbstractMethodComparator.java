@@ -10,7 +10,7 @@ import java.util.Comparator;
 /**
  * It provides a comparator to sort the constructor to choose first.
  * <p>
- * The priority goes to constructors with the {@link PodamConstructor}
+ * The priority goes to constructors with the {@link PogoConstructor}
  * annotation first, and then to those with more arguments.
  * </p>
  *
@@ -39,9 +39,9 @@ public abstract class AbstractMethodComparator implements Comparator<Method>
 
     public int compareAnnotations( Method method1, Method method2 )
     {
-        /* Constructors with Podam annotation first */
-        boolean choose1 = method1.getAnnotation( PodamConstructor.class ) != null;
-        boolean choose2 = method2.getAnnotation( PodamConstructor.class ) != null;
+        /* Constructors with Pogo annotation first */
+        boolean choose1 = method1.getAnnotation( PogoConstructor.class ) != null;
+        boolean choose2 = method2.getAnnotation( PogoConstructor.class ) != null;
 
         if ( choose1 && !choose2 )
         {

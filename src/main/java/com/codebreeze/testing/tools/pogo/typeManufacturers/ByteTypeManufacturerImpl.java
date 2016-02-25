@@ -2,7 +2,7 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamByteValue;
+import com.codebreeze.testing.tools.pogo.common.PogoByteValue;
 
 import java.lang.annotation.Annotation;
 
@@ -25,9 +25,9 @@ public class ByteTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamByteValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoByteValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamByteValue intStrategy = ( PodamByteValue ) annotation;
+                PogoByteValue intStrategy = ( PogoByteValue ) annotation;
                 String numValueStr = intStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )

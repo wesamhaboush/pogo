@@ -5,10 +5,10 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamShortValue;
+import com.codebreeze.testing.tools.pogo.common.PogoShortValue;
 
 /**
- * POJO to test that {@link PodamShortValue#numValue()} with non parseable value
+ * POJO to test that {@link PogoShortValue#numValue()} with non parseable value
  * throws exception.
  *
  * @author mtedone
@@ -22,7 +22,7 @@ public class ShortValueWithErrorPojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamShortValue( numValue = "fajkfhaf" )
+    @PogoShortValue( numValue = "fajkfhaf" )
     private short shortFieldWithErrorInAnnotation;
 
     // ------------------->> Constructors

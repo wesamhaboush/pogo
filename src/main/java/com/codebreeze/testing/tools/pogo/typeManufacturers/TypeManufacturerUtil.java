@@ -2,10 +2,10 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.api.PodamUtils;
+import com.codebreeze.testing.tools.pogo.api.PogoUtils;
 import com.codebreeze.testing.tools.pogo.api.TypeProcessor;
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 
 import javax.xml.ws.Holder;
 import java.lang.annotation.Annotation;
@@ -103,7 +103,7 @@ public final class TypeManufacturerUtil
         }
         else
         {
-            genericTypeArgsExtra = PodamConstants.NO_TYPES;
+            genericTypeArgsExtra = PogoConstants.NO_TYPES;
         }
 
         /* Adding types, which were specified during inheritance */
@@ -181,7 +181,7 @@ public final class TypeManufacturerUtil
             else if ( actualType instanceof WildcardType )
             {
                 AtomicReference<Type[]> methodGenericTypeArgs
-                    = new AtomicReference<>( PodamConstants.NO_TYPES );
+                    = new AtomicReference<>( PogoConstants.NO_TYPES );
                 type = TypeManufacturerUtil.resolveGenericParameter( actualType, typeArgsMap,
                         methodGenericTypeArgs );
             }
@@ -274,7 +274,7 @@ public final class TypeManufacturerUtil
         Class<?> parameterType = null;
         //Safe copy
         Map<String, Type> localMap = new HashMap<>( typeArgsMap );
-        methodGenericTypeArgs.set( PodamConstants.NO_TYPES );
+        methodGenericTypeArgs.set( PogoConstants.NO_TYPES );
 
         if ( paramType instanceof TypeVariable<?> )
         {
@@ -374,11 +374,11 @@ public final class TypeManufacturerUtil
         if ( retValue != null )
         {
             Class<?> desiredType = attributeType.isPrimitive() ?
-                                   PodamUtils.primitiveToBoxedType( attributeType ) : attributeType;
+                                   PogoUtils.primitiveToBoxedType( attributeType ) : attributeType;
 
             if ( !desiredType.isAssignableFrom( retValue.getClass() ) )
             {
-                String errMsg = "The type of the Podam Attribute Strategy is not "
+                String errMsg = "The type of the Pogo Attribute Strategy is not "
                                 + attributeType.getName() + " but "
                                 + retValue.getClass().getName()
                                 + ". An exception will be thrown.";

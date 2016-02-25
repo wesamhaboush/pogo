@@ -3,8 +3,8 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 
 import java.io.Serializable;
 
@@ -36,7 +36,7 @@ public class ConstructorWithSelfReferencesPojoAndDefaultConstructor implements S
      * No-args constructor
      * <p>
      * This is a pre-requisite for this type of POJOs or a
-     * {@link PodamMockeryException} will be thrown
+     * {@link PogoMockeryException} will be thrown
      * </p>
      */
     public ConstructorWithSelfReferencesPojoAndDefaultConstructor()
@@ -48,7 +48,7 @@ public class ConstructorWithSelfReferencesPojoAndDefaultConstructor implements S
      * @param parent
      * @param anotherParent
      */
-    @PodamConstructor
+    @PogoConstructor
     public ConstructorWithSelfReferencesPojoAndDefaultConstructor( int intField,
             ConstructorWithSelfReferencesPojoAndDefaultConstructor parent,
             ConstructorWithSelfReferencesPojoAndDefaultConstructor anotherParent )

@@ -8,8 +8,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
-import com.codebreeze.testing.tools.pogo.common.PodamStringValue;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
 
 /**
  * @author mtedone
@@ -20,7 +20,7 @@ public class Client implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PodamStringValue( strValue = "Michael" )
+    @PogoStringValue( strValue = "Michael" )
     private String firstName;
 
     private String lastName;
@@ -28,11 +28,11 @@ public class Client implements Serializable
     private Calendar dateCreated;
 
     // Let's make some orders
-    @PodamCollection( nbrElements = 3 )
+    @PogoCollection( nbrElements = 3 )
     private List<Order> orders = new ArrayList<>();
 
     // Let's have few addresses
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private List<Address> addresses = new ArrayList<>();
 
     // Default is one bank account

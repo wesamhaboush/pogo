@@ -2,8 +2,8 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
-import com.codebreeze.testing.tools.pogo.common.PodamDoubleValue;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
 
 import java.lang.annotation.Annotation;
 
@@ -19,9 +19,9 @@ public class DoubleTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamDoubleValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoDoubleValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamDoubleValue doubleStrategy = ( PodamDoubleValue ) annotation;
+                PogoDoubleValue doubleStrategy = ( PogoDoubleValue ) annotation;
                 String numValueStr = doubleStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )
@@ -32,7 +32,7 @@ public class DoubleTypeManufacturerImpl extends AbstractTypeManufacturer
                     }
                     catch ( NumberFormatException nfe )
                     {
-                        String errMsg = PodamConstants.THE_ANNOTATION_VALUE_STR
+                        String errMsg = PogoConstants.THE_ANNOTATION_VALUE_STR
                                         + numValueStr
                                         + " could not be converted to a Double. An exception will be thrown.";
                         throw new IllegalArgumentException( errMsg, nfe );

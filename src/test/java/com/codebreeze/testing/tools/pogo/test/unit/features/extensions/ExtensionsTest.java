@@ -1,45 +1,45 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.extensions;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.PojoClassic;
 import com.codebreeze.testing.tools.pogo.test.strategies.CustomRandomDataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.PojoSpecific;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
-public class ExtensionsTest extends AbstractPodamSteps
+public class ExtensionsTest extends AbstractPogoSteps
 {
 
 
     @Test
-    public void podamShouldFillTheAttributeMetadataWithTheAttributeNames() throws Exception
+    public void PogoShouldFillTheAttributeMetadataWithTheAttributeNames() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamExternalFactorytoTestAttributeMetadata();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoExternalFactorytoTestAttributeMetadata();
         PojoClassic pojoClassic =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( PojoClassic.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojoClassic );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( PojoClassic.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojoClassic );
         PojoSpecific pojoSpecific =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( PojoSpecific.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojoSpecific );
-        podamValidationSteps.theStringValueShouldBeExactly( pojoClassic.getAtt(), "classic" );
-        podamValidationSteps.theStringValueShouldBeExactly( pojoSpecific.getAtt(), "specific" );
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( PojoSpecific.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojoSpecific );
+        PogoValidationSteps.theStringValueShouldBeExactly( pojoClassic.getAtt(), "classic" );
+        PogoValidationSteps.theStringValueShouldBeExactly( pojoSpecific.getAtt(), "specific" );
     }
 
     @Test
-    public void podamShouldCreatePojosInAccordanceWithCustomDataProviderStrategies() throws Exception
+    public void PogoShouldCreatePojosInAccordanceWithCustomDataProviderStrategies() throws Exception
     {
-        CustomRandomDataProviderStrategy strategy = podamFactorySteps.givenACustomRandomDataProviderStrategy();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
+        CustomRandomDataProviderStrategy strategy = PogoFactorySteps.givenACustomRandomDataProviderStrategy();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
         PojoWithMapsAndCollections pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( PojoWithMapsAndCollections.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainExactlyTheGivenNumberOfElements(
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( PojoWithMapsAndCollections.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainExactlyTheGivenNumberOfElements(
             pojo.getArray(), 2 );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getList() );
-        podamValidationSteps.theListShouldHaveExactlyTheExpectedNumberOfElements( pojo.getList(), 3 );
-        podamValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( pojo.getMap() );
-        podamValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( pojo.getMap(), 4 );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getList() );
+        PogoValidationSteps.theListShouldHaveExactlyTheExpectedNumberOfElements( pojo.getList(), 3 );
+        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( pojo.getMap() );
+        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( pojo.getMap(), 4 );
     }
 
 

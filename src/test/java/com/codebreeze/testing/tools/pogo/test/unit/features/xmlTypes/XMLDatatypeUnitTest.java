@@ -1,40 +1,40 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.xmlTypes;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.XMLDatatypePojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-public class XMLDatatypeUnitTest extends AbstractPodamSteps
+public class XMLDatatypeUnitTest extends AbstractPogoSteps
 {
     @Test
     public void testXMLGregorianCalendarManufacturing() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithXmlTypesExternalFactory();
-        XMLGregorianCalendar pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass(
-                                        XMLGregorianCalendar.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithXmlTypesExternalFactory();
+        XMLGregorianCalendar pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
+                                        XMLGregorianCalendar.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
 
     @Test
     public void testDurationManufacturing() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithXmlTypesExternalFactory();
-        Duration pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( Duration.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithXmlTypesExternalFactory();
+        Duration pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Duration.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
 
     @Test
     public void testXMLDatatypesFieldSetting() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithXmlTypesExternalFactory();
-        XMLDatatypePojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( XMLDatatypePojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getCalendar() );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getDuration() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithXmlTypesExternalFactory();
+        XMLDatatypePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( XMLDatatypePojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getCalendar() );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getDuration() );
     }
 
 }

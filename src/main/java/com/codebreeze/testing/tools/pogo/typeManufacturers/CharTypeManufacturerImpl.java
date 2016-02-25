@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamCharValue;
+import com.codebreeze.testing.tools.pogo.common.PogoCharValue;
 
 import java.lang.annotation.Annotation;
 
@@ -24,9 +24,9 @@ public class CharTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamCharValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoCharValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamCharValue annotationStrategy = ( PodamCharValue ) annotation;
+                PogoCharValue annotationStrategy = ( PogoCharValue ) annotation;
                 char charValue = annotationStrategy.charValue();
 
                 if ( charValue != ' ' )

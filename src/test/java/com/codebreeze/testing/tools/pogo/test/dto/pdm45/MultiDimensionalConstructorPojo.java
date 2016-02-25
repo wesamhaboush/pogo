@@ -9,7 +9,7 @@ import java.util.Queue;
 import java.util.Set;
 
 /**
- * This is POJO to test PODAM's ability to create an instance
+ * This is POJO to test Pogo's ability to create an instance
  * using a constructor with multidimensional collections, arrays
  * and maps parameters
  *

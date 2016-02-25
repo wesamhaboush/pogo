@@ -5,7 +5,7 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Calendar;
 
-import com.codebreeze.testing.tools.pogo.common.PodamIntValue;
+import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
 
 /**
  * Abstract POJO to test inheritance.
@@ -21,7 +21,7 @@ public abstract class AbstractOneDimensionalPojo
     // ------------------->> Instance / Static variables
 
     /** An int field */
-    @PodamIntValue( maxValue = 10 )
+    @PogoIntValue( maxValue = 10 )
     private int parentIntField;
 
     /** An object field */

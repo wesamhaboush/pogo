@@ -3,8 +3,8 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.Serializable;
 import java.util.Collection;
@@ -45,11 +45,11 @@ public class ImmutableWithNonGenericCollectionsPojo implements Serializable
      */
     // This is actually intentional
     @SuppressWarnings( "rawtypes" )
-    @PodamConstructor
+    @PogoConstructor
     public ImmutableWithNonGenericCollectionsPojo(
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Collection nonGenerifiedCollection,
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Map nonGenerifiedMap,
-        @PodamCollection( nbrElements = NBR_ELEMENTS ) Set nonGenerifiedSet )
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Collection nonGenerifiedCollection,
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Map nonGenerifiedMap,
+        @PogoCollection( nbrElements = NBR_ELEMENTS ) Set nonGenerifiedSet )
     {
         super();
         this.nonGenerifiedCollection = nonGenerifiedCollection;

@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 
 /**
  * Generic Pojo.
@@ -21,11 +21,11 @@ public class GenericPojo<F, S>
 
     private F firstValue;
     private S secondValue;
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private List<F> firstList;
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private S[] secondArray;
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private Map<F, S> firstSecondMap;
 
     /**

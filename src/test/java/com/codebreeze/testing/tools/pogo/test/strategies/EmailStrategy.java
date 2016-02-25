@@ -3,7 +3,7 @@
  */
 package com.codebreeze.testing.tools.pogo.test.strategies;
 
-import com.codebreeze.testing.tools.pogo.api.PodamUtils;
+import com.codebreeze.testing.tools.pogo.api.PogoUtils;
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 
 /**
@@ -28,7 +28,7 @@ public class EmailStrategy implements AttributeStrategy<String>
             {
                 for ( int k = 0; k < 5; k++ )
                 {
-                    sb.append( PodamUtils.getNiceCharacter() );
+                    sb.append( PogoUtils.getNiceCharacter() );
                 }
 
                 if ( j == 0 )

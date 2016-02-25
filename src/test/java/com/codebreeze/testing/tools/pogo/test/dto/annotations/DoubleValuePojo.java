@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamDoubleValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test the {@link PodamDoubleValue} annotation
+ * POJO to test the {@link PogoDoubleValue} annotation
  *
  * @author mtedone
  *
@@ -23,30 +23,30 @@ public class DoubleValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamDoubleValue( minValue = PodamTestConstants.NUMBER_DOUBLE_MIN_VALUE )
+    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE )
     private double doubleFieldWithMinValueOnly;
 
-    @PodamDoubleValue( maxValue = PodamTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
+    @PogoDoubleValue( maxValue = PogoTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
     private double doubleFieldWithMaxValueOnly;
 
-    @PodamDoubleValue( minValue = PodamTestConstants.NUMBER_DOUBLE_MIN_VALUE,
-                       maxValue = PodamTestConstants.NUMBER_DOUBLE_MAX_VALUE )
+    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE,
+                      maxValue = PogoTestConstants.NUMBER_DOUBLE_MAX_VALUE )
     private double doubleFieldWithMinAndMaxValue;
 
-    @PodamDoubleValue( numValue = PodamTestConstants.DOUBLE_PRECISE_VALUE )
+    @PogoDoubleValue( numValue = PogoTestConstants.DOUBLE_PRECISE_VALUE )
     private double doubleFieldWithPreciseValue;
 
-    @PodamDoubleValue( minValue = PodamTestConstants.NUMBER_DOUBLE_MIN_VALUE )
+    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE )
     private Double doubleObjectFieldWithMinValueOnly;
 
-    @PodamDoubleValue( maxValue = PodamTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
+    @PogoDoubleValue( maxValue = PogoTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
     private Double doubleObjectFieldWithMaxValueOnly;
 
-    @PodamDoubleValue( minValue = PodamTestConstants.NUMBER_DOUBLE_MIN_VALUE,
-                       maxValue = PodamTestConstants.NUMBER_DOUBLE_MAX_VALUE )
+    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE,
+                      maxValue = PogoTestConstants.NUMBER_DOUBLE_MAX_VALUE )
     private Double doubleObjectFieldWithMinAndMaxValue;
 
-    @PodamDoubleValue( numValue = PodamTestConstants.DOUBLE_PRECISE_VALUE )
+    @PogoDoubleValue( numValue = PogoTestConstants.DOUBLE_PRECISE_VALUE )
     private Double doubleObjectFieldWithPreciseValue;
 
     // ------------------->> Constructors

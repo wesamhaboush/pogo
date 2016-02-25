@@ -10,15 +10,15 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
 /**
- * This interface defines the contact for PODAM data providers.
+ * This interface defines the contact for Pogo data providers.
  * <p>
- * PODAM is a tool to fill POJOs with data. There are different requirements
+ * Pogo is a tool to fill POJOs with data. There are different requirements
  * when it comes to which data POJOs should be filled with. The default strategy
- * adopted by PODAM is to fill POJOs with random data. However other
+ * adopted by Pogo is to fill POJOs with random data. However other
  * requirements might dictate to assign deterministic data using sequences, or
- * other predictable sources of data. In order to do so, clients of PODAM will
+ * other predictable sources of data. In order to do so, clients of Pogo will
  * have to provide an implementation of this interface and pass it to the
- * constructor of the {@link PodamFactoryImpl} class.
+ * constructor of the {@link PogoFactoryImpl} class.
  * </p>
  *
  * @author mtedone
@@ -275,7 +275,7 @@ public interface DataProviderStrategy
     void setDefaultNumberOfCollectionElements( int newNumberOfCollectionElements );
 
     /**
-     * Returns how many times it is allowed to PODAM to create an instance
+     * Returns how many times it is allowed to Pogo to create an instance
      * of the same class in a recursive hierarchy
      * <p>
      * Implementations of this interface need to provide this value.

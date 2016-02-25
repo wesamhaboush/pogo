@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * POJO to test when Podam memoization with collections and arrays
+ * POJO to test when Pogo memoization with collections and arrays
  *
  * @author daivanov
  *

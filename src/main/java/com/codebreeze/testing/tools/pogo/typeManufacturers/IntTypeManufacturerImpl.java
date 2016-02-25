@@ -1,8 +1,8 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamIntValue;
+import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
 
 import java.lang.annotation.Annotation;
 
@@ -25,9 +25,9 @@ public class IntTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamIntValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoIntValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamIntValue intStrategy = ( PodamIntValue ) annotation;
+                PogoIntValue intStrategy = ( PogoIntValue ) annotation;
                 String numValueStr = intStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )
@@ -38,7 +38,7 @@ public class IntTypeManufacturerImpl extends AbstractTypeManufacturer
                     }
                     catch ( NumberFormatException nfe )
                     {
-                        String errMsg = PodamConstants.THE_ANNOTATION_VALUE_STR
+                        String errMsg = PogoConstants.THE_ANNOTATION_VALUE_STR
                                         + numValueStr
                                         + " could not be converted to an Integer. An exception will be thrown.";
                         throw new IllegalArgumentException( errMsg, nfe );

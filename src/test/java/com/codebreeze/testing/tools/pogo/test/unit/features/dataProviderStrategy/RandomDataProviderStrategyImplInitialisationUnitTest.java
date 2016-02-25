@@ -5,18 +5,18 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.dataProviderStrateg
 
 import com.codebreeze.testing.tools.pogo.api.AbstractRandomDataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.common.AbstractMethodComparator;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 import com.codebreeze.testing.tools.pogo.common.AbstractConstructorComparator;
 import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class RandomDataProviderStrategyImplInitialisationUnitTest extends AbstractPodamSteps
+public class RandomDataProviderStrategyImplInitialisationUnitTest extends AbstractPogoSteps
 {
 
 
@@ -24,41 +24,41 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     public void randomDataProviderStrategyShouldBeInitialisedCorrectlyAndAllowForChangesInNbrOfCollectionElements()
     {
         DataProviderStrategy dataProviderStrategy =
-            podamFactorySteps.givenARandomDataProviderStrategy();
-        podamValidationSteps.theTwoObjectsShouldBeEqual( PodamConstants.DEFAULT_NBR_COLLECTION_ELEMENTS,
+            PogoFactorySteps.givenARandomDataProviderStrategy();
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( PogoConstants.DEFAULT_NBR_COLLECTION_ELEMENTS,
                 dataProviderStrategy.getNumberOfCollectionElements( Object.class ) );
         int aNumberOfCollectionElements = 3;
         dataProviderStrategy.setDefaultNumberOfCollectionElements( aNumberOfCollectionElements );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( aNumberOfCollectionElements,
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( aNumberOfCollectionElements,
                 dataProviderStrategy.getNumberOfCollectionElements( Object.class ) );
     }
 
     @Test
-    public void podamShouldCreatePojosInAccordanceWithCustomDataProviderStrategies() throws Exception
+    public void PogoShouldCreatePojosInAccordanceWithCustomDataProviderStrategies() throws Exception
     {
-        DataProviderStrategy strategy = podamFactorySteps.givenACustomRandomDataProviderStrategy();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
+        DataProviderStrategy strategy = PogoFactorySteps.givenACustomRandomDataProviderStrategy();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
         PojoWithMapsAndCollections pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForClass( PojoWithMapsAndCollections.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainExactlyTheGivenNumberOfElements(
+            PogoInvocationSteps.whenIInvokeTheFactoryForClass( PojoWithMapsAndCollections.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainExactlyTheGivenNumberOfElements(
             pojo.getArray(), 2 );
-        podamValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getList() );
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( pojo.getList(), 3 );
-        podamValidationSteps.theMapShouldNotBeNullOrEmpty( pojo.getMap() );
-        podamValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( pojo.getMap(), 4 );
+        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getList() );
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( pojo.getList(), 3 );
+        PogoValidationSteps.theMapShouldNotBeNullOrEmpty( pojo.getMap() );
+        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( pojo.getMap(), 4 );
     }
 
     @Test
-    public void podamShouldCorrectGenerateHashMapsWithLongAsKeyType() throws Exception
+    public void PogoShouldCorrectGenerateHashMapsWithLongAsKeyType() throws Exception
     {
-        DataProviderStrategy strategy = podamFactorySteps.givenACustomRandomDataProviderStrategy();
-        PodamFactory podamFactory = podamFactorySteps.givenAPodamFactoryWithCustomDataProviderStrategy( strategy );
+        DataProviderStrategy strategy = PogoFactorySteps.givenACustomRandomDataProviderStrategy();
+        PogoFactory PogoFactory = PogoFactorySteps.givenAPogoFactoryWithCustomDataProviderStrategy( strategy );
         Map<?, ?> pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                HashMap.class, podamFactory, Long.class, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( strategy.getNumberOfCollectionElements(
+            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                HashMap.class, PogoFactory, Long.class, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( strategy.getNumberOfCollectionElements(
                     String.class ), pojo.size() );
     }
 
@@ -66,52 +66,52 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     public void creatingARandomDataProviderStrategyShouldCreateAConstructorLightComparator() throws Exception
     {
         AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) podamFactorySteps.givenARandomDataProviderStrategy();
+            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
         AbstractConstructorComparator comparator = randomStrategy.getConstructorLightComparator();
-        podamValidationSteps.theObjectShouldNotBeNull( comparator );
+        PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setConstructorLightComparator( null );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorLightComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorLightComparator() );
         randomStrategy.setConstructorLightComparator( comparator );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getConstructorLightComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getConstructorLightComparator() );
     }
 
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAConstructorHeavyComparator() throws Exception
     {
         AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) podamFactorySteps.givenARandomDataProviderStrategy();
+            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
         AbstractConstructorComparator comparator = randomStrategy.getConstructorHeavyComparator();
-        podamValidationSteps.theObjectShouldNotBeNull( comparator );
+        PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setConstructorHeavyComparator( null );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorHeavyComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorHeavyComparator() );
         randomStrategy.setConstructorHeavyComparator( comparator );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getConstructorHeavyComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getConstructorHeavyComparator() );
     }
 
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAMethodLightComparator() throws Exception
     {
         AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) podamFactorySteps.givenARandomDataProviderStrategy();
+            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
         AbstractMethodComparator comparator = randomStrategy.getMethodLightComparator();
-        podamValidationSteps.theObjectShouldNotBeNull( comparator );
+        PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setMethodLightComparator( null );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodLightComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodLightComparator() );
         randomStrategy.setMethodLightComparator( comparator );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getMethodLightComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getMethodLightComparator() );
     }
 
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAMethodHeavyComparator() throws Exception
     {
         AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) podamFactorySteps.givenARandomDataProviderStrategy();
+            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
         AbstractMethodComparator comparator = randomStrategy.getMethodHeavyComparator();
-        podamValidationSteps.theObjectShouldNotBeNull( comparator );
+        PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setMethodHeavyComparator( null );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodHeavyComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodHeavyComparator() );
         randomStrategy.setMethodHeavyComparator( comparator );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getMethodHeavyComparator() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( comparator, randomStrategy.getMethodHeavyComparator() );
     }
 
 }

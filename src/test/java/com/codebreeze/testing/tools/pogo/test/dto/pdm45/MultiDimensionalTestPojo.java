@@ -8,10 +8,10 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 
 /**
- * This is POJO to test PODAM's ability to create instances
+ * This is POJO to test Pogo's ability to create instances
  * of multidimensional collections, arrays and maps
  *
  * @author marciocarmona
@@ -20,22 +20,22 @@ import com.codebreeze.testing.tools.pogo.common.PodamCollection;
 public class MultiDimensionalTestPojo
 {
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private List<List<List<String>>> threeDimensionalList;
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private Set<Set<Set<Double>>> threeDimensionalSet;
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private Collection<Collection<Collection<Long>>> threeDimensionalCollection;
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private Map<Boolean, Map<Float, Map<Integer, Calendar>>> threeDimensionalMap;
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private Queue<Queue<Queue<Date>>> threeDimensionalQueue;
 
-    @PodamCollection( nbrElements = 2 )
+    @PogoCollection( nbrElements = 2 )
     private String[][][] threeDimensionalArray;
 
     /**

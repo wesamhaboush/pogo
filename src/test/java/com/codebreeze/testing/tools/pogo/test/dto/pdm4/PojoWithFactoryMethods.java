@@ -1,6 +1,6 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm4;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.InputStream;
 import java.util.ArrayList;
@@ -19,10 +19,10 @@ public abstract class PojoWithFactoryMethods
 
     private String value;
 
-    @PodamConstructor( comment = "choose this one" )
+    @PogoConstructor( comment = "choose this one" )
     public static PojoWithFactoryMethods getInstance( String str, InputStream is )
     {
-        invocationOrder.add( "PodamConstructor(str,abstract)" );
+        invocationOrder.add( "PogoConstructor(str,abstract)" );
         throw new IllegalStateException( "Cannot use me" );
     }
 
@@ -44,17 +44,17 @@ public abstract class PojoWithFactoryMethods
         throw new IllegalStateException( "Cannot use me also" );
     }
 
-    @PodamConstructor( comment = "choose this one" )
+    @PogoConstructor( comment = "choose this one" )
     public static PojoWithFactoryMethods getInstance( String value )
     {
-        invocationOrder.add( "PodamConstructor(str)" );
+        invocationOrder.add( "PogoConstructor(str)" );
         throw new IllegalStateException( "Cannot use me" );
     }
 
-    @PodamConstructor( comment = "choose this one" )
+    @PogoConstructor( comment = "choose this one" )
     public static PojoWithFactoryMethods getInstance( String str, boolean bool )
     {
-        invocationOrder.add( "PodamConstructor(str,bool)" );
+        invocationOrder.add( "PogoConstructor(str,bool)" );
         throw new IllegalStateException( "Cannot use me" );
     }
 

@@ -4,8 +4,8 @@
 package com.codebreeze.testing.tools.pogo.test.unit.pdm3;
 
 import com.codebreeze.testing.tools.pogo.api.AbstractExternalFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactoryImpl;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm3.Pdm3Pojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm3.Pdm3PojoConstructor;
@@ -48,7 +48,7 @@ public class Pdm3PojoUnitTest
     private static final TrackingExternalFactory trackingFactory
         = new TrackingExternalFactory();
 
-    private static final PodamFactory factory = new PodamFactoryImpl( trackingFactory );
+    private static final PogoFactory factory = new PogoFactoryImpl( trackingFactory );
 
     @Before
     public void start()

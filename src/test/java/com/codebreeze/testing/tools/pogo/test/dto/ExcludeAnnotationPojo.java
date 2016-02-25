@@ -5,7 +5,7 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamExclude;
+import com.codebreeze.testing.tools.pogo.common.PogoExclude;
 
 /**
  * @author mtedone
@@ -24,7 +24,7 @@ public class ExcludeAnnotationPojo implements Serializable
     private int intField;
 
     /** another object */
-    @PodamExclude
+    @PogoExclude
     private SimplePojoToTestSetters somePojo;
 
     // ------------------->> Constructors

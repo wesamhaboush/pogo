@@ -9,7 +9,7 @@ import java.lang.reflect.Type;
  *
  * @since 5.2.1
  */
-public abstract class AbstractExternalFactory implements PodamFactory
+public abstract class AbstractExternalFactory implements PogoFactory
 {
 
     @Override
@@ -26,7 +26,7 @@ public abstract class AbstractExternalFactory implements PodamFactory
     }
 
     @Override
-    public PodamFactory setStrategy( DataProviderStrategy strategy )
+    public PogoFactory setStrategy( DataProviderStrategy strategy )
     {
         return this;
     }
@@ -38,20 +38,20 @@ public abstract class AbstractExternalFactory implements PodamFactory
     }
 
     @Override
-    public PodamFactory setClassStrategy(
+    public PogoFactory setClassStrategy(
         ClassInfoStrategy classInfoStrategy )
     {
         return this;
     }
 
     @Override
-    public PodamFactory getExternalFactory()
+    public PogoFactory getExternalFactory()
     {
         return null;
     }
 
     @Override
-    public PodamFactory setExternalFactory( PodamFactory externalFactory )
+    public PogoFactory setExternalFactory( PogoFactory externalFactory )
     {
         return this;
     }

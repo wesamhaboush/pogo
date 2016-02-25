@@ -1,16 +1,16 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.inheritance;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactoryImpl;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesListPojo;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesHolderPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesMapPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.util.List;
 
-public class MultipleInterfacesInheritanceTest extends AbstractPodamSteps
+public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
 {
 
 
@@ -20,66 +20,66 @@ public class MultipleInterfacesInheritanceTest extends AbstractPodamSteps
     private static final CustomDataProviderStrategy strategy
         = new CustomDataProviderStrategy();
 
-    private static final PodamFactory factory
-        = new PodamFactoryImpl( externalFactory, strategy );
+    private static final PogoFactory factory
+        = new PogoFactoryImpl( externalFactory, strategy );
 
 
 
 
 
     @Test
-    public void podamCannotInstantiateInterfaces() throws Exception
+    public void PogoCannotInstantiateInterfaces() throws Exception
     {
-        PodamFactory podamFactory = provideCustomisedPodamFactory();
+        PogoFactory PogoFactory = provideCustomisedPogoFactory();
         MultipleInterfacesListPojo<?> pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType( MultipleInterfacesListPojo.class,
-                    podamFactory, String.class );
-        podamValidationSteps.theObjectShouldBeNull( pojo );
-        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )podamFactory.getStrategy() ).getAccessed();
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( accessed, 1 );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( MultipleInterfacesListPojo.class, accessed.get( 0 ) );
+            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType( MultipleInterfacesListPojo.class,
+                    PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldBeNull( pojo );
+        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )PogoFactory.getStrategy() ).getAccessed();
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( accessed, 1 );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( MultipleInterfacesListPojo.class, accessed.get( 0 ) );
     }
 
     @Test
-    public void podamCannotInstantiateInterfacesWhichExtendMap() throws Exception
+    public void PogoCannotInstantiateInterfacesWhichExtendMap() throws Exception
     {
-        PodamFactory podamFactory = provideCustomisedPodamFactory();
+        PogoFactory PogoFactory = provideCustomisedPogoFactory();
         MultipleInterfacesMapPojo<?, ?> pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                MultipleInterfacesMapPojo.class, podamFactory, String.class, Long.class );
-        podamValidationSteps.theObjectShouldBeNull( pojo );
-        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )podamFactory.getStrategy() ).getAccessed();
-        podamValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( accessed, 1 );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( MultipleInterfacesMapPojo.class, accessed.get( 0 ) );
+            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                MultipleInterfacesMapPojo.class, PogoFactory, String.class, Long.class );
+        PogoValidationSteps.theObjectShouldBeNull( pojo );
+        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )PogoFactory.getStrategy() ).getAccessed();
+        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( accessed, 1 );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( MultipleInterfacesMapPojo.class, accessed.get( 0 ) );
     }
 
     @Test
     public void testHolderOfPojoWithMultiInterfaces() throws Exception
     {
-        PodamFactory podamFactory = provideCustomisedPodamFactory();
+        PogoFactory PogoFactory = provideCustomisedPogoFactory();
         MultipleInterfacesHolderPojo<?, ?> pojo =
-            podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                MultipleInterfacesHolderPojo.class, podamFactory, String.class, Long.class
+            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                MultipleInterfacesHolderPojo.class, PogoFactory, String.class, Long.class
             );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldBeNull( pojo.getList() );
-        podamValidationSteps.theObjectShouldBeNull( pojo.getMap() );
-        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )podamFactory.getStrategy() ).getAccessed();
-        podamValidationSteps.theTwoObjectsShouldBeEqual( accessed.size(), 2 );
-        podamValidationSteps.theCollectionShouldContainAtLeastOneElementOfType(
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldBeNull( pojo.getList() );
+        PogoValidationSteps.theObjectShouldBeNull( pojo.getMap() );
+        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )PogoFactory.getStrategy() ).getAccessed();
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( accessed.size(), 2 );
+        PogoValidationSteps.theCollectionShouldContainAtLeastOneElementOfType(
             accessed, MultipleInterfacesListPojo.class );
-        podamValidationSteps.theCollectionShouldContainAtLeastOneElementOfType(
+        PogoValidationSteps.theCollectionShouldContainAtLeastOneElementOfType(
             accessed, MultipleInterfacesMapPojo.class );
     }
 
 
     //-------------> Private methods
 
-    private PodamFactory provideCustomisedPodamFactory()
+    private PogoFactory provideCustomisedPogoFactory()
     {
-        TrackingExternalFactory externalFactory = podamFactorySteps.givenATrackingExternalFactory();
-        CustomDataProviderStrategy customDataProviderStrategy = podamFactorySteps.givenACustomDataProviderStrategy();
-        return podamFactorySteps.givenAPodamFactoryWithExternalFactoryAndCustomStrategy(
+        TrackingExternalFactory externalFactory = PogoFactorySteps.givenATrackingExternalFactory();
+        CustomDataProviderStrategy customDataProviderStrategy = PogoFactorySteps.givenACustomDataProviderStrategy();
+        return PogoFactorySteps.givenAPogoFactoryWithExternalFactoryAndCustomStrategy(
                    externalFactory, customDataProviderStrategy );
     }
 

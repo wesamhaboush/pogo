@@ -1,8 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.unit.issue86;
 
 import com.codebreeze.testing.tools.pogo.api.DefaultClassInfoStrategy;
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.api.PodamFactoryImpl;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +15,7 @@ public class MyInitPojoUnitTest
     private final DefaultClassInfoStrategy classInfoStrategy = DefaultClassInfoStrategy.getInstance();
 
 
-    private final PodamFactory podam = new PodamFactoryImpl();
+    private final PogoFactory Pogo = new PogoFactoryImpl();
 
     @Before
     public void init() throws Exception
@@ -26,7 +26,7 @@ public class MyInitPojoUnitTest
     @Test
     public void testMyInitPojo() throws Exception
     {
-        MyInitPojo pojo = podam.manufacturePojo( MyInitPojo.class );
+        MyInitPojo pojo = Pogo.manufacturePojo( MyInitPojo.class );
         assertNotNull( pojo );
         assertNotSame( pojo.getString1(), pojo.getBackupString1() );
         assertNotSame( pojo.getString2(), pojo.getBackupString2() );

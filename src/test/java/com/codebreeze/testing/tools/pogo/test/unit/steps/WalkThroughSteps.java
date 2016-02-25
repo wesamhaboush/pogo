@@ -66,7 +66,7 @@ public class WalkThroughSteps
         Assert.assertTrue( "The order item line amount cannot be zero!",
                            pojo.getLineAmount() != 0.0 );
         Assert.assertNull(
-            "The Order Item note must be null because of @PodamExclude annotation",
+            "The Order Item note must be null because of @PogoExclude annotation",
             pojo.getNote() );
         theArticlePojoShouldBeCorrectlyFilled( pojo.getArticle() );
     }

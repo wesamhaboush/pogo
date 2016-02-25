@@ -5,8 +5,8 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamLongValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoLongValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
  * @author mtedone
@@ -21,28 +21,28 @@ public class LongValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamLongValue( minValue = 0 )
+    @PogoLongValue( minValue = 0 )
     private long longFieldWithMinValueOnly;
 
-    @PodamLongValue( maxValue = 100 )
+    @PogoLongValue( maxValue = 100 )
     private long longFieldWithMaxValueOnly;
 
-    @PodamLongValue( minValue = 0, maxValue = 1000 )
+    @PogoLongValue( minValue = 0, maxValue = 1000 )
     private long longFieldWithMinAndMaxValue;
 
-    @PodamLongValue( numValue = PodamTestConstants.LONG_PRECISE_VALUE )
+    @PogoLongValue( numValue = PogoTestConstants.LONG_PRECISE_VALUE )
     private long longFieldWithPreciseValue;
 
-    @PodamLongValue( minValue = 0 )
+    @PogoLongValue( minValue = 0 )
     private Long longObjectFieldWithMinValueOnly;
 
-    @PodamLongValue( maxValue = 100 )
+    @PogoLongValue( maxValue = 100 )
     private Long longObjectFieldWithMaxValueOnly;
 
-    @PodamLongValue( minValue = 0, maxValue = 1000 )
+    @PogoLongValue( minValue = 0, maxValue = 1000 )
     private Long longObjectFieldWithMinAndMaxValue;
 
-    @PodamLongValue( numValue = PodamTestConstants.LONG_PRECISE_VALUE )
+    @PogoLongValue( numValue = PogoTestConstants.LONG_PRECISE_VALUE )
     private Long longObjectFieldWithPreciseValue;
 
     // ------------------->> Constructors

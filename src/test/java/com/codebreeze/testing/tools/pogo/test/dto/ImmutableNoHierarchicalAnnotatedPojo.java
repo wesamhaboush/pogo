@@ -3,14 +3,14 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Calendar;
 
 /**
- * This is an immutable POJO to test PODAM's ability to create an instance which
+ * This is an immutable POJO to test Pogo's ability to create an instance which
  * hasn't got setters
  *
  * @author mtedone
@@ -42,7 +42,7 @@ public class ImmutableNoHierarchicalAnnotatedPojo implements Serializable
      * @param dateCreated
      * @param longArray
      */
-    @PodamConstructor
+    @PogoConstructor
     public ImmutableNoHierarchicalAnnotatedPojo( int intField, Calendar dateCreated,
             long[] longArray )
     {

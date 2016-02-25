@@ -1,45 +1,45 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.basicTypes;
 
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassGenericConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassGenericPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassPojo;
 import org.junit.Test;
 
-public class ClassUnitTest extends AbstractPodamSteps
+public class ClassUnitTest extends AbstractPogoSteps
 {
 
     @Test
-    public void podamShouldHandleTheManufacturingOfBasicTypes() throws Exception
+    public void PogoShouldHandleTheManufacturingOfBasicTypes() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ClassPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( ClassPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ClassPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ClassPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
     }
 
     @Test
-    public void podamShouldHandleTheManufacturingOfGenericPojos() throws Exception
+    public void PogoShouldHandleTheManufacturingOfGenericPojos() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ClassGenericPojo<?> pojo  = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                        ClassGenericPojo.class, podamFactory, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ClassGenericPojo<?> pojo  = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                                        ClassGenericPojo.class, PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
     }
 
     @Test
-    public void podamShouldHandleTheManufacturingOfPojosWithGenericTypesInTheConstructor() throws Exception
+    public void PogoShouldHandleTheManufacturingOfPojosWithGenericTypesInTheConstructor() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        ClassGenericConstructorPojo<?> pojo = podamInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                ClassGenericConstructorPojo.class, podamFactory, String.class );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
-        podamValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        ClassGenericConstructorPojo<?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
+                ClassGenericConstructorPojo.class, PogoFactory, String.class );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
+        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
     }
 
 

@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.externalFactory;
 
 import com.codebreeze.testing.tools.pogo.api.AbstractExternalFactory;
-import com.codebreeze.testing.tools.pogo.exceptions.PodamMockeryException;
+import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class TestExternalFactory extends AbstractExternalFactory
      *                        is required
      * @param genericTypeArgs The generic Type arguments for a generic class instance
      * @return An instance of &lt;T&gt; filled with dummy values
-     * @throws PodamMockeryException if a problem occurred while creating a POJO instance or while
+     * @throws PogoMockeryException if a problem occurred while creating a POJO instance or while
      *                               setting its state
      */
     @Override
@@ -48,7 +48,7 @@ public class TestExternalFactory extends AbstractExternalFactory
      * @param pojo            The instance to be filled with values
      * @param genericTypeArgs The generic Type arguments for a generic class instance
      * @return The same instance of object for chaining
-     * @throws PodamMockeryException if a problem occurred while creating a POJO instance or while
+     * @throws PogoMockeryException if a problem occurred while creating a POJO instance or while
      *                               setting its state
      * @since 5.4.0
      */

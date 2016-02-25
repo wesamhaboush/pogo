@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamFloatValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoFloatValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test the {@link PodamFloatValue} annotation
+ * POJO to test the {@link PogoFloatValue} annotation
  *
  * @author mtedone
  *
@@ -23,30 +23,30 @@ public class FloatValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamFloatValue( minValue = PodamTestConstants.NUMBER_FLOAT_MIN_VALUE )
+    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE )
     private float floatFieldWithMinValueOnly;
 
-    @PodamFloatValue( maxValue = PodamTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
+    @PogoFloatValue( maxValue = PogoTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
     private float floatFieldWithMaxValueOnly;
 
-    @PodamFloatValue( minValue = PodamTestConstants.NUMBER_FLOAT_MIN_VALUE,
-                      maxValue = PodamTestConstants.NUMBER_FLOAT_MAX_VALUE )
+    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE,
+                     maxValue = PogoTestConstants.NUMBER_FLOAT_MAX_VALUE )
     private float floatFieldWithMinAndMaxValue;
 
-    @PodamFloatValue( numValue = PodamTestConstants.FLOAT_PRECISE_VALUE )
+    @PogoFloatValue( numValue = PogoTestConstants.FLOAT_PRECISE_VALUE )
     private float floatFieldWithPreciseValue;
 
-    @PodamFloatValue( minValue = PodamTestConstants.NUMBER_FLOAT_MIN_VALUE )
+    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE )
     private Float floatObjectFieldWithMinValueOnly;
 
-    @PodamFloatValue( maxValue = PodamTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
+    @PogoFloatValue( maxValue = PogoTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
     private Float floatObjectFieldWithMaxValueOnly;
 
-    @PodamFloatValue( minValue = PodamTestConstants.NUMBER_FLOAT_MIN_VALUE,
-                      maxValue = PodamTestConstants.NUMBER_FLOAT_MAX_VALUE )
+    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE,
+                     maxValue = PogoTestConstants.NUMBER_FLOAT_MAX_VALUE )
     private Float floatObjectFieldWithMinAndMaxValue;
 
-    @PodamFloatValue( numValue = PodamTestConstants.FLOAT_PRECISE_VALUE )
+    @PogoFloatValue( numValue = PogoTestConstants.FLOAT_PRECISE_VALUE )
     private Float floatObjectFieldWithPreciseValue;
 
     // ------------------->> Constructors

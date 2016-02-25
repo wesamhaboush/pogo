@@ -5,11 +5,11 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamShortValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoShortValue;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
- * POJO to test {@link PodamShortValue} annotation
+ * POJO to test {@link PogoShortValue} annotation
  *
  * @author mtedone
  *
@@ -23,27 +23,27 @@ public class ShortValuePojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamShortValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private short shortFieldWithMinValueOnly;
 
-    @PodamShortValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoShortValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private short shortFieldWithMaxValueOnly;
 
-    @PodamShortValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                      maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                     maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private short shortFieldWithMinAndMaxValue;
 
-    @PodamShortValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE )
+    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Short shortObjectFieldWithMinValueOnly;
 
-    @PodamShortValue( maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoShortValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Short shortObjectFieldWithMaxValueOnly;
 
-    @PodamShortValue( minValue = PodamTestConstants.NUMBER_INT_MIN_VALUE,
-                      maxValue = PodamTestConstants.NUMBER_INT_ONE_HUNDRED )
+    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
+                     maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Short shortObjectFieldWithMinAndMaxValue;
 
-    @PodamShortValue( numValue = PodamTestConstants.SHORT_PRECISE_VALUE )
+    @PogoShortValue( numValue = PogoTestConstants.SHORT_PRECISE_VALUE )
     private short shortFieldWithPreciseValue;
 
     // ------------------->> Constructors

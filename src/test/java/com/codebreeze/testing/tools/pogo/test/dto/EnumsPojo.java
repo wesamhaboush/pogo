@@ -5,7 +5,7 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.test.enums.ExternalRatePodamEnum;
+import com.codebreeze.testing.tools.pogo.test.enums.ExternalRatePogoEnum;
 
 /**
  * A Pojo using enums for instance attributes
@@ -22,9 +22,9 @@ public class EnumsPojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    private RatePodamInternal ratePodamInternal;
+    private RatePogoInternal ratePogoInternal;
 
-    private ExternalRatePodamEnum ratePodamExternal;
+    private ExternalRatePogoEnum ratePogoExternal;
 
     // ------------------->> Constructors
 
@@ -33,37 +33,37 @@ public class EnumsPojo implements Serializable
     // ------------------->> Getters / Setters
 
     /**
-     * @return the ratePodamInternal
+     * @return the ratePogoInternal
      */
-    public RatePodamInternal getRatePodamInternal()
+    public RatePogoInternal getRatePogoInternal()
     {
-        return ratePodamInternal;
+        return ratePogoInternal;
     }
 
     /**
-     * @param ratePodamInternal
-     *            the ratePodamInternal to set
+     * @param ratePogoInternal
+     *            the ratePogoInternal to set
      */
-    public void setRatePodamInternal( RatePodamInternal ratePodamInternal )
+    public void setRatePogoInternal( RatePogoInternal ratePogoInternal )
     {
-        this.ratePodamInternal = ratePodamInternal;
+        this.ratePogoInternal = ratePogoInternal;
     }
 
     /**
-     * @return the ratePodamExternal
+     * @return the ratePogoExternal
      */
-    public ExternalRatePodamEnum getRatePodamExternal()
+    public ExternalRatePogoEnum getRatePogoExternal()
     {
-        return ratePodamExternal;
+        return ratePogoExternal;
     }
 
     /**
-     * @param ratePodamExternal
-     *            the ratePodamExternal to set
+     * @param ratePogoExternal
+     *            the ratePogoExternal to set
      */
-    public void setRatePodamExternal( ExternalRatePodamEnum ratePodamExternal )
+    public void setRatePogoExternal( ExternalRatePogoEnum ratePogoExternal )
     {
-        this.ratePodamExternal = ratePodamExternal;
+        this.ratePogoExternal = ratePogoExternal;
     }
 
     // ------------------->> Private methods
@@ -80,9 +80,9 @@ public class EnumsPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "EnumsPojo ( " + "ratePodamInternal = " +
-                          ratePodamInternal + TAB +
-                          "ratePodamExternal = " + ratePodamExternal +
+        String retValue = "EnumsPojo ( " + "ratePogoInternal = " +
+                          ratePogoInternal + TAB +
+                          "ratePogoExternal = " + ratePogoExternal +
                           TAB + " )";
         return retValue;
     }
@@ -95,7 +95,7 @@ public class EnumsPojo implements Serializable
      * @author mtedone
      *
      */
-    public enum RatePodamInternal
+    public enum RatePogoInternal
     {
         COOL, ROCKS, SUPERCOOL
     }

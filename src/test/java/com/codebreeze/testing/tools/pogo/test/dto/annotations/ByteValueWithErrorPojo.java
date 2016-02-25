@@ -5,10 +5,10 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamByteValue;
+import com.codebreeze.testing.tools.pogo.common.PogoByteValue;
 
 /**
- * POJO to test error case when {@link PodamByteValue#numValue()} contains an
+ * POJO to test error case when {@link PogoByteValue#numValue()} contains an
  * unformattable value.
  *
  * @author mtedone
@@ -23,7 +23,7 @@ public class ByteValueWithErrorPojo implements Serializable
 
     // ------------------->> Instance / Static variables
 
-    @PodamByteValue( numValue = "afasdfafa", comment = "This should throw an exception" )
+    @PogoByteValue( numValue = "afasdfafa", comment = "This should throw an exception" )
     private byte byteAttributeWithErrorAnnotation;
 
     // ------------------->> Constructors

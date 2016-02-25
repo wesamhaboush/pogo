@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
 /**
  * It provides a comparator to sort the constructor to choose first.
  * <p>
- * The priority goes to constructors with the {@link PodamConstructor}
+ * The priority goes to constructors with the {@link PogoConstructor}
  * annotation first, and then to those with more arguments.
  * </p>
  *

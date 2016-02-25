@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamShortValue;
+import com.codebreeze.testing.tools.pogo.common.PogoShortValue;
 
 import java.lang.annotation.Annotation;
 
@@ -24,9 +24,9 @@ public class ShortTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamShortValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoShortValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamShortValue shortStrategy = ( PodamShortValue ) annotation;
+                PogoShortValue shortStrategy = ( PogoShortValue ) annotation;
                 String numValueStr = shortStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )

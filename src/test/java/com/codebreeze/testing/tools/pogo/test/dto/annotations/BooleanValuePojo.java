@@ -3,12 +3,12 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PodamBooleanValue;
+import com.codebreeze.testing.tools.pogo.common.PogoBooleanValue;
 
 import java.io.Serializable;
 
 /**
- * POJO to test {@link PodamBooleanValue} annotation.
+ * POJO to test {@link PogoBooleanValue} annotation.
  *
  * @author mtedone
  *
@@ -23,19 +23,19 @@ public class BooleanValuePojo implements Serializable
     // ------------------->> Instance / Static variables
 
     /** A boolean field with value forced to true */
-    @PodamBooleanValue( boolValue = true )
+    @PogoBooleanValue( boolValue = true )
     private boolean boolDefaultToTrue;
 
     /** A boolean field with value forced to false */
-    @PodamBooleanValue( boolValue = false )
+    @PogoBooleanValue( boolValue = false )
     private boolean boolDefaultToFalse = true;
 
     /** A boolean object field with value forced to true */
-    @PodamBooleanValue( boolValue = true )
+    @PogoBooleanValue( boolValue = true )
     private Boolean boolObjectDefaultToTrue;
 
     /** A boolean object field with value forced to false */
-    @PodamBooleanValue( boolValue = false )
+    @PogoBooleanValue( boolValue = false )
     private Boolean boolObjectDefaultToFalse = true;
 
     // ------------------->> Constructors

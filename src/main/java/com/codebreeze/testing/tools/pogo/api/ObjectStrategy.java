@@ -4,11 +4,11 @@
 package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 
 /**
  * A default Object strategy, just to provide a default to
- * {@link PodamCollection#collectionElementStrategy()}.
+ * {@link PogoCollection#collectionElementStrategy()}.
  *
  * @author mtedone
  *

@@ -10,8 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.codebreeze.testing.tools.pogo.common.PodamCollection;
-import com.codebreeze.testing.tools.pogo.test.utils.PodamTestConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoCollection;
+import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 /**
  * @author mtedone
@@ -25,15 +25,15 @@ public class CollectionAnnotationPojo implements Serializable
     private static final long serialVersionUID = 1L;
     // ------------------->> Instance / Static variables
 
-    @PodamCollection( nbrElements = PodamTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
+    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     /** A collection with a specified number of elements */
     private List<String> strList = new ArrayList<>();
 
-    @PodamCollection( nbrElements = PodamTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
+    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     /** An array with a specified number of elements */
-    private String[] strArray = new String[PodamTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS];
+    private String[] strArray = new String[PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS];
 
-    @PodamCollection( nbrElements = PodamTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
+    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     /** A Map with a specified number of elements */
     private Map<String, String> stringMap = new HashMap<>();
 

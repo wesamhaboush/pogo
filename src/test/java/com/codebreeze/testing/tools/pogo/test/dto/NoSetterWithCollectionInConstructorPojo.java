@@ -3,7 +3,7 @@
  */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PodamConstructor;
+import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 
 import java.io.Serializable;
 import java.util.List;
@@ -37,7 +37,7 @@ public class NoSetterWithCollectionInConstructorPojo implements Serializable
      * @param intField
      *            An int field
      */
-    @PodamConstructor
+    @PogoConstructor
     public NoSetterWithCollectionInConstructorPojo( List<String> strList,
             int intField )
     {

@@ -1,17 +1,17 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.basicTypes;
 
 import com.codebreeze.testing.tools.pogo.api.DefaultClassInfoStrategy;
-import com.codebreeze.testing.tools.pogo.api.PodamFactory;
-import com.codebreeze.testing.tools.pogo.common.PodamExclude;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.common.PogoExclude;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoWithExcludeAnnotationToTestSetters;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.BooleanPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPodamSteps;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
-public class BooleanUnitTest extends AbstractPodamSteps
+public class BooleanUnitTest extends AbstractPogoSteps
 {
 
     private final static DefaultClassInfoStrategy classInfoStrategy =
@@ -22,7 +22,7 @@ public class BooleanUnitTest extends AbstractPodamSteps
     {
         classInfoStrategy.addExcludedField( BooleanPojo.class, "value4" );
         classInfoStrategy.addExcludedAnnotation( SimplePojoWithExcludeAnnotationToTestSetters.TestExclude.class );
-        classInfoStrategy.addExcludedAnnotation( PodamExclude.class );
+        classInfoStrategy.addExcludedAnnotation( PogoExclude.class );
         Assert.assertEquals( "Unexpected number of exluded annotations",
                              2, classInfoStrategy.getExcludedAnnotations().size() );
     }
@@ -37,15 +37,15 @@ public class BooleanUnitTest extends AbstractPodamSteps
     }
 
     @Test
-    public void podamShouldHandleBooleansCorrect() throws Exception
+    public void PogoShouldHandleBooleansCorrect() throws Exception
     {
-        PodamFactory podamFactory = podamFactorySteps.givenAStandardPodamFactory();
-        BooleanPojo pojo = podamInvocationSteps.whenIInvokeTheFactoryForClass( BooleanPojo.class, podamFactory );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo );
-        podamValidationSteps.theBooleanValueIsTrue( pojo.isValue1() );
-        podamValidationSteps.theValueShouldBeNull( pojo.isValue2() );
-        podamValidationSteps.theObjectShouldNotBeNull( pojo.getValue3() );
-        podamValidationSteps.theValueShouldBeNull( pojo.getValue4() );
+        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        BooleanPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( BooleanPojo.class, PogoFactory );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoValidationSteps.theBooleanValueIsTrue( pojo.isValue1() );
+        PogoValidationSteps.theValueShouldBeNull( pojo.isValue2() );
+        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue3() );
+        PogoValidationSteps.theValueShouldBeNull( pojo.getValue4() );
     }
 
 }

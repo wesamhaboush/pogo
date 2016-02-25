@@ -1,7 +1,7 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -64,7 +64,7 @@ public class GenericTypeManufacturerImpl extends AbstractTypeManufacturer
         if ( paremeterType != null )
         {
             AtomicReference<Type[]> elementGenericTypeArgs
-                = new AtomicReference<>( PodamConstants.NO_TYPES );
+                = new AtomicReference<>( PogoConstants.NO_TYPES );
             retValue = TypeManufacturerUtil.resolveGenericParameter( paremeterType,
                        typeArgumentsMap, elementGenericTypeArgs );
         }

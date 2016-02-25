@@ -1,8 +1,8 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PodamConstants;
-import com.codebreeze.testing.tools.pogo.common.PodamLongValue;
+import com.codebreeze.testing.tools.pogo.common.PogoConstants;
+import com.codebreeze.testing.tools.pogo.common.PogoLongValue;
 
 import java.lang.annotation.Annotation;
 
@@ -18,9 +18,9 @@ public class LongTypeManufacturerImpl extends AbstractTypeManufacturer
 
         for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
         {
-            if ( PodamLongValue.class.isAssignableFrom( annotation.getClass() ) )
+            if ( PogoLongValue.class.isAssignableFrom( annotation.getClass() ) )
             {
-                PodamLongValue longStrategy = ( PodamLongValue ) annotation;
+                PogoLongValue longStrategy = ( PogoLongValue ) annotation;
                 String numValueStr = longStrategy.numValue();
 
                 if ( null != numValueStr && !"".equals( numValueStr ) )
@@ -31,7 +31,7 @@ public class LongTypeManufacturerImpl extends AbstractTypeManufacturer
                     }
                     catch ( NumberFormatException nfe )
                     {
-                        String errMsg = PodamConstants.THE_ANNOTATION_VALUE_STR
+                        String errMsg = PogoConstants.THE_ANNOTATION_VALUE_STR
                                         + numValueStr
                                         + " could not be converted to a Long. An exception will be thrown.";
                         throw new IllegalArgumentException( errMsg, nfe );

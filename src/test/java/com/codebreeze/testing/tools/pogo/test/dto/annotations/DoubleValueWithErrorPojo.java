@@ -5,10 +5,10 @@ package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
 import java.io.Serializable;
 
-import com.codebreeze.testing.tools.pogo.common.PodamDoubleValue;
+import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
 
 /**
- * POJO to test that {@link PodamDoubleValue#numValue()} with non parsable
+ * POJO to test that {@link PogoDoubleValue#numValue()} with non parsable
  * values produces an error.
  *
  * @author mtedone
@@ -21,7 +21,7 @@ public class DoubleValueWithErrorPojo implements Serializable
     private static final long serialVersionUID = 1L;
 
     // ------------------->> Instance / Static variables
-    @PodamDoubleValue( numValue = "fajhfakh" )
+    @PogoDoubleValue( numValue = "fajhfakh" )
     private double doubleFieldWithErrorInAnnotation;
 
     // ------------------->> Constructors
