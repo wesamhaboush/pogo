@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * @author kurtinaitis
- */
 public class NonInstantiatableClass
 {
     private String name;

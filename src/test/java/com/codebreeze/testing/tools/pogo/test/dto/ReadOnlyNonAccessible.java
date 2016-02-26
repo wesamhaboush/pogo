@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * POJO with read only fields which are not accessible
- *
- * @author daivanov
- */
 final class ReadOnlyNonAccessible extends ReadOnlyAbstract
 {
 

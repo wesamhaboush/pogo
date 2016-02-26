@@ -5,13 +5,6 @@ import com.codebreeze.testing.tools.pogo.common.PogoBooleanValue;
 
 import java.lang.annotation.Annotation;
 
-/**
- * Default boolean type manufacturer.
- *
- * Created by tedonema on 17/05/2015.
- *
- * @since 6.0.0.RELEASE
- */
 public class BooleanTypeManufacturerImpl extends AbstractTypeManufacturer
 {
 

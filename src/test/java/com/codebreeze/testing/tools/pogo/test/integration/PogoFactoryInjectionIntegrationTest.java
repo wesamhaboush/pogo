@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.integration;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
@@ -15,17 +12,7 @@ import static org.junit.Assert.assertTrue;
 
 public class PogoFactoryInjectionIntegrationTest
 {
-
-    // ------------------->> Constants
-
-    // ------------------->> Instance / Static variables
-
-    /** The Pogo Factory */
     private final PogoFactory factory = new PogoFactoryImpl( new RandomDataProviderStrategyImpl() );
-
-    // ------------------->> Constructors
-
-    // ------------------->> Public methods
 
     @Before
     public void init()

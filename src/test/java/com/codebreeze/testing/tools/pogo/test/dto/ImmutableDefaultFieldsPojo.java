@@ -1,16 +1,9 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author divanov
- *
- */
 public class ImmutableDefaultFieldsPojo
 {
 

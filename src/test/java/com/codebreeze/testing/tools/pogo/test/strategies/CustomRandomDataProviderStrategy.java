@@ -2,18 +2,9 @@ package com.codebreeze.testing.tools.pogo.test.strategies;
 
 import com.codebreeze.testing.tools.pogo.api.AbstractRandomDataProviderStrategy;
 
-/**
- * Random data provider strategy with variable map and collection length
- *
- * @author daivanov
- *
- */
 public class CustomRandomDataProviderStrategy extends AbstractRandomDataProviderStrategy
 {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public int getNumberOfCollectionElements( Class<?> type )
     {

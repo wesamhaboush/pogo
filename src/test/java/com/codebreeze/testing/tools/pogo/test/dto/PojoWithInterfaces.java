@@ -1,14 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * An class with interfaces as parameters
- *
- * @author daivanov
- *
- */
 public class PojoWithInterfaces
 {
 

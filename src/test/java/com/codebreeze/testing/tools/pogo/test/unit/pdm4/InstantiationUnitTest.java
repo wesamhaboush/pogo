@@ -1,10 +1,4 @@
-/**
- * Test multiple constructors with setters
- */
 package com.codebreeze.testing.tools.pogo.test.unit.pdm4;
-
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
@@ -14,10 +8,9 @@ import com.codebreeze.testing.tools.pogo.test.dto.pdm4.PojoWithMultipleNonPublic
 import org.junit.After;
 import org.junit.Test;
 
-/**
- * @author divanov
- *
- */
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
+
 public class InstantiationUnitTest
 {
 

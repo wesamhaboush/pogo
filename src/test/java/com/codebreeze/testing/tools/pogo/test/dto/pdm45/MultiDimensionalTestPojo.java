@@ -1,22 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
-import java.util.Calendar;
-import java.util.Collection;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
-import java.util.Queue;
-import java.util.Set;
-
 import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 
-/**
- * This is POJO to test Pogo's ability to create instances
- * of multidimensional collections, arrays and maps
- *
- * @author marciocarmona
- *
- */
+import java.util.*;
+
 public class MultiDimensionalTestPojo
 {
 
@@ -38,111 +25,70 @@ public class MultiDimensionalTestPojo
     @PogoCollection( nbrElements = 2 )
     private String[][][] threeDimensionalArray;
 
-    /**
-     * @return the threeDimensionalList
-     */
     public List<List<List<String>>> getThreeDimensionalList()
     {
         return threeDimensionalList;
     }
 
-    /**
-     * @param threeDimensionalList the threeDimensionalList to set
-     */
     public void setThreeDimensionalList(
         List<List<List<String>>> threeDimensionalList )
     {
         this.threeDimensionalList = threeDimensionalList;
     }
 
-    /**
-     * @return the threeDimensionalSet
-     */
     public Set<Set<Set<Double>>> getThreeDimensionalSet()
     {
         return threeDimensionalSet;
     }
 
-    /**
-     * @param threeDimensionalSet the threeDimensionalSet to set
-     */
     public void setThreeDimensionalSet( Set<Set<Set<Double>>> threeDimensionalSet )
     {
         this.threeDimensionalSet = threeDimensionalSet;
     }
 
-    /**
-     * @return the threeDimensionalCollection
-     */
     public Collection<Collection<Collection<Long>>> getThreeDimensionalCollection()
     {
         return threeDimensionalCollection;
     }
 
-    /**
-     * @param threeDimensionalCollection the threeDimensionalCollection to set
-     */
     public void setThreeDimensionalCollection(
         Collection<Collection<Collection<Long>>> threeDimensionalCollection )
     {
         this.threeDimensionalCollection = threeDimensionalCollection;
     }
 
-    /**
-     * @return the threeDimensionalMap
-     */
     public Map<Boolean, Map<Float, Map<Integer, Calendar>>> getThreeDimensionalMap()
     {
         return threeDimensionalMap;
     }
 
-    /**
-     * @param threeDimensionalMap the threeDimensionalMap to set
-     */
     public void setThreeDimensionalMap(
         Map<Boolean, Map<Float, Map<Integer, Calendar>>> threeDimensionalMap )
     {
         this.threeDimensionalMap = threeDimensionalMap;
     }
 
-    /**
-     * @return the threeDimensionalQueue
-     */
     public Queue<Queue<Queue<Date>>> getThreeDimensionalQueue()
     {
         return threeDimensionalQueue;
     }
 
-    /**
-     * @param threeDimensionalQueue the threeDimensionalQueue to set
-     */
     public void setThreeDimensionalQueue(
         Queue<Queue<Queue<Date>>> threeDimensionalQueue )
     {
         this.threeDimensionalQueue = threeDimensionalQueue;
     }
 
-    /**
-     * @return the threeDimensionalArray
-     */
     public String[][][] getThreeDimensionalArray()
     {
         return threeDimensionalArray;
     }
 
-    /**
-     * @param threeDimensionalArray the threeDimensionalArray to set
-     */
     public void setThreeDimensionalArray( String[][][] threeDimensionalArray )
     {
         this.threeDimensionalArray = threeDimensionalArray;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#toString()
-     */
     @Override
     public String toString()
     {
@@ -155,13 +101,6 @@ public class MultiDimensionalTestPojo
                + "threeDimensionalArray=" + printArrayRecursively( threeDimensionalArray ) + "]";
     }
 
-    /**
-     * Prints an multidimensional array recursively.
-     *
-     * @param array
-     *            the array to print
-     * @return the printed array
-     */
     private String printArrayRecursively( Object[] array )
     {
         StringBuilder sb = new StringBuilder( "[" );

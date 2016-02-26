@@ -12,13 +12,11 @@ import java.util.Set;
 public class ImmutableWithGenericCollectionsPojo implements Serializable
 {
 
-    // ------------------->> Constants
 
     private static final long serialVersionUID = 1L;
 
     public static final int NBR_ELEMENTS = 5;
 
-    // ------------------->> Instance / Static variables
 
     private final Collection<OneDimensionalTestPojo> generifiedCollection;
 
@@ -26,7 +24,6 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
 
     private final Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet;
 
-    // ------------------->> Constructors
 
     @PogoConstructor
     public ImmutableWithGenericCollectionsPojo(
@@ -40,44 +37,22 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
         this.generifiedSet = generifiedSet;
     }
 
-    // ------------------->> Public methods
 
-    // ------------------->> Getters / Setters
-
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    /**
-     * @return the generifiedCollection
-     */
     public Collection<OneDimensionalTestPojo> getGenerifiedCollection()
     {
         return generifiedCollection;
     }
 
-    /**
-     * @return the generifiedMap
-     */
     public Map<String, Calendar> getGenerifiedMap()
     {
         return generifiedMap;
     }
 
-    /**
-     * @return the generifiedSet
-     */
     public Set<ImmutableWithNonGenericCollectionsPojo> getGenerifiedSet()
     {
         return generifiedSet;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {
@@ -90,7 +65,5 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
                           generifiedSet + TAB + " )";
         return retValue;
     }
-
-    // ------------------->> Inner classes
 
 }

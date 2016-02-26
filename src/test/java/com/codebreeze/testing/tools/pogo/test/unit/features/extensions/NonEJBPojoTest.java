@@ -5,12 +5,6 @@ import com.codebreeze.testing.tools.pogo.test.dto.NonEJBPojo;
 import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
-/**
- * Test @uk.co.jemos.Pogo.test.dto.NonEJBPojo@ construction
- *
- * @author daivanov
- *
- */
 public class NonEJBPojoTest extends AbstractPogoSteps
 {
 

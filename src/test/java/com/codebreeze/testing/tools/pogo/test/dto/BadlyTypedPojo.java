@@ -1,15 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * POJO to test class with setters for strings, which are being
- * then parsed to some other types. This creates problems for Pogo
- *
- * @author daivanov
- *
- */
 public class BadlyTypedPojo
 {
     private Integer value;

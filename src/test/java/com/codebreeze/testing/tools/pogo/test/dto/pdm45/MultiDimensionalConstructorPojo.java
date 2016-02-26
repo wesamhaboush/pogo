@@ -8,14 +8,6 @@ import java.util.Map;
 import java.util.Queue;
 import java.util.Set;
 
-/**
- * This is POJO to test Pogo's ability to create an instance
- * using a constructor with multidimensional collections, arrays
- * and maps parameters
- *
- * @author marciocarmona
- *
- */
 public class MultiDimensionalConstructorPojo extends MultiDimensionalTestPojo
 {
 

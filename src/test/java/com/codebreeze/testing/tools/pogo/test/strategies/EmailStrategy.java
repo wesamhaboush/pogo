@@ -6,18 +6,8 @@ package com.codebreeze.testing.tools.pogo.test.strategies;
 import com.codebreeze.testing.tools.pogo.api.PogoUtils;
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 
-/**
- * @author daivanov
- *
- */
 public class EmailStrategy implements AttributeStrategy<String>
 {
-
-    /**
-     * It valid email.
-     *
-     * {@inheritDoc}
-     */
     public String getValue()
     {
         StringBuilder sb = new StringBuilder();
@@ -45,21 +35,4 @@ public class EmailStrategy implements AttributeStrategy<String>
 
         return sb.toString();
     }
-
-    // ------------------->> Constants
-
-    // ------------------->> Instance / Static variables
-
-    // ------------------->> Constructors
-
-    // ------------------->> Public methods
-
-    // ------------------->> Getters / Setters
-
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    // ------------------->> Inner classes
-
 }

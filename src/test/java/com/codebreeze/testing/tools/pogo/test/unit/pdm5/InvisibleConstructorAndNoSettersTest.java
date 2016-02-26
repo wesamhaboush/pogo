@@ -1,20 +1,12 @@
-/**
- * Test multiple constructors with setters
- */
 package com.codebreeze.testing.tools.pogo.test.unit.pdm5;
-
-import static org.junit.Assert.assertNotNull;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
+import com.codebreeze.testing.tools.pogo.test.dto.pdm5.InvisibleConstructorAndNoSettersPojo;
 import org.junit.Test;
 
-import com.codebreeze.testing.tools.pogo.test.dto.pdm5.InvisibleConstructorAndNoSettersPojo;
+import static org.junit.Assert.assertNotNull;
 
-/**
- * @author divanov
- *
- */
 public class InvisibleConstructorAndNoSettersTest
 {
 

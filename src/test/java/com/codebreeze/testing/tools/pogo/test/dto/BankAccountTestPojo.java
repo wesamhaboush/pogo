@@ -1,68 +1,40 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
 
-/**
- * @author mtedone
- *
- */
 public class BankAccountTestPojo implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
 
-    /** Account nbr */
     private String accountNbr;
 
-    /** Sort code */
     private String sortCode;
 
-    /** Bank name */
     private String bankName;
 
-    /** Branch name */
     private String branchName;
 
-    /**
-     * @return the accountNbr
-     */
     public String getAccountNbr()
     {
         return accountNbr;
     }
 
-    /**
-     * @return the sortCode
-     */
     public String getSortCode()
     {
         return sortCode;
     }
 
-    /**
-     * @return the bankName
-     */
     public String getBankName()
     {
         return bankName;
     }
 
-    /**
-     * @return the branchName
-     */
     public String getBranchName()
     {
         return branchName;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -79,11 +51,6 @@ public class BankAccountTestPojo implements Serializable
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals( Object obj )
     {
@@ -155,12 +122,6 @@ public class BankAccountTestPojo implements Serializable
         return true;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {

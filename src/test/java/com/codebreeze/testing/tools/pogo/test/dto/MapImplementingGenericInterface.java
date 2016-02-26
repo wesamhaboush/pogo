@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Collection;
@@ -8,15 +5,6 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
 
-/**
- * Test pojo
- * <p>
- * Pojo implementing generic interface
- * </p>
- *
- * @author daivanov
- *
- */
 public class MapImplementingGenericInterface implements Map<Integer, String>
 {
 

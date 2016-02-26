@@ -21,11 +21,7 @@ public class MyInitPojo implements Serializable
 
     public MyInitPojo() {}
 
-    /**
-     * It re-initialise the strings
-     * @param s1 String 1
-     * @param s2 String 2
-     */
+
     public void init( String s1, String s2 )
     {
         this.string1 = s1;

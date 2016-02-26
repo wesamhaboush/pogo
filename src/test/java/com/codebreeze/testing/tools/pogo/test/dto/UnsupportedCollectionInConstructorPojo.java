@@ -1,14 +1,7 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Vector;
 
-/**
- * @author daivanov
- *
- */
 public class UnsupportedCollectionInConstructorPojo<E>
 {
 

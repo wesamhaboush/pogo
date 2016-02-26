@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.ArrayList;
@@ -8,12 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * POJO to test read-only fields with wildcards instantiation
- *
- * @author daivanov
- *
- */
 @SuppressWarnings( "rawtypes" )
 public class ReadOnlyRawFieldsPojo
 {

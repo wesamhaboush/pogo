@@ -1,11 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm5;
 
-/**
- * Pojo to test invisible constructor
- *
- * @author divanov
- *
- */
 public class InvisibleConstructorAndNoSettersPojo
 {
 

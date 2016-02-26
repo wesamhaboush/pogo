@@ -1,85 +1,42 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
 
-/**
- * @author mtedone
- *
- */
 public class SimplePojoToTestSetters implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
 
-    // ------------------->> Constants
-
-    // ------------------->> Instance / Static variables
-
-    /** A string field */
     private String stringField;
 
-    /** An int field */
     private int intField;
 
-    // ------------------->> Constructors
 
-    /**
-     * No args-constructor
-     */
     public SimplePojoToTestSetters()
     {
     }
 
-    // ------------------->> Public methods
 
-    // ------------------->> Getters / Setters
-
-    /**
-     * @return the stringField
-     */
     public String getStringField()
     {
         return stringField;
     }
 
-    /**
-     * @param stringField
-     *            the stringField to set
-     */
     public void setStringField( String stringField )
     {
         this.stringField = stringField;
     }
 
-    /**
-     * @return the intField
-     */
     public int getIntField()
     {
         return intField;
     }
 
-    /**
-     * @param intField
-     *            the intField to set
-     */
     public void setIntField( int intField )
     {
         this.intField = intField;
     }
 
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -91,11 +48,6 @@ public class SimplePojoToTestSetters implements Serializable
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals( Object obj )
     {
@@ -136,12 +88,6 @@ public class SimplePojoToTestSetters implements Serializable
         return true;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {
@@ -151,7 +97,5 @@ public class SimplePojoToTestSetters implements Serializable
                           intField + TAB + " )";
         return retValue;
     }
-
-    // ------------------->> Inner classes
 
 }

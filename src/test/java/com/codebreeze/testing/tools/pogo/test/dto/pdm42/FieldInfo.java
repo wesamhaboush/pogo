@@ -49,13 +49,6 @@ public class FieldInfo
         this.namespacePrefix = namespacePrefix;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes
-     * in name = value format.
-     *
-     * @return a <code>String</code> representation
-     * of this object.
-     */
     public String toString()
     {
         final String TAB = "    ";

@@ -1,12 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * @author tedonema
- *
- */
 public class FloatExt<T> implements ObjectExt<T>
 {
 

@@ -3,10 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 import java.util.Collection;
 import java.util.Vector;
 
-/**
- * @author daivanov
- *
- */
 public class ImmutableVector<E> extends Vector<E>
 {
     private static final long serialVersionUID = 1L;

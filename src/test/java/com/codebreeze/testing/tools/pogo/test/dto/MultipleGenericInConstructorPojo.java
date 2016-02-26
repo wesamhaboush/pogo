@@ -3,11 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Generic Pojo with generic types in constructor
- *
- * @author daivanov
- */
 public class MultipleGenericInConstructorPojo<T, E, K, V>
 {
 

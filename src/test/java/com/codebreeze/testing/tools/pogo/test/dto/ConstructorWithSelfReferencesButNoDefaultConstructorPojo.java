@@ -1,49 +1,19 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
-
-import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 
 import java.io.Serializable;
 
-/**
- * Immutable-like POJO with constructor which receives self-types but no default
- * constructor.
- * <p>
- * This POJO cannot be reliably built due to infinite loop, so Pogo will throw
- * a {@link PogoMockeryException}
- * </p>
- *
- * @author mtedone
- *
- */
 public class ConstructorWithSelfReferencesButNoDefaultConstructorPojo implements
     Serializable
 {
 
     private static final long serialVersionUID = 1L;
 
-    // ------------------->> Constants
-
-    // ------------------->> Instance / Static variables
-
-    /** Int field */
     private final int intField;
 
-    /** Parent instance */
     private final ConstructorWithSelfReferencesButNoDefaultConstructorPojo parent;
 
-    /** Another parent instance */
     private final ConstructorWithSelfReferencesButNoDefaultConstructorPojo anotherParent;
 
-    // ------------------->> Constructors
-
-    /**
-     * @param intField
-     * @param parent
-     * @param anotherParent
-     */
     public ConstructorWithSelfReferencesButNoDefaultConstructorPojo(
         int intField,
         ConstructorWithSelfReferencesButNoDefaultConstructorPojo parent,
@@ -55,38 +25,20 @@ public class ConstructorWithSelfReferencesButNoDefaultConstructorPojo implements
         this.anotherParent = anotherParent;
     }
 
-    // ------------------->> Public methods
 
-    // ------------------->> Getters / Setters
-
-    /**
-     * @return the intField
-     */
     public int getIntField()
     {
         return intField;
     }
 
-    /**
-     * @return the parent
-     */
     public ConstructorWithSelfReferencesButNoDefaultConstructorPojo getParent()
     {
         return parent;
     }
 
-    /**
-     * @return the anotherParent
-     */
     public ConstructorWithSelfReferencesButNoDefaultConstructorPojo getAnotherParent()
     {
         return anotherParent;
     }
-
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    // ------------------->> Inner classes
 
 }

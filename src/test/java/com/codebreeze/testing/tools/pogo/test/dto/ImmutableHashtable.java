@@ -3,10 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 import java.util.Hashtable;
 import java.util.Map;
 
-/**
- * @author daivanov
- *
- */
 public class ImmutableHashtable<K, V> extends Hashtable<K, V>
 {
     private static final long serialVersionUID = -1L;

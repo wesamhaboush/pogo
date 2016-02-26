@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.unit.features.dataProviderStrategy;
 
 import com.codebreeze.testing.tools.pogo.api.AbstractRandomDataProviderStrategy;

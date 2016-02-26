@@ -1,14 +1,7 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Hashtable;
 
-/**
- * @author daivanov
- *
- */
 public class UnsupportedMapInConstructorPojo<K, V>
 {
 

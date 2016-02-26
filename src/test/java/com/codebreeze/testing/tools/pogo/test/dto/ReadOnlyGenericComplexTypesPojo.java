@@ -5,11 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Generic POJO with read only complex type fields
- *
- * @author daivanov
- */
 public class ReadOnlyGenericComplexTypesPojo<T, E, K>
 {
 

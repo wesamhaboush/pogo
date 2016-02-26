@@ -6,13 +6,6 @@ import com.codebreeze.testing.tools.pogo.common.PogoFloatValue;
 
 import java.lang.annotation.Annotation;
 
-/**
- * Default float type manufacturer.
- *
- * Created by tedonema on 17/05/2015.
- *
- * @since 6.0.0.RELEASE
- */
 public class FloatTypeManufacturerImpl extends AbstractTypeManufacturer
 {
 

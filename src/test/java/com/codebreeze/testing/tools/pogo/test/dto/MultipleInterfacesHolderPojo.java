@@ -1,12 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-
-/**
- * Holder for pojo derived from two interfaces: Map/List and another one
- *
- * @author daivanov
- *
- */
 public class MultipleInterfacesHolderPojo<K, V>
 {
 

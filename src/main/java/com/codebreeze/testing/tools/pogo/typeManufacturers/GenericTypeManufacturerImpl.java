@@ -8,13 +8,6 @@ import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicReference;
 
-/**
- * Default byte type manufacturer.
- *
- * Created by tedonema on 17/05/2015.
- *
- * @since 6.0.0.RELEASE
- */
 public class GenericTypeManufacturerImpl extends AbstractTypeManufacturer
 {
 

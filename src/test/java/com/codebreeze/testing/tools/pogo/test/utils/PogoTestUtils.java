@@ -1,38 +1,17 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.utils;
 
 import java.util.Calendar;
 import java.util.TimeZone;
 
-/**
- * Test utility class
- *
- * @author mtedone
- *
- */
 public class PogoTestUtils
 {
 
-    // ------------------->> Constants
 
-    // ------------------->> Instance / Static variables
-
-    // ------------------->> Constructors
-
-    /** Non instantiable class */
     private PogoTestUtils()
     {
     }
 
-    // ------------------->> Public methods
 
-    /**
-     * Returns a Calendar with my birthday date.
-     *
-     * @return A Calendar with my birthday date.
-     */
     public static Calendar getMyBirthday()
     {
         Calendar myBirthday = Calendar.getInstance( TimeZone.getTimeZone( "UTC" ) );

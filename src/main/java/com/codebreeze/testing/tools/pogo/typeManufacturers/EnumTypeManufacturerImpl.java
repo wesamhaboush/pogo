@@ -3,19 +3,9 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 
-/**
- * Default Enum type manufacturer.
- *
- * Created by tedonema on 17/05/2015.
- *
- * @since 6.0.0.RELEASE
- */
 public class EnumTypeManufacturerImpl extends AbstractTypeManufacturer
 {
 
-    /**
-     * {@inheritDoc}
-     */
     @Override
     public Object getType( TypeManufacturerParamsWrapper wrapper )
     {

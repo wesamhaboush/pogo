@@ -5,12 +5,6 @@ import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
-/**
- * Test @uk.co.jemos.Pogo.test.dto.JAXBElementPojo@ construction
- *
- * @author daivanov
- *
- */
 public class ExternalFactoryUnitTest extends AbstractPogoSteps
 {
 

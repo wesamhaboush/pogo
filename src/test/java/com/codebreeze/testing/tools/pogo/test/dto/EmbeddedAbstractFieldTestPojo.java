@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import org.junit.Assert;

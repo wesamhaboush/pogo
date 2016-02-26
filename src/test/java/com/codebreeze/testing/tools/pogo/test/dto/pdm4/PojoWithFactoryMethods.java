@@ -6,12 +6,6 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Pojo to test to test multiple static factory methods
- *
- * @author divanov
- *
- */
 public abstract class PojoWithFactoryMethods
 {
 

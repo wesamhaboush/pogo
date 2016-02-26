@@ -6,10 +6,6 @@ import org.junit.Assert;
 
 import java.util.Set;
 
-/**
- * Validation steps for ClassInfo stories
- * Created by tedonema on 14/06/2015.
- */
 public class ClassInfoValidationSteps
 {
 

@@ -1,14 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * POJO , which doesn't comply with EJB standard
- *
- * @author daivanov
- *
- */
 public class NonEJBPojo
 {
     private static class Holder

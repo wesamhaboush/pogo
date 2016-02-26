@@ -31,12 +31,6 @@ public class AnnotationsExceptionsTest
 
 
     @Test( expected = IllegalArgumentException.class )
-    public void PogoShouldThrowExceptionWhenPogoByteValueContainsInvalidCharacters() throws Exception
-    {
-        PogoFactory.manufacturePojo( ByteValueWithErrorPojo.class );
-    }
-
-    @Test( expected = IllegalArgumentException.class )
     public void PogoShouldThrowExceptionWhenPogoShortValueContainsInvalidCharacters() throws Exception
     {
         PogoFactory.manufacturePojo( ShortValueWithErrorPojo.class );

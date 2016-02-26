@@ -1,58 +1,26 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
-
-import java.io.Serializable;
 
 import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
 
-/**
- * POJO to test that {@link PogoIntValue#numValue()} with a non parseable value
- * triggers an error.
- *
- * @author mtedone
- *
- */
+import java.io.Serializable;
+
 public class IntegerValueWithErrorPojo implements Serializable
 {
 
-    // ------------------->> Constants
     private static final long serialVersionUID = 1L;
-
-    // ------------------->> Instance / Static variables
 
     @PogoIntValue( numValue = "hfajkfhalfh" )
     private int intFieldWithErrorInAnnotation;
 
-    // ------------------->> Constructors
-
-    // ------------------->> Public methods
-
-    // ------------------->> Getters / Setters
-
-    /**
-     * @return the intFieldWithErrorInAnnotation
-     */
     public int getIntFieldWithErrorInAnnotation()
     {
         return intFieldWithErrorInAnnotation;
     }
 
-    /**
-     * @param intFieldWithErrorInAnnotation
-     *            the intFieldWithErrorInAnnotation to set
-     */
     public void setIntFieldWithErrorInAnnotation(
         int intFieldWithErrorInAnnotation )
     {
         this.intFieldWithErrorInAnnotation = intFieldWithErrorInAnnotation;
     }
-
-    // ------------------->> Private methods
-
-    // ------------------->> equals() / hashcode() / toString()
-
-    // ------------------->> Inner classes
 
 }

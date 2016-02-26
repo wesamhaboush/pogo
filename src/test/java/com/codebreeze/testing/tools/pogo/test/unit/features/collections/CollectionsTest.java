@@ -163,8 +163,6 @@ public class CollectionsTest extends AbstractPogoSteps
     }
 
 
-    //------------------> Private methods
-
     private void testMap( Class<? extends Map> mapType )
     {
         PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();

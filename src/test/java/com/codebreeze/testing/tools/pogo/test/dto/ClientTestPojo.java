@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
@@ -8,53 +5,26 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-/**
- * A simple graph POJO for testing
- * <p>
- * A simple graph DTO is considered a POJO with primitive type properties (e.g.
- * there are no relationships with other POJOs
- * </p>
- *
- * @author mtedone
- *
- */
 public class ClientTestPojo implements Serializable
 {
 
-    // ------------------->> Constants
-
     private static final long serialVersionUID = 1L;
 
-    // ------------------->> Instance / Static variables
-
-    /** The client's first name */
     private String firstName;
 
-    /** The client's last name */
     private String lastName;
 
-    /** The date this client was created */
     private Calendar dateCreated;
 
-    /** The date this client was last updated */
     private Calendar dateLastUpdated;
 
-    /** This Client Address */
     private AddressTestPojo address;
 
-    /** This Client bank accounts */
     private final List<BankAccountTestPojo> bankAccounts = new ArrayList<>();
 
-    // ------------------->> Constructors
-
-    /** No-arg constructor */
     public ClientTestPojo()
     {
     }
-
-    // ------------------->> Public methods
-
-    // ------------------->> Getters / Setters
 
     public String getFirstName()
     {
@@ -86,14 +56,7 @@ public class ClientTestPojo implements Serializable
         return bankAccounts;
     }
 
-    // ------------------->> Private methods
 
-    // ------------------->> equals() / hashcode() / toString()
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -114,11 +77,6 @@ public class ClientTestPojo implements Serializable
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals( Object obj )
     {
@@ -214,12 +172,6 @@ public class ClientTestPojo implements Serializable
         return true;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {
@@ -233,7 +185,4 @@ public class ClientTestPojo implements Serializable
                           bankAccounts + TAB + " )";
         return retValue;
     }
-
-    // ------------------->> Inner classes
-
 }

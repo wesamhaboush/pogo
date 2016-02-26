@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.unit.pdm45;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
@@ -21,16 +18,9 @@ import java.util.Map.Entry;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * Unit tests for <a href="http://www.jemos.eu/jira/browse/PDM-45">PDM-45</a>.
- *
- * @author marciocarmona
- *
- */
 public class Pdm45UnitTest
 {
 
-    /** The Pogo factory */
     private PogoFactory factory;
 
     @Before
@@ -134,11 +124,6 @@ public class Pdm45UnitTest
                       pojo.getFirstSecondMap().entrySet().iterator().next().getValue().values().iterator().next().getClass() );
     }
 
-    /**
-     * It validates a {@link MultiDimensionalTestPojo}.
-     *
-     * @param pojo the pojo to validate
-     */
     private void checkMultiDimensionalPojo( final MultiDimensionalTestPojo pojo )
     {
         assertNotNull( "The GenericPojo object cannot be null!", pojo );
@@ -166,11 +151,6 @@ public class Pdm45UnitTest
                       entry3.getValue().getClass() );
     }
 
-    /**
-     * It validates a {@link MultiDimensionalTestPojo} collection.
-     *
-     * @param collection the collection to validate
-     */
     @SuppressWarnings( "unchecked" )
     private <T> void checkMultiDimensionalCollection( final Collection<?> collection, Class<T> type )
     {

@@ -1,19 +1,10 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
-
-import java.io.Serializable;
 
 import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
 import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
 
-/**
- * A Country domain Model Object
- *
- * @author mtedone
- *
- */
+import java.io.Serializable;
+
 public class Country implements Serializable
 {
 
@@ -25,16 +16,6 @@ public class Country implements Serializable
 
     private final String description;
 
-    /**
-     * Full constructor.
-     *
-     * @param countryId
-     *            The Country id
-     * @param countryCode
-     *            The country code
-     * @param description
-     *            The description
-     */
     @PogoConstructor( comment = "Immutable-like POJOs must be annotated with @PogoConstructor" )
     public Country( int countryId,
                     @PogoStringValue( length = 2 ) String countryCode, String description )
@@ -45,36 +26,21 @@ public class Country implements Serializable
         this.description = description;
     }
 
-    /**
-     * @return the countryId
-     */
     public int getCountryId()
     {
         return countryId;
     }
 
-    /**
-     * @return the countryCode
-     */
     public String getCountryCode()
     {
         return countryCode;
     }
 
-    /**
-     * @return the description
-     */
     public String getDescription()
     {
         return description;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {

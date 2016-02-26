@@ -1,11 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm6;
 
-/**
- * Pojo to test recursive dependencies
- *
- * @author ludochane
- *
- */
 public class Child
 {
 

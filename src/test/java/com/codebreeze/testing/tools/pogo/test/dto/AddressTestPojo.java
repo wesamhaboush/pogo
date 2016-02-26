@@ -1,101 +1,61 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.io.Serializable;
 
-/**
- * @author mtedone
- *
- */
 public class AddressTestPojo implements Serializable
 {
 
     private static final long serialVersionUID = 1L;
 
-    /** Address line 1 */
     private String address1;
 
-    /** Address line 2 */
     private String address2;
 
-    /** Address line 3 */
     private String address3;
 
-    /** The city */
     private String city;
 
-    /** The province */
     private String province;
 
-    /** The zip code */
     private String zipCode;
 
-    /** The country */
     private String country;
 
-    /**
-     * @return the address1
-     */
     public String getAddress1()
     {
         return address1;
     }
 
-    /**
-     * @return the address2
-     */
     public String getAddress2()
     {
         return address2;
     }
 
-    /**
-     * @return the address3
-     */
     public String getAddress3()
     {
         return address3;
     }
 
-    /**
-     * @return the city
-     */
     public String getCity()
     {
         return city;
     }
 
-    /**
-     * @return the province
-     */
     public String getProvince()
     {
         return province;
     }
 
-    /**
-     * @return the zipCode
-     */
     public String getZipCode()
     {
         return zipCode;
     }
 
-    /**
-     * @return the country
-     */
     public String getCountry()
     {
         return country;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#hashCode()
-     */
     @Override
     public int hashCode()
     {
@@ -117,11 +77,6 @@ public class AddressTestPojo implements Serializable
         return result;
     }
 
-    /*
-     * (non-Javadoc)
-     *
-     * @see java.lang.Object#equals(java.lang.Object)
-     */
     @Override
     public boolean equals( Object obj )
     {
@@ -229,12 +184,6 @@ public class AddressTestPojo implements Serializable
         return true;
     }
 
-    /**
-     * Constructs a <code>String</code> with all attributes in name = value
-     * format.
-     *
-     * @return a <code>String</code> representation of this object.
-     */
     @Override
     public String toString()
     {

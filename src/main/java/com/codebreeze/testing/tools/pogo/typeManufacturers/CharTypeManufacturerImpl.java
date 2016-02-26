@@ -5,13 +5,6 @@ import com.codebreeze.testing.tools.pogo.common.PogoCharValue;
 
 import java.lang.annotation.Annotation;
 
-/**
- * Default character type manufacturer.
- *
- * Created by tedonema on 17/05/2015.
- *
- * @since 6.0.0.RELEASE
- */
 public class CharTypeManufacturerImpl extends AbstractTypeManufacturer
 {
 

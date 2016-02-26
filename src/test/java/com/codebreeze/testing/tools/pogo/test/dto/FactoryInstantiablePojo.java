@@ -1,11 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * Abstract factory instantiable class
- *
- * @author daivanov
- *
- */
 public abstract class FactoryInstantiablePojo<T>
 {
 
@@ -16,18 +10,11 @@ public abstract class FactoryInstantiablePojo<T>
         return new FactoryInstantiablePojoImpl<>( typedValue );
     }
 
-    /**
-     * @return the typedValue
-     */
     public T getTypedValue()
     {
         return typedValue;
     }
 
-    /**
-     * @param typedValue
-     *            the typedList to set
-     */
     public void setTypedValue( T typedValue )
     {
         this.typedValue = typedValue;

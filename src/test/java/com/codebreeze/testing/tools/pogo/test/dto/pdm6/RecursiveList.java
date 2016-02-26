@@ -2,12 +2,6 @@ package com.codebreeze.testing.tools.pogo.test.dto.pdm6;
 
 import java.util.List;
 
-/**
- * Pojo to test recursive dependencies
- *
- * @author daivanov
- *
- */
 public class RecursiveList
 {
 

@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.unit.pdm3;
 
 import com.codebreeze.testing.tools.pogo.api.AbstractExternalFactory;
@@ -19,10 +16,6 @@ import java.util.*;
 
 import static org.junit.Assert.*;
 
-/**
- * @author Marco Tedone
- *
- */
 public class Pdm3PojoUnitTest
 {
 

@@ -1,18 +1,9 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Currency;
 import java.util.Map;
 import java.util.Set;
 
-/**
- * POJO to test when Pogo memoization with collections and arrays
- *
- * @author daivanov
- *
- */
 public class MemoizationPojo
 {
 

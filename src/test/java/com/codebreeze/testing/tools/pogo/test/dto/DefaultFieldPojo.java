@@ -3,12 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.dto;
 import java.util.Map;
 import java.util.TreeMap;
 
-/**
- * Pojo with default field
- *
- * @author daivanov
- *
- */
 public class DefaultFieldPojo<K, V>
 {
 

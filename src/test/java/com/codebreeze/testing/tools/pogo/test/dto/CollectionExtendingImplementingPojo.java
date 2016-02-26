@@ -1,21 +1,9 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.LinkedList;
 import java.util.Observable;
 import java.util.Observer;
 
-/**
- * Test pojo
- * <p>
- * Pojo extending Pojo with generic type and implementing another inteface
- * </p>
- *
- * @author daivanov
- *
- */
 public class CollectionExtendingImplementingPojo extends LinkedList<String>
     implements Observer
 {

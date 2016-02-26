@@ -1,14 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * POJO to test when Pogo sets a boolean.
- *
- * @author daivanov
- *
- */
 public class BooleanPojo
 {
     private boolean value1;

@@ -13,14 +13,6 @@ public class TypesUtils
         throw new AssertionError( "Non instantiable" );
     }
 
-    /**
-     * It checks that the Calendar instance is valid
-     * <p>
-     * If the calendar returns a valid date then it's a valid instance
-     * </p>
-     *
-     * @param calendarField The calendar instance to check
-     */
     public static void checkCalendarIsValid( Calendar calendarField )
     {
         Assert.assertNotNull( "The Calendar field cannot be null", calendarField );

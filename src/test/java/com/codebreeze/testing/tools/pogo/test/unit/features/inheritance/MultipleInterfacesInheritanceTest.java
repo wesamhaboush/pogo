@@ -73,7 +73,6 @@ public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
     }
 
 
-    //-------------> Private methods
 
     private PogoFactory provideCustomisedPogoFactory()
     {

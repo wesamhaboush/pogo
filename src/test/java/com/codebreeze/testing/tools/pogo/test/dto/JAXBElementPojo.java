@@ -1,16 +1,7 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import javax.xml.bind.JAXBElement;
 
-/**
- * POJO to test when Pogo sets a boolean.
- *
- * @author daivanov
- *
- */
 public class JAXBElementPojo<T>
 {
     private JAXBElement<T> value;

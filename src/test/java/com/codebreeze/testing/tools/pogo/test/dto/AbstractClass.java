@@ -1,9 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * Class which doesn't have any specific implementation
- * @author daivanov
- */
 public abstract class AbstractClass
 {
     private final String name;

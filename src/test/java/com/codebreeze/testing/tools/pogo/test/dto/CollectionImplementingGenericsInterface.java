@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import java.util.Collection;
@@ -9,15 +6,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
 
-/**
- * Test pojo
- * <p>
- * Pojo extending Pojo with generic type.
- * </p>
- *
- * @author daivanov
- *
- */
 public class CollectionImplementingGenericsInterface implements List<String>
 {
 

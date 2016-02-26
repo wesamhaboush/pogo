@@ -1,17 +1,8 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import javax.xml.datatype.Duration;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-/**
- * POJO to test when Pogo sets a boolean.
- *
- * @author daivanov
- *
- */
 public class XMLDatatypePojo
 {
     private XMLGregorianCalendar calendar;

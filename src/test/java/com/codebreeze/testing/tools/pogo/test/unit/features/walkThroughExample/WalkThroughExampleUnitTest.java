@@ -8,12 +8,6 @@ import com.codebreeze.testing.tools.pogo.test.dto.docs.example.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
-/**
- * A set of tests to check the Walk-through example
- *
- * @author mtedone
- *
- */
 public class WalkThroughExampleUnitTest extends AbstractPogoSteps
 {
 

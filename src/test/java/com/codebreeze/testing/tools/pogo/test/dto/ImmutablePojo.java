@@ -1,14 +1,5 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-/**
- * Immutable POJO
- *
- * @author daivanov
- *
- */
 public class ImmutablePojo
 {
     private String value;
