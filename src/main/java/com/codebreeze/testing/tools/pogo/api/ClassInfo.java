@@ -1,8 +1,9 @@
 package com.codebreeze.testing.tools.pogo.api;
 
 import java.io.Serializable;
-import java.lang.reflect.Method;
-import java.util.*;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Set;
 
 public class ClassInfo implements Serializable
 {
@@ -15,15 +16,8 @@ public class ClassInfo implements Serializable
 
     public ClassInfo( Class<?> className, Collection<ClassAttribute> classAttributes )
     {
-        this( className, classAttributes, Collections.<Method>emptyList() );
-    }
-
-    public ClassInfo( Class<?> className, Collection<ClassAttribute> classAttributes, Collection<Method> extraMethods )
-    {
         this.className = className;
         this.classAttributes.addAll( classAttributes );
-        List<Method> extraMethods1 = new ArrayList<Method>();
-        extraMethods1.addAll( extraMethods );
     }
 
     public Set<ClassAttribute> getClassAttributes()

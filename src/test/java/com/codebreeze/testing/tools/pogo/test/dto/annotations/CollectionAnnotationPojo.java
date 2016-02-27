@@ -50,11 +50,10 @@ public class CollectionAnnotationPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "CollectionAnnotationPojo ( " + "strList = " +
-                          strList + TAB + "strArray = " +
-                          Arrays.toString( strArray ) + TAB +
-                          "stringMap = " + stringMap + TAB +
-                          " )";
-        return retValue;
+        return "CollectionAnnotationPojo ( " + "strList = " +
+               strList + TAB + "strArray = " +
+               Arrays.toString( strArray ) + TAB +
+               "stringMap = " + stringMap + TAB +
+               " )";
     }
 }

@@ -1,32 +1,16 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.inheritance;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
-import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
-import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesListPojo;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesHolderPojo;
+import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesListPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesMapPojo;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
 import java.util.List;
 
 public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
 {
-
-
-    private static final TrackingExternalFactory externalFactory
-        = new TrackingExternalFactory();
-
-    private static final CustomDataProviderStrategy strategy
-        = new CustomDataProviderStrategy();
-
-    private static final PogoFactory factory
-        = new PogoFactoryImpl( externalFactory, strategy );
-
-
-
-
-
     @Test
     public void PogoCannotInstantiateInterfaces() throws Exception
     {
@@ -72,8 +56,6 @@ public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
             accessed, MultipleInterfacesMapPojo.class );
     }
 
-
-
     private PogoFactory provideCustomisedPogoFactory()
     {
         TrackingExternalFactory externalFactory = PogoFactorySteps.givenATrackingExternalFactory();
@@ -81,6 +63,4 @@ public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
         return PogoFactorySteps.givenAPogoFactoryWithExternalFactoryAndCustomStrategy(
                    externalFactory, customDataProviderStrategy );
     }
-
-
 }

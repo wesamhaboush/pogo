@@ -35,10 +35,9 @@ public class OneDimensionalChildPojo extends AbstractOneDimensionalPojo
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = super.toString() + TAB +
-                          "OneDimensionalChildPojo ( " + "intField = " +
-                          intField + TAB + "strField = " +
-                          strField + TAB + " )";
-        return retValue;
+        return super.toString() + TAB +
+               "OneDimensionalChildPojo ( " + "intField = " +
+               intField + TAB + "strField = " +
+               strField + TAB + " )";
     }
 }

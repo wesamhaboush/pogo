@@ -39,9 +39,8 @@ public class PrivateOnlyConstructorPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "PrivateOnlyPojo ( " + "firstName = " +
-                          firstName + TAB + "intField = " +
-                          intField + TAB + " )";
-        return retValue;
+        return "PrivateOnlyPojo ( " + "firstName = " +
+               firstName + TAB + "intField = " +
+               intField + TAB + " )";
     }
 }

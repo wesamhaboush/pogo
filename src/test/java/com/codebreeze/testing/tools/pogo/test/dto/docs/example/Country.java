@@ -41,11 +41,10 @@ public class Country implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "Country ( " + "countryId = " + countryId +
-                          TAB + "countryCode = " + countryCode +
-                          TAB + "description = " + description +
-                          TAB + " )";
-        return retValue;
+        return "Country ( " + "countryId = " + countryId +
+               TAB + "countryCode = " + countryCode +
+               TAB + "description = " + description +
+               TAB + " )";
     }
 
 }

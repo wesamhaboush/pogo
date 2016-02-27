@@ -109,16 +109,15 @@ public class IntegerValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "IntegerRangeValuesPojo ( " +
-                          "intFieldWithMinValueOnly = " + this.intFieldWithMinValueOnly + TAB +
-                          "intFieldWithPreciseValue = " + this.intFieldWithPreciseValue + TAB +
-                          "intFieldWithMaxValueOnly = " + this.intFieldWithMaxValueOnly + TAB +
-                          "intFieldWithMinAndMaxValue = " + this.intFieldWithMinAndMaxValue + TAB +
-                          "integerObjectFieldWithMinValueOnly = " + this.integerObjectFieldWithMinValueOnly + TAB +
-                          "integerObjectFieldWithMaxValueOnly = " + this.integerObjectFieldWithMaxValueOnly + TAB +
-                          "integerObjectFieldWithMinAndMaxValue = " + this.integerObjectFieldWithMinAndMaxValue + TAB +
-                          "integerObjectFieldWithPreciseValue = " + this.integerObjectFieldWithPreciseValue + TAB +
-                          " )";
-        return retValue;
+        return "IntegerRangeValuesPojo ( " +
+               "intFieldWithMinValueOnly = " + this.intFieldWithMinValueOnly + TAB +
+               "intFieldWithPreciseValue = " + this.intFieldWithPreciseValue + TAB +
+               "intFieldWithMaxValueOnly = " + this.intFieldWithMaxValueOnly + TAB +
+               "intFieldWithMinAndMaxValue = " + this.intFieldWithMinAndMaxValue + TAB +
+               "integerObjectFieldWithMinValueOnly = " + this.integerObjectFieldWithMinValueOnly + TAB +
+               "integerObjectFieldWithMaxValueOnly = " + this.integerObjectFieldWithMaxValueOnly + TAB +
+               "integerObjectFieldWithMinAndMaxValue = " + this.integerObjectFieldWithMinAndMaxValue + TAB +
+               "integerObjectFieldWithPreciseValue = " + this.integerObjectFieldWithPreciseValue + TAB +
+               " )";
     }
 }

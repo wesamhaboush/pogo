@@ -10,13 +10,6 @@ public class FloatTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Float retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getFloat( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getFloat( wrapper.getAttributeMetadata() );
     }
 }

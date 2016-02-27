@@ -31,7 +31,7 @@ public class MethodLightFirstComparator implements Comparator<Method>
                - methodComplexity( method2 );
     }
 
-    public int methodComplexity( Method method )
+    private int methodComplexity( Method method )
     {
         int complexity = 0;
 

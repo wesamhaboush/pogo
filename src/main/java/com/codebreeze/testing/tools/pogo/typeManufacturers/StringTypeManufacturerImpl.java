@@ -11,14 +11,7 @@ public class StringTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        String retValue = null;
         AttributeMetadata attributeMetadata = wrapper.getAttributeMetadata();
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getStringValue( attributeMetadata );
-        }
-
-        return retValue;
+        return strategy.getStringValue( attributeMetadata );
     }
 }

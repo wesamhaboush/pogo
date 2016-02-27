@@ -109,16 +109,15 @@ public class LongValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "LongRangeValuesPojo ( " +
-                          "longFieldWithMinValueOnly = " + this.longFieldWithMinValueOnly + TAB +
-                          "longFieldWithMaxValueOnly = " + this.longFieldWithMaxValueOnly + TAB +
-                          "longFieldWithMinAndMaxValue = " + this.longFieldWithMinAndMaxValue + TAB +
-                          "longFieldWithPreciseValue = " + this.longFieldWithPreciseValue + TAB +
-                          "longObjectFieldWithMinValueOnly = " + this.longObjectFieldWithMinValueOnly + TAB +
-                          "longObjectFieldWithMaxValueOnly = " + this.longObjectFieldWithMaxValueOnly + TAB +
-                          "longObjectFieldWithMinAndMaxValue = " + this.longObjectFieldWithMinAndMaxValue + TAB +
-                          "longObjectFieldWithPreciseValue = " + this.longObjectFieldWithPreciseValue + TAB +
-                          " )";
-        return retValue;
+        return "LongRangeValuesPojo ( " +
+               "longFieldWithMinValueOnly = " + this.longFieldWithMinValueOnly + TAB +
+               "longFieldWithMaxValueOnly = " + this.longFieldWithMaxValueOnly + TAB +
+               "longFieldWithMinAndMaxValue = " + this.longFieldWithMinAndMaxValue + TAB +
+               "longFieldWithPreciseValue = " + this.longFieldWithPreciseValue + TAB +
+               "longObjectFieldWithMinValueOnly = " + this.longObjectFieldWithMinValueOnly + TAB +
+               "longObjectFieldWithMaxValueOnly = " + this.longObjectFieldWithMaxValueOnly + TAB +
+               "longObjectFieldWithMinAndMaxValue = " + this.longObjectFieldWithMinAndMaxValue + TAB +
+               "longObjectFieldWithPreciseValue = " + this.longObjectFieldWithPreciseValue + TAB +
+               " )";
     }
 }

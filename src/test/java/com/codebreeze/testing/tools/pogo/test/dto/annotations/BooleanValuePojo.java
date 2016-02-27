@@ -58,13 +58,12 @@ public class BooleanValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "BooleanValuePojo ( " + "boolDefaultToTrue = " +
-                          boolDefaultToTrue + TAB +
-                          "boolDefaultToFalse = " + boolDefaultToFalse +
-                          TAB + "boolObjectDefaultToTrue = " +
-                          boolObjectDefaultToTrue + TAB +
-                          "boolObjectDefaultToFalse = " +
-                          boolObjectDefaultToFalse + TAB + " )";
-        return retValue;
+        return "BooleanValuePojo ( " + "boolDefaultToTrue = " +
+               boolDefaultToTrue + TAB +
+               "boolDefaultToFalse = " + boolDefaultToFalse +
+               TAB + "boolObjectDefaultToTrue = " +
+               boolObjectDefaultToTrue + TAB +
+               "boolObjectDefaultToFalse = " +
+               boolObjectDefaultToFalse + TAB + " )";
     }
 }

@@ -32,10 +32,9 @@ public abstract class AbstractMapArguments
     @Override
     public String toString()
     {
-        String builder = "AbstractMapArguments [mapToBeFilled=" +
-                         mapToBeFilled.getClass() +
-                         "]";
-        return builder;
+        return "AbstractMapArguments [mapToBeFilled=" +
+               mapToBeFilled.getClass() +
+               "]";
     }
 
 }

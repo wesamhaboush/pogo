@@ -10,13 +10,6 @@ public class CharTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Character retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getCharacter( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getCharacter( wrapper.getAttributeMetadata() );
     }
 }

@@ -33,10 +33,9 @@ public abstract class AbstractOneDimensionalPojo
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "AbstractOneDimensionalPojo ( " +
-                          "parentIntField = " + parentIntField + TAB +
-                          "parentCalendarField = " +
-                          parentCalendarField.getTime() + TAB + " )";
-        return retValue;
+        return "AbstractOneDimensionalPojo ( " +
+               "parentIntField = " + parentIntField + TAB +
+               "parentCalendarField = " +
+               parentCalendarField.getTime() + TAB + " )";
     }
 }

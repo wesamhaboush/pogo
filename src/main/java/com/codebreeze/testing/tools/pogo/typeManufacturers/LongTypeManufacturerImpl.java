@@ -10,13 +10,6 @@ public class LongTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Long retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getLong( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getLong( wrapper.getAttributeMetadata() );
     }
 }

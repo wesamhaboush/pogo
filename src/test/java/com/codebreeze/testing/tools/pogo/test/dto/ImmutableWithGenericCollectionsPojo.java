@@ -12,9 +12,6 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    public static final int NBR_ELEMENTS = 5;
-
-
     private final Collection<OneDimensionalTestPojo> generifiedCollection;
 
     private final Map<String, Calendar> generifiedMap;
@@ -53,13 +50,12 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "ImmutableWithNonGenericCollectionsPojo ( " +
-                          "nonGenerifiedCollection = " +
-                          generifiedCollection + TAB +
-                          "nonGenerifiedMap = " + generifiedMap +
-                          TAB + "nonGenerifiedSet = " +
-                          generifiedSet + TAB + " )";
-        return retValue;
+        return "ImmutableWithNonGenericCollectionsPojo ( " +
+               "nonGenerifiedCollection = " +
+               generifiedCollection + TAB +
+               "nonGenerifiedMap = " + generifiedMap +
+               TAB + "nonGenerifiedSet = " +
+               generifiedSet + TAB + " )";
     }
 
 }

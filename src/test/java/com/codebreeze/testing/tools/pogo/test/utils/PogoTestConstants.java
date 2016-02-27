@@ -1,15 +1,9 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.utils;
 
 public class PogoTestConstants
 {
 
     public static final int NUMBER_INT_MIN_VALUE = 0;
-
-    public static final int NUMBER_INT_ONE_HUNDRED = 100;
-
 
     public static final int NUMBER_INT_MAX_VALUE = 1000;
 
@@ -26,10 +20,6 @@ public class PogoTestConstants
     public static final double NUMBER_DOUBLE_MAX_VALUE = 1000.0;
 
     public static final int ANNOTATION_COLLECTION_NBR_ELEMENTS = 5;
-
-    public static final String INTEGER_PRECISE_VALUE = "145241";
-
-    public static final String LONG_PRECISE_VALUE = "12345678912";
 
     public static final String POST_CODE = "W1E X9P";
 

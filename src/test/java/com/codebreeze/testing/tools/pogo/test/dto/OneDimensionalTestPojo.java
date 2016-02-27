@@ -308,34 +308,33 @@ public class OneDimensionalTestPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "OneDimensionalTestPojo ( " + "booleanField = " +
-                          booleanField + TAB +
-                          "booleanObjectField = " + booleanObjectField +
-                          TAB + "byteField = " + byteField +
-                          TAB + "byteObjectField = " +
-                          byteObjectField + TAB + "shortField = " +
-                          shortField + TAB + "shortObjectField = " +
-                          shortObjectField + TAB + "charField = " +
-                          charField + TAB + "charObjectField = " +
-                          charObjectField + TAB + "intField = " +
-                          intField + TAB + "intObjectField = " +
-                          intObjectField + TAB + "longField = " +
-                          longField + TAB + "longObjectField = " +
-                          longObjectField + TAB + "floatField = " +
-                          floatField + TAB + "floatObjectField = " +
-                          floatObjectField + TAB + "doubleField = " +
-                          doubleField + TAB + "doubleObjectField = " +
-                          doubleObjectField + TAB + "stringField = " +
-                          stringField + TAB + "objectField = " +
-                          objectField + TAB + "calendarField = " +
-                          calendarField.getTime() + TAB +
-                          "dateField = " + dateField + TAB +
-                          "randomArray = " + randomArray + TAB +
-                          "intArray = " + intArray + TAB +
-                          "booleanArray = " + booleanArray + TAB +
-                          "bigDecimalField = " + bigDecimalField +
-                          TAB + " )";
-        return retValue;
+        return "OneDimensionalTestPojo ( " + "booleanField = " +
+               booleanField + TAB +
+               "booleanObjectField = " + booleanObjectField +
+               TAB + "byteField = " + byteField +
+               TAB + "byteObjectField = " +
+               byteObjectField + TAB + "shortField = " +
+               shortField + TAB + "shortObjectField = " +
+               shortObjectField + TAB + "charField = " +
+               charField + TAB + "charObjectField = " +
+               charObjectField + TAB + "intField = " +
+               intField + TAB + "intObjectField = " +
+               intObjectField + TAB + "longField = " +
+               longField + TAB + "longObjectField = " +
+               longObjectField + TAB + "floatField = " +
+               floatField + TAB + "floatObjectField = " +
+               floatObjectField + TAB + "doubleField = " +
+               doubleField + TAB + "doubleObjectField = " +
+               doubleObjectField + TAB + "stringField = " +
+               stringField + TAB + "objectField = " +
+               objectField + TAB + "calendarField = " +
+               calendarField.getTime() + TAB +
+               "dateField = " + dateField + TAB +
+               "randomArray = " + randomArray + TAB +
+               "intArray = " + intArray + TAB +
+               "booleanArray = " + booleanArray + TAB +
+               "bigDecimalField = " + bigDecimalField +
+               TAB + " )";
     }
 
 }

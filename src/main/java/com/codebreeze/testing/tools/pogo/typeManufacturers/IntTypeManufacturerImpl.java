@@ -10,13 +10,6 @@ public class IntTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Integer retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getInteger( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getInteger( wrapper.getAttributeMetadata() );
     }
 }

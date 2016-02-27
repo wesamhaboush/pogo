@@ -35,9 +35,8 @@ public class NoDefaultConstructorPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "NoDefaultConstructorPojo ( " + "intField = " +
-                          intField + TAB + " )";
-        return retValue;
+        return "NoDefaultConstructorPojo ( " + "intField = " +
+               intField + TAB + " )";
     }
 
 }

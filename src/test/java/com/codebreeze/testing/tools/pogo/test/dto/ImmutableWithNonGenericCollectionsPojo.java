@@ -63,12 +63,11 @@ public class ImmutableWithNonGenericCollectionsPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "ImmutableWithNonGenericCollectionsPojo ( " +
-                          "nonGenerifiedCollection = " + this.nonGenerifiedCollection + TAB +
-                          "nonGenerifiedMap = " + this.nonGenerifiedMap + TAB +
-                          "nonGenerifiedSet = " + this.nonGenerifiedSet + TAB +
-                          " )";
-        return retValue;
+        return "ImmutableWithNonGenericCollectionsPojo ( " +
+               "nonGenerifiedCollection = " + this.nonGenerifiedCollection + TAB +
+               "nonGenerifiedMap = " + this.nonGenerifiedMap + TAB +
+               "nonGenerifiedSet = " + this.nonGenerifiedSet + TAB +
+               " )";
     }
 
 }

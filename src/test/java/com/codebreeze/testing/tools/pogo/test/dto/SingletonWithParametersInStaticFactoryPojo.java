@@ -67,12 +67,11 @@ public class SingletonWithParametersInStaticFactoryPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "SingletonWithParametersInStaticFactoryPojo ( " +
-                          "createDate = " + createDate.getTime() +
-                          TAB + "pojoList = " + pojoList + TAB +
-                          "pojoMap = " + pojoMap + TAB +
-                          "firstName = " + firstName + TAB +
-                          " )";
-        return retValue;
+        return "SingletonWithParametersInStaticFactoryPojo ( " +
+               "createDate = " + createDate.getTime() +
+               TAB + "pojoList = " + pojoList + TAB +
+               "pojoMap = " + pojoMap + TAB +
+               "firstName = " + firstName + TAB +
+               " )";
     }
 }

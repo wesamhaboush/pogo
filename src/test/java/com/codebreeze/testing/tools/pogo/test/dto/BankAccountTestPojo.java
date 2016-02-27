@@ -126,12 +126,11 @@ public class BankAccountTestPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "BankAccountTestPojo ( " + TAB +
-                          "accountNbr = " + accountNbr + TAB +
-                          "sortCode = " + sortCode + TAB +
-                          "bankName = " + bankName + TAB +
-                          "branchName = " + branchName + TAB +
-                          " )";
-        return retValue;
+        return "BankAccountTestPojo ( " + TAB +
+               "accountNbr = " + accountNbr + TAB +
+               "sortCode = " + sortCode + TAB +
+               "bankName = " + bankName + TAB +
+               "branchName = " + branchName + TAB +
+               " )";
     }
 }

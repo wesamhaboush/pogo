@@ -10,13 +10,6 @@ public class ShortTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Short retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getShort( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getShort( wrapper.getAttributeMetadata() );
     }
 }

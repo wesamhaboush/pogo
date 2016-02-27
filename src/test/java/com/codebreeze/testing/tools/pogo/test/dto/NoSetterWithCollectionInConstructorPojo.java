@@ -40,10 +40,9 @@ public class NoSetterWithCollectionInConstructorPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "NoSetterWithCollectionInConstructorPojo ( " +
-                          "strList = " + strList + TAB +
-                          "intField = " + intField + TAB +
-                          " )";
-        return retValue;
+        return "NoSetterWithCollectionInConstructorPojo ( " +
+               "strList = " + strList + TAB +
+               "intField = " + intField + TAB +
+               " )";
     }
 }

@@ -11,13 +11,6 @@ public class ByteTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Byte retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getByte( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getByte( wrapper.getAttributeMetadata() );
     }
 }

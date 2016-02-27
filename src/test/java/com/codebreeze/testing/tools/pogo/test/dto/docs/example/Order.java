@@ -62,12 +62,11 @@ public class Order implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "Order ( " + "id = " + id + TAB +
-                          "createDate = " + createDate.getTime() +
-                          TAB + "totalAmount = " + totalAmount +
-                          TAB + "orderItems = " + orderItems +
-                          TAB + " )";
-        return retValue;
+        return "Order ( " + "id = " + id + TAB +
+               "createDate = " + createDate.getTime() +
+               TAB + "totalAmount = " + totalAmount +
+               TAB + "orderItems = " + orderItems +
+               TAB + " )";
     }
 
 }

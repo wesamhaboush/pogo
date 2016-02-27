@@ -13,13 +13,13 @@ public final class PogoUtils
     private static final String GETTER_PREFIX = "get";
     private static final String GETTER_PREFIX2 = "is";
 
-    public static final char[] NICE_ASCII_CHARACTERS = new char[] { 'a', 'b',
+    private static final char[] NICE_ASCII_CHARACTERS = new char[] { 'a', 'b',
             'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
             'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', 'A', 'B',
             'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O',
             'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1',
             '2', '3', '4', '5', '6', '7', '8', '9', '_'
-                                                                  };
+                                                                   };
 
 
     private PogoUtils()
@@ -96,12 +96,10 @@ public final class PogoUtils
         /* Approve all found attributes */
         Collection<ClassAttribute> attributes = new ArrayList<>( map.values() );
         Iterator<ClassAttribute> iter = attributes.iterator();
-        main :
 
         while( iter.hasNext() )
         {
             ClassAttribute attribute = iter.next();
-            Field field = attribute.getAttribute();
 
             if ( !attributeApprover.approve( attribute ) )
             {
@@ -109,12 +107,12 @@ public final class PogoUtils
             }
         }
 
-        return new ClassInfo( clazz, attributes, extraMethods );
+        return new ClassInfo( clazz, attributes );
     }
 
 
-    public static void fillPojoSets( Class<?> clazz, Set<Field> classFields,
-                                     Set<Method> classGetters, Set<Method> classSetters )
+    private static void fillPojoSets( Class<?> clazz, Set<Field> classFields,
+                                      Set<Method> classGetters, Set<Method> classSetters )
     {
         Class<?> workClass = clazz;
 
@@ -176,7 +174,7 @@ public final class PogoUtils
         return candidateField;
     }
 
-    public static String extractFieldNameFromGetterMethod( Method method )
+    private static String extractFieldNameFromGetterMethod( Method method )
     {
         String candidateField = method.getName();
 
@@ -201,7 +199,7 @@ public final class PogoUtils
         return candidateField;
     }
 
-    public static Field getField( Class<?> pojoClass, String attributeName )
+    private static Field getField( Class<?> pojoClass, String attributeName )
     {
         Field field = null;
         Class<?> clazz = pojoClass;

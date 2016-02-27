@@ -40,7 +40,7 @@ public class WalkThroughSteps
     }
 
 
-    public void theOrderPojoShouldBeCorrectlyFilled( Order pojo )
+    private void theOrderPojoShouldBeCorrectlyFilled( Order pojo )
     {
         Assert.assertNotNull( "The pojo cannot be null!", pojo );
         Assert.assertTrue( "The order id must not be zero!", pojo.getId() != 0 );
@@ -74,7 +74,7 @@ public class WalkThroughSteps
         assertThat( pojo.getDescription() ).isNotNull();
     }
 
-    public void theCountryPojoShouldBeCorrectlyFilled( Country pojo )
+    private void theCountryPojoShouldBeCorrectlyFilled( Country pojo )
     {
         Assert.assertNotNull( "The pojo cannot be null!", pojo );
         String countryCode = pojo.getCountryCode();

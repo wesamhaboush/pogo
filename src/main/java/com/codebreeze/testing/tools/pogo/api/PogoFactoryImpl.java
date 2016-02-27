@@ -73,11 +73,7 @@ public class PogoFactoryImpl implements PogoFactory
             return this.manufacturePojoInternal( pojoClass, pojoMetadata,
                                                  manufacturingCtx, genericTypeArgs );
         }
-        catch ( InstantiationException | IllegalAccessException | ClassNotFoundException e )
-        {
-            throw new PogoMockeryException( e.getMessage(), e );
-        }
-        catch ( InvocationTargetException e )
+        catch ( InstantiationException | IllegalAccessException | ClassNotFoundException | InvocationTargetException e )
         {
             throw new PogoMockeryException( e.getMessage(), e );
         }
@@ -180,9 +176,8 @@ public class PogoFactoryImpl implements PogoFactory
 
         for ( Method candidateConstructor : declaredMethods )
         {
-            if ( !Modifier.isStatic( candidateConstructor.getModifiers() )
-                    || !candidateConstructor.getReturnType().equals( pojoClass )
-                    || retValue != null )
+            if ( !Modifier.isStatic( candidateConstructor.getModifiers() ) ||
+                    !candidateConstructor.getReturnType().equals( pojoClass ) )
             {
                 continue;
             }
@@ -594,7 +589,6 @@ public class PogoFactoryImpl implements PogoFactory
             // Array type
             attributeValue = resolveArrayElementValue( realAttributeType,
                              genericAttributeType, attributeName, manufacturingCtx,
-                             pojo,
                              typeArgsMap );
             // Collection
         }
@@ -647,7 +641,6 @@ public class PogoFactoryImpl implements PogoFactory
             else
             {
                 attributeValue = resortToExternalFactory( manufacturingCtx,
-                                 "Loop in {} production detected. Resorting to {} external factory",
                                  realAttributeType, genericTypeArgsAll );
             }
         }
@@ -656,7 +649,7 @@ public class PogoFactoryImpl implements PogoFactory
     }
 
     private <T> T resortToExternalFactory( ManufacturingContext manufacturingCtx,
-                                           String msg, Class<T> pojoClass,
+                                           Class<T> pojoClass,
                                            Type... genericTypeArgs )
     {
         if ( manufacturingCtx.getConstructorOrdering() == Order.HEAVY_FIRST )
@@ -792,7 +785,7 @@ public class PogoFactoryImpl implements PogoFactory
         Holder<AttributeStrategy<?>> elementStrategyHolder
             = new Holder<>();
         Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
-                              collectionElementType, elementStrategyHolder, null );
+                              collectionElementType );
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
 
         try
@@ -910,8 +903,7 @@ public class PogoFactoryImpl implements PogoFactory
     throws InstantiationException, IllegalAccessException,
         InvocationTargetException, ClassNotFoundException
     {
-        Class<?> pojoClass = map.getClass();
-        Class<?> mapClass = pojoClass;
+        Class<?> mapClass = map.getClass();
         AtomicReference<Type[]> elementGenericTypeArgs = new AtomicReference<>(
             PogoConstants.NO_TYPES );
         Type[] typeParams = mapClass.getTypeParameters();
@@ -983,8 +975,8 @@ public class PogoFactoryImpl implements PogoFactory
         Holder<AttributeStrategy<?>> keyStrategyHolder
             = new Holder<>();
         Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
-                              mapArguments.getElementClass(), elementStrategyHolder,
-                              keyStrategyHolder );
+                              mapArguments.getElementClass()
+                                                                     );
         AttributeStrategy<?> keyStrategy = keyStrategyHolder.value;
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
         Map<? super Object, ? super Object> map = mapArguments.getMapToBeFilled();
@@ -1070,7 +1062,6 @@ public class PogoFactoryImpl implements PogoFactory
 
     private Object resolveArrayElementValue( Class<?> attributeType,
             Type genericType, String attributeName, ManufacturingContext manufacturingCtx,
-            Object pojo,
             Map<String, Type> typeArgsMap ) throws InstantiationException,
         IllegalAccessException, InvocationTargetException,
         ClassNotFoundException
@@ -1115,8 +1106,8 @@ public class PogoFactoryImpl implements PogoFactory
         Holder<AttributeStrategy<?>> elementStrategyHolder
             = new Holder<>();
         Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
-                              attributeType,
-                              elementStrategyHolder, null );
+                              attributeType
+                                                                     );
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
         Object arrayElement;
         Object array = Array.newInstance( componentType, nbrElements );
@@ -1349,7 +1340,6 @@ public class PogoFactoryImpl implements PogoFactory
         else
         {
             return resortToExternalFactory( manufacturingCtx,
-                                            "{} is an abstract class or interface. Resorting to {} external factory",
                                             pojoClass, genericTypeArgs );
         }
     }

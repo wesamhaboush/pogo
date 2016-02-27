@@ -59,13 +59,12 @@ public class BankAccount implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "BankAccount ( " +
-                          "account = " + this.account + TAB +
-                          "bank = " + this.bank + TAB +
-                          "sortCode = " + this.sortCode + TAB +
-                          "balance = " + this.balance + TAB +
-                          " )";
-        return retValue;
+        return "BankAccount ( " +
+               "account = " + this.account + TAB +
+               "bank = " + this.bank + TAB +
+               "sortCode = " + this.sortCode + TAB +
+               "balance = " + this.balance + TAB +
+               " )";
     }
 
 }

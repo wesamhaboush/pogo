@@ -37,11 +37,10 @@ public class EnumsPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "EnumsPojo ( " + "ratePogoInternal = " +
-                          ratePogoInternal + TAB +
-                          "ratePogoExternal = " + ratePogoExternal +
-                          TAB + " )";
-        return retValue;
+        return "EnumsPojo ( " + "ratePogoInternal = " +
+               ratePogoInternal + TAB +
+               "ratePogoExternal = " + ratePogoExternal +
+               TAB + " )";
     }
 
     public enum RatePogoInternal

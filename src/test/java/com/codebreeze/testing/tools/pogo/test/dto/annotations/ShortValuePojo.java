@@ -98,21 +98,20 @@ public class ShortValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "ShortRangeValuesPojo ( " +
-                          "shortFieldWithMinValueOnly = " +
-                          shortFieldWithMinValueOnly + TAB +
-                          "shortFieldWithMaxValueOnly = " +
-                          shortFieldWithMaxValueOnly + TAB +
-                          "shortFieldWithMinAndMaxValue = " +
-                          shortFieldWithMinAndMaxValue + TAB +
-                          "shortObjectFieldWithMinValueOnly = " +
-                          shortObjectFieldWithMinValueOnly + TAB +
-                          "shortObjectFieldWithMaxValueOnly = " +
-                          shortObjectFieldWithMaxValueOnly + TAB +
-                          "shortObjectFieldWithMinAndMaxValue = " +
-                          shortObjectFieldWithMinAndMaxValue + TAB +
-                          "shortFieldWithPreciseValue = " +
-                          shortFieldWithPreciseValue + TAB + " )";
-        return retValue;
+        return "ShortRangeValuesPojo ( " +
+               "shortFieldWithMinValueOnly = " +
+               shortFieldWithMinValueOnly + TAB +
+               "shortFieldWithMaxValueOnly = " +
+               shortFieldWithMaxValueOnly + TAB +
+               "shortFieldWithMinAndMaxValue = " +
+               shortFieldWithMinAndMaxValue + TAB +
+               "shortObjectFieldWithMinValueOnly = " +
+               shortObjectFieldWithMinValueOnly + TAB +
+               "shortObjectFieldWithMaxValueOnly = " +
+               shortObjectFieldWithMaxValueOnly + TAB +
+               "shortObjectFieldWithMinAndMaxValue = " +
+               shortObjectFieldWithMinAndMaxValue + TAB +
+               "shortFieldWithPreciseValue = " +
+               shortFieldWithPreciseValue + TAB + " )";
     }
 }

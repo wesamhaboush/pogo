@@ -7,7 +7,6 @@ import com.codebreeze.testing.tools.pogo.api.TypeProcessor;
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 
-import javax.xml.ws.Holder;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -135,9 +134,7 @@ public final class TypeManufacturerUtil
     }
 
     public static Integer findCollectionSize( DataProviderStrategy strategy,
-            Class<?> collectionElementType,
-            Holder<AttributeStrategy<?>> elementStrategyHolder,
-            Holder<AttributeStrategy<?>> keyStrategyHolder )
+            Class<?> collectionElementType )
     {
         return strategy
                .getNumberOfCollectionElements( collectionElementType );
@@ -145,16 +142,16 @@ public final class TypeManufacturerUtil
 
     public static boolean isWrapper( Class<?> candidateWrapperClass )
     {
-        return candidateWrapperClass.equals( Byte.class ) || ( candidateWrapperClass.equals( Boolean.class ) ? true
-                : candidateWrapperClass.equals( Character.class ) ? true
-                : candidateWrapperClass.equals( Short.class ) ? true
-                : candidateWrapperClass
-                .equals( Integer.class ) ? true
-                : candidateWrapperClass
-                .equals( Long.class ) ? true
-                : candidateWrapperClass
-                .equals( Float.class ) || candidateWrapperClass
-                .equals( Double.class ) );
+        return candidateWrapperClass.equals( Byte.class ) || ( candidateWrapperClass.equals( Boolean.class ) ||
+                ( candidateWrapperClass.equals( Character.class ) ? true
+                  : candidateWrapperClass.equals( Short.class ) ? true
+                  : candidateWrapperClass
+                  .equals( Integer.class ) ? true
+                  : candidateWrapperClass
+                  .equals( Long.class ) ? true
+                  : candidateWrapperClass
+                  .equals( Float.class ) || candidateWrapperClass
+                  .equals( Double.class ) ) );
     }
 
     public static Type[] mergeActualAndSuppliedGenericTypes(

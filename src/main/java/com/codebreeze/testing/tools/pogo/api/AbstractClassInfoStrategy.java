@@ -10,7 +10,7 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     private final Map<Class<?>, List<Method>> extraMethods = new HashMap<>();
 
 
-    public AbstractClassInfoStrategy addExtraMethod(
+    public void addExtraMethod(
         Class<?> pojoClass, String methodName, Class<?> ... methodArgs )
     throws NoSuchMethodException, SecurityException
     {
@@ -24,7 +24,6 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
         }
 
         methods.add( method );
-        return this;
     }
 
     @Override

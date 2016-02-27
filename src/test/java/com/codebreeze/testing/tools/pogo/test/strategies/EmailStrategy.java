@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.test.strategies;
 
 import com.codebreeze.testing.tools.pogo.api.PogoUtils;

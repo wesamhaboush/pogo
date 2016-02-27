@@ -52,13 +52,12 @@ public class FieldInfo
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "FieldInfo ( " +
-                          super.toString() + TAB +
-                          "fieldName = " + this.fieldName + TAB +
-                          "namespace = " + this.namespace + TAB +
-                          "namespacePrefix = " + this.namespacePrefix + TAB +
-                          " )";
-        return retValue;
+        return "FieldInfo ( " +
+               super.toString() + TAB +
+               "fieldName = " + this.fieldName + TAB +
+               "namespace = " + this.namespace + TAB +
+               "namespacePrefix = " + this.namespacePrefix + TAB +
+               " )";
     }
 
 

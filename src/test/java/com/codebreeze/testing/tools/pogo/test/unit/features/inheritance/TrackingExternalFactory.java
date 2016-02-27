@@ -9,7 +9,7 @@ import java.util.List;
 public class TrackingExternalFactory extends AbstractExternalFactory
 {
 
-    final List<Class<?>> failures = new ArrayList<>();
+    private final List<Class<?>> failures = new ArrayList<>();
 
     @Override
     public <T> T manufacturePojo( Class<T> pojoClass, Type... genericTypeArgs )

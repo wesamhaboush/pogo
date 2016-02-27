@@ -57,14 +57,13 @@ public class AttributeMetadata implements Serializable
     @Override
     public String toString()
     {
-        String builder = "AttributeMetadata [attributeName=" +
-                         attributeName +
-                         ", attributeType=" +
-                         attributeType +
-                         ", pojoClass=" +
-                         pojoClass +
-                         "]";
-        return builder;
+        return "AttributeMetadata [attributeName=" +
+               attributeName +
+               ", attributeType=" +
+               attributeType +
+               ", pojoClass=" +
+               pojoClass +
+               "]";
     }
 
 }

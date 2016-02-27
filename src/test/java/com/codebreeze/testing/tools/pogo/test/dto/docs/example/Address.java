@@ -71,13 +71,12 @@ public class Address implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "Address ( " +
-                          "address1 = " + this.address1 + TAB +
-                          "address2 = " + this.address2 + TAB +
-                          "city = " + this.city + TAB +
-                          "zipCode = " + this.zipCode + TAB +
-                          "country = " + this.country + TAB +
-                          " )";
-        return retValue;
+        return "Address ( " +
+               "address1 = " + this.address1 + TAB +
+               "address2 = " + this.address2 + TAB +
+               "city = " + this.city + TAB +
+               "zipCode = " + this.zipCode + TAB +
+               "country = " + this.country + TAB +
+               " )";
     }
 }

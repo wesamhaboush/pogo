@@ -92,10 +92,9 @@ public class SimplePojoToTestSetters implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "SimplePojoToTestSetters ( " + "stringField = " +
-                          stringField + TAB + "intField = " +
-                          intField + TAB + " )";
-        return retValue;
+        return "SimplePojoToTestSetters ( " + "stringField = " +
+               stringField + TAB + "intField = " +
+               intField + TAB + " )";
     }
 
 }

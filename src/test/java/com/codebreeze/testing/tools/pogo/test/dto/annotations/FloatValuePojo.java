@@ -111,16 +111,15 @@ public class FloatValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "FloatRangeValuesPojo ( " +
-                          "floatFieldWithMinValueOnly = " + this.floatFieldWithMinValueOnly + TAB +
-                          "floatFieldWithMaxValueOnly = " + this.floatFieldWithMaxValueOnly + TAB +
-                          "floatFieldWithMinAndMaxValue = " + this.floatFieldWithMinAndMaxValue + TAB +
-                          "floatFieldWithPreciseValue = " + this.floatFieldWithPreciseValue + TAB +
-                          "floatObjectFieldWithMinValueOnly = " + this.floatObjectFieldWithMinValueOnly + TAB +
-                          "floatObjectFieldWithMaxValueOnly = " + this.floatObjectFieldWithMaxValueOnly + TAB +
-                          "floatObjectFieldWithMinAndMaxValue = " + this.floatObjectFieldWithMinAndMaxValue + TAB +
-                          "floatObjectFieldWithPreciseValue = " + this.floatObjectFieldWithPreciseValue + TAB +
-                          " )";
-        return retValue;
+        return "FloatRangeValuesPojo ( " +
+               "floatFieldWithMinValueOnly = " + this.floatFieldWithMinValueOnly + TAB +
+               "floatFieldWithMaxValueOnly = " + this.floatFieldWithMaxValueOnly + TAB +
+               "floatFieldWithMinAndMaxValue = " + this.floatFieldWithMinAndMaxValue + TAB +
+               "floatFieldWithPreciseValue = " + this.floatFieldWithPreciseValue + TAB +
+               "floatObjectFieldWithMinValueOnly = " + this.floatObjectFieldWithMinValueOnly + TAB +
+               "floatObjectFieldWithMaxValueOnly = " + this.floatObjectFieldWithMaxValueOnly + TAB +
+               "floatObjectFieldWithMinAndMaxValue = " + this.floatObjectFieldWithMinAndMaxValue + TAB +
+               "floatObjectFieldWithPreciseValue = " + this.floatObjectFieldWithPreciseValue + TAB +
+               " )";
     }
 }

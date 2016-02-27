@@ -60,18 +60,17 @@ public class MapArguments extends AbstractMapArguments implements Serializable
     @Override
     public String toString()
     {
-        String builder = "MapArguments [toString()=" +
-                         super.toString() +
-                         ", keyClass=" +
-                         keyClass +
-                         ", elementClass=" +
-                         elementClass +
-                         ", keyGenericTypeArgs=" +
-                         Arrays.toString( keyGenericTypeArgs ) +
-                         ", elementGenericTypeArgs=" +
-                         Arrays.toString( elementGenericTypeArgs ) +
-                         "]";
-        return builder;
+        return "MapArguments [toString()=" +
+               super.toString() +
+               ", keyClass=" +
+               keyClass +
+               ", elementClass=" +
+               elementClass +
+               ", keyGenericTypeArgs=" +
+               Arrays.toString( keyGenericTypeArgs ) +
+               ", elementGenericTypeArgs=" +
+               Arrays.toString( elementGenericTypeArgs ) +
+               "]";
     }
 
 }

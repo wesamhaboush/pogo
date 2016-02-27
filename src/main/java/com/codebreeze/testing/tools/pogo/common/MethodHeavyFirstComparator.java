@@ -14,7 +14,7 @@ public class MethodHeavyFirstComparator implements Comparator<Method>
     {
     }
 
-    public int methodComplexity( Method method )
+    private int methodComplexity( Method method )
     {
         int complexity = 0;
 

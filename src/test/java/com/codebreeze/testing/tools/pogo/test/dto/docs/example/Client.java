@@ -87,14 +87,13 @@ public class Client implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "Client ( " + "firstName = " + firstName +
-                          TAB + "lastName = " + lastName + TAB +
-                          "dateCreated = " + dateCreated.getTime() +
-                          TAB + "orders = " + orders + TAB +
-                          "addresses = " + addresses + TAB +
-                          "bankAccounts = " + bankAccounts + TAB +
-                          " )";
-        return retValue;
+        return "Client ( " + "firstName = " + firstName +
+               TAB + "lastName = " + lastName + TAB +
+               "dateCreated = " + dateCreated.getTime() +
+               TAB + "orders = " + orders + TAB +
+               "addresses = " + addresses + TAB +
+               "bankAccounts = " + bankAccounts + TAB +
+               " )";
     }
 
 }

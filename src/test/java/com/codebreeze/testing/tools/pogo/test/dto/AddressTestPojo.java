@@ -188,14 +188,13 @@ public class AddressTestPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "AddressTestPojo ( " + TAB + "address1 = " +
-                          address1 + TAB + "address2 = " +
-                          address2 + TAB + "address3 = " +
-                          address3 + TAB + "city = " + city +
-                          TAB + "province = " + province + TAB +
-                          "zipCode = " + zipCode + TAB +
-                          "country = " + country + TAB + " )";
-        return retValue;
+        return "AddressTestPojo ( " + TAB + "address1 = " +
+               address1 + TAB + "address2 = " +
+               address2 + TAB + "address3 = " +
+               address3 + TAB + "city = " + city +
+               TAB + "province = " + province + TAB +
+               "zipCode = " + zipCode + TAB +
+               "country = " + country + TAB + " )";
     }
 
 }

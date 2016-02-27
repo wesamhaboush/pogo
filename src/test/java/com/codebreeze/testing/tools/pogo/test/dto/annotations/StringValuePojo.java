@@ -34,10 +34,9 @@ public class StringValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "StringValuesPojo ( " + "twentyLengthString = " +
-                          twentyLengthString + TAB +
-                          "preciseValueString = " + preciseValueString +
-                          TAB + " )";
-        return retValue;
+        return "StringValuesPojo ( " + "twentyLengthString = " +
+               twentyLengthString + TAB +
+               "preciseValueString = " + preciseValueString +
+               TAB + " )";
     }
 }

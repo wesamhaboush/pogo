@@ -83,24 +83,18 @@ public class ClassAttribute implements Serializable
             return false;
         }
 
-        if ( !setters.equals( other.getSetters() ) )
-        {
-            return false;
-        }
-
-        return getters.equals( other.getGetters() );
+        return setters.equals( other.getSetters() ) && getters.equals( other.getGetters() );
     }
 
     @Override
     public String toString()
     {
-        String builder = String.valueOf( attribute ) +
-                         "={ getters: {" +
-                         getters +
-                         "}, { setters: {" +
-                         setters +
-                         "}}";
-        return builder;
+        return String.valueOf( attribute ) +
+               "={ getters: {" +
+               getters +
+               "}, { setters: {" +
+               setters +
+               "}}";
     }
 
 }

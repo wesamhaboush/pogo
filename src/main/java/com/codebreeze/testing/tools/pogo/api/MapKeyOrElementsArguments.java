@@ -51,15 +51,14 @@ public class MapKeyOrElementsArguments extends AbstractMapArguments implements
     @Override
     public String toString()
     {
-        String builder = "MapKeyOrElementsArguments [toString()=" +
-                         super.toString() +
-                         ", keyOrValueType=" +
-                         keyOrValueType +
-                         ", elementStrategy=" +
-                         elementStrategy +
-                         ", genericTypeArgs=" +
-                         Arrays.toString( genericTypeArgs ) +
-                         "]";
-        return builder;
+        return "MapKeyOrElementsArguments [toString()=" +
+               super.toString() +
+               ", keyOrValueType=" +
+               keyOrValueType +
+               ", elementStrategy=" +
+               elementStrategy +
+               ", genericTypeArgs=" +
+               Arrays.toString( genericTypeArgs ) +
+               "]";
     }
 }

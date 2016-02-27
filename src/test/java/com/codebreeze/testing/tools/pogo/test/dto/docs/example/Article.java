@@ -43,11 +43,10 @@ public class Article implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "Article ( " + "id = " + id + TAB +
-                          "description = " + description + TAB +
-                          "itemCost = " + itemCost + TAB +
-                          " )";
-        return retValue;
+        return "Article ( " + "id = " + id + TAB +
+               "description = " + description + TAB +
+               "itemCost = " + itemCost + TAB +
+               " )";
     }
 
 }

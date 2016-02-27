@@ -65,9 +65,8 @@ public class ExtraMethodsPojo implements Serializable
     @Override
     public String toString()
     {
-        String sb = "ExtraMethodsPojo{" + "serialVersionUID=" + serialVersionUID +
-                    ", myHolder=" + myHolder +
-                    '}';
-        return sb;
+        return "ExtraMethodsPojo{" + "serialVersionUID=" + serialVersionUID +
+               ", myHolder=" + myHolder +
+               '}';
     }
 }

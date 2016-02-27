@@ -17,10 +17,4 @@ public final class DefaultClassInfoStrategy extends
     {
         return SINGLETON;
     }
-
-    public static DefaultClassInfoStrategy getInstance(
-        int nbrCollectionElements )
-    {
-        return SINGLETON;
-    }
 }

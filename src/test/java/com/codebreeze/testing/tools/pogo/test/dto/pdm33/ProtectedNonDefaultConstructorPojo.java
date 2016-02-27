@@ -41,9 +41,8 @@ public class ProtectedNonDefaultConstructorPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "ProtectedNonDefaultConstructorPojo ( " + "firstName = " +
-                          firstName + TAB + "intField = " + intField + TAB +
-                          " )";
-        return retValue;
+        return "ProtectedNonDefaultConstructorPojo ( " + "firstName = " +
+               firstName + TAB + "intField = " + intField + TAB +
+               " )";
     }
 }

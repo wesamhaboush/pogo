@@ -20,8 +20,7 @@ public class XmlTypesExternalFactory extends AbstractExternalFactory
             if ( pojoClass.isAssignableFrom( XMLGregorianCalendar.class ) )
             {
                 DatatypeFactory factory = DatatypeFactory.newInstance();
-                T calendar = ( T ) factory.newXMLGregorianCalendar( new GregorianCalendar() );
-                return calendar;
+                return ( T ) factory.newXMLGregorianCalendar( new GregorianCalendar() );
             }
             else if ( pojoClass.isAssignableFrom( Duration.class ) )
             {

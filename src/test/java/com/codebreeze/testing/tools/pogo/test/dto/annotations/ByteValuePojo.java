@@ -98,21 +98,20 @@ public class ByteValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "ByteRangeValuesPojo ( " +
-                          "byteFieldWithMinValueOnly = " +
-                          byteFieldWithMinValueOnly + TAB +
-                          "byteFieldWithMaxValueOnly = " +
-                          byteFieldWithMaxValueOnly + TAB +
-                          "byteFieldWithMinAndMaxValue = " +
-                          byteFieldWithMinAndMaxValue + TAB +
-                          "byteObjectFieldWithMinValueOnly = " +
-                          byteObjectFieldWithMinValueOnly + TAB +
-                          "byteObjectFieldWithMaxValueOnly = " +
-                          byteObjectFieldWithMaxValueOnly + TAB +
-                          "byteObjectFieldWithMinAndMaxValue = " +
-                          byteObjectFieldWithMinAndMaxValue + TAB +
-                          "byteFieldWithPreciseValue = " +
-                          byteFieldWithPreciseValue + TAB + " )";
-        return retValue;
+        return "ByteRangeValuesPojo ( " +
+               "byteFieldWithMinValueOnly = " +
+               byteFieldWithMinValueOnly + TAB +
+               "byteFieldWithMaxValueOnly = " +
+               byteFieldWithMaxValueOnly + TAB +
+               "byteFieldWithMinAndMaxValue = " +
+               byteFieldWithMinAndMaxValue + TAB +
+               "byteObjectFieldWithMinValueOnly = " +
+               byteObjectFieldWithMinValueOnly + TAB +
+               "byteObjectFieldWithMaxValueOnly = " +
+               byteObjectFieldWithMaxValueOnly + TAB +
+               "byteObjectFieldWithMinAndMaxValue = " +
+               byteObjectFieldWithMinAndMaxValue + TAB +
+               "byteFieldWithPreciseValue = " +
+               byteFieldWithPreciseValue + TAB + " )";
     }
 }

@@ -31,7 +31,7 @@ public class ConstructorHeavyFirstComparator implements Comparator<Constructor<?
                - constructorComplexity( constructor2 );
     }
 
-    public int constructorComplexity( Constructor<?> constructor )
+    private int constructorComplexity( Constructor<?> constructor )
     {
         int complexity = 0;
 

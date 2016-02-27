@@ -14,7 +14,7 @@ public class BooleanUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleBooleansCorrect() throws Exception
     {
-        final PogoFactory pogoFactory = new PogoFactoryImpl();;
+        final PogoFactory pogoFactory = new PogoFactoryImpl();
         final BooleanPojo pojo = pogoFactory.manufacturePojo( BooleanPojo.class );
         //then
         assertThat( pojo ).isNotNull();

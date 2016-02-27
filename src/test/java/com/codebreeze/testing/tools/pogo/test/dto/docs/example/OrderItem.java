@@ -59,11 +59,10 @@ public class OrderItem implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "OrderItem ( " + "id = " + id + TAB +
-                          "note = " + note + TAB +
-                          "lineAmount = " + lineAmount + TAB +
-                          "article = " + article + TAB + " )";
-        return retValue;
+        return "OrderItem ( " + "id = " + id + TAB +
+               "note = " + note + TAB +
+               "lineAmount = " + lineAmount + TAB +
+               "article = " + article + TAB + " )";
     }
 
 }

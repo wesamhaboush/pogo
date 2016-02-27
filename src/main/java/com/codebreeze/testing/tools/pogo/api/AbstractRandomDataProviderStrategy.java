@@ -16,7 +16,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
 
     private static final Random RANDOM = new Random( System.currentTimeMillis() );
 
-    public static final int MAX_DEPTH = 1;
+    private static final int MAX_DEPTH = 1;
 
     private int nbrOfCollectionElements;
 
@@ -43,7 +43,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         this( PogoConstants.DEFAULT_NBR_COLLECTION_ELEMENTS );
     }
 
-    public AbstractRandomDataProviderStrategy( int nbrOfCollectionElements )
+    private AbstractRandomDataProviderStrategy( int nbrOfCollectionElements )
     {
         this.nbrOfCollectionElements = nbrOfCollectionElements;
     }
@@ -63,23 +63,9 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     }
 
     @Override
-    public Byte getByteInRange( byte minValue, byte maxValue,
-                                AttributeMetadata attributeMetadata )
-    {
-        return ( byte ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
-    }
-
-    @Override
     public Character getCharacter( AttributeMetadata attributeMetadata )
     {
         return PogoUtils.getNiceCharacter();
-    }
-
-    @Override
-    public Character getCharacterInRange( char minValue, char maxValue,
-                                          AttributeMetadata attributeMetadata )
-    {
-        return ( char ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
     }
 
     @Override
@@ -88,53 +74,11 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         return RANDOM.nextDouble();
     }
 
-    @Override
-    public Double getDoubleInRange( double minValue, double maxValue,
-                                    AttributeMetadata attributeMetadata )
-    {
-        // This can happen. It's a way to specify a precise value
-        if ( minValue == maxValue )
-        {
-            return minValue;
-        }
-
-        double retValue;
-
-        do
-        {
-            retValue = minValue + Math.random() * ( maxValue - minValue + 1 );
-        }
-        while ( retValue > maxValue );
-
-        return retValue;
-    }
 
     @Override
     public Float getFloat( AttributeMetadata attributeMetadata )
     {
         return RANDOM.nextFloat();
-    }
-
-    @Override
-    public Float getFloatInRange( float minValue, float maxValue,
-                                  AttributeMetadata attributeMetadata )
-    {
-        // This can happen. It's a way to specify a precise value
-        if ( minValue == maxValue )
-        {
-            return minValue;
-        }
-
-        float retValue;
-
-        do
-        {
-            retValue = ( float ) ( minValue
-                                   + Math.random() * ( maxValue - minValue + 1 ) );
-        }
-        while ( retValue > maxValue );
-
-        return retValue;
     }
 
     @Override
@@ -164,12 +108,6 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         return System.nanoTime();
     }
 
-    @Override
-    public Long getLongInRange( long minValue, long maxValue,
-                                AttributeMetadata attributeMetadata )
-    {
-        return PogoUtils.getLongInRange( minValue, maxValue );
-    }
 
     @Override
     public Short getShort( AttributeMetadata attributeMetadata )
@@ -184,14 +122,6 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
 
         return retValue;
     }
-
-    @Override
-    public Short getShortInRange( short minValue, short maxValue,
-                                  AttributeMetadata attributeMetadata )
-    {
-        return ( short ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
-    }
-
 
     @Override
     public String getStringValue( AttributeMetadata attributeMetadata )
@@ -230,14 +160,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     public int getMaxDepth( Class<?> type )
     {
         /* The max stack trace depth. */
-        int maxDepth = MAX_DEPTH;
-        return maxDepth;
-    }
-
-    @Override
-    public boolean isMemoizationEnabled()
-    {
-        return isMemoizationEnabled;
+        return MAX_DEPTH;
     }
 
     @Override
@@ -296,12 +219,6 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     }
 
     @Override
-    public void clearMemoizationCache()
-    {
-        memoizationTable.clear();
-    }
-
-    @Override
     public void sort( Constructor<?>[] constructors, Order order )
     {
         Comparator<Constructor<?>> constructorComparator;
@@ -340,19 +257,10 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     }
 
     @Override
-    public <T> DataProviderStrategy addOrReplaceSpecific(
+    public <T> void addOrReplaceSpecific(
         final Class<T> abstractClass, final Class<? extends T> specificClass )
     {
         specificTypes.put( abstractClass, specificClass );
-        return this;
-    }
-
-    @Override
-    public <T> DataProviderStrategy removeSpecific(
-        final Class<T> abstractClass )
-    {
-        specificTypes.remove( abstractClass );
-        return this;
     }
 
     @Override

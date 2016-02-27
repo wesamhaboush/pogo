@@ -11,13 +11,6 @@ public class DoubleTypeManufacturerImpl extends AbstractTypeManufacturer
     {
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
-        Double retValue = null;
-
-        if ( retValue == null )
-        {
-            retValue = strategy.getDouble( wrapper.getAttributeMetadata() );
-        }
-
-        return retValue;
+        return strategy.getDouble( wrapper.getAttributeMetadata() );
     }
 }

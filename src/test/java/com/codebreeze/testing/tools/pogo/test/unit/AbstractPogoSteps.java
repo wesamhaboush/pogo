@@ -5,22 +5,23 @@ import com.codebreeze.testing.tools.pogo.test.unit.steps.*;
 public abstract class AbstractPogoSteps
 {
 
-    protected PogoFactorySteps PogoFactorySteps = new PogoFactorySteps();
+    protected final PogoFactorySteps PogoFactorySteps = new PogoFactorySteps();
 
-    protected PogoInvocationSteps PogoInvocationSteps = new PogoInvocationSteps();
+    protected final PogoInvocationSteps PogoInvocationSteps = new PogoInvocationSteps();
 
-    protected PogoValidationSteps PogoValidationSteps = new PogoValidationSteps();
+    protected final PogoValidationSteps PogoValidationSteps = new PogoValidationSteps();
 
-    protected OneDimentionalPojoValidationSteps oneDimentionalPojoValidationSteps = new OneDimentionalPojoValidationSteps();
+    protected final OneDimentionalPojoValidationSteps oneDimentionalPojoValidationSteps = new
+    OneDimentionalPojoValidationSteps();
 
-    protected PogoStrategySteps PogoStrategySteps = new PogoStrategySteps();
+    protected final PogoStrategySteps PogoStrategySteps = new PogoStrategySteps();
 
-    protected RecursivePojoValidationSteps recursivePojoValidationSteps = new RecursivePojoValidationSteps();
+    protected final RecursivePojoValidationSteps recursivePojoValidationSteps = new RecursivePojoValidationSteps();
 
-    protected ConstructorSelfReferenceValidationSteps constructorSelfReferenceValidationSteps = new
+    protected final ConstructorSelfReferenceValidationSteps constructorSelfReferenceValidationSteps = new
     ConstructorSelfReferenceValidationSteps();
 
-    protected ClassInfoValidationSteps classInfoValidationSteps = new ClassInfoValidationSteps();
+    protected final ClassInfoValidationSteps classInfoValidationSteps = new ClassInfoValidationSteps();
 
-    protected WalkThroughSteps walkThroughSteps = new WalkThroughSteps();
+    protected final WalkThroughSteps walkThroughSteps = new WalkThroughSteps();
 }

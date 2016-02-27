@@ -113,16 +113,15 @@ public class DoubleValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "DoubleRangeValuesPojo ( " +
-                          "doubleFieldWithMinValueOnly = " + this.doubleFieldWithMinValueOnly + TAB +
-                          "doubleFieldWithMaxValueOnly = " + this.doubleFieldWithMaxValueOnly + TAB +
-                          "doubleFieldWithMinAndMaxValue = " + this.doubleFieldWithMinAndMaxValue + TAB +
-                          "doubleFieldWithPreciseValue = " + this.doubleFieldWithPreciseValue + TAB +
-                          "doubleObjectFieldWithMinValueOnly = " + this.doubleObjectFieldWithMinValueOnly + TAB +
-                          "doubleObjectFieldWithMaxValueOnly = " + this.doubleObjectFieldWithMaxValueOnly + TAB +
-                          "doubleObjectFieldWithMinAndMaxValue = " + this.doubleObjectFieldWithMinAndMaxValue + TAB +
-                          "doubleObjectFieldWithPreciseValue = " + this.doubleObjectFieldWithPreciseValue + TAB +
-                          " )";
-        return retValue;
+        return "DoubleRangeValuesPojo ( " +
+               "doubleFieldWithMinValueOnly = " + this.doubleFieldWithMinValueOnly + TAB +
+               "doubleFieldWithMaxValueOnly = " + this.doubleFieldWithMaxValueOnly + TAB +
+               "doubleFieldWithMinAndMaxValue = " + this.doubleFieldWithMinAndMaxValue + TAB +
+               "doubleFieldWithPreciseValue = " + this.doubleFieldWithPreciseValue + TAB +
+               "doubleObjectFieldWithMinValueOnly = " + this.doubleObjectFieldWithMinValueOnly + TAB +
+               "doubleObjectFieldWithMaxValueOnly = " + this.doubleObjectFieldWithMaxValueOnly + TAB +
+               "doubleObjectFieldWithMinAndMaxValue = " + this.doubleObjectFieldWithMinAndMaxValue + TAB +
+               "doubleObjectFieldWithPreciseValue = " + this.doubleObjectFieldWithPreciseValue + TAB +
+               " )";
     }
 }

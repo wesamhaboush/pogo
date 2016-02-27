@@ -109,16 +109,15 @@ public class CharValuePojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "CharValuePojo ( " +
-                          "charFieldWithMinValueOnly = " + this.charFieldWithMinValueOnly + TAB +
-                          "charFieldWithMaxValueOnly = " + this.charFieldWithMaxValueOnly + TAB +
-                          "charFieldWithMinAndMaxValue = " + this.charFieldWithMinAndMaxValue + TAB +
-                          "charFieldWithBlankInPreciseValue = " + this.charFieldWithBlankInPreciseValue + TAB +
-                          "charObjectFieldWithMinValueOnly = " + this.charObjectFieldWithMinValueOnly + TAB +
-                          "charObjectFieldWithMaxValueOnly = " + this.charObjectFieldWithMaxValueOnly + TAB +
-                          "charObjectFieldWithMinAndMaxValue = " + this.charObjectFieldWithMinAndMaxValue + TAB +
-                          "charFieldWithPreciseValue = " + this.charFieldWithPreciseValue + TAB +
-                          " )";
-        return retValue;
+        return "CharValuePojo ( " +
+               "charFieldWithMinValueOnly = " + this.charFieldWithMinValueOnly + TAB +
+               "charFieldWithMaxValueOnly = " + this.charFieldWithMaxValueOnly + TAB +
+               "charFieldWithMinAndMaxValue = " + this.charFieldWithMinAndMaxValue + TAB +
+               "charFieldWithBlankInPreciseValue = " + this.charFieldWithBlankInPreciseValue + TAB +
+               "charObjectFieldWithMinValueOnly = " + this.charObjectFieldWithMinValueOnly + TAB +
+               "charObjectFieldWithMaxValueOnly = " + this.charObjectFieldWithMaxValueOnly + TAB +
+               "charObjectFieldWithMinAndMaxValue = " + this.charObjectFieldWithMinAndMaxValue + TAB +
+               "charFieldWithPreciseValue = " + this.charFieldWithPreciseValue + TAB +
+               " )";
     }
 }

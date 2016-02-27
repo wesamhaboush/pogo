@@ -29,9 +29,8 @@ public class TypeManufacturerParamsWrapper
     @Override
     public String toString()
     {
-        String sb = "TypeManufacturerParamsWrapper{" + "dataProviderStrategy=" + dataProviderStrategy +
-                    ", attributeMetadata=" + attributeMetadata +
-                    '}';
-        return sb;
+        return "TypeManufacturerParamsWrapper{" + "dataProviderStrategy=" + dataProviderStrategy +
+               ", attributeMetadata=" + attributeMetadata +
+               '}';
     }
 }

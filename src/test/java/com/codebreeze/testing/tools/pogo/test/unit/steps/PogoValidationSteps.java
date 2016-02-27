@@ -7,17 +7,19 @@ import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class PogoValidationSteps
 {
 
-    public boolean theObjectShouldNotBeNull( Object pojo )
+    public void theObjectShouldNotBeNull( Object pojo )
     {
-        return pojo == null;
+        assertThat( pojo ).isNotNull();
     }
 
-    public boolean thePojoShouldContainSomeData( Object pojo )
+    public void thePojoShouldContainSomeData( Object pojo )
     {
-        return pojo.getClass().getDeclaredFields()[0] != null;
+        assertThat( pojo.getClass().getDeclaredFields()[0] ).isNotNull();
     }
 
     public void thePojoShouldBeNull( Object pojo )
@@ -42,10 +44,7 @@ public class PogoValidationSteps
 
     public void eachListElementShouldNotBeNull( List<?> list )
     {
-        for ( Object aList : list )
-        {
-            Assert.assertNotNull( aList );
-        }
+        list.forEach( Assert::assertNotNull );
     }
 
     public void eachMapElementShouldNotBeNull( Map<?, ?> map )
@@ -78,36 +77,9 @@ public class PogoValidationSteps
         Assert.assertTrue( "The long value cannot be zero", value > 0 );
     }
 
-    public void anyFieldWithPogoExcludeAnnotationShouldBeNull( Object someObject )
-    {
-        Assert.assertNull( "The field should be null", someObject );
-    }
-
-    public void theIntFieldShouldBeGreaterOrEqualToZero( int intField )
-    {
-        Assert.assertTrue( "The integer field should be greater or equal to zero", intField >= 0 );
-    }
-
-    public void theIntFieldShouldHaveValueNotGreaterThan( int intField, int maxValue )
-    {
-        Assert.assertTrue( "The int field should have a value <= " + maxValue, intField <= maxValue );
-    }
-
-    public void theIntFieldShouldHaveValueBetween( int minValue, int maxValue, int intField )
-    {
-        Assert.assertTrue( "The integer field value " + intField +
-                           " should be between " + minValue + " and " + maxValue,
-                           intField >= minValue && intField <= maxValue );
-    }
-
     public void theIntegerObjectFieldShouldNotBeNull( Integer integerObjectField )
     {
         Assert.assertNotNull( "The integer object field should not be null", integerObjectField );
-    }
-
-    public void theIntFieldShouldHaveThePreciseValueOf( int intFieldWithPreciseValue, int preciseValue )
-    {
-        Assert.assertTrue( "The int field hasn't got a precise value", intFieldWithPreciseValue == preciseValue );
     }
 
     public void theLongFieldShouldBeGreaterOrEqualToZero( long longFieldValue )
@@ -115,32 +87,9 @@ public class PogoValidationSteps
         Assert.assertTrue( "The long field should be >= 0", longFieldValue >= 0 );
     }
 
-    public void theLongFieldShouldHaveValueNotGreaterThan( long longValue, int maxValue )
-    {
-        Assert.assertTrue( "The long value " + longValue + " should be <= " + maxValue, longValue <= maxValue );
-    }
-
-    public void theLongFieldShouldHaveValueBetween( int minValue, int maxValue, long longValue )
-    {
-        Assert.assertTrue( "The long value should have a value between " +
-                           minValue + " and " + maxValue,
-                           longValue >= minValue && longValue <= maxValue );
-    }
-
     public void theLongObjectFieldShouldNotBeNull( Long longObjectValue )
     {
         Assert.assertNotNull( "The long object value should not be null", longObjectValue );
-    }
-
-    public void theLongFieldShouldHaveThePreciseValueOf( long longValueWithPreciseValue, long preciseValue )
-    {
-        Assert.assertTrue( "The value " + longValueWithPreciseValue + " should be exactly " + preciseValue,
-                           longValueWithPreciseValue == preciseValue );
-    }
-
-    public void theIntFieldShouldHaveValueLessThen( int intField, int maxValue )
-    {
-        Assert.assertTrue( "The int value " + intField + " should be <= " + maxValue, intField <= maxValue );
     }
 
     public void theCalendarFieldShouldBeValid( Calendar calendarField )
@@ -219,37 +168,9 @@ public class PogoValidationSteps
         Assert.assertTrue( "The non generified Map should at least have one element", nonGenerifiedMap.size() > 0 );
     }
 
-    public void theByteValueShouldBeGreaterOrEqualThan( byte byteValue, int minValue )
-    {
-        Assert.assertTrue( "The byte value should be >= " + minValue, byteValue >= minValue );
-    }
-
-    public void theByteValueShouldBeLowerOrEqualThan( byte byteValue, int maxValue )
-    {
-        Assert.assertTrue( "The byte value " + byteValue + " should be <= " + maxValue, byteValue <= maxValue );
-    }
-
-    public void theByteValueShouldBeBetween( byte byteValue, int minValue, int maxValue )
-    {
-        Assert.assertTrue( "The byte value should be between " + minValue + " and " + maxValue,
-                           byteValue >= minValue && byteValue <= maxValue );
-    }
-
-    public void theByteValueShouldHavePreciselyValueOf( byte byteValue, byte preciseValue )
-    {
-        Assert.assertTrue( "The byte value " + byteValue + " should have a precise value of " + preciseValue,
-                           byteValue == preciseValue );
-    }
-
     public void theShortValueShouldBeGreaterOrEqualThan( short shortValue, int minValue )
     {
         Assert.assertTrue( "The value " + shortValue + " should be >= " + minValue, shortValue >= minValue );
-    }
-
-    public void theShortValueShouldBeLowerOrEqualThan( short shortValue, int maxValue )
-    {
-        Assert.assertTrue( "The short value " + shortValue + "should be <= " + maxValue,
-                           shortValue <= maxValue );
     }
 
     public void theShortValueShouldBeBetween( short shortValue, int minValue, int maxValue )
@@ -258,50 +179,10 @@ public class PogoValidationSteps
                            shortValue >= minValue && shortValue <= maxValue );
     }
 
-    public void theShortPreciseValueShouldBe( short shortFieldWithPreciseValue, short preciseValue )
-    {
-        Assert.assertTrue( "The short value " + shortFieldWithPreciseValue + " should be precisely " + preciseValue,
-                           shortFieldWithPreciseValue == preciseValue );
-    }
-
     public void theCharValueShouldBeGreaterOrEqualThan( char charValue, char minValue )
     {
         Assert.assertTrue( "The char value " + charValue + " should be >= " + minValue,
                            charValue >= minValue );
-    }
-
-    public void theCharValueShouldBeLowerOrEqualThan( char charValue, int maxValue )
-    {
-        Assert.assertTrue( "The char value " + charValue + " should be <= " + maxValue,
-                           charValue <= maxValue );
-    }
-
-    public void theCharValueShouldBeBetween( char charValue, int minValue, int maxValue )
-    {
-        Assert.assertTrue( "The char value should be between " + minValue + " and " + maxValue,
-                           charValue >= minValue && charValue <= maxValue );
-    }
-
-    public void theCharValueShouldBeExactly( char charValue, char preciseValue )
-    {
-        Assert.assertTrue( "The char value should be exactly " + preciseValue,
-                           charValue == preciseValue );
-    }
-
-    public void theBooleanValueIsTrue( boolean boolValue )
-    {
-        Assert.assertTrue( "The boolean value should be true", boolValue );
-    }
-
-    public void theBooleanValueShouldBeFalse( boolean boolValue )
-    {
-        Assert.assertFalse( "The boolean value should be false", boolValue );
-    }
-
-    public void theFloatValueShouldBeGreaterOrEqualThan( float floatValue, float minValue )
-    {
-        Assert.assertTrue( "The Float value should be <= " + minValue,
-                           floatValue <= minValue );
     }
 
     public void theFloatValueShouldBeLowerOrEqualThan( float floatValue, float maxValue )
@@ -314,12 +195,6 @@ public class PogoValidationSteps
     {
         Assert.assertTrue( "The float value should be between " + minValue + " and " + maxValue,
                            floatValue >= minValue && floatValue <= maxValue );
-    }
-
-    public void theFloatValueShouldBePrecisely( float floatValue, float preciseValue )
-    {
-        Assert.assertTrue( "The float value should be precisely " + preciseValue,
-                           floatValue == preciseValue );
     }
 
     public void theDoubleValueShouldBeGreaterOrEqualThan( double doubleValue, double minValue )
@@ -338,18 +213,6 @@ public class PogoValidationSteps
     {
         Assert.assertTrue( "The double value should be between " + minValue + " and " + maxValue,
                            doubleValue >= minValue && doubleValue <= maxValue );
-    }
-
-    public void theDoubleValueShouldBeExactly( double doubleValue, double preciseValue )
-    {
-        Assert.assertTrue( "The double value should be exactly " + doubleValue,
-                           doubleValue == preciseValue );
-    }
-
-    public void theStringValueShouldHaveTheExactLengthOf( String stringValue, int stringLength )
-    {
-        Assert.assertTrue( "The length of the string should be " + stringLength,
-                           stringValue.length() == stringLength );
     }
 
     public void theStringValueShouldBeExactly( String stringValue, String annotationPreciseValue )
@@ -393,23 +256,6 @@ public class PogoValidationSteps
         Assert.assertTrue( "The array of bytes should contain at least one element", byteData.length > 0 );
     }
 
-    public void theArrayOfBytesShouldBeExactlyOfLength( byte[] byteData, int length )
-    {
-        Assert.assertTrue( "The array should have length " + length, byteData.length == length );
-    }
-
-    public void theTwoCalendarObjectsShouldHaveTheSameTime( Calendar expectedValue, Calendar actualValue )
-    {
-        Assert.assertTrue( expectedValue.getTime().getTime() == actualValue.getTime().getTime() );
-    }
-
-    public void theArrayOfCalendarsShouldNotBeNullOrEmpty( Calendar[] calendarArray )
-    {
-        Assert.assertNotNull( "The calendar array should not be null", calendarArray );
-        Assert.assertTrue( "The calendar array should have at least one element",
-                           calendarArray.length > 0 );
-    }
-
     public void theArrayOfObjectsShouldNotBeNullOrEmpty( Object[] objectArray )
     {
         Assert.assertNotNull( "The array of objects should not be null", objectArray );
@@ -427,11 +273,6 @@ public class PogoValidationSteps
         {
             Assert.assertEquals( "Wrong element type", elementType, element.getClass() );
         }
-    }
-
-    public void theValueShouldBeNull( Object value )
-    {
-        Assert.assertNull( "The value is not null", value );
     }
 
     public void theTwoObjectsShouldBeEqual( Object expectedObject, Object actualObject )

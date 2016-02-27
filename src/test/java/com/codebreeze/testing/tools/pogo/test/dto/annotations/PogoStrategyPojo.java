@@ -147,19 +147,18 @@ public class PogoStrategyPojo implements Serializable
     public String toString()
     {
         final String TAB = "    ";
-        String retValue = "PogoStrategyPojo ( " + "postCode = " +
-                          postCode + TAB + "postCode2 = " +
-                          postCode2 + TAB + "postCode3 = " +
-                          postCode3 + TAB + "myBirthday = " +
-                          myBirthday + TAB + "myBirthdays = " +
-                          myBirthdays + TAB + "objectList = " +
-                          objectList + TAB + "myBirthdaysMap = " +
-                          myBirthdaysMap + TAB +
-                          "nonGenericObjectList = " + nonGenericObjectList +
-                          TAB + "myBirthdaysArray = " +
-                          myBirthdaysArray + TAB +
-                          "myObjectArray = " + myObjectArray + TAB +
-                          " )";
-        return retValue;
+        return "PogoStrategyPojo ( " + "postCode = " +
+               postCode + TAB + "postCode2 = " +
+               postCode2 + TAB + "postCode3 = " +
+               postCode3 + TAB + "myBirthday = " +
+               myBirthday + TAB + "myBirthdays = " +
+               myBirthdays + TAB + "objectList = " +
+               objectList + TAB + "myBirthdaysMap = " +
+               myBirthdaysMap + TAB +
+               "nonGenericObjectList = " + nonGenericObjectList +
+               TAB + "myBirthdaysArray = " +
+               myBirthdaysArray + TAB +
+               "myObjectArray = " + myObjectArray + TAB +
+               " )";
     }
 }
