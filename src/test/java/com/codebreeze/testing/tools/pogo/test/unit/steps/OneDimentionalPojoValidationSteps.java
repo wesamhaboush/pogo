@@ -3,7 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.unit.steps;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalTestPojo;
 import org.junit.Assert;
-import com.codebreeze.testing.tools.pogo.test.utils.TypesUtils;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
@@ -56,7 +55,8 @@ public class OneDimentionalPojoValidationSteps
         Object objectField = pojo.getObjectField();
         Assert.assertNotNull( "The Object field cannot be null", objectField );
         Calendar calendarField = pojo.getCalendarField();
-        TypesUtils.checkCalendarIsValid( calendarField );
+        assertThat( calendarField ).isNotNull();
+        assertThat( calendarField.getTime() ).isNotNull();
         Date dateField = pojo.getDateField();
         Assert.assertNotNull( "The date field is not valid", dateField );
         Random[] randomArray = pojo.getRandomArray();

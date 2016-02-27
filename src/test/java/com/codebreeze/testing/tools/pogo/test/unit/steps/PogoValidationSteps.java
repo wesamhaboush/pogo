@@ -1,6 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.unit.steps;
 
-import com.codebreeze.testing.tools.pogo.test.utils.TypesUtils;
 import org.junit.Assert;
 
 import java.util.*;
@@ -94,7 +93,8 @@ public class PogoValidationSteps
 
     public void theCalendarFieldShouldBeValid( Calendar calendarField )
     {
-        TypesUtils.checkCalendarIsValid( calendarField );
+        assertThat( calendarField ).isNotNull();
+        assertThat( calendarField.getTime() ).isNotNull();
     }
 
     public void theStringFieldCannotBeNullOrEmpty( String strField )
