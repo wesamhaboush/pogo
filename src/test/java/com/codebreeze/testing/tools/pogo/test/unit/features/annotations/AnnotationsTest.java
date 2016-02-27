@@ -48,9 +48,9 @@ public class AnnotationsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleIntegerValues() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        IntegerValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( IntegerValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        IntegerValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( IntegerValuePojo.class, pogoFactory );
+        assertThat( pojo ).isNotNull();
         PogoValidationSteps.theIntegerObjectFieldShouldNotBeNull( pojo.getIntegerObjectFieldWithMinValueOnly() );
         PogoValidationSteps.theIntegerObjectFieldShouldNotBeNull( pojo.getIntegerObjectFieldWithMaxValueOnly() );
         PogoValidationSteps.theIntegerObjectFieldShouldNotBeNull( pojo.getIntegerObjectFieldWithMinAndMaxValue() );
@@ -62,7 +62,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         LongValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( LongValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         PogoValidationSteps.theLongFieldShouldBeGreaterOrEqualToZero( pojo.getLongFieldWithMinValueOnly() );
         PogoValidationSteps.theLongObjectFieldShouldNotBeNull( pojo.getLongObjectFieldWithMinValueOnly() );
         PogoValidationSteps.theLongFieldShouldBeGreaterOrEqualToZero( pojo.getLongObjectFieldWithMinValueOnly() );
@@ -76,7 +76,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         ByteValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ByteValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         byte byteFieldWithMaxValueOnly = pojo.getByteFieldWithMaxValueOnly();
         Byte byteObjectFieldWithMinValueOnly = pojo
                                                .getByteObjectFieldWithMinValueOnly();
@@ -92,7 +92,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         ShortValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ShortValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         short shortFieldWithMinValueOnly = pojo.getShortFieldWithMinValueOnly();
         PogoValidationSteps.theShortValueShouldBeGreaterOrEqualThan(
             shortFieldWithMinValueOnly, PogoTestConstants.NUMBER_INT_MIN_VALUE );
@@ -117,7 +117,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         CharValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( CharValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         char charFieldWithMinValueOnly = pojo.getCharFieldWithMinValueOnly();
         PogoValidationSteps.theCharValueShouldBeGreaterOrEqualThan(
             charFieldWithMinValueOnly, ( char ) PogoTestConstants.NUMBER_INT_MIN_VALUE );
@@ -137,7 +137,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         BooleanValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( BooleanValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         Boolean boolObjectDefaultToTrue = pojo.getBoolObjectDefaultToTrue();
         PogoValidationSteps.theObjectShouldNotBeNull( boolObjectDefaultToTrue );
     }
@@ -148,7 +148,7 @@ public class AnnotationsTest extends AbstractPogoSteps
         PogoFactory PogoFactory = new PogoFactoryImpl();
         FloatValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( FloatValuePojo.class, PogoFactory );
         Assert.assertNotNull( "The pojo cannot be null!", pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         float floatFieldWithMaxValueOnly = pojo.getFloatFieldWithMaxValueOnly();
         PogoValidationSteps.theFloatValueShouldBeLowerOrEqualThan( floatFieldWithMaxValueOnly,
                 PogoTestConstants.NUMBER_FLOAT_ONE_HUNDRED );
@@ -179,7 +179,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         DoubleValuePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( DoubleValuePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         double doubleFieldWithMinValueOnly = pojo
                                              .getDoubleFieldWithMinValueOnly();
         PogoValidationSteps.theDoubleValueShouldBeGreaterOrEqualThan( doubleFieldWithMinValueOnly,
@@ -215,7 +215,7 @@ public class AnnotationsTest extends AbstractPogoSteps
         PogoFactory PogoFactory = new PogoFactoryImpl();
         CollectionAnnotationPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( CollectionAnnotationPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         List<String> strList = pojo.getStrList();
         PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
         PogoValidationSteps.theListShouldHaveExactlyTheExpectedNumberOfElements( strList,
@@ -234,7 +234,7 @@ public class AnnotationsTest extends AbstractPogoSteps
     {
         PogoFactory PogoFactory = new PogoFactoryImpl();
         PogoStrategyPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( PogoStrategyPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        assertThat( pojo ).isNotNull();
         PogoValidationSteps.theArrayOfBytesShouldNotBeNullOrEmpty( pojo.getByteData() );
         List<Calendar> myBirthdays = pojo.getMyBirthdays();
         PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( myBirthdays );
