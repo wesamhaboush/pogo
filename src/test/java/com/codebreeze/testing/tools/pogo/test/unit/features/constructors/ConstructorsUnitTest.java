@@ -13,9 +13,6 @@ import java.util.TimeZone;
 
 public class ConstructorsUnitTest extends AbstractPogoSteps
 {
-
-
-
     @Test
     public void PogoShouldHandleGenericsInConstructor() throws Exception
     {

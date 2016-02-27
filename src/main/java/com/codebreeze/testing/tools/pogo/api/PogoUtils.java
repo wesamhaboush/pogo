@@ -1,6 +1,5 @@
 package com.codebreeze.testing.tools.pogo.api;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
@@ -31,25 +30,12 @@ public final class PogoUtils
     public static ClassInfo getClassInfo( Class<?> clazz,
                                           ClassAttributeApprover attributeApprover )
     {
-        return getClassInfo( clazz,
-                             new HashSet<>(),
-                             Collections.<String>emptySet(),
-                             attributeApprover );
-    }
-
-    public static ClassInfo getClassInfo( Class<?> clazz,
-                                          Set<Class<? extends Annotation>> excludeFieldAnnotations,
-                                          Set<String> excludedFields,
-                                          ClassAttributeApprover attributeApprover )
-    {
-        return getClassInfo( clazz, excludeFieldAnnotations, excludedFields, attributeApprover,
+        return getClassInfo( clazz, attributeApprover,
                              Collections.<Method>emptySet() );
     }
 
 
     public static ClassInfo getClassInfo( Class<?> clazz,
-                                          Set<Class<? extends Annotation>> excludeFieldAnnotations,
-                                          Set<String> excludedFields,
                                           ClassAttributeApprover attributeApprover,
                                           Collection<Method> extraMethods )
     {
@@ -61,7 +47,7 @@ public final class PogoUtils
         Set<Field> classFields = new HashSet<>();
         Set<Method> classGetters = new HashSet<>();
         Set<Method> classSetters = new HashSet<>();
-        fillPojoSets( clazz, classFields, classGetters, classSetters, excludeFieldAnnotations, excludedFields );
+        fillPojoSets( clazz, classFields, classGetters, classSetters );
         Map<String, ClassAttribute> map = new TreeMap<>();
 
         for ( Field classField : classFields )
@@ -115,34 +101,7 @@ public final class PogoUtils
         while( iter.hasNext() )
         {
             ClassAttribute attribute = iter.next();
-
-            for ( Method classGetter : attribute.getRawGetters() )
-            {
-                if ( containsAnyAnnotation( classGetter, excludeFieldAnnotations ) )
-                {
-                    iter.remove();
-                    continue main;
-                }
-            }
-
-            for ( Method classSetter : attribute.getRawSetters() )
-            {
-                if ( containsAnyAnnotation( classSetter, excludeFieldAnnotations ) )
-                {
-                    iter.remove();
-                    continue main;
-                }
-            }
-
             Field field = attribute.getAttribute();
-
-            if ( field != null && (
-                        excludedFields.contains( field.getName() )
-                        || containsAnyAnnotation( field, excludeFieldAnnotations ) ) )
-            {
-                iter.remove();
-                continue;
-            }
 
             if ( !attributeApprover.approve( attribute ) )
             {
@@ -154,44 +113,9 @@ public final class PogoUtils
     }
 
 
-    public static boolean containsAnyAnnotation( Field field,
-            Set<Class<? extends Annotation>> annotations )
-    {
-        for ( Class<? extends Annotation> annotation : annotations )
-        {
-            if ( field.getAnnotation( annotation ) != null )
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
-    private static boolean containsAnyAnnotation( Method method,
-            Set<Class<? extends Annotation>> annotations )
-    {
-        for ( Class<? extends Annotation> annotation : annotations )
-        {
-            if ( method.getAnnotation( annotation ) != null )
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
-
     public static void fillPojoSets( Class<?> clazz, Set<Field> classFields,
-                                     Set<Method> classGetters, Set<Method> classSetters,
-                                     Set<Class<? extends Annotation>> excludeAnnotations,
-                                     Set<String> excludedFields )
+                                     Set<Method> classGetters, Set<Method> classSetters )
     {
-        if ( excludeAnnotations == null )
-        {
-            excludeAnnotations = new HashSet<>();
-        }
-
         Class<?> workClass = clazz;
 
         while ( workClass != null )
@@ -323,25 +247,6 @@ public final class PogoUtils
             System.out.println( e );
         }
 
-        return retValue;
-    }
-
-    public static List<Annotation> getAttributeAnnotations( final Field attribute,
-            final Method setter )
-    {
-        Annotation[] annotations = ( attribute != null ? attribute.getAnnotations() : null );
-        List<Annotation> retValue;
-
-        if ( annotations != null && annotations.length != 0 )
-        {
-            retValue = new ArrayList<>( Arrays.asList( annotations ) );
-        }
-        else
-        {
-            retValue = new ArrayList<>();
-        }
-
-        Collections.addAll( retValue, setter.getParameterAnnotations()[0] );
         return retValue;
     }
 

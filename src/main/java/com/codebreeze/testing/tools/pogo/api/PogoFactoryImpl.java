@@ -8,7 +8,6 @@ import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 import com.codebreeze.testing.tools.pogo.typeManufacturers.TypeManufacturerUtil;
 
 import javax.xml.ws.Holder;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -730,7 +729,6 @@ public class PogoFactoryImpl implements PogoFactory
         InvocationTargetException, ClassNotFoundException
     {
         Class<?> pojoClass = collection.getClass();
-        Annotation[] annotations = collection.getClass().getAnnotations();
         AtomicReference<Type[]> elementGenericTypeArgs = new AtomicReference<>(
             PogoConstants.NO_TYPES );
         Class<?> collectionClass = pojoClass;
@@ -966,7 +964,6 @@ public class PogoFactoryImpl implements PogoFactory
         Type[] elementGenericArgs = TypeManufacturerUtil.mergeTypeArrays( elementGenericTypeArgs.get(),
                                     genericTypeArgs );
         MapArguments mapArguments = new MapArguments();
-        mapArguments.setAnnotations( Arrays.asList( pojoClass.getAnnotations() ) );
         mapArguments.setMapToBeFilled( map );
         mapArguments.setKeyClass( keyClass );
         mapArguments.setElementClass( elementClass );
@@ -1006,7 +1003,6 @@ public class PogoFactoryImpl implements PogoFactory
                 MapKeyOrElementsArguments valueArguments = new MapKeyOrElementsArguments();
                 valueArguments.setAttributeName( mapArguments.getAttributeName() );
                 valueArguments.setMapToBeFilled( mapArguments.getMapToBeFilled() );
-                valueArguments.setAnnotations( mapArguments.getAnnotations() );
                 valueArguments.setKeyOrValueType( mapArguments.getKeyClass() );
                 valueArguments.setElementStrategy( keyStrategy );
                 valueArguments.setGenericTypeArgs( mapArguments
@@ -1172,17 +1168,14 @@ public class PogoFactoryImpl implements PogoFactory
         else
         {
             parameterValues = new Object[parameterTypes.length];
-            Annotation[][] parameterAnnotations = constructor.getParameterAnnotations();
             Type[] genericTypes = constructor.getGenericParameterTypes();
 
             for ( int idx = 0; idx < parameterTypes.length; idx++ )
             {
-                List<Annotation> annotations = Arrays
-                                               .asList( parameterAnnotations[idx] );
                 Type genericType = ( idx < genericTypes.length ) ?
                                    genericTypes[idx] : parameterTypes[idx];
                 parameterValues[idx] = manufactureParameterValue( pojoClass,
-                                       parameterTypes[idx], genericType, annotations,
+                                       parameterTypes[idx], genericType,
                                        typeArgsMap, manufacturingCtx, genericTypeArgs );
             }
         }
@@ -1207,17 +1200,14 @@ public class PogoFactoryImpl implements PogoFactory
         else
         {
             parameterValues = new Object[parameterTypes.length];
-            Annotation[][] parameterAnnotations = method.getParameterAnnotations();
             Type[] genericTypes = method.getGenericParameterTypes();
 
             for ( int idx = 0; idx < parameterTypes.length; idx++ )
             {
-                List<Annotation> annotations = Arrays
-                                               .asList( parameterAnnotations[idx] );
                 Type genericType = ( idx < genericTypes.length ) ?
                                    genericTypes[idx] : parameterTypes[idx];
                 parameterValues[idx] = manufactureParameterValue( pojoClass,
-                                       parameterTypes[idx], genericType, annotations,
+                                       parameterTypes[idx], genericType,
                                        typeArgsMap, manufacturingCtx, genericTypeArgs );
             }
         }
@@ -1226,7 +1216,7 @@ public class PogoFactoryImpl implements PogoFactory
     }
 
     private Object manufactureParameterValue( Class<?> pojoClass, Class<?> parameterType,
-            Type genericType, List<Annotation> annotations,
+            Type genericType,
             final Map<String, Type> typeArgsMap, ManufacturingContext manufacturingCtx,
             Type... genericTypeArgs )
     throws InstantiationException, IllegalAccessException,
@@ -1298,7 +1288,6 @@ public class PogoFactoryImpl implements PogoFactory
                 Type[] genericTypeArgsAll = TypeManufacturerUtil.mergeTypeArrays(
                                                 elementGenericTypeArgs.get(), genericTypeArgs );
                 MapArguments mapArguments = new MapArguments();
-                mapArguments.setAnnotations( annotations );
                 mapArguments.setMapToBeFilled( map );
                 mapArguments.setKeyClass( keyClass );
                 mapArguments.setElementClass( elementClass );

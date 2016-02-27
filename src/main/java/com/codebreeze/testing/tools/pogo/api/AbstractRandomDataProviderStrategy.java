@@ -2,7 +2,6 @@ package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.common.*;
 
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -26,9 +25,6 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     private final ConcurrentMap<Class<?>, ConcurrentMap<Type[], Object>> memoizationTable = new ConcurrentHashMap<>();
 
     private final ConcurrentMap<Class<?>, Class<?>> specificTypes = new ConcurrentHashMap<>();
-
-    private final ConcurrentMap<Class<? extends Annotation>, Class<AttributeStrategy<?>>> attributeStrategies
-        = new ConcurrentHashMap<>();
 
     private Comparator<Constructor<?>> constructorHeavyComparator =
         ConstructorHeavyFirstComparator.INSTANCE;
@@ -372,23 +368,6 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         }
 
         return found;
-    }
-
-    @Override
-    public RandomDataProviderStrategy addOrReplaceAttributeStrategy(
-        final Class<? extends Annotation> annotationClass,
-        final Class<AttributeStrategy<?>> strategyClass )
-    {
-        attributeStrategies.put( annotationClass, strategyClass );
-        return this;
-    }
-
-    @Override
-    public RandomDataProviderStrategy removeAttributeStrategy(
-        final Class<? extends Annotation> annotationClass )
-    {
-        attributeStrategies.remove( annotationClass );
-        return this;
     }
 
     @Override
