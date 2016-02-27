@@ -23,15 +23,12 @@ public class AnnotationsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleImmutablePojosAnnotatedWithPogoConstructor() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableNoHierarchicalAnnotatedPojo pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableNoHierarchicalAnnotatedPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theIntFieldShouldNotBeZero( pojo.getIntField() );
-        PogoValidationSteps.theCalendarFieldShouldNotBeNull( pojo.getDateCreated() );
-        PogoValidationSteps.theDateObjectShouldNotBeNull( pojo.getDateCreated().getTime() );
-        PogoValidationSteps.theLongArrayShouldNotBeNullOrEmpty( pojo.getLongArray() );
-        PogoValidationSteps.theLongValueShouldNotBeZero( pojo.getLongArray()[0] );
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        ImmutableNoHierarchicalAnnotatedPojo pojo = pogoFactory.manufacturePojo( ImmutableNoHierarchicalAnnotatedPojo.class );
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getDateCreated() ).isNotNull();
+        assertThat( pojo.getDateCreated().getTime() ).isNotNull();
+        assertThat( pojo.getLongArray() ).isNotNull().isNotEmpty();
     }
 
     @Test
