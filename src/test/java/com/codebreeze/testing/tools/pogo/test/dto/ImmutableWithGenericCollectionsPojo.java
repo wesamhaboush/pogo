@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
@@ -25,11 +22,10 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
     private final Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet;
 
 
-    @PogoConstructor
     public ImmutableWithGenericCollectionsPojo(
-        @PogoCollection( nbrElements = NBR_ELEMENTS ) Collection<OneDimensionalTestPojo> generifiedCollection,
-        @PogoCollection( nbrElements = NBR_ELEMENTS ) Map<String, Calendar> generifiedMap,
-        @PogoCollection( nbrElements = NBR_ELEMENTS ) Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet )
+        Collection<OneDimensionalTestPojo> generifiedCollection,
+        Map<String, Calendar> generifiedMap,
+        Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet )
     {
         super();
         this.generifiedCollection = generifiedCollection;

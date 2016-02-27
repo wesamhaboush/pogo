@@ -1,8 +1,6 @@
 
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-
 import java.io.Serializable;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -19,7 +17,6 @@ public class ImmutableNoHierarchicalAnnotatedPojo implements Serializable
     private final long[] longArray;
 
 
-    @PogoConstructor
     public ImmutableNoHierarchicalAnnotatedPojo( int intField, Calendar dateCreated,
             long[] longArray )
     {

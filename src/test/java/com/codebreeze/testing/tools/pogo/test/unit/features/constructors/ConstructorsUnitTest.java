@@ -1,9 +1,10 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.constructors;
 
-import com.codebreeze.testing.tools.pogo.test.dto.*;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
+import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
 import javax.xml.bind.JAXBElement;
 import java.util.Date;
@@ -18,7 +19,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleGenericsInConstructor() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         GenericInConstructorPojo pojo
             = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -27,7 +28,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleGenericsInSettersDuringPojoInstantiation() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         GenericInSetterPojo pojo
             = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInSetterPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -37,7 +38,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleGenericsInStaticConstructorsDuringPojoInstantiation() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         GenericInStaticConstructorPojo pojo
             = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInStaticConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -47,7 +48,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleConstructorsWithGenericArraysDuringPojoInstantiation()
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         GenericArrayInConstructorPojo<?> pojo
             = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                   GenericArrayInConstructorPojo.class, PogoFactory, String.class );
@@ -59,7 +60,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleConstructorsWithMultipleGenericsDuringPojoInstantiation()
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         MultipleGenericInConstructorPojo<?, ?, ?, ?> pojo
             = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType( MultipleGenericInConstructorPojo.class,
                     PogoFactory, String.class, Character.class, Byte.class, Integer.class );
@@ -73,7 +74,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleClassesWithKeyValueGenericTypes() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         DefaultFieldPojo<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                           DefaultFieldPojo.class, PogoFactory, String.class, Long.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -86,7 +87,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToManufactureInstancesOfTheObservableClass() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         Observable observable = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Observable.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( observable );
     }
@@ -94,7 +95,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToManufacturePojosWhichContainImmutableCollections() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutableDefaultFieldsPojo model =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableDefaultFieldsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( model );
@@ -109,7 +110,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToManufactureAnyTypeOfCollections() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         UnsupportedCollectionInConstructorPojo<?> pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                 UnsupportedCollectionInConstructorPojo.class, PogoFactory, String.class );
@@ -120,7 +121,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToManufactureAnyTypeOfMaps() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         UnsupportedMapInConstructorPojo<?, ?> pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                 UnsupportedMapInConstructorPojo.class, PogoFactory, String.class, Integer.class );
@@ -132,7 +133,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToInstantiatePojosWithImmutableCollections() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutableVector<?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                       ImmutableVector.class, PogoFactory, String.class );
         PogoValidationSteps.theCollectionShouldBeEmpty( pojo );
@@ -141,7 +142,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToInstantiatePojosWithImmutableMaps() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutableHashtable<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                             ImmutableHashtable.class, PogoFactory, String.class, Integer.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -151,7 +152,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldInstantiateAbstractClassesForWhichItKnowsConcreteTypes() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         TimeZone pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( TimeZone.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
@@ -159,7 +160,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldCreateInstancesOfGenericPojosWithFactoryMethodsWhenTheConcreteTypeIsKnown() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         FactoryInstantiablePojo<?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                               FactoryInstantiablePojo.class, PogoFactory, Date.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -172,7 +173,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldChooseTheFullestConstructorWhenInvokedForFullData() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutablePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClassWithFullConstructor(
                                  ImmutablePojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -183,7 +184,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void testImmutablePojoConstructionFailure() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutablePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutablePojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         PogoValidationSteps.theObjectShouldBeNull( pojo.getValue() );
@@ -193,7 +194,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldCreateInstancesOfInnerClasses() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         InnerClassPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( InnerClassPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo.getIp() );
@@ -203,7 +204,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldCreateInstancesOfJAXBElements() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         JAXBElement<String> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                        JAXBElement.class, PogoFactory, String.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -215,7 +216,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldCreateInstancesOfJAXBElementsDeclaredAsInstanceVariablesInAPojo() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         JAXBElementPojo<String> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                            JAXBElementPojo.class, PogoFactory, String.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -228,7 +229,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldManufacturePackagePrivatePojos() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PackagePrivatePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                                       PackagePrivatePojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -239,7 +240,7 @@ public class ConstructorsUnitTest extends AbstractPogoSteps
     @Test
     public void PogoShouldCreateInstancesOfPojosExtendingGenericClasses() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         TypedClassPojo2 pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( TypedClassPojo2.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo.getTypedValue() );

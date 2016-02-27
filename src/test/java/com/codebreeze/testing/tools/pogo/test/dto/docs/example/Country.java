@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
-
 import java.io.Serializable;
 
 public class Country implements Serializable
@@ -16,9 +13,8 @@ public class Country implements Serializable
 
     private final String description;
 
-    @PogoConstructor( comment = "Immutable-like POJOs must be annotated with @PogoConstructor" )
     public Country( int countryId,
-                    @PogoStringValue( length = 2 ) String countryCode, String description )
+                    String countryCode, String description )
     {
         super();
         this.countryId = countryId;

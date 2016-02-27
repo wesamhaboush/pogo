@@ -1,10 +1,11 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.singletons;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalTestPojo;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.dto.SingletonWithParametersInStaticFactoryPojo;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
 import java.util.List;
 import java.util.Map;
@@ -16,7 +17,7 @@ public class SingletonsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleSingletonsWithParametersInPublicStaticMethod() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         SingletonWithParametersInStaticFactoryPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( SingletonWithParametersInStaticFactoryPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );

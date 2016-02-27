@@ -1,6 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
 import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
 
 import java.io.Serializable;
@@ -11,13 +10,10 @@ public class CollectionAnnotationPojo implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     private List<String> strList = new ArrayList<>();
 
-    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     private String[] strArray = new String[PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS];
 
-    @PogoCollection( nbrElements = PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS )
     private Map<String, String> stringMap = new HashMap<>();
 
     public List<String> getStrList()

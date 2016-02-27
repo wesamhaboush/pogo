@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm4;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -29,13 +27,6 @@ public class Pdm4PojoWithSetters
     {
         invocationOrder.add( "abstract,int" );
         throw new IllegalStateException( "Cannot use me also" );
-    }
-
-    @PogoConstructor( comment = "choose this one" )
-    public Pdm4PojoWithSetters( String value )
-    {
-        invocationOrder.add( "PogoConstructor" );
-        throw new IllegalStateException( "Cannot use me" );
     }
 
     public Pdm4PojoWithSetters()

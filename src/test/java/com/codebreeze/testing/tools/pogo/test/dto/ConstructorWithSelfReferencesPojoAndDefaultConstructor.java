@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-
 import java.io.Serializable;
 
 public class ConstructorWithSelfReferencesPojoAndDefaultConstructor implements Serializable
@@ -21,7 +19,6 @@ public class ConstructorWithSelfReferencesPojoAndDefaultConstructor implements S
     {
     }
 
-    @PogoConstructor
     public ConstructorWithSelfReferencesPojoAndDefaultConstructor( int intField,
             ConstructorWithSelfReferencesPojoAndDefaultConstructor parent,
             ConstructorWithSelfReferencesPojoAndDefaultConstructor anotherParent )

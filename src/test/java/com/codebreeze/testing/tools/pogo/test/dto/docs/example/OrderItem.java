@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
-import com.codebreeze.testing.tools.pogo.common.PogoExclude;
-
 import java.io.Serializable;
 
 public class OrderItem implements Serializable
@@ -11,7 +9,6 @@ public class OrderItem implements Serializable
 
     private int id;
 
-    @PogoExclude( comment = "We don't want notes to be automatically filled" )
     private String note;
 
     private double lineAmount;

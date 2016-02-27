@@ -18,11 +18,5 @@ public abstract class AbstractTypeManufacturer implements TypeManufacturer
             errMsg = "The attribute metadata inside the wrapper cannot be null";
             throw new IllegalArgumentException( errMsg );
         }
-
-        if ( null == wrapper.getAttributeMetadata().getAttributeAnnotations() )
-        {
-            errMsg = "The annotations list within the attribute metadata cannot be null, although it can be empty";
-            throw new IllegalArgumentException( errMsg );
-        }
     }
 }

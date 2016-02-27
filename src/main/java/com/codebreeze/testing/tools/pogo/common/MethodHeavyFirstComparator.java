@@ -1,21 +1,10 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.common;
 
 import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.Comparator;
 
-/**
- * It provides a comparator to sort the constructor to choose first.
- * <p>
- * The priority goes to constructors with the {@link PogoConstructor}
- * annotation first, and then to those with more arguments.
- * </p>
- *
- * @author tedonema
- *
- */
-public class MethodHeavyFirstComparator extends AbstractMethodComparator
+public class MethodHeavyFirstComparator implements Comparator<Method>
 {
 
     public static final MethodHeavyFirstComparator INSTANCE =
@@ -25,19 +14,29 @@ public class MethodHeavyFirstComparator extends AbstractMethodComparator
     {
     }
 
+    public int methodComplexity( Method method )
+    {
+        int complexity = 0;
+
+        for ( Class<?> parameter : method.getParameterTypes() )
+        {
+            if ( parameter.isInterface()
+                    || ( Modifier.isAbstract( parameter.getModifiers() ) && !parameter.isPrimitive() )
+                    || parameter.isAssignableFrom( method.getDeclaringClass() ) )
+            {
+                complexity++;
+            }
+        }
+
+        return complexity;
+    }
+
     @Override
     public int compare( Method method1, Method method2 )
     {
-        int result = super.compareAnnotations( method1, method2 );
-
-        if ( result != 0 )
-        {
-            return result;
-        }
-
         /* Then constructors with more parameters */
-        result = method2.getParameterTypes().length
-                 - method1.getParameterTypes().length;
+        int result = method2.getParameterTypes().length
+                     - method1.getParameterTypes().length;
 
         if ( result != 0 )
         {

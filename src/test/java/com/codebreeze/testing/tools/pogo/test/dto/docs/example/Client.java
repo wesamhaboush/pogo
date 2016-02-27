@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-import com.codebreeze.testing.tools.pogo.common.PogoStringValue;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -13,17 +10,14 @@ public class Client implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PogoStringValue( strValue = "Michael" )
     private String firstName;
 
     private String lastName;
 
     private Calendar dateCreated;
 
-    @PogoCollection( nbrElements = 3 )
     private List<Order> orders = new ArrayList<>();
 
-    @PogoCollection( nbrElements = 2 )
     private List<Address> addresses = new ArrayList<>();
 
     // Default is one bank account

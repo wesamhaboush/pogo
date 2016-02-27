@@ -30,12 +30,12 @@ public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
     @Test
     public void PogoCannotInstantiateInterfaces() throws Exception
     {
-        PogoFactory PogoFactory = provideCustomisedPogoFactory();
+        PogoFactory pogoFactory = provideCustomisedPogoFactory();
         MultipleInterfacesListPojo<?> pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType( MultipleInterfacesListPojo.class,
-                    PogoFactory, String.class );
+                    pogoFactory, String.class );
         PogoValidationSteps.theObjectShouldBeNull( pojo );
-        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )PogoFactory.getStrategy() ).getAccessed();
+        List<Class<?>> accessed = ( ( CustomDataProviderStrategy )pogoFactory.getStrategy() ).getAccessed();
         PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( accessed, 1 );
         PogoValidationSteps.theTwoObjectsShouldBeEqual( MultipleInterfacesListPojo.class, accessed.get( 0 ) );
     }

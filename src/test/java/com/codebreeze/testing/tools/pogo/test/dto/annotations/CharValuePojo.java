@@ -1,38 +1,25 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCharValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class CharValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private char charFieldWithMinValueOnly;
 
-    @PogoCharValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private char charFieldWithMaxValueOnly;
 
-    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private char charFieldWithMinAndMaxValue;
 
-    @PogoCharValue( charValue = ' ' )
     private char charFieldWithBlankInPreciseValue;
 
-    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Character charObjectFieldWithMinValueOnly;
 
-    @PogoCharValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Character charObjectFieldWithMaxValueOnly;
 
-    @PogoCharValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Character charObjectFieldWithMinAndMaxValue;
 
-    @PogoCharValue( charValue = PogoTestConstants.CHAR_PRECISE_VALUE )
     private char charFieldWithPreciseValue;
 
     public char getCharFieldWithMinValueOnly()

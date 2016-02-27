@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm4;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +29,6 @@ public class PojoWithMultipleNonPublicConstructors
         throw new IllegalStateException( "Cannot use me also" );
     }
 
-    @PogoConstructor( comment = "choose this one" )
     private PojoWithMultipleNonPublicConstructors( String value )
     {
         invocationOrder.add( "PogoConstructor" );

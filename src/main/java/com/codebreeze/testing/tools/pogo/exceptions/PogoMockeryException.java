@@ -1,6 +1,3 @@
-/**
- *
- */
 package com.codebreeze.testing.tools.pogo.exceptions;
 
 public class PogoMockeryException extends RuntimeException

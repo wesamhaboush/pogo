@@ -1,35 +1,23 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoShortValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class ShortValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private short shortFieldWithMinValueOnly;
 
-    @PogoShortValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private short shortFieldWithMaxValueOnly;
 
-    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private short shortFieldWithMinAndMaxValue;
 
-    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Short shortObjectFieldWithMinValueOnly;
 
-    @PogoShortValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Short shortObjectFieldWithMaxValueOnly;
 
-    @PogoShortValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                     maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Short shortObjectFieldWithMinAndMaxValue;
 
-    @PogoShortValue( numValue = PogoTestConstants.SHORT_PRECISE_VALUE )
     private short shortFieldWithPreciseValue;
 
     public short getShortFieldWithMinValueOnly()

@@ -1,9 +1,11 @@
 package com.codebreeze.testing.tools.pogo.api;
 
-import com.codebreeze.testing.tools.pogo.common.AbstractMethodComparator;
-import com.codebreeze.testing.tools.pogo.common.*;
+import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.Comparator;
 
 public interface RandomDataProviderStrategy extends DataProviderStrategy
 {
@@ -16,19 +18,19 @@ public interface RandomDataProviderStrategy extends DataProviderStrategy
     RandomDataProviderStrategy removeAttributeStrategy(
         Class<? extends Annotation> annotationClass );
 
-    AbstractConstructorComparator getConstructorLightComparator();
+    Comparator<Constructor<?>> getConstructorLightComparator();
 
-    void setConstructorLightComparator( AbstractConstructorComparator constructorLightComparator );
+    void setConstructorLightComparator( Comparator<Constructor<?>> constructorLightComparator );
 
-    AbstractConstructorComparator getConstructorHeavyComparator();
+    Comparator<Constructor<?>> getConstructorHeavyComparator();
 
-    void setConstructorHeavyComparator( AbstractConstructorComparator constructorHeavyComparator );
+    void setConstructorHeavyComparator( Comparator<Constructor<?>> constructorHeavyComparator );
 
-    AbstractMethodComparator getMethodLightComparator();
+    Comparator<Method> getMethodLightComparator();
 
-    void setMethodLightComparator( AbstractMethodComparator methodLightComparator );
+    void setMethodLightComparator( Comparator<Method> methodLightComparator );
 
-    AbstractMethodComparator getMethodHeavyComparator();
+    Comparator<Method> getMethodHeavyComparator();
 
-    void setMethodHeavyComparator( AbstractMethodComparator methodHeavyComparator );
+    void setMethodHeavyComparator( Comparator<Method> methodHeavyComparator );
 }

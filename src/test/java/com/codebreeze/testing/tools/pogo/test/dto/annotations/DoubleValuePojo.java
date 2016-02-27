@@ -1,38 +1,25 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class DoubleValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE )
     private double doubleFieldWithMinValueOnly;
 
-    @PogoDoubleValue( maxValue = PogoTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
     private double doubleFieldWithMaxValueOnly;
 
-    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE,
-                      maxValue = PogoTestConstants.NUMBER_DOUBLE_MAX_VALUE )
     private double doubleFieldWithMinAndMaxValue;
 
-    @PogoDoubleValue( numValue = PogoTestConstants.DOUBLE_PRECISE_VALUE )
     private double doubleFieldWithPreciseValue;
 
-    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE )
     private Double doubleObjectFieldWithMinValueOnly;
 
-    @PogoDoubleValue( maxValue = PogoTestConstants.NUMBER_DOUBLE_ONE_HUNDRED )
     private Double doubleObjectFieldWithMaxValueOnly;
 
-    @PogoDoubleValue( minValue = PogoTestConstants.NUMBER_DOUBLE_MIN_VALUE,
-                      maxValue = PogoTestConstants.NUMBER_DOUBLE_MAX_VALUE )
     private Double doubleObjectFieldWithMinAndMaxValue;
 
-    @PogoDoubleValue( numValue = PogoTestConstants.DOUBLE_PRECISE_VALUE )
     private Double doubleObjectFieldWithPreciseValue;
 
     public double getDoubleFieldWithMinValueOnly()

@@ -1,14 +1,15 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.edgeCases;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.exceptions.PogoMockeryException;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.NoDefaultPublicConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.PrivateOnlyConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.ProtectedNonDefaultConstructorPojo;
+import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Assert;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import javax.activation.DataHandler;
 import java.net.URL;
@@ -19,7 +20,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldGenerateANonNullPojoForAbstractTypesWithConcreteImplementation() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PogoStrategySteps.addOrReplaceSpecific( PogoFactory, AbstractTestPojo.class, ConcreteTestPojo.class );
         AbstractTestPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( AbstractTestPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -28,7 +29,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldFillEmbeddedAbstractClassesIfAConcreteTypeHasBeenSpecified() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PogoStrategySteps.addOrReplaceSpecific( PogoFactory, AbstractTestPojo.class, ConcreteTestPojo.class );
         EmbeddedAbstractFieldTestPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                 EmbeddedAbstractFieldTestPojo.class, PogoFactory );
@@ -39,7 +40,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void invokingPogoOnaPojoWithPrivateNoArgumentsConstructorShouldReturnANonEmptyPojo() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PrivateNoArgConstructorPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                                                PrivateNoArgConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -49,7 +50,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoCannotHandleCircularConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         URL pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( URL.class, PogoFactory );
         PogoValidationSteps.thePojoShouldBeNull( pojo );
     }
@@ -57,7 +58,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandlePojosWithAMixOfCircularAndNonCircularConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         DataHandler pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( DataHandler.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
     }
@@ -65,7 +66,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandlePojosWithSelfReferenceConstructorsButNotDefaultConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ConstructorWithSelfReferencesButNoDefaultConstructorPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( ConstructorWithSelfReferencesButNoDefaultConstructorPojo.class,
                     PogoFactory );
@@ -77,7 +78,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandlePojosWithPrivateOnlyConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PrivateOnlyConstructorPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( PrivateOnlyConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -88,7 +89,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldFillPojosWithPublicNonDefaultPublicConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         NoDefaultPublicConstructorPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                 NoDefaultPublicConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -100,7 +101,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldFillPojosWithProtectedNonDefaultConstructors() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ProtectedNonDefaultConstructorPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( ProtectedNonDefaultConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -112,7 +113,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test( expected = PogoMockeryException.class )
     public void PogoShouldThrowAnExceptionIfAPojoContainsInvalidGettersOrSetters() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         BadlyTypedPojo pojo = PogoFactory.manufacturePojo( BadlyTypedPojo.class );
         Assert.assertNotNull( "Manufacturing failed", pojo );
     }
@@ -121,7 +122,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldFillValuesInvokingChildrenSettersHavingDifferentTypesThanParent() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         BadlyTypedFixedPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( BadlyTypedFixedPojo.class,
                                    PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -130,7 +131,7 @@ public class AbnormalPojosTest extends AbstractPogoSteps
     @Test
     public void PogoShouldReturnANullValueForNonInstantiablePojos() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         NonInstantiatableClass innerClassPojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( NonInstantiatableClass.class, PogoFactory );
         PogoValidationSteps.theObjectShouldBeNull( innerClassPojo );

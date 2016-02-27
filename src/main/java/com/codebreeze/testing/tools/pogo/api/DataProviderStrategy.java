@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.api;
 
-import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
-
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 
@@ -83,7 +80,4 @@ public interface DataProviderStrategy
     void sort( Method[] methods, Order order );
 
     <T> Class<? extends T> getSpecificClass( Class<T> nonInstantiatableClass );
-
-    Class<AttributeStrategy<?>> getStrategyForAnnotation( Class<? extends Annotation> annotationClass );
-
 }

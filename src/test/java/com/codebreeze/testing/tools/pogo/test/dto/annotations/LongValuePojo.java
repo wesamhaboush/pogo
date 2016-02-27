@@ -1,36 +1,25 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoLongValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class LongValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoLongValue( minValue = 0 )
     private long longFieldWithMinValueOnly;
 
-    @PogoLongValue( maxValue = 100 )
     private long longFieldWithMaxValueOnly;
 
-    @PogoLongValue( minValue = 0, maxValue = 1000 )
     private long longFieldWithMinAndMaxValue;
 
-    @PogoLongValue( numValue = PogoTestConstants.LONG_PRECISE_VALUE )
     private long longFieldWithPreciseValue;
 
-    @PogoLongValue( minValue = 0 )
     private Long longObjectFieldWithMinValueOnly;
 
-    @PogoLongValue( maxValue = 100 )
     private Long longObjectFieldWithMaxValueOnly;
 
-    @PogoLongValue( minValue = 0, maxValue = 1000 )
     private Long longObjectFieldWithMinAndMaxValue;
 
-    @PogoLongValue( numValue = PogoTestConstants.LONG_PRECISE_VALUE )
     private Long longObjectFieldWithPreciseValue;
 
     public long getLongFieldWithMinValueOnly()

@@ -1,23 +1,17 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoBooleanValue;
-
 import java.io.Serializable;
 
 public class BooleanValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoBooleanValue( boolValue = true )
     private boolean boolDefaultToTrue;
 
-    @PogoBooleanValue( boolValue = false )
     private boolean boolDefaultToFalse = true;
 
-    @PogoBooleanValue( boolValue = true )
     private Boolean boolObjectDefaultToTrue;
 
-    @PogoBooleanValue( boolValue = false )
     private Boolean boolObjectDefaultToFalse = true;
 
     public boolean isBoolDefaultToTrue()

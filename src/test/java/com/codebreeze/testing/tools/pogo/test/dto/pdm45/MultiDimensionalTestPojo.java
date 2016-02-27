@@ -1,28 +1,20 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-
 import java.util.*;
 
 public class MultiDimensionalTestPojo
 {
 
-    @PogoCollection( nbrElements = 2 )
     private List<List<List<String>>> threeDimensionalList;
 
-    @PogoCollection( nbrElements = 2 )
     private Set<Set<Set<Double>>> threeDimensionalSet;
 
-    @PogoCollection( nbrElements = 2 )
     private Collection<Collection<Collection<Long>>> threeDimensionalCollection;
 
-    @PogoCollection( nbrElements = 2 )
     private Map<Boolean, Map<Float, Map<Integer, Calendar>>> threeDimensionalMap;
 
-    @PogoCollection( nbrElements = 2 )
     private Queue<Queue<Queue<Date>>> threeDimensionalQueue;
 
-    @PogoCollection( nbrElements = 2 )
     private String[][][] threeDimensionalArray;
 
     public List<List<List<String>>> getThreeDimensionalList()

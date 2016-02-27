@@ -1,10 +1,11 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.collections;
 
-import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -16,7 +17,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleStandardCollections() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         CollectionsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( CollectionsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         List<String> strList = pojo.getStrList();
@@ -63,7 +64,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandlePojosWithNoSettersAndCollectionsInTheConstructor() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         NoSetterWithCollectionInConstructorPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( NoSetterWithCollectionInConstructorPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -76,7 +77,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleImmutablePojosWithNonGenericCollections() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutableWithNonGenericCollectionsPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithNonGenericCollectionsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -98,7 +99,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldHandleImmutablePojoWithGenerifiedCollectionsInConstructor() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ImmutableWithGenericCollectionsPojo pojo =
             PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithGenericCollectionsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -141,7 +142,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldFillInPojosWithAttributesContainingWildcards() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ReadOnlyWildcardFieldsPojo pojo	= PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                                               ReadOnlyWildcardFieldsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -153,7 +154,7 @@ public class CollectionsTest extends AbstractPogoSteps
     @Test
     public void PogoShouldBeAbleToFillInPojosWithRawTypeCollectionAttributesAndDefaultValueToObject() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         ReadOnlyRawFieldsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                                          ReadOnlyRawFieldsPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
@@ -165,7 +166,7 @@ public class CollectionsTest extends AbstractPogoSteps
 
     private void testMap( Class<? extends Map> mapType )
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         DataProviderStrategy strategy = PogoFactory.getStrategy();
         int mapSize = strategy.getNumberOfCollectionElements( PogoTestInterface.class );
 

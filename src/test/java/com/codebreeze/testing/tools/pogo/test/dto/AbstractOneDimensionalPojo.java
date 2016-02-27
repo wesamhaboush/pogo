@@ -1,12 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
-
 import java.util.Calendar;
 
 public abstract class AbstractOneDimensionalPojo
 {
-    @PogoIntValue( maxValue = 10 )
     private int parentIntField;
 
     private Calendar parentCalendarField;

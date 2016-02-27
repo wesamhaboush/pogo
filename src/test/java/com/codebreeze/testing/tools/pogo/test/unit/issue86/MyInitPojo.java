@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.unit.issue86;
 
-import com.codebreeze.testing.tools.pogo.common.PogoExclude;
-
 import java.io.Serializable;
 
 public class MyInitPojo implements Serializable
@@ -13,10 +11,8 @@ public class MyInitPojo implements Serializable
 
     private String string2;
 
-    @PogoExclude
     private String backupString1;
 
-    @PogoExclude
     private String backupString2;
 
     public MyInitPojo() {}

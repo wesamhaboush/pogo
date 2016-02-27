@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.api;
 
-import com.codebreeze.testing.tools.pogo.common.PogoExclude;
-
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -194,7 +192,6 @@ public final class PogoUtils
             excludeAnnotations = new HashSet<>();
         }
 
-        excludeAnnotations.add( PogoExclude.class );
         Class<?> workClass = clazz;
 
         while ( workClass != null )

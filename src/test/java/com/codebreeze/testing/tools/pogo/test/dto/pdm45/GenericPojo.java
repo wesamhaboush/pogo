@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -11,11 +9,8 @@ public class GenericPojo<F, S>
 
     private F firstValue;
     private S secondValue;
-    @PogoCollection( nbrElements = 2 )
     private List<F> firstList;
-    @PogoCollection( nbrElements = 2 )
     private S[] secondArray;
-    @PogoCollection( nbrElements = 2 )
     private Map<F, S> firstSecondMap;
 
     public F getFirstValue()

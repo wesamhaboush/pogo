@@ -138,9 +138,10 @@ public class PogoFactorySteps
         String attributeName = null;
         Class<?> realAttributeType = null;
         Type[] genericTypeArgs = new Type[0];
-        List<Annotation> annotations = Collections.emptyList();
+//        List<Annotation> annotations = Collections.emptyList();
         return new AttributeMetadata(
-                   attributeName, realAttributeType, genericTypeArgs, annotations,
+                   attributeName, realAttributeType, genericTypeArgs,
+//                annotations,
                    pojoClass );
     }
 
@@ -153,9 +154,10 @@ public class PogoFactorySteps
 
         String attributeName = null;
         Type[] genericTypeArgs = new Type[0];
-        List<Annotation> annotations = Collections.emptyList();
+//        List<Annotation> annotations = Collections.emptyList();
         return new AttributeMetadata(
-                   attributeName, pojoClass, genericTypeArgs, annotations,
+                   attributeName, pojoClass, genericTypeArgs,
+//                annotations,
                    pojoClass );
     }
 
@@ -170,7 +172,8 @@ public class PogoFactorySteps
         Type[] typeParams = pojoClass.getTypeParameters();
         List<Annotation> annotations = Collections.emptyList();
         return new AttributeMetadata(
-                   attributeName, pojoClass, typeParams, annotations,
+                   attributeName, pojoClass, typeParams,
+//                annotations,
                    pojoClass );
     }
 

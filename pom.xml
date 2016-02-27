@@ -80,10 +80,10 @@
 						</execution>
 					</executions>
 				</plugin>
-				<!--<plugin>-->
-					<!--<groupId>org.apache.maven.plugins</groupId>-->
-					<!--<artifactId>maven-gpg-plugin</artifactId>-->
-					<!--<version>1.6</version>-->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-gpg-plugin</artifactId>
+					<version>1.6</version>
 					<!--<executions>-->
 						<!--<execution>-->
 							<!--<id>sign-artifacts</id>-->
@@ -93,7 +93,7 @@
 							<!--</goals>-->
 						<!--</execution>-->
 					<!--</executions>-->
-				<!--</plugin>-->
+				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-surefire-plugin</artifactId>
@@ -125,7 +125,23 @@
 				<version>4.12</version>
 				<scope>test</scope>
 			</dependency>
-		</dependencies>
+			<dependency>
+				<groupId>org.assertj</groupId>
+				<artifactId>assertj-core</artifactId>
+				<version>3.3.0</version>
+				<scope>test</scope>
+			</dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-math3</artifactId>
+                <version>3.6</version>
+            </dependency>
+        </dependencies>
 	</dependencyManagement>
 	<dependencies>
 		<dependency>
@@ -133,7 +149,20 @@
 			<artifactId>junit</artifactId>
 			<scope>test</scope>
 		</dependency>
-	</dependencies>
+		<dependency>
+			<groupId>org.assertj</groupId>
+			<artifactId>assertj-core</artifactId>
+			<scope>test</scope>
+		</dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-math3</artifactId>
+        </dependency>
+    </dependencies>
 
 	<distributionManagement>
 		<snapshotRepository>

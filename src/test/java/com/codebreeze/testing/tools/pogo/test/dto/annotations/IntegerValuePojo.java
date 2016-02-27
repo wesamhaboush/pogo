@@ -1,36 +1,25 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class IntegerValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private int intFieldWithMinValueOnly;
 
-    @PogoIntValue( numValue = PogoTestConstants.INTEGER_PRECISE_VALUE )
     private int intFieldWithPreciseValue;
 
-    @PogoIntValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private int intFieldWithMaxValueOnly;
 
-    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PogoTestConstants.NUMBER_INT_MAX_VALUE )
     private int intFieldWithMinAndMaxValue;
 
-    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Integer integerObjectFieldWithMinValueOnly;
 
-    @PogoIntValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Integer integerObjectFieldWithMaxValueOnly;
 
-    @PogoIntValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE, maxValue = PogoTestConstants.NUMBER_INT_MAX_VALUE )
     private Integer integerObjectFieldWithMinAndMaxValue;
 
-    @PogoIntValue( numValue = PogoTestConstants.INTEGER_PRECISE_VALUE )
     private Integer integerObjectFieldWithPreciseValue;
 
     public int getIntFieldWithMinValueOnly()

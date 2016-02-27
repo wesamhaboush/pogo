@@ -4,25 +4,22 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.walkThroughExample;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
-import com.codebreeze.testing.tools.pogo.test.dto.docs.example.*;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
+import com.codebreeze.testing.tools.pogo.test.dto.docs.example.Address;
+import com.codebreeze.testing.tools.pogo.test.dto.docs.example.Article;
+import com.codebreeze.testing.tools.pogo.test.dto.docs.example.BankAccount;
+import com.codebreeze.testing.tools.pogo.test.dto.docs.example.OrderItem;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 public class WalkThroughExampleUnitTest extends AbstractPogoSteps
 {
 
-    @Test
-    public void testCountrySetup() throws Exception
-    {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
-        Country pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Country.class, PogoFactory );
-        walkThroughSteps.theCountryPojoShouldBeCorrectlyFilled( pojo );
-    }
 
     @Test
     public void testArticleSetup() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         Article pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Article.class, PogoFactory );
         walkThroughSteps.theArticlePojoShouldBeCorrectlyFilled( pojo );
     }
@@ -30,23 +27,15 @@ public class WalkThroughExampleUnitTest extends AbstractPogoSteps
     @Test
     public void testOrderItemSetup() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
-        OrderItem pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( OrderItem.class, PogoFactory );
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        OrderItem pojo = pogoFactory.manufacturePojo( OrderItem.class );
         walkThroughSteps.theOrderItemPojoShouldBeCorrectlyFilled( pojo );
-    }
-
-    @Test
-    public void testOrderSetup() throws Exception
-    {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
-        Order pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Order.class, PogoFactory );
-        walkThroughSteps.theOrderPojoShouldBeCorrectlyFilled( pojo );
     }
 
     @Test
     public void testAddressSetup() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         Address pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Address.class, PogoFactory );
         walkThroughSteps.theAddressPojoShouldBeCorrectlyFilled( pojo );
     }
@@ -54,7 +43,7 @@ public class WalkThroughExampleUnitTest extends AbstractPogoSteps
     @Test
     public void testBankAccountSetup() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         BankAccount pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( BankAccount.class, PogoFactory );
         walkThroughSteps.theBankAccountPojoShouldBeCorrectlyFilled( pojo );
     }

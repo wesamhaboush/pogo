@@ -1,12 +1,13 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.memoization;
 
-import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
+import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.MemoizationPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.RecursivePojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
 import javax.xml.ws.Holder;
 import java.util.Collections;
@@ -35,7 +36,7 @@ public class MemoizationTest extends AbstractPogoSteps
     @Test
     public void whenMemoizationIsFalsePogoShouldReturnDifferentInstancesForDifferentInvocations() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         PogoFactory.getStrategy().setMemoization( false );
         SimplePojoToTestSetters pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
                                             SimplePojoToTestSetters.class, PogoFactory );
@@ -74,7 +75,7 @@ public class MemoizationTest extends AbstractPogoSteps
     @Test
     public void evenWhenMemoizationIsTrueIfGenericPojosHaveDifferentTypesObjectsShouldNotBeEqual() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         Holder<String> pojo1 = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
                                    Holder.class, PogoFactory, String.class );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo1 );
@@ -87,7 +88,7 @@ public class MemoizationTest extends AbstractPogoSteps
     @Test
     public void memoizationShouldWorkCorrectlyForCollectionsAndArrays() throws Exception
     {
-        PogoFactory PogoFactory = PogoFactorySteps.givenAStandardPogoFactory();
+        PogoFactory PogoFactory = new PogoFactoryImpl();
         MemoizationPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( MemoizationPojo.class, PogoFactory );
         PogoValidationSteps.theObjectShouldNotBeNull( pojo );
         PogoValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainElementsOfTheRightType(

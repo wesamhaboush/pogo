@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoByteValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class ByteValuePojo implements Serializable
@@ -10,27 +7,18 @@ public class ByteValuePojo implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private byte byteFieldWithMinValueOnly;
 
-    @PogoByteValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private byte byteFieldWithMaxValueOnly;
 
-    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private byte byteFieldWithMinAndMaxValue;
 
-    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE )
     private Byte byteObjectFieldWithMinValueOnly;
 
-    @PogoByteValue( maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Byte byteObjectFieldWithMaxValueOnly;
 
-    @PogoByteValue( minValue = PogoTestConstants.NUMBER_INT_MIN_VALUE,
-                    maxValue = PogoTestConstants.NUMBER_INT_ONE_HUNDRED )
     private Byte byteObjectFieldWithMinAndMaxValue;
 
-    @PogoByteValue( numValue = PogoTestConstants.BYTE_PRECISE_VALUE )
     private byte byteFieldWithPreciseValue;
 
     public byte getByteFieldWithMinValueOnly()

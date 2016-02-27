@@ -17,13 +17,6 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     private final Map<Class<?>, List<Method>> extraMethods = new HashMap<>();
 
 
-    public AbstractClassInfoStrategy addExcludedAnnotation(
-        final Class<? extends Annotation> annotation )
-    {
-        excludedAnnotations.add( annotation );
-        return this;
-    }
-
     public AbstractClassInfoStrategy addExtraMethod(
         Class<?> pojoClass, String methodName, Class<?> ... methodArgs )
     throws NoSuchMethodException, SecurityException

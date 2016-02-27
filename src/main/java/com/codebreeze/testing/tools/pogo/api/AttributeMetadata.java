@@ -1,10 +1,7 @@
 package com.codebreeze.testing.tools.pogo.api;
 
 import java.io.Serializable;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Type;
-import java.util.Collections;
-import java.util.List;
 
 public class AttributeMetadata implements Serializable
 {
@@ -16,26 +13,25 @@ public class AttributeMetadata implements Serializable
 
     private final Type[] attrGenericArgs;
 
-    private final List<Annotation> attributeAnnotations;
-
     private final Class<?> pojoClass;
 
     public AttributeMetadata( String attributeName, Class<?> attributeType,
-                              Type[] attrGenericArgs, List<Annotation> attributeAnnotations,
+                              Type[] attrGenericArgs,
                               Class<?> declaringClass )
     {
         this.attributeName = attributeName;
         this.attributeType = attributeType;
         this.attrGenericArgs = attrGenericArgs;
-        this.attributeAnnotations = attributeAnnotations;
         this.pojoClass = declaringClass;
     }
 
     public AttributeMetadata( Class<?> attributeType, Type[] attrGenericArgs,
                               Class<?> declaringClass )
     {
-        this( null, attributeType, attrGenericArgs,
-              Collections.<Annotation>emptyList(), declaringClass );
+        this( null,
+              attributeType,
+              attrGenericArgs,
+              declaringClass );
     }
 
     public String getAttributeName()
@@ -53,11 +49,6 @@ public class AttributeMetadata implements Serializable
         return attrGenericArgs;
     }
 
-    public List<Annotation> getAttributeAnnotations()
-    {
-        return attributeAnnotations;
-    }
-
     public Class<?> getPojoClass()
     {
         return pojoClass;
@@ -72,8 +63,6 @@ public class AttributeMetadata implements Serializable
                          attributeType +
                          ", pojoClass=" +
                          pojoClass +
-                         ", attributeAnnotations=" +
-                         attributeAnnotations +
                          "]";
         return builder;
     }

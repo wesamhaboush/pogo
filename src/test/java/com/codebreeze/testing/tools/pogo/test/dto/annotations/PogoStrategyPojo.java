@@ -1,11 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-import com.codebreeze.testing.tools.pogo.common.PogoStrategyValue;
-import com.codebreeze.testing.tools.pogo.test.strategies.ByteArrayStrategy;
-import com.codebreeze.testing.tools.pogo.test.strategies.MyBirthdayStrategy;
-import com.codebreeze.testing.tools.pogo.test.strategies.PostCodeStrategy;
-
 import java.io.Serializable;
 import java.util.*;
 
@@ -14,38 +8,30 @@ public class PogoStrategyPojo implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PogoStrategyValue( PostCodeStrategy.class )
     private String postCode;
 
     private String postCode2;
 
     private final String postCode3;
 
-    @PogoStrategyValue( ByteArrayStrategy.class )
     private byte[] byteData;
 
-    @PogoStrategyValue( MyBirthdayStrategy.class )
     private Calendar myBirthday;
 
-    @PogoCollection( nbrElements = 2, collectionElementStrategy = MyBirthdayStrategy.class )
     private List<Calendar> myBirthdays = new ArrayList<>();
 
-    @PogoCollection( nbrElements = 2 )
     private List<Object> objectList = new ArrayList<>();
 
-    @PogoCollection( nbrElements = 2, mapElementStrategy = MyBirthdayStrategy.class )
     private Map<String, Calendar> myBirthdaysMap = new HashMap<>();
 
     @SuppressWarnings( "rawtypes" )
     private List nonGenericObjectList = new ArrayList();
 
-    @PogoCollection( nbrElements = 2, collectionElementStrategy = MyBirthdayStrategy.class )
     private Calendar[] myBirthdaysArray;
 
-    @PogoCollection( nbrElements = 2 )
     private Object[] myObjectArray;
 
-    public PogoStrategyPojo( @PogoStrategyValue( PostCodeStrategy.class ) String postCode3 )
+    public PogoStrategyPojo( String postCode3 )
     {
         this.postCode3 = postCode3;
     }
@@ -65,7 +51,7 @@ public class PogoStrategyPojo implements Serializable
         return postCode2;
     }
 
-    public void setPostCode2( @PogoStrategyValue( PostCodeStrategy.class ) String postCode2 )
+    public void setPostCode2( String postCode2 )
     {
         this.postCode2 = postCode2;
     }

@@ -6,11 +6,8 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Map;
+import java.util.*;
 import java.util.Map.Entry;
-import java.util.Random;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ConcurrentMap;
 
@@ -33,16 +30,16 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     private final ConcurrentMap<Class<? extends Annotation>, Class<AttributeStrategy<?>>> attributeStrategies
         = new ConcurrentHashMap<>();
 
-    private AbstractConstructorComparator constructorHeavyComparator =
+    private Comparator<Constructor<?>> constructorHeavyComparator =
         ConstructorHeavyFirstComparator.INSTANCE;
 
-    private AbstractConstructorComparator constructorLightComparator =
+    private Comparator<Constructor<?>> constructorLightComparator =
         ConstructorLightFirstComparator.INSTANCE;
 
-    private AbstractMethodComparator methodHeavyComparator
+    private Comparator<Method> methodHeavyComparator
         = MethodHeavyFirstComparator.INSTANCE;
 
-    private AbstractMethodComparator methodLightComparator
+    private Comparator<Method> methodLightComparator
         = MethodLightFirstComparator.INSTANCE;
 
     public AbstractRandomDataProviderStrategy()
@@ -58,21 +55,15 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public Boolean getBoolean( AttributeMetadata attributeMetadata )
     {
-        return Boolean.TRUE;
+        return RANDOM.nextBoolean();
     }
 
     @Override
     public Byte getByte( AttributeMetadata attributeMetadata )
     {
-        byte nextByte;
-
-        do
-        {
-            nextByte = ( byte ) RANDOM.nextInt( Byte.MAX_VALUE );
-        }
-        while ( nextByte == 0 );
-
-        return nextByte;
+        final byte[] bytes = new byte[1];
+        RANDOM.nextBytes( bytes );
+        return bytes[0];
     }
 
     @Override
@@ -98,15 +89,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public Double getDouble( AttributeMetadata attributeMetadata )
     {
-        double retValue;
-
-        do
-        {
-            retValue = RANDOM.nextDouble();
-        }
-        while ( retValue == 0.0 );
-
-        return retValue;
+        return RANDOM.nextDouble();
     }
 
     @Override
@@ -133,15 +116,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public Float getFloat( AttributeMetadata attributeMetadata )
     {
-        float retValue;
-
-        do
-        {
-            retValue = RANDOM.nextFloat();
-        }
-        while ( retValue == 0.0f );
-
-        return retValue;
+        return RANDOM.nextFloat();
     }
 
     @Override
@@ -333,7 +308,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public void sort( Constructor<?>[] constructors, Order order )
     {
-        AbstractConstructorComparator constructorComparator;
+        Comparator<Constructor<?>> constructorComparator;
 
         switch( order )
         {
@@ -352,7 +327,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public void sort( Method[] methods, Order order )
     {
-        AbstractMethodComparator methodComparator;
+        Comparator<Method> methodComparator;
 
         switch( order )
         {
@@ -417,56 +392,49 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     }
 
     @Override
-    public Class<AttributeStrategy<?>> getStrategyForAnnotation(
-        final Class<? extends Annotation> annotationClass )
-    {
-        return attributeStrategies.get( annotationClass );
-    }
-
-    @Override
-    public AbstractConstructorComparator getConstructorLightComparator()
+    public Comparator<Constructor<?>> getConstructorLightComparator()
     {
         return constructorLightComparator;
     }
 
     @Override
-    public void setConstructorLightComparator( AbstractConstructorComparator constructorLightComparator )
+    public void setConstructorLightComparator( Comparator<Constructor<?>> constructorLightComparator )
     {
         this.constructorLightComparator = constructorLightComparator;
     }
 
     @Override
-    public AbstractConstructorComparator getConstructorHeavyComparator()
+    public Comparator<Constructor<?>> getConstructorHeavyComparator()
     {
         return constructorHeavyComparator;
     }
 
     @Override
-    public void setConstructorHeavyComparator( AbstractConstructorComparator constructorHeavyComparator )
+    public void setConstructorHeavyComparator( Comparator<Constructor<?>> constructorHeavyComparator )
     {
         this.constructorHeavyComparator = constructorHeavyComparator;
     }
 
     @Override
-    public AbstractMethodComparator getMethodLightComparator()
+    public Comparator<Method> getMethodLightComparator()
     {
         return methodLightComparator;
     }
 
     @Override
-    public void setMethodLightComparator( AbstractMethodComparator methodLightComparator )
+    public void setMethodLightComparator( Comparator<Method> methodLightComparator )
     {
         this.methodLightComparator = methodLightComparator;
     }
 
     @Override
-    public AbstractMethodComparator getMethodHeavyComparator()
+    public Comparator<Method> getMethodHeavyComparator()
     {
         return methodHeavyComparator;
     }
 
     @Override
-    public void setMethodHeavyComparator( AbstractMethodComparator methodHeavyComparator )
+    public void setMethodHeavyComparator( Comparator<Method> methodHeavyComparator )
     {
         this.methodHeavyComparator = methodHeavyComparator;
     }

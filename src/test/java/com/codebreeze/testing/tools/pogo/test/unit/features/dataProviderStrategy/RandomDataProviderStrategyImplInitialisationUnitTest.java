@@ -3,13 +3,15 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.dataProviderStrateg
 import com.codebreeze.testing.tools.pogo.api.AbstractRandomDataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
-import com.codebreeze.testing.tools.pogo.common.AbstractMethodComparator;
+import com.codebreeze.testing.tools.pogo.api.RandomDataProviderStrategyImpl;
 import com.codebreeze.testing.tools.pogo.common.PogoConstants;
-import com.codebreeze.testing.tools.pogo.common.AbstractConstructorComparator;
 import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.junit.Test;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Method;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -21,7 +23,7 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     public void randomDataProviderStrategyShouldBeInitialisedCorrectlyAndAllowForChangesInNbrOfCollectionElements()
     {
         DataProviderStrategy dataProviderStrategy =
-            PogoFactorySteps.givenARandomDataProviderStrategy();
+            new RandomDataProviderStrategyImpl();
         PogoValidationSteps.theTwoObjectsShouldBeEqual( PogoConstants.DEFAULT_NBR_COLLECTION_ELEMENTS,
                 dataProviderStrategy.getNumberOfCollectionElements( Object.class ) );
         int aNumberOfCollectionElements = 3;
@@ -62,9 +64,8 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAConstructorLightComparator() throws Exception
     {
-        AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
-        AbstractConstructorComparator comparator = randomStrategy.getConstructorLightComparator();
+        AbstractRandomDataProviderStrategy randomStrategy = new RandomDataProviderStrategyImpl();
+        Comparator<Constructor<?>> comparator = randomStrategy.getConstructorLightComparator();
         PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setConstructorLightComparator( null );
         PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorLightComparator() );
@@ -75,9 +76,8 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAConstructorHeavyComparator() throws Exception
     {
-        AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
-        AbstractConstructorComparator comparator = randomStrategy.getConstructorHeavyComparator();
+        AbstractRandomDataProviderStrategy randomStrategy = new RandomDataProviderStrategyImpl();
+        Comparator<Constructor<?>> comparator = randomStrategy.getConstructorHeavyComparator();
         PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setConstructorHeavyComparator( null );
         PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getConstructorHeavyComparator() );
@@ -88,9 +88,8 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAMethodLightComparator() throws Exception
     {
-        AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
-        AbstractMethodComparator comparator = randomStrategy.getMethodLightComparator();
+        AbstractRandomDataProviderStrategy randomStrategy = new RandomDataProviderStrategyImpl();
+        Comparator<Method> comparator = randomStrategy.getMethodLightComparator();
         PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setMethodLightComparator( null );
         PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodLightComparator() );
@@ -101,9 +100,8 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest extends Abstra
     @Test
     public void creatingARandomDataProviderStrategyShouldCreateAMethodHeavyComparator() throws Exception
     {
-        AbstractRandomDataProviderStrategy randomStrategy =
-            ( AbstractRandomDataProviderStrategy ) PogoFactorySteps.givenARandomDataProviderStrategy();
-        AbstractMethodComparator comparator = randomStrategy.getMethodHeavyComparator();
+        AbstractRandomDataProviderStrategy randomStrategy = new RandomDataProviderStrategyImpl();
+        Comparator<Method> comparator = randomStrategy.getMethodHeavyComparator();
         PogoValidationSteps.theObjectShouldNotBeNull( comparator );
         randomStrategy.setMethodHeavyComparator( null );
         PogoValidationSteps.theTwoObjectsShouldBeEqual( null, randomStrategy.getMethodHeavyComparator() );

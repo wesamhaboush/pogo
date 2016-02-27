@@ -69,7 +69,6 @@ public class PogoFactoryImpl implements PogoFactory
 
         try
         {
-            Class<?> declaringClass = null;
             AttributeMetadata pojoMetadata = new AttributeMetadata( pojoClass,
                     genericTypeArgs, null );
             return this.manufacturePojoInternal( pojoClass, pojoMetadata,
@@ -93,7 +92,6 @@ public class PogoFactoryImpl implements PogoFactory
 
         try
         {
-            Class<?> declaringClass = null;
             AttributeMetadata pojoMetadata = new AttributeMetadata( pojoClass,
                     genericTypeArgs, null );
             return this.manufacturePojoInternal( pojoClass, pojoMetadata,
@@ -411,9 +409,6 @@ public class PogoFactoryImpl implements PogoFactory
             // that attribute.
             String attributeName = PogoUtils
                                    .extractFieldNameFromSetterMethod( setter );
-            List<Annotation> pojoAttributeAnnotations
-                = PogoUtils.getAttributeAnnotations(
-                      attribute.getAttribute(), setter );
             Type[] typeArguments = PogoConstants.NO_TYPES;
             // If the parameter is a generic parameterized type resolve
             // the actual type arguments
@@ -464,7 +459,7 @@ public class PogoFactoryImpl implements PogoFactory
 
             setterArg = manufactureAttributeValue( pojo, manufacturingCtx,
                                                    attributeType, genericType,
-                                                   pojoAttributeAnnotations, attributeName,
+                                                   attributeName,
                                                    typeArgsMap, typeArguments );
 
             try
@@ -561,8 +556,9 @@ public class PogoFactoryImpl implements PogoFactory
     }
 
     private Object manufactureAttributeValue( Object pojo,
-            ManufacturingContext manufacturingCtx, Class<?> attributeType,
-            Type genericAttributeType, List<Annotation> annotations,
+            ManufacturingContext manufacturingCtx,
+            Class<?> attributeType,
+            Type genericAttributeType,
             String attributeName, Map<String, Type> typeArgsMap,
             Type... genericTypeArgs )
     throws InstantiationException, IllegalAccessException,
@@ -585,7 +581,7 @@ public class PogoFactoryImpl implements PogoFactory
         }
 
         AttributeMetadata attributeMetadata = new AttributeMetadata(
-            attributeName, realAttributeType, genericTypeArgs, annotations,
+            attributeName, realAttributeType, genericTypeArgs,
             pojoClass );
 
         if ( realAttributeType.isPrimitive() || TypeManufacturerUtil.isWrapper( realAttributeType ) ||
@@ -598,7 +594,8 @@ public class PogoFactoryImpl implements PogoFactory
         {
             // Array type
             attributeValue = resolveArrayElementValue( realAttributeType,
-                             genericAttributeType, attributeName, manufacturingCtx, annotations, pojo,
+                             genericAttributeType, attributeName, manufacturingCtx,
+                             pojo,
                              typeArgsMap );
             // Collection
         }
@@ -606,13 +603,13 @@ public class PogoFactoryImpl implements PogoFactory
         {
             attributeValue = resolveCollectionValueWhenCollectionIsPojoAttribute(
                                  pojo, manufacturingCtx, realAttributeType, attributeName,
-                                 annotations, typeArgsMap, genericTypeArgs );
+                                 typeArgsMap, genericTypeArgs );
             // Map
         }
         else if ( Map.class.isAssignableFrom( realAttributeType ) )
         {
             attributeValue = resolveMapValueWhenMapIsPojoAttribute( pojo,
-                             manufacturingCtx, realAttributeType, attributeName, annotations,
+                             manufacturingCtx, realAttributeType, attributeName,
                              typeArgsMap, genericTypeArgs );
             //Enum
         }
@@ -676,7 +673,7 @@ public class PogoFactoryImpl implements PogoFactory
     private Collection<? super Object> resolveCollectionValueWhenCollectionIsPojoAttribute(
         Object pojo, ManufacturingContext manufacturingCtx,
         Class<?> collectionType, String attributeName,
-        List<Annotation> annotations, Map<String, Type> typeArgsMap,
+        Map<String, Type> typeArgsMap,
         Type... genericTypeArgs )
     {
         // This needs to be generic because collections can be of any type
@@ -712,7 +709,8 @@ public class PogoFactoryImpl implements PogoFactory
                             typeArgsMap, elementGenericTypeArgs );
             }
 
-            fillCollection( manufacturingCtx, annotations, attributeName, retValue, typeClass,
+            fillCollection( manufacturingCtx,
+                            attributeName, retValue, typeClass,
                             elementGenericTypeArgs.get() );
         }
         catch ( SecurityException | InvocationTargetException | ClassNotFoundException | IllegalAccessException |
@@ -779,12 +777,13 @@ public class PogoFactoryImpl implements PogoFactory
                                     typeArgsMap, elementGenericTypeArgs );
         Type[] elementGenericArgs = TypeManufacturerUtil.mergeTypeArrays( elementGenericTypeArgs.get(),
                                     genericTypeArgs );
-        fillCollection( manufacturingCtx, Arrays.asList( annotations ), null,
+        fillCollection( manufacturingCtx,
+                        null,
                         collection, elementTypeClass, elementGenericArgs );
     }
 
     private void fillCollection( ManufacturingContext manufacturingCtx,
-                                 List<Annotation> annotations, String attributeName,
+                                 String attributeName,
                                  Collection<? super Object> collection,
                                  Class<?> collectionElementType, Type... genericTypeArgs )
     throws InstantiationException, IllegalAccessException,
@@ -794,7 +793,7 @@ public class PogoFactoryImpl implements PogoFactory
         // we use it
         Holder<AttributeStrategy<?>> elementStrategyHolder
             = new Holder<>();
-        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy, annotations,
+        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
                               collectionElementType, elementStrategyHolder, null );
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
 
@@ -827,7 +826,7 @@ public class PogoFactoryImpl implements PogoFactory
                     Map<String, Type> nullTypeArgsMap = new HashMap<>();
                     element = manufactureAttributeValue( collection, manufacturingCtx,
                                                          collectionElementType, collectionElementType,
-                                                         annotations, attributeName, nullTypeArgsMap, genericTypeArgs );
+                                                         attributeName, nullTypeArgsMap, genericTypeArgs );
                 }
 
                 collection.add( element );
@@ -842,7 +841,7 @@ public class PogoFactoryImpl implements PogoFactory
     private Map<? super Object, ? super Object> resolveMapValueWhenMapIsPojoAttribute(
         Object pojo, ManufacturingContext manufacturingCtx,
         Class<?> attributeType, String attributeName,
-        List<Annotation> annotations, Map<String, Type> typeArgsMap,
+        Map<String, Type> typeArgsMap,
         Type... genericTypeArgs )
     {
         Map<? super Object, ? super Object> retValue = null;
@@ -890,7 +889,6 @@ public class PogoFactoryImpl implements PogoFactory
 
             MapArguments mapArguments = new MapArguments();
             mapArguments.setAttributeName( attributeName );
-            mapArguments.setAnnotations( annotations );
             mapArguments.setMapToBeFilled( retValue );
             mapArguments.setKeyClass( keyClass );
             mapArguments.setElementClass( elementClass );
@@ -987,7 +985,7 @@ public class PogoFactoryImpl implements PogoFactory
             = new Holder<>();
         Holder<AttributeStrategy<?>> keyStrategyHolder
             = new Holder<>();
-        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy, mapArguments.getAnnotations(),
+        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
                               mapArguments.getElementClass(), elementStrategyHolder,
                               keyStrategyHolder );
         AttributeStrategy<?> keyStrategy = keyStrategyHolder.value;
@@ -1066,7 +1064,6 @@ public class PogoFactoryImpl implements PogoFactory
                            manufacturingCtx,
                            keyOrElementsArguments.getKeyOrValueType(),
                            keyOrElementsArguments.getKeyOrValueType(),
-                           keyOrElementsArguments.getAnnotations(),
                            keyOrElementsArguments.getAttributeName(),
                            nullTypeArgsMap,
                            keyOrElementsArguments.getGenericTypeArgs() );
@@ -1077,7 +1074,7 @@ public class PogoFactoryImpl implements PogoFactory
 
     private Object resolveArrayElementValue( Class<?> attributeType,
             Type genericType, String attributeName, ManufacturingContext manufacturingCtx,
-            List<Annotation> annotations, Object pojo,
+            Object pojo,
             Map<String, Type> typeArgsMap ) throws InstantiationException,
         IllegalAccessException, InvocationTargetException,
         ClassNotFoundException
@@ -1121,7 +1118,8 @@ public class PogoFactoryImpl implements PogoFactory
         // we use it
         Holder<AttributeStrategy<?>> elementStrategyHolder
             = new Holder<>();
-        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy, annotations, attributeType,
+        Integer nbrElements = TypeManufacturerUtil.findCollectionSize( strategy,
+                              attributeType,
                               elementStrategyHolder, null );
         AttributeStrategy<?> elementStrategy = elementStrategyHolder.value;
         Object arrayElement;
@@ -1145,7 +1143,8 @@ public class PogoFactoryImpl implements PogoFactory
             else
             {
                 arrayElement = manufactureAttributeValue( array, manufacturingCtx,
-                               componentType, genericComponentType, annotations, attributeName,
+                               componentType, genericComponentType,
+                               attributeName,
                                typeArgsMap, genericTypeArgs.get() );
             }
 
@@ -1237,7 +1236,6 @@ public class PogoFactoryImpl implements PogoFactory
 
         if ( Collection.class.isAssignableFrom( parameterType ) )
         {
-            Collection<? super Object> defaultValue = null;
             Collection<? super Object> collection = TypeManufacturerUtil.resolveCollectionType(
                     parameterType, null );
 
@@ -1262,7 +1260,8 @@ public class PogoFactoryImpl implements PogoFactory
 
                 Type[] genericTypeArgsAll = TypeManufacturerUtil.mergeTypeArrays(
                                                 collectionGenericTypeArgs.get(), genericTypeArgs );
-                fillCollection( manufacturingCtx, annotations, null,
+                fillCollection( manufacturingCtx,
+                                null,
                                 collection, collectionElementType, genericTypeArgsAll );
                 parameterValue = collection;
             }
@@ -1337,7 +1336,8 @@ public class PogoFactoryImpl implements PogoFactory
             }
 
             parameterValue = manufactureAttributeValue( pojoClass, manufacturingCtx, parameterType,
-                             genericType, annotations, null, typeArgsMapForParam,
+                             genericType,
+                             null, typeArgsMapForParam,
                              genericTypeArgs );
         }
 

@@ -10,28 +10,19 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class OneDimentionalPojoValidationSteps
 {
 
     public void validateDimensionalTestPojo( OneDimensionalTestPojo pojo, DataProviderStrategy strategy )
     {
         Boolean booleanObjectField = pojo.getBooleanObjectField();
-        Assert.assertTrue(
-            "The boolean object field should have a value of TRUE",
-            booleanObjectField );
-        boolean booleanField = pojo.isBooleanField();
-        Assert.assertTrue( "The boolean field should have a value of TRUE",
-                           booleanField );
-        byte byteField = pojo.getByteField();
-        Assert.assertTrue( "The byte field should not be zero", byteField != 0 );
+        assertThat( booleanObjectField ).isNotNull();
         Byte byteObjectField = pojo.getByteObjectField();
-        Assert.assertTrue( "The Byte object field should not be zero",
-                           byteObjectField != 0 );
-        short shortField = pojo.getShortField();
-        Assert.assertTrue( "The short field should not be zero", shortField != 0 );
+        assertThat( byteObjectField ).isNotNull();
         Short shortObjectField = pojo.getShortObjectField();
-        Assert.assertTrue( "The Short Object field should not be zero",
-                           shortObjectField != 0 );
+        assertThat( shortObjectField ).isNotNull();
         char charField = pojo.getCharField();
         Assert.assertTrue( "The char field should not be zero", charField != 0 );
         Character characterObjectField = pojo.getCharObjectField();

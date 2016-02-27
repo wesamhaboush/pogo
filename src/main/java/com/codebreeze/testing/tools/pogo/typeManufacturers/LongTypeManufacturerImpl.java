@@ -1,10 +1,6 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.common.PogoConstants;
-import com.codebreeze.testing.tools.pogo.common.PogoLongValue;
-
-import java.lang.annotation.Annotation;
 
 public class LongTypeManufacturerImpl extends AbstractTypeManufacturer
 {
@@ -15,46 +11,6 @@ public class LongTypeManufacturerImpl extends AbstractTypeManufacturer
         super.checkWrapperIsValid( wrapper );
         DataProviderStrategy strategy = wrapper.getDataProviderStrategy();
         Long retValue = null;
-
-        for ( Annotation annotation : wrapper.getAttributeMetadata().getAttributeAnnotations() )
-        {
-            if ( PogoLongValue.class.isAssignableFrom( annotation.getClass() ) )
-            {
-                PogoLongValue longStrategy = ( PogoLongValue ) annotation;
-                String numValueStr = longStrategy.numValue();
-
-                if ( null != numValueStr && !"".equals( numValueStr ) )
-                {
-                    try
-                    {
-                        retValue = Long.valueOf( numValueStr );
-                    }
-                    catch ( NumberFormatException nfe )
-                    {
-                        String errMsg = PogoConstants.THE_ANNOTATION_VALUE_STR
-                                        + numValueStr
-                                        + " could not be converted to a Long. An exception will be thrown.";
-                        throw new IllegalArgumentException( errMsg, nfe );
-                    }
-                }
-                else
-                {
-                    long minValue = longStrategy.minValue();
-                    long maxValue = longStrategy.maxValue();
-
-                    // Sanity check
-                    if ( minValue > maxValue )
-                    {
-                        maxValue = minValue;
-                    }
-
-                    retValue = strategy.getLongInRange( minValue, maxValue,
-                                                        wrapper.getAttributeMetadata() );
-                }
-
-                break;
-            }
-        }
 
         if ( retValue == null )
         {

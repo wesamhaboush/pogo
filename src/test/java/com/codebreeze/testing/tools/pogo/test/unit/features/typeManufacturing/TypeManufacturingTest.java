@@ -2,18 +2,21 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.typeManufacturing;
 
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
+import com.codebreeze.testing.tools.pogo.api.RandomDataProviderStrategyImpl;
 import com.codebreeze.testing.tools.pogo.common.PogoConstants;
-import com.codebreeze.testing.tools.pogo.typeManufacturers.TypeManufacturerParamsWrapperForGenericTypes;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassGenericConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
 import com.codebreeze.testing.tools.pogo.test.enums.ExternalRatePogoEnum;
-import org.junit.Test;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import com.codebreeze.testing.tools.pogo.typeManufacturers.TypeManufacturerParamsWrapper;
+import com.codebreeze.testing.tools.pogo.typeManufacturers.TypeManufacturerParamsWrapperForGenericTypes;
+import org.junit.Test;
 
 import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class TypeManufacturingTest extends AbstractPogoSteps
 {
@@ -21,7 +24,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAnIntValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -35,7 +38,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAnIntegerValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -49,35 +52,33 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnABooleanPrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
         TypeManufacturerParamsWrapper paramsWrapper =
             new TypeManufacturerParamsWrapper( dataProviderStrategy, attributeMetadata );
         Object value = PogoInvocationSteps.whenISendAMessageToTheChannel( paramsWrapper, boolean.class.getName() );
-        PogoValidationSteps.theObjectShouldNotBeNull( value );
-        PogoValidationSteps.theBooleanValueIsTrue( ( Boolean ) value );
+        assertThat( value ).isNotNull();
     }
 
     @Test
     public void PogoMessagingSystemShouldReturnABooleanWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
         TypeManufacturerParamsWrapper paramsWrapper =
             new TypeManufacturerParamsWrapper( dataProviderStrategy, attributeMetadata );
         Object value = PogoInvocationSteps.whenISendAMessageToTheChannel( paramsWrapper, Boolean.class.getName() );
-        PogoValidationSteps.theObjectShouldNotBeNull( value );
-        PogoValidationSteps.theBooleanValueIsTrue( ( Boolean ) value );
+        assertThat( value ).isNotNull();
     }
 
     @Test
     public void PogoMessagingSystemShouldReturnACharacterPrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -91,7 +92,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnACharacterWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -105,7 +106,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAShortPrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -119,7 +120,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAShortWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -133,7 +134,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnABytePrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -147,7 +148,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAByteWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -161,7 +162,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnALongPrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -175,7 +176,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnALongWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -189,7 +190,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAFloatPrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -203,7 +204,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAFloatWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -217,7 +218,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnADoublePrimitiveValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -231,7 +232,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnADoubleWrappedValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -246,7 +247,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAStringValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnEmptyAttributeMetadata
                                               ( SimplePojoToTestSetters.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -260,7 +261,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAnEnumValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnAttributeMetadataForEnums
                                               ( ExternalRatePogoEnum.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );
@@ -275,7 +276,7 @@ public class TypeManufacturingTest extends AbstractPogoSteps
     @Test
     public void PogoMessagingSystemShouldReturnAGenericTypeValue() throws Exception
     {
-        DataProviderStrategy dataProviderStrategy = PogoFactorySteps.givenARandomDataProviderStrategy();
+        DataProviderStrategy dataProviderStrategy = new RandomDataProviderStrategyImpl();
         AttributeMetadata attributeMetadata = PogoFactorySteps.givenAnAttributeMetadataForGenericTypes
                                               ( ClassGenericConstructorPojo.class );
         PogoValidationSteps.theObjectShouldNotBeNull( attributeMetadata );

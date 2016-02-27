@@ -1,8 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.common.PogoFloatValue;
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
-
 import java.io.Serializable;
 
 public class FloatValuePojo implements Serializable
@@ -10,30 +7,20 @@ public class FloatValuePojo implements Serializable
 
     private static final long serialVersionUID = 1L;
 
-    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE )
     private float floatFieldWithMinValueOnly;
 
-    @PogoFloatValue( maxValue = PogoTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
     private float floatFieldWithMaxValueOnly;
 
-    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE,
-                     maxValue = PogoTestConstants.NUMBER_FLOAT_MAX_VALUE )
     private float floatFieldWithMinAndMaxValue;
 
-    @PogoFloatValue( numValue = PogoTestConstants.FLOAT_PRECISE_VALUE )
     private float floatFieldWithPreciseValue;
 
-    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE )
     private Float floatObjectFieldWithMinValueOnly;
 
-    @PogoFloatValue( maxValue = PogoTestConstants.NUMBER_FLOAT_ONE_HUNDRED )
     private Float floatObjectFieldWithMaxValueOnly;
 
-    @PogoFloatValue( minValue = PogoTestConstants.NUMBER_FLOAT_MIN_VALUE,
-                     maxValue = PogoTestConstants.NUMBER_FLOAT_MAX_VALUE )
     private Float floatObjectFieldWithMinAndMaxValue;
 
-    @PogoFloatValue( numValue = PogoTestConstants.FLOAT_PRECISE_VALUE )
     private Float floatObjectFieldWithPreciseValue;
 
     public float getFloatFieldWithMinValueOnly()

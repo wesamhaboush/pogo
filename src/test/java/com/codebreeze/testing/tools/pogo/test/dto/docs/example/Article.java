@@ -1,9 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
-import com.codebreeze.testing.tools.pogo.common.PogoConstructor;
-import com.codebreeze.testing.tools.pogo.common.PogoDoubleValue;
-import com.codebreeze.testing.tools.pogo.common.PogoIntValue;
-
 import java.io.Serializable;
 
 
@@ -18,10 +14,9 @@ public class Article implements Serializable
 
     private final Double itemCost;
 
-    @PogoConstructor( comment = "Immutable-like POJOs must be annotated with @PogoConstructor" )
-    public Article( @PogoIntValue( maxValue = 100000 ) int id,
+    public Article( int id,
                     String description,
-                    @PogoDoubleValue( minValue = 50.0 ) Double itemCost )
+                    Double itemCost )
     {
         super();
         this.id = id;

@@ -21,7 +21,6 @@ public class BooleanPojo
         this.value1 = value1;
     }
 
-    @SimplePojoWithExcludeAnnotationToTestSetters.TestExclude
     public Boolean isValue2()
     {
         return value2;

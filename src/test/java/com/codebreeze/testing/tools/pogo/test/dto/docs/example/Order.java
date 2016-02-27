@@ -1,7 +1,5 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
-import com.codebreeze.testing.tools.pogo.common.PogoCollection;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -18,7 +16,6 @@ public class Order implements Serializable
 
     private double totalAmount;
 
-    @PogoCollection( nbrElements = 5 )
     private List<OrderItem> orderItems = new ArrayList<>();
 
     public int getId()

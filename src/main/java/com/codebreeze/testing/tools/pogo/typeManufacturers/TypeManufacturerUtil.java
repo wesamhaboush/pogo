@@ -8,7 +8,6 @@ import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
 import com.codebreeze.testing.tools.pogo.common.PogoConstants;
 
 import javax.xml.ws.Holder;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.*;
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
@@ -136,7 +135,6 @@ public final class TypeManufacturerUtil
     }
 
     public static Integer findCollectionSize( DataProviderStrategy strategy,
-            List<Annotation> annotations,
             Class<?> collectionElementType,
             Holder<AttributeStrategy<?>> elementStrategyHolder,
             Holder<AttributeStrategy<?>> keyStrategyHolder )
