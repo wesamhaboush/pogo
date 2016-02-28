@@ -1,9 +1,12 @@
 
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Calendar;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class ImmutableNonAnnotatedPojo implements Serializable
 {
@@ -46,8 +49,6 @@ public class ImmutableNonAnnotatedPojo implements Serializable
     @Override
     public String toString()
     {
-        return "ImmutableNoHierarchicalPojo [intField=" + intField
-               + ", dateCreated=" + dateCreated.getTime() + ", longArray="
-               + Arrays.toString( longArray ) + "]";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

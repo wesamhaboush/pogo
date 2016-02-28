@@ -1,10 +1,14 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class CollectionImplementingGenericsInterface implements List<String>
 {
@@ -147,5 +151,11 @@ public class CollectionImplementingGenericsInterface implements List<String>
     public List<String> subList( int fromIndex, int toIndex )
     {
         return list.subList( fromIndex, toIndex );
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

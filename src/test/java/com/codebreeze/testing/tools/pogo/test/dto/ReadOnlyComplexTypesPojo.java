@@ -1,9 +1,13 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class ReadOnlyComplexTypesPojo
 {
@@ -42,5 +46,11 @@ public class ReadOnlyComplexTypesPojo
     public Value getValue()
     {
         return value;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

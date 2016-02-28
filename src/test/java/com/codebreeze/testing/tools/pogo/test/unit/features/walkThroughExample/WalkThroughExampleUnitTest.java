@@ -12,39 +12,69 @@ import com.codebreeze.testing.tools.pogo.test.dto.docs.example.OrderItem;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class WalkThroughExampleUnitTest extends AbstractPogoSteps
 {
-
-
     @Test
-    public void testArticleSetup() throws Exception
+    public void article_setup() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        Article pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Article.class, PogoFactory );
-        walkThroughSteps.theArticlePojoShouldBeCorrectlyFilled( pojo );
-    }
-
-    @Test
-    public void testOrderItemSetup() throws Exception
-    {
+        //given
         PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        Article pojo = pogoFactory.manufacturePojo( Article.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getItemCost() ).isNotNull();
+        assertThat( pojo.getDescription() ).isNotNull();
+    }
+
+    @Test
+    public void order_item_setup() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
         OrderItem pojo = pogoFactory.manufacturePojo( OrderItem.class );
-        walkThroughSteps.theOrderItemPojoShouldBeCorrectlyFilled( pojo );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getNote() ).isNotNull();
+        assertThat( pojo.getArticle() ).isNotNull();
+        assertThat( pojo.getArticle().getItemCost() ).isNotNull();
+        assertThat( pojo.getArticle().getDescription() ).isNotNull();
     }
 
     @Test
-    public void testAddressSetup() throws Exception
+    public void address_setup() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        Address pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Address.class, PogoFactory );
-        walkThroughSteps.theAddressPojoShouldBeCorrectlyFilled( pojo );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        Address pojo = pogoFactory.manufacturePojo( Address.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getAddress1() ).isNotNull();
+        assertThat( pojo.getAddress2() ).isNotNull();
+        assertThat( pojo.getCity() ).isNotNull();
+        assertThat( pojo.getZipCode() ).isNotNull();
+        assertThat( pojo.getCountry() ).isNotNull();
+        assertThat( pojo.getCountry().getCountryCode() ).isNotNull().isNotEmpty();
+        assertThat( pojo.getCountry().getCountryId() ).isNotNull();
+        assertThat( pojo.getCountry().getDescription() ).isNotNull().isNotEmpty();
     }
 
     @Test
-    public void testBankAccountSetup() throws Exception
+    public void bank_account_setup() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        BankAccount pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( BankAccount.class, PogoFactory );
-        walkThroughSteps.theBankAccountPojoShouldBeCorrectlyFilled( pojo );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        BankAccount pojo = pogoFactory.manufacturePojo( BankAccount.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getAccount() ).isNotNull();
+        assertThat( pojo.getBalance() ).isNotNull();
+        assertThat( pojo.getBank() ).isNotNull().isNotEmpty();
+        assertThat( pojo.getSortCode() ).isNotNull().isNotEmpty();
     }
 }

@@ -1,9 +1,13 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class MapImplementingGenericInterface implements Map<Integer, String>
 {
@@ -80,5 +84,11 @@ public class MapImplementingGenericInterface implements Map<Integer, String>
     public Set<java.util.Map.Entry<Integer, String>> entrySet()
     {
         return map.entrySet();
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

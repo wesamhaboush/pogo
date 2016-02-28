@@ -1,8 +1,11 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
 import com.codebreeze.testing.tools.pogo.test.enums.ExternalRatePogoEnum;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import java.io.Serializable;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class EnumsPojo implements Serializable
 {
@@ -36,11 +39,7 @@ public class EnumsPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "EnumsPojo ( " + "ratePogoInternal = " +
-               ratePogoInternal + TAB +
-               "ratePogoExternal = " + ratePogoExternal +
-               TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 
     public enum RatePogoInternal

@@ -1,127 +1,40 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class DoubleValuePojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class DoubleValuePojo
 {
-    private static final long serialVersionUID = 1L;
+    private double doublePrimitive;
 
-    private double doubleFieldWithMinValueOnly;
+    private Double doubleObject;
 
-    private double doubleFieldWithMaxValueOnly;
-
-    private double doubleFieldWithMinAndMaxValue;
-
-    private double doubleFieldWithPreciseValue;
-
-    private Double doubleObjectFieldWithMinValueOnly;
-
-    private Double doubleObjectFieldWithMaxValueOnly;
-
-    private Double doubleObjectFieldWithMinAndMaxValue;
-
-    private Double doubleObjectFieldWithPreciseValue;
-
-    public double getDoubleFieldWithMinValueOnly()
+    public double getDoublePrimitive()
     {
-        return doubleFieldWithMinValueOnly;
+        return doublePrimitive;
     }
 
-    public void setDoubleFieldWithMinValueOnly(
-        double doubleFieldWithMinValueOnly )
+    public void setDoublePrimitive(
+        double doublePrimitive )
     {
-        this.doubleFieldWithMinValueOnly = doubleFieldWithMinValueOnly;
+        this.doublePrimitive = doublePrimitive;
     }
 
-    public double getDoubleFieldWithMaxValueOnly()
+    public Double getDoubleObject()
     {
-        return doubleFieldWithMaxValueOnly;
+        return doubleObject;
     }
 
-    public void setDoubleFieldWithMaxValueOnly(
-        double doubleFieldWithMaxValueOnly )
+    public void setDoubleObject(
+        Double doubleObject )
     {
-        this.doubleFieldWithMaxValueOnly = doubleFieldWithMaxValueOnly;
+        this.doubleObject = doubleObject;
     }
 
-    public double getDoubleFieldWithMinAndMaxValue()
-    {
-        return doubleFieldWithMinAndMaxValue;
-    }
-
-    public void setDoubleFieldWithMinAndMaxValue(
-        double doubleFieldWithMinAndMaxValue )
-    {
-        this.doubleFieldWithMinAndMaxValue = doubleFieldWithMinAndMaxValue;
-    }
-
-    public Double getDoubleObjectFieldWithMinValueOnly()
-    {
-        return doubleObjectFieldWithMinValueOnly;
-    }
-
-    public void setDoubleObjectFieldWithMinValueOnly(
-        Double doubleObjectFieldWithMinValueOnly )
-    {
-        this.doubleObjectFieldWithMinValueOnly = doubleObjectFieldWithMinValueOnly;
-    }
-
-    public Double getDoubleObjectFieldWithMaxValueOnly()
-    {
-        return doubleObjectFieldWithMaxValueOnly;
-    }
-
-    public void setDoubleObjectFieldWithMaxValueOnly(
-        Double doubleObjectFieldWithMaxValueOnly )
-    {
-        this.doubleObjectFieldWithMaxValueOnly = doubleObjectFieldWithMaxValueOnly;
-    }
-
-    public Double getDoubleObjectFieldWithMinAndMaxValue()
-    {
-        return doubleObjectFieldWithMinAndMaxValue;
-    }
-
-    public void setDoubleObjectFieldWithMinAndMaxValue(
-        Double doubleObjectFieldWithMinAndMaxValue )
-    {
-        this.doubleObjectFieldWithMinAndMaxValue = doubleObjectFieldWithMinAndMaxValue;
-    }
-
-    public double getDoubleFieldWithPreciseValue()
-    {
-        return doubleFieldWithPreciseValue;
-    }
-
-    public void setDoubleFieldWithPreciseValue(
-        double doubleFieldWithPreciseValue )
-    {
-        this.doubleFieldWithPreciseValue = doubleFieldWithPreciseValue;
-    }
-
-    public Double getDoubleObjectFieldWithPreciseValue()
-    {
-        return doubleObjectFieldWithPreciseValue;
-    }
-
-    public void setDoubleObjectFieldWithPreciseValue(
-        Double doubleObjectFieldWithPreciseValue )
-    {
-        this.doubleObjectFieldWithPreciseValue = doubleObjectFieldWithPreciseValue;
-    }
 
     public String toString()
     {
-        final String TAB = "    ";
-        return "DoubleRangeValuesPojo ( " +
-               "doubleFieldWithMinValueOnly = " + this.doubleFieldWithMinValueOnly + TAB +
-               "doubleFieldWithMaxValueOnly = " + this.doubleFieldWithMaxValueOnly + TAB +
-               "doubleFieldWithMinAndMaxValue = " + this.doubleFieldWithMinAndMaxValue + TAB +
-               "doubleFieldWithPreciseValue = " + this.doubleFieldWithPreciseValue + TAB +
-               "doubleObjectFieldWithMinValueOnly = " + this.doubleObjectFieldWithMinValueOnly + TAB +
-               "doubleObjectFieldWithMaxValueOnly = " + this.doubleObjectFieldWithMaxValueOnly + TAB +
-               "doubleObjectFieldWithMinAndMaxValue = " + this.doubleObjectFieldWithMinAndMaxValue + TAB +
-               "doubleObjectFieldWithPreciseValue = " + this.doubleObjectFieldWithPreciseValue + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

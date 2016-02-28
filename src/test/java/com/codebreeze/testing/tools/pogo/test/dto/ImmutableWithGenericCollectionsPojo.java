@@ -1,10 +1,14 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class ImmutableWithGenericCollectionsPojo implements Serializable
 {
@@ -49,13 +53,6 @@ public class ImmutableWithGenericCollectionsPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "ImmutableWithNonGenericCollectionsPojo ( " +
-               "nonGenerifiedCollection = " +
-               generifiedCollection + TAB +
-               "nonGenerifiedMap = " + generifiedMap +
-               TAB + "nonGenerifiedSet = " +
-               generifiedSet + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
-
 }

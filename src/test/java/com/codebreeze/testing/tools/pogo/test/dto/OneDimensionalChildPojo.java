@@ -1,5 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
 public class OneDimensionalChildPojo extends AbstractOneDimensionalPojo
 {
     private int intField;
@@ -34,10 +38,6 @@ public class OneDimensionalChildPojo extends AbstractOneDimensionalPojo
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return super.toString() + TAB +
-               "OneDimensionalChildPojo ( " + "intField = " +
-               intField + TAB + "strField = " +
-               strField + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

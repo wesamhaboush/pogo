@@ -1,5 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
 public class ImmutablePojo
 {
     private String value;
@@ -28,5 +32,11 @@ public class ImmutablePojo
     public Integer getValue2()
     {
         return value2;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

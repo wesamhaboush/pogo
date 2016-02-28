@@ -1,16 +1,16 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;
 
-public class OneDimensionalTestPojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class OneDimensionalTestPojo
 {
-
-    private static final long serialVersionUID = 1L;
-
     private boolean booleanField;
 
     private Boolean booleanObjectField;
@@ -307,34 +307,6 @@ public class OneDimensionalTestPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "OneDimensionalTestPojo ( " + "booleanField = " +
-               booleanField + TAB +
-               "booleanObjectField = " + booleanObjectField +
-               TAB + "byteField = " + byteField +
-               TAB + "byteObjectField = " +
-               byteObjectField + TAB + "shortField = " +
-               shortField + TAB + "shortObjectField = " +
-               shortObjectField + TAB + "charField = " +
-               charField + TAB + "charObjectField = " +
-               charObjectField + TAB + "intField = " +
-               intField + TAB + "intObjectField = " +
-               intObjectField + TAB + "longField = " +
-               longField + TAB + "longObjectField = " +
-               longObjectField + TAB + "floatField = " +
-               floatField + TAB + "floatObjectField = " +
-               floatObjectField + TAB + "doubleField = " +
-               doubleField + TAB + "doubleObjectField = " +
-               doubleObjectField + TAB + "stringField = " +
-               stringField + TAB + "objectField = " +
-               objectField + TAB + "calendarField = " +
-               calendarField.getTime() + TAB +
-               "dateField = " + dateField + TAB +
-               "randomArray = " + randomArray + TAB +
-               "intArray = " + intArray + TAB +
-               "booleanArray = " + booleanArray + TAB +
-               "bigDecimalField = " + bigDecimalField +
-               TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
-
 }

@@ -1,14 +1,15 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
-public class SingletonWithParametersInStaticFactoryPojo implements Serializable
-{
-    private static final long serialVersionUID = 1L;
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
+public class SingletonWithParametersInStaticFactoryPojo
+{
     private final Calendar createDate;
 
     private final List<OneDimensionalTestPojo> pojoList;
@@ -66,12 +67,6 @@ public class SingletonWithParametersInStaticFactoryPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "SingletonWithParametersInStaticFactoryPojo ( " +
-               "createDate = " + createDate.getTime() +
-               TAB + "pojoList = " + pojoList + TAB +
-               "pojoMap = " + pojoMap + TAB +
-               "firstName = " + firstName + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

@@ -5,169 +5,267 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class CollectionsTest extends AbstractPogoSteps
 {
 
-    @Test
-    public void PogoShouldHandleStandardCollections() throws Exception
+    private Condition<Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        CollectionsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( CollectionsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        List<String> strList = pojo.getStrList();
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
-        ArrayList<String> arrayListStr = pojo.getArrayListStr();
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( arrayListStr );
-        List<String> copyOnWriteList = pojo.getCopyOnWriteList();
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( copyOnWriteList );
-        HashSet<String> hashSetStr = pojo.getHashSetStr();
-        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( hashSetStr );
-        List<String> listStrCollection = new ArrayList<>(
-            pojo.getStrCollection() );
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( listStrCollection );
-        Set<String> setStrCollection = new HashSet<>(
-            pojo.getStrCollection() );
-        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( setStrCollection );
-        Set<String> strSet = pojo.getStrSet();
-        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( strSet );
-        Map<String, OneDimensionalTestPojo> map = pojo.getMap();
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( map );
-        HashMap<String, OneDimensionalTestPojo> hashMap = pojo.getHashMap();
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( hashMap );
-        ConcurrentMap<String, OneDimensionalTestPojo> concurrentHashMap = pojo
-                .getConcurrentHashMap();
-        PogoValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement( concurrentHashMap );
-        ConcurrentHashMap<String, OneDimensionalTestPojo> concurrentHashMapImpl = pojo
-                .getConcurrentHashMapImpl();
-        PogoValidationSteps.theConcurrentHashMapOfStringsObjectsShouldContainAtLeastOneNonEmptyElement(
-            concurrentHashMapImpl );
-        Queue<SimplePojoToTestSetters> queue = pojo.getQueue();
-        PogoValidationSteps.theQueueCannotBeNull( queue );
-        PogoValidationSteps.theQueueMustBeAnInstanceOf( queue, LinkedList.class );
-        SimplePojoToTestSetters pojoQueueElement = queue.poll();
-        PogoValidationSteps.theObjectShouldNotBeNull( pojoQueueElement );
-        List nonGenerifiedList = pojo.getNonGenerifiedList();
-        PogoValidationSteps.theNonGenerifiedListShouldNotBeNullOrEmpty( nonGenerifiedList );
-        Map<?, ?> nonGenerifiedMap = pojo.getNonGenerifiedMap();
-        PogoValidationSteps.theNonGenerifiedMapShouldNotBeNullOrEmpty( nonGenerifiedMap );
-        Object object = nonGenerifiedMap.get( nonGenerifiedMap.keySet()
-                                              .iterator().next() );
-        PogoValidationSteps.theObjectShouldNotBeNull( object );
+        @Override
+        public boolean matches( Map<?, ?> map )
+        {
+            return map.entrySet().stream().anyMatch( e -> e.getKey() != null && e.getValue() != null );
+        }
+    };
+    private Condition<List> empty = new Condition<List>()
+    {
+        @Override
+        public boolean matches( List list )
+        {
+            return list.size() <= 0;
+        }
+    };
+
+    private Condition<Map> emptyMap = new Condition<Map>()
+    {
+        @Override
+        public boolean matches( Map map )
+        {
+            return map.size() <= 0;
+        }
+    };
+    private Condition<Map> nullElements = new Condition<Map>()
+    {
+        @Override
+        public boolean matches( Map map )
+        {
+            return map.keySet().contains( null );
+        }
+    };
+
+    private Condition<Set> noNullElements = new Condition<Set>()
+    {
+        @Override
+        public boolean matches( Set set )
+        {
+            return set.stream().allMatch( e -> e != null );
+        }
+    };
+
+    @Test
+    public void should_handle_standard_collections() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        CollectionsPojo pojo = pogoFactory.manufacturePojo( CollectionsPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getStrList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getArrayListStr() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getCopyOnWriteList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getHashSetStr() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getStrCollection() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getStrSet() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasAtLeastOneElementOfType( String.class );
+        assertThat( pojo.getMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( atLeastOneNonEmptyElement );
+        assertThat( pojo.getHashMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( atLeastOneNonEmptyElement );
+        assertThat( pojo.getConcurrentHashMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( atLeastOneNonEmptyElement );
+        assertThat( pojo.getConcurrentHashMapImpl() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( atLeastOneNonEmptyElement );
+        assertThat( pojo.getQueue() )
+        .isNotNull()
+        .isInstanceOf( LinkedList.class )
+        .hasOnlyElementsOfType( SimplePojoToTestSetters.class );
+        assertThat( pojo.getNonGenerifiedList() )
+        .isNotNull()
+        .isNot( empty );
+        assertThat( pojo.getNonGenerifiedMap() )
+        .isNotNull()
+        .isNot( emptyMap ).doesNotHave( nullElements );
     }
 
     @Test
-    public void PogoShouldHandlePojosWithNoSettersAndCollectionsInTheConstructor() throws Exception
+    public void should_handle_pojos_with_no_setters_and_collections_in_the_constructor() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        NoSetterWithCollectionInConstructorPojo pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( NoSetterWithCollectionInConstructorPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        List<String> strList = pojo.getStrList();
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( strList );
-        int intField = pojo.getIntField();
-        PogoValidationSteps.theIntFieldShouldNotBeZero( intField );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        NoSetterWithCollectionInConstructorPojo pojo = pogoFactory.manufacturePojo(
+                    NoSetterWithCollectionInConstructorPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getStrList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
+        assertThat( pojo.getIntField() ).isNotNull();
     }
 
     @Test
-    public void PogoShouldHandleImmutablePojosWithNonGenericCollections() throws Exception
+    public void should_handle_immutable_pojos_with_non_generic_collections() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableWithNonGenericCollectionsPojo pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithNonGenericCollectionsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        Collection<Object> nonGenerifiedCollection = pojo
-                .getNonGenerifiedCollection();
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( pojo.getNonGenerifiedCollection() );
-        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedCollection,
-                ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
-        Set<Object> nonGenerifiedSet = pojo.getNonGenerifiedSet();
-        PogoValidationSteps.theSetShouldContainAtleastOneNonEmptyElement( nonGenerifiedSet );
-        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements(
-            nonGenerifiedSet, ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
-        Map<Object, Object> nonGenerifiedMap = pojo.getNonGenerifiedMap();
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( nonGenerifiedMap );
-        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( nonGenerifiedMap,
-                ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutableWithNonGenericCollectionsPojo pojo = pogoFactory.manufacturePojo(
+                    ImmutableWithNonGenericCollectionsPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getNonGenerifiedCollection() )
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .isNotEmpty()
+        .isNotNull();
+        assertThat( pojo.getNonGenerifiedSet() )
+        .isNotEmpty()
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .has( noNullElements )
+        .isNotNull();
+        assertThat( pojo.getNonGenerifiedMap() )
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .isNotEmpty()
+        .doesNotContainKey( null )
+        .doesNotContainValue( null )
+        .has( atLeastOneNonEmptyElement )
+        .isNotNull();
     }
 
     @Test
-    public void PogoShouldHandleImmutablePojoWithGenerifiedCollectionsInConstructor() throws Exception
+    public void should_handle_immutable_pojo_with_generified_collections_in_constructor() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableWithGenericCollectionsPojo pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableWithGenericCollectionsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        Collection<OneDimensionalTestPojo> generifiedCollection = pojo
-                .getGenerifiedCollection();
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedCollection );
-        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedCollection,
-                ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
-        Map<String, Calendar> generifiedMap = pojo.getGenerifiedMap();
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( generifiedMap );
-        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( generifiedMap,
-                ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
-        Set<ImmutableWithNonGenericCollectionsPojo> generifiedSet = pojo
-                .getGenerifiedSet();
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmpty( generifiedSet );
-        PogoValidationSteps.theCollectionShouldHaveExactlyTheExpectedNumberOfElements( generifiedSet,
-                ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutableWithGenericCollectionsPojo pojo = pogoFactory.manufacturePojo( ImmutableWithGenericCollectionsPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getGenerifiedCollection() )
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .isNotNull().isNotEmpty();
+        assertThat( pojo.getGenerifiedMap() )
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .isNotEmpty()
+        .has( atLeastOneNonEmptyElement );
+        assertThat( pojo.getGenerifiedSet() )
+        .hasSize( ImmutableWithNonGenericCollectionsPojo.NBR_ELEMENTS )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( ImmutableWithNonGenericCollectionsPojo.class );
     }
 
 
     @Test
-    public void testSortedMapCreation()
+    public void test_sorted_map_creation()
     {
         testMap( TreeMap.class );
     }
 
     @Test
-    public void testConcurrentMapCreation()
+    public void test_concurrent_map_Creation()
     {
         testMap( ConcurrentHashMap.class );
     }
 
     @Test
-    public void testHashMapCreation()
+    public void test_hash_hap_creation()
     {
         testMap( HashMap.class );
     }
 
 
     @Test
-    public void PogoShouldFillInPojosWithAttributesContainingWildcards() throws Exception
+    public void should_fill_in_pojos_with_attributes_containing_wildcards() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ReadOnlyWildcardFieldsPojo pojo	= PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                              ReadOnlyWildcardFieldsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), Object.class, Object.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ReadOnlyWildcardFieldsPojo pojo	= pogoFactory.manufacturePojo( ReadOnlyWildcardFieldsPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( Object.class );
+        assertThat( pojo.getMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( entriesWithKeyValueTypes( Object.class, Object.class ) );
+    }
+
+    private Condition<Map<?, ?>> entriesWithKeyValueTypes( Class<?> keyClass, Class<?> valueClass )
+    {
+        return new Condition<Map<?, ?>>()
+        {
+            @Override
+            public boolean matches( Map<?, ?> map )
+            {
+                return map.entrySet().stream().allMatch( e -> e.getKey().getClass() == keyClass &&
+                        e.getValue().getClass() == valueClass );
+            }
+        };
     }
 
     @Test
-    public void PogoShouldBeAbleToFillInPojosWithRawTypeCollectionAttributesAndDefaultValueToObject() throws Exception
+    public void should_be_able_to_fill_in_pojos_with_raw_type_collection_attributes_and_default_value_to_object() throws
+        Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ReadOnlyRawFieldsPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                         ReadOnlyRawFieldsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Object.class );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), Object.class, Object.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ReadOnlyRawFieldsPojo pojo = pogoFactory.manufacturePojo( ReadOnlyRawFieldsPojo.class );
+        //assert
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getList() )
+        .hasOnlyElementsOfType( Object.class )
+        .isNotEmpty()
+        .isNotNull();
+        assertThat( pojo.getMap() )
+        .isNotEmpty()
+        .isNotNull()
+        .has( entriesWithKeyValueTypes( Object.class, Object.class ) );
     }
 
 
     private void testMap( Class<? extends Map> mapType )
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        DataProviderStrategy strategy = PogoFactory.getStrategy();
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        DataProviderStrategy strategy = pogoFactory.getStrategy();
         int mapSize = strategy.getNumberOfCollectionElements( PogoTestInterface.class );
 
         if ( mapType.isAssignableFrom( ConcurrentHashMap.class ) )
@@ -175,12 +273,11 @@ public class CollectionsTest extends AbstractPogoSteps
             mapSize = 0;
         }
 
-        Map<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                             mapType, PogoFactory, String.class, PogoTestInterface.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.keySet().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( mapSize, pojo.values().size() );
+        //when
+        Map<?, ?> pojo = pogoFactory.manufacturePojo( mapType, String.class, PogoTestInterface.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.keySet().size() ).isEqualTo( mapSize );
+        assertThat( pojo.values().size() ).isEqualTo( mapSize );
     }
-
-
 }

@@ -1,69 +1,42 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.io.Serializable;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public class BooleanValuePojo implements Serializable
 {
     private static final long serialVersionUID = 1L;
 
-    private boolean boolDefaultToTrue;
+    private boolean booleanPrimitive;
 
-    private boolean boolDefaultToFalse = true;
+    private Boolean booleanObject;
 
-    private Boolean boolObjectDefaultToTrue;
-
-    private Boolean boolObjectDefaultToFalse = true;
-
-    public boolean isBoolDefaultToTrue()
+    public boolean isBooleanPrimitive()
     {
-        return boolDefaultToTrue;
+        return booleanPrimitive;
     }
 
-    public void setBoolDefaultToTrue( boolean boolDefaultToTrue )
+    public void setBooleanPrimitive( boolean booleanPrimitive )
     {
-        this.boolDefaultToTrue = boolDefaultToTrue;
+        this.booleanPrimitive = booleanPrimitive;
     }
 
-    public boolean isBoolDefaultToFalse()
+    public Boolean getBooleanObject()
     {
-        return boolDefaultToFalse;
+        return booleanObject;
     }
 
-    public void setBoolDefaultToFalse( boolean boolDefaultToFalse )
+    public void setBooleanObject( Boolean booleanObject )
     {
-        this.boolDefaultToFalse = boolDefaultToFalse;
-    }
-
-    public Boolean getBoolObjectDefaultToTrue()
-    {
-        return boolObjectDefaultToTrue;
-    }
-
-    public void setBoolObjectDefaultToTrue( Boolean boolObjectDefaultToTrue )
-    {
-        this.boolObjectDefaultToTrue = boolObjectDefaultToTrue;
-    }
-
-    public Boolean getBoolObjectDefaultToFalse()
-    {
-        return boolObjectDefaultToFalse;
-    }
-
-    public void setBoolObjectDefaultToFalse( Boolean boolObjectDefaultToFalse )
-    {
-        this.boolObjectDefaultToFalse = boolObjectDefaultToFalse;
+        this.booleanObject = booleanObject;
     }
 
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "BooleanValuePojo ( " + "boolDefaultToTrue = " +
-               boolDefaultToTrue + TAB +
-               "boolDefaultToFalse = " + boolDefaultToFalse +
-               TAB + "boolObjectDefaultToTrue = " +
-               boolObjectDefaultToTrue + TAB +
-               "boolObjectDefaultToFalse = " +
-               boolObjectDefaultToFalse + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

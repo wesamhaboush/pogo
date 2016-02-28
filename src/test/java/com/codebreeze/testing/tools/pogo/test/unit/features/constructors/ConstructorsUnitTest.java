@@ -4,245 +4,357 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import javax.xml.bind.JAXBElement;
-import java.util.Date;
-import java.util.Observable;
-import java.util.TimeZone;
+import java.util.*;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConstructorsUnitTest extends AbstractPogoSteps
 {
-    @Test
-    public void PogoShouldHandleGenericsInConstructor() throws Exception
+    private Condition<? super Map<?, ?>> nonEmptyElements = new Condition<Map<?, ?>>()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        GenericInConstructorPojo pojo
-            = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInConstructorPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getVector(), String.class );
-    }
-    @Test
-    public void PogoShouldHandleGenericsInSettersDuringPojoInstantiation() throws Exception
+        @Override
+        public boolean matches( Map<?, ?> map )
+        {
+            return map.entrySet().stream().anyMatch(
+                       e -> e.getKey() != null && e.getValue() != null
+                   );
+        }
+    };
+
+    private Condition<List<? extends String>> noNullElements = new Condition<List<? extends String>>()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        GenericInSetterPojo pojo
-            = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInSetterPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getVector(), String.class );
-    }
+        @Override
+        public boolean matches( List<? extends String> list )
+        {
+            return list.stream().allMatch( e -> e != null );
+        }
+    };
 
     @Test
-    public void PogoShouldHandleGenericsInStaticConstructorsDuringPojoInstantiation() throws Exception
+    public void should_handle_generics_in_constructor() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        GenericInStaticConstructorPojo pojo
-            = PogoInvocationSteps.whenIInvokeTheFactoryForClass( GenericInStaticConstructorPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getVector(), String.class );
-    }
-
-    @Test
-    public void PogoShouldHandleConstructorsWithGenericArraysDuringPojoInstantiation()
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        GenericArrayInConstructorPojo<?> pojo
-            = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                  GenericArrayInConstructorPojo.class, PogoFactory, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theArrayOfTheGivenTypeShouldNotBeNullOrEmptyAndContainElementsOfTheRightType(
-            pojo.getArray(), String.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        GenericInConstructorPojo pojo = pogoFactory.manufacturePojo( GenericInConstructorPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getVector() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
     }
 
     @Test
-    public void PogoShouldHandleConstructorsWithMultipleGenericsDuringPojoInstantiation()
+    public void should_handle_generics_in_setters_during_pojo_instantiation() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        MultipleGenericInConstructorPojo<?, ?, ?, ?> pojo
-            = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType( MultipleGenericInConstructorPojo.class,
-                    PogoFactory, String.class, Character.class, Byte.class, Integer.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getType() );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Character.class );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), Byte.class, Integer.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        GenericInSetterPojo pojo = pogoFactory.manufacturePojo( GenericInSetterPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getVector() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
     }
 
     @Test
-    public void PogoShouldHandleClassesWithKeyValueGenericTypes() throws Exception
+    public void should_handle_generics_in_static_constructors_during_pojo_instantiation() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        DefaultFieldPojo<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                          DefaultFieldPojo.class, PogoFactory, String.class, Long.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getMap() );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), String.class, Long.class );
-    }
-
-
-    @Test
-    public void PogoShouldBeAbleToManufactureInstancesOfTheObservableClass() throws Exception
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        Observable observable = PogoInvocationSteps.whenIInvokeTheFactoryForClass( Observable.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( observable );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        GenericInStaticConstructorPojo pojo = pogoFactory.manufacturePojo( GenericInStaticConstructorPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getVector() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
     }
 
     @Test
-    public void PogoShouldBeAbleToManufacturePojosWhichContainImmutableCollections() throws Exception
+    public void should_handle_constructors_with_generic_arrays_during_pojo_instantiation()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableDefaultFieldsPojo model =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutableDefaultFieldsPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( model );
-        PogoValidationSteps.theListShouldNotBeNullAndContainAtLeastOneNonEmptyElement( model.getList() );
-        PogoValidationSteps.theListShouldHaveExactlyTheExpectedNumberOfElements( model.getList(),
-                PogoFactory.getStrategy().getNumberOfCollectionElements( model.getList().getClass() ) );
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( model.getMap() );
-        PogoValidationSteps.theMapShouldHaveExactlyTheExpectedNumberOfElements( model.getMap(),
-                PogoFactory.getStrategy().getNumberOfCollectionElements( model.getMap().getClass() ) );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        GenericArrayInConstructorPojo<?> pojo = pogoFactory.manufacturePojo( GenericArrayInConstructorPojo.class,
+                                                String.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getArray() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
     }
 
     @Test
-    public void PogoShouldBeAbleToManufactureAnyTypeOfCollections() throws Exception
+    public void should_handle_constructors_with_multiple_generics_during_pojo_instantiation()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        UnsupportedCollectionInConstructorPojo<?> pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                UnsupportedCollectionInConstructorPojo.class, PogoFactory, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getVector(), String.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        MultipleGenericInConstructorPojo<?, ?, ?, ?> pojo = pogoFactory.manufacturePojo(
+                    MultipleGenericInConstructorPojo.class,
+                    String.class,
+                    Character.class,
+                    Byte.class,
+                    Integer.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getType() ).isEqualTo( String.class );
+        assertThat( pojo.getList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( Character.class );
+        assertThat( pojo.getMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( onlyEntriesWithKeyValueTypes( Byte.class, Integer.class ) );
+    }
+
+    private Condition<? super Map<?, ?>> onlyEntriesWithKeyValueTypes( Class<?> keyClass, Class<?> valueClass )
+    {
+        return new Condition<Map<?, ?>>()
+        {
+            @Override
+            public boolean matches( Map<?, ?> map )
+            {
+                return map.entrySet().stream().allMatch( e -> e.getKey().getClass() == keyClass
+                        && e.getValue().getClass() == valueClass );
+            }
+        };
     }
 
     @Test
-    public void PogoShouldBeAbleToManufactureAnyTypeOfMaps() throws Exception
+    public void should_handle_classes_with_key_value_generic_types() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        UnsupportedMapInConstructorPojo<?, ?> pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                UnsupportedMapInConstructorPojo.class, PogoFactory, String.class, Integer.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getHashTable(), String.class, Integer.class );
-    }
-
-    @Test
-    public void PogoShouldBeAbleToInstantiatePojosWithImmutableCollections() throws Exception
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableVector<?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                      ImmutableVector.class, PogoFactory, String.class );
-        PogoValidationSteps.theCollectionShouldBeEmpty( pojo );
-    }
-
-    @Test
-    public void PogoShouldBeAbleToInstantiatePojosWithImmutableMaps() throws Exception
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutableHashtable<?, ?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                            ImmutableHashtable.class, PogoFactory, String.class, Integer.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theMapShouldBeEmtpy( pojo );
-    }
-
-    @Test
-    public void PogoShouldInstantiateAbstractClassesForWhichItKnowsConcreteTypes() throws Exception
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        TimeZone pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( TimeZone.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-    }
-
-    @Test
-    public void PogoShouldCreateInstancesOfGenericPojosWithFactoryMethodsWhenTheConcreteTypeIsKnown() throws Exception
-    {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        FactoryInstantiablePojo<?> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                              FactoryInstantiablePojo.class, PogoFactory, Date.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        Object value = pojo.getTypedValue();
-        PogoValidationSteps.theObjectShouldNotBeNull( value );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( Date.class, value.getClass() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        DefaultFieldPojo<?, ?> pojo = pogoFactory.manufacturePojo( DefaultFieldPojo.class, String.class, Long.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( onlyEntriesWithKeyValueTypes( String.class, Long.class ) );
     }
 
 
     @Test
-    public void PogoShouldChooseTheFullestConstructorWhenInvokedForFullData() throws Exception
+    public void should_support_instances_observable_class() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutablePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClassWithFullConstructor(
-                                 ImmutablePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue2() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        Observable observable = pogoFactory.manufacturePojo( Observable.class );
+        //then
+        assertThat( observable ).isNotNull();
     }
 
     @Test
-    public void testImmutablePojoConstructionFailure() throws Exception
+    public void should_support_manufacturing_pojos_with_immutable_collections() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ImmutablePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ImmutablePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldBeNull( pojo.getValue() );
-        PogoValidationSteps.theObjectShouldBeNull( pojo.getValue2() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutableDefaultFieldsPojo model = pogoFactory.manufacturePojo( ImmutableDefaultFieldsPojo.class );
+        //then
+        assertThat( model ).isNotNull();
+        assertThat( model.getList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasSize( pogoFactory.getStrategy().getNumberOfCollectionElements( model.getList().getClass() ) )
+        .has( noNullElements );
+        assertThat( model.getMap() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( nonEmptyElements )
+        .hasSize( pogoFactory.getStrategy().getNumberOfCollectionElements( model.getMap().getClass() ) );
     }
 
     @Test
-    public void PogoShouldCreateInstancesOfInnerClasses() throws Exception
+    public void should_support_manufacturing_any_collection_type() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        InnerClassPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( InnerClassPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getIp() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        UnsupportedCollectionInConstructorPojo<?> pojo = pogoFactory.manufacturePojo(
+                    UnsupportedCollectionInConstructorPojo.class, String.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getVector() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
+    }
+
+    @Test
+    public void should_manufacture_any_map_type() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        UnsupportedMapInConstructorPojo<?, ?> pojo = pogoFactory.manufacturePojo( UnsupportedMapInConstructorPojo.class,
+                String.class, Integer.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getHashTable() )
+        .isNotNull()
+        .isNotEmpty()
+        .has( onlyEntriesWithKeyValueTypes( String.class, Integer.class ) );
+    }
+
+    @Test
+    public void should_support_pojos_with_immutable_collections() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutableVector<?> pojo = pogoFactory.manufacturePojo( ImmutableVector.class, String.class );
+        //then
+        assertThat( pojo ).isNotNull().isEmpty();
+    }
+
+    @Test
+    public void should_instantiate_pojos_with_immutable_maps() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutableHashtable<?, ?> pojo = pogoFactory.manufacturePojo( ImmutableHashtable.class, String.class, Integer.class );
+        //then
+        assertThat( pojo ).isNotNull().isEmpty();
+    }
+
+    @Test
+    public void should_instantiate_abstract_classes_for_which_it_knows_concrete_types()
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        TimeZone pojo = pogoFactory.manufacturePojo( TimeZone.class );
+        //then
+        assertThat( pojo ).isNotNull();
+    }
+
+    @Test
+    public void should_create_instances_of_generic_pojos_with_factory_methods_when_the_concrete_type_is_known() throws
+        Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        FactoryInstantiablePojo<?> pojo = pogoFactory.manufacturePojo( FactoryInstantiablePojo.class, Date.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getTypedValue() )
+        .isNotNull()
+        .isInstanceOf( Date.class );
+    }
+
+    @Test
+    public void should_choose_the_fullest_constructor_when_invoked_for_full_data() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutablePojo pojo = pogoFactory.manufacturePojoWithFullData( ImmutablePojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getValue() ).isNotNull();
+        assertThat( pojo.getValue2() ).isNotNull();
+    }
+
+    @Test
+    public void should_fail_with_immutable_pojo() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ImmutablePojo pojo = pogoFactory.manufacturePojo( ImmutablePojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getValue() ).isNull();
+        assertThat( pojo.getValue2() ).isNull();
+    }
+
+    @Test
+    public void should_create_instances_of_inner_classes() throws Exception
+    {
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        InnerClassPojo pojo = pogoFactory.manufacturePojo( InnerClassPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getIp() ).isNotNull();
     }
 
 
     @Test
-    public void PogoShouldCreateInstancesOfJAXBElements() throws Exception
+    public void should_create_instances_of_jaxb_elements() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        JAXBElement<String> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                       JAXBElement.class, PogoFactory, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getName() );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getValue().getClass() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        JAXBElement<String> pojo = pogoFactory.manufacturePojo( JAXBElement.class, String.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getName() ).isNotNull();
+        assertThat( pojo.getValue() )
+        .isNotNull()
+        .isInstanceOf( String.class );
     }
 
     @Test
-    public void PogoShouldCreateInstancesOfJAXBElementsDeclaredAsInstanceVariablesInAPojo() throws Exception
+    public void should_create_instances_of_jaxb_element_declared_as_instance_variables_in_a_pojo() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        JAXBElementPojo<String> pojo = PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                                           JAXBElementPojo.class, PogoFactory, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getName() );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getValue().getValue().getClass() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        JAXBElementPojo<String> pojo = pogoFactory.manufacturePojo( JAXBElementPojo.class, String.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getValue() ).isNotNull();
+        assertThat( pojo.getValue().getName() ).isNotNull();
+        assertThat( pojo.getValue().getValue() ).isNotNull().isInstanceOf( String.class );
     }
 
     @Test
-    public void PogoShouldManufacturePackagePrivatePojos() throws Exception
+    public void should_manufacture_package_private_pojos() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        PackagePrivatePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                      PackagePrivatePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        PackagePrivatePojo pojo = pogoFactory.manufacturePojo( PackagePrivatePojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getValue() ).isNotNull();
     }
 
 
     @Test
-    public void PogoShouldCreateInstancesOfPojosExtendingGenericClasses() throws Exception
+    public void should_create_instances_of_pojos_extending_generic_classes() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        TypedClassPojo2 pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( TypedClassPojo2.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getTypedValue() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getTypedValue().getClass() );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getTypedList(), String.class );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        TypedClassPojo2 pojo = pogoFactory.manufacturePojo( TypedClassPojo2.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getTypedValue() ).isNotNull().isInstanceOf( String.class );
+        assertThat( pojo.getTypedList() )
+        .isNotNull()
+        .isNotEmpty()
+        .hasOnlyElementsOfType( String.class );
     }
-
 }

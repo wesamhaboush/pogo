@@ -1,5 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
 public class BooleanPojo
 {
     private boolean value1;
@@ -49,5 +53,11 @@ public class BooleanPojo
     public void setValue4( Boolean value4 )
     {
         this.value4 = value4;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

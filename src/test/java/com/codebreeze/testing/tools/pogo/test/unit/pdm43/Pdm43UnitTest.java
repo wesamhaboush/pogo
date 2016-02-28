@@ -8,7 +8,7 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm43.ConcreteBusinessObject;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class Pdm43UnitTest
 {
@@ -16,10 +16,12 @@ public class Pdm43UnitTest
     @Test
     public void validateDtoInstantiation()
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ConcreteBusinessObject pojo = PogoFactory
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ConcreteBusinessObject pojo = pogoFactory
                                       .manufacturePojo( ConcreteBusinessObject.class );
-        assertNotNull( "The created POJO cannot be null!", pojo );
+        //then
+        assertThat( pojo ).isNotNull();
     }
-
 }

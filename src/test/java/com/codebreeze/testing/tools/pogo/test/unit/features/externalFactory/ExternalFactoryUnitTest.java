@@ -1,99 +1,119 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.externalFactory;
 
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
+import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExternalFactoryUnitTest extends AbstractPogoSteps
 {
 
     @Test
-    public void PogoShouldNotBeAbleToCreateInterfaceInstancesGivenAnExternalFactoryWhichDoesNotManufactureTheConcreteType()
+    public void
+    should_not_create_interface_instances_given_an_external_factory_which_does_not_manufacture_the_concrete_type()
     throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        InterfacePojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( InterfacePojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 1, externalFactory.getFailures().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( InterfacePojo.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 0, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        InterfacePojo pojo = pogoFactory.manufacturePojo( InterfacePojo.class );
+        //then
+        assertThat( pojo ).isNull();
+        assertThat( externalFactory.getFailures() ).hasSize( 1 );
+        assertThat( externalFactory.getFailures().get( 0 ) ).isSameAs( InterfacePojo.class );
+        assertThat( externalFactory.getFullDataCalls() ).isEmpty();
     }
 
     @Test
-    public void PogoCannotFillInterfaceAttributesIfTheExternalFactoryDoesNotManufactureTheRightType() throws Exception
+    public void should_not_fill_interface_attributes_if_the_external_factory_does_not_manufacture_the_right_type() throws
+        Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        PojoWithInterfaces pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( PojoWithInterfaces.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( ObjectExt.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( InterfacePojo.class, externalFactory.getFailures().get( 1 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 0, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        PojoWithInterfaces pojo = pogoFactory.manufacturePojo( PojoWithInterfaces.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( externalFactory.getFailures() ).contains( ObjectExt.class, InterfacePojo.class );
+        assertThat( externalFactory.getFullDataCalls() ).isEmpty();
     }
 
     @Test
-    public void PogoShouldFillPojoInterfaceAttributeIfFullConstructorSetsItsValue() throws Exception
+    public void should_fill_pojo_interface_attribute_if_full_constructor_sets_its_value() throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        PojoWithInterfaces pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClassWithFullConstructor(
-                                      PojoWithInterfaces.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 2, externalFactory.getFailures().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( ObjectExt.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( InterfacePojo.class, externalFactory.getFailures().get( 1 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 2, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        PojoWithInterfaces pojo = pogoFactory.manufacturePojoWithFullData( PojoWithInterfaces.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( externalFactory.getFailures() ).hasSize( 2 );
+        assertThat( externalFactory.getFailures() ).contains( ObjectExt.class, InterfacePojo.class );
+        assertThat( externalFactory.getFullDataCalls() ).hasSize( 2 );
     }
 
     @Test
-    public void PogoDoesNotCreateInstancesOfAbstractClassesIfExternalFactoryDoesNotDefineThem() throws Exception
+    public void should_not_create_instances_of_abstract_classes_if_external_factory_does_not_define_them() throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        AbstractClass pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( AbstractClass.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 1, externalFactory.getFailures().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( AbstractClass.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 0, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        AbstractClass pojo = pogoFactory.manufacturePojo( AbstractClass.class );
+        //then
+        assertThat( pojo ).isNull();
+        assertThat( externalFactory.getFailures() ).hasSize( 1 );
+        assertThat( externalFactory.getFailures() ).contains( AbstractClass.class );
+        assertThat( externalFactory.getFullDataCalls() ).isEmpty();
     }
 
     @Test
-    public void PogoShouldNotCreateInstancesOfAnAbstractClassEvenIfPojoHasFullConstructor() throws Exception
+    public void should_not_create_instances_of_an_abstract_class_even_if_pojo_has_full_constructor() throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        AbstractClass pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClassWithFullConstructor(
-                                 AbstractClass.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 1, externalFactory.getFailures().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( AbstractClass.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 1, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        AbstractClass pojo = pogoFactory.manufacturePojoWithFullData( AbstractClass.class );
+        //then
+        assertThat( pojo ).isNull();
+        assertThat( externalFactory.getFailures() ).hasSize( 1 );
+        assertThat( externalFactory.getFailures() ).contains( AbstractClass.class );
+        assertThat( externalFactory.getFullDataCalls() ).hasSize( 1 );
     }
 
     @Test
-    public void PogoShouldNotcreateInstancesOfNonInstantiableClasses() throws Exception
+    public void should_not_create_instances_of_non_instantiable_classes() throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoFactory PogoFactory = PogoFactorySteps.givenAdPogoFactoryWithExternalFactory( externalFactory );
-        NonInstantiatableClass pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                          NonInstantiatableClass.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldBeNull( pojo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 1, externalFactory.getFailures().size() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( NonInstantiatableClass.class, externalFactory.getFailures().get( 0 ) );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( 0, externalFactory.getFullDataCalls().size() );
+        //given
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        PogoFactory pogoFactory = new PogoFactoryImpl( externalFactory );
+        //when
+        NonInstantiatableClass pojo = pogoFactory.manufacturePojo( NonInstantiatableClass.class );
+        //then
+        assertThat( pojo ).isNull();
+        assertThat( externalFactory.getFailures() ).hasSize( 1 );
+        assertThat( externalFactory.getFailures() ).contains( NonInstantiatableClass.class );
+        assertThat( externalFactory.getFullDataCalls() ).isEmpty();
     }
 
     @Test
-    public void theManagementOfExternalFactoriesShouldBeCorrectAndChainingShouldWord() throws Exception
+    public void should_manage_external_factories_correctly_and_allow_chainging() throws Exception
     {
-        TestExternalFactory externalFactory = ( TestExternalFactory ) PogoFactorySteps.givenAnExternalFactory();
-        PogoValidationSteps.theObjectShouldBeNull( externalFactory.getClassStrategy() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( externalFactory, externalFactory.setClassStrategy( null ) );
-        PogoValidationSteps.theObjectShouldBeNull( externalFactory.getStrategy() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( externalFactory, externalFactory.setStrategy( null ) );
-        PogoValidationSteps.theObjectShouldBeNull( externalFactory.getExternalFactory() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( externalFactory, externalFactory.setExternalFactory( null ) );
+        //WHEN
+        TestExternalFactory externalFactory = new TestExternalFactory();
+        //then
+        assertThat( externalFactory.getClassStrategy() ).isNull();
+        assertThat( externalFactory ).isSameAs( externalFactory.setClassStrategy( null ) );
+        assertThat( externalFactory.getStrategy() ).isNull();
+        assertThat( externalFactory ).isSameAs( externalFactory.setStrategy( null ) );
+        assertThat( externalFactory.getExternalFactory() ).isNull();
+        assertThat( externalFactory ).isSameAs( externalFactory.setExternalFactory( null ) );
     }
 }

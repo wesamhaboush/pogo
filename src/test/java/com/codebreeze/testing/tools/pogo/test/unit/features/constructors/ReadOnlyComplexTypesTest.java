@@ -6,59 +6,82 @@ import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyAbstract;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyComplexTypesPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyGenericComplexTypesPojo;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
+import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import java.beans.beancontext.BeanContextServicesSupport;
+import java.util.Map;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ReadOnlyComplexTypesTest extends AbstractPogoSteps
 {
 
     @Test
-    public void PogoShouldFillReadOnlyTypes() throws Exception
+    public void should_fill_read_only_types() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ReadOnlyComplexTypesPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                            ReadOnlyComplexTypesPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Integer.class );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), Long.class, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ReadOnlyComplexTypesPojo pojo = pogoFactory.manufacturePojo( ReadOnlyComplexTypesPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getValue() ).isNotNull();
+        assertThat( pojo.getValue().getValue() ).isNotNull();
+        assertThat( pojo.getList() ).isNotNull().isNotEmpty().hasOnlyElementsOfType( Integer.class );
+        assertThat( pojo.getMap() ).isNotNull().isNotEmpty().has( onlyEntriesWithKeyValueTypes( Long.class, String.class ) );
+    }
+
+    private Condition<? super Map<?, ?>> onlyEntriesWithKeyValueTypes( Class<?> keyClass, Class<?> valueClass )
+    {
+        return new Condition<Map<?, ?>>()
+        {
+            @Override
+            public boolean matches( Map<?, ?> map )
+            {
+                return map.entrySet().stream().allMatch( e -> e.getKey().getClass() == keyClass &&
+                        e.getValue().getClass() == valueClass );
+            }
+        };
     }
 
     @Test
-    public void PogoShouldFillReadOnlyComplexTypes() throws Exception
+    public void should_fill_read_only_complex_types() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ReadOnlyGenericComplexTypesPojo<?, ?, ?> pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForGenericTypeWithSpecificType(
-                ReadOnlyGenericComplexTypesPojo.class, PogoFactory, Character.class, Long.class, Integer.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theCollectionShouldNotBeNullOrEmptyAndContainElementsOfType( pojo.getList(), Long.class );
-        PogoValidationSteps.theMapShouldNotBeNullOrEmptyAndContainElementsOfType(
-            pojo.getMap(), Integer.class, String.class );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue() );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getValue().getValue() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( Character.class, pojo.getValue().getValue().getClass() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ReadOnlyGenericComplexTypesPojo<?, ?, ?> pojo = pogoFactory.manufacturePojo( ReadOnlyGenericComplexTypesPojo.class,
+                Character.class, Long.class, Integer.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getList() ).isNotNull().isNotEmpty().hasOnlyElementsOfType( Long.class );
+        assertThat( pojo.getMap() ).isNotNull().isNotEmpty().has( onlyEntriesWithKeyValueTypes( Integer.class, String.class ) );
+        assertThat( pojo.getValue() ).isNotNull();
+        assertThat( pojo.getValue().getValue() ).isNotNull().isInstanceOf( Character.class );
     }
 
     @Test
-    public void PogoShouldFillInPojosWhichContainInternalLoops() throws Exception
+    public void should_fill_in_pojos_which_contain_internal_loops() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        BeanContextServicesSupport pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                              BeanContextServicesSupport.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        BeanContextServicesSupport pojo = pogoFactory.manufacturePojo( BeanContextServicesSupport.class );
+        //then
+        assertThat( pojo ).isNotNull();
     }
 
 
     @Test
-    public void PogoShouldCreateAnInstanceOfAnAbstractClassWithAFactoryMethodWhichReturnsAConcreteType()
+    public void should_create_an_instance_of_an_abstract_class_with_a_factory_method_which_returns_a_concrete_type()
     throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ReadOnlyAbstract pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( ReadOnlyAbstract.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ReadOnlyAbstract pojo = pogoFactory.manufacturePojo( ReadOnlyAbstract.class );
+        //
+        assertThat( pojo ).isNotNull();
     }
 }

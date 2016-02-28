@@ -1,16 +1,15 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
 
-public class ImmutableWithNonGenericCollectionsPojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class ImmutableWithNonGenericCollectionsPojo
 {
-
-
-    private static final long serialVersionUID = 1L;
-
     public static final int NBR_ELEMENTS = 5;
 
 
@@ -60,14 +59,9 @@ public class ImmutableWithNonGenericCollectionsPojo implements Serializable
         return nonGenerifiedSet;
     }
 
+    @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "ImmutableWithNonGenericCollectionsPojo ( " +
-               "nonGenerifiedCollection = " + this.nonGenerifiedCollection + TAB +
-               "nonGenerifiedMap = " + this.nonGenerifiedMap + TAB +
-               "nonGenerifiedSet = " + this.nonGenerifiedSet + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
-
 }

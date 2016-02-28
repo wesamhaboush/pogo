@@ -1,5 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
 public class NonEJBPojo
 {
     private static class Holder
@@ -28,5 +32,11 @@ public class NonEJBPojo
     public void setMyLong( Long myLong )
     {
         myHolder.holdingLong = myLong;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

@@ -1,21 +1,18 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class SimplePojoToTestSetters implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class SimplePojoToTestSetters
 {
-
-    private static final long serialVersionUID = 1L;
-
     private String stringField;
 
     private int intField;
 
-
     public SimplePojoToTestSetters()
     {
     }
-
 
     public String getStringField()
     {
@@ -91,10 +88,6 @@ public class SimplePojoToTestSetters implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "SimplePojoToTestSetters ( " + "stringField = " +
-               stringField + TAB + "intField = " +
-               intField + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
-
 }

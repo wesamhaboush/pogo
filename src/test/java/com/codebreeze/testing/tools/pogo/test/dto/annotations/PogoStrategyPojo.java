@@ -1,13 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
 import java.util.*;
 
-public class PogoStrategyPojo implements Serializable
+public class PogoStrategyPojo
 {
-
-    private static final long serialVersionUID = 1L;
-
     private String postCode;
 
     private String postCode2;

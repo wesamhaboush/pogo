@@ -1,5 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
 public abstract class FactoryInstantiablePojo<T>
 {
 
@@ -18,5 +22,11 @@ public abstract class FactoryInstantiablePojo<T>
     public void setTypedValue( T typedValue )
     {
         this.typedValue = typedValue;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

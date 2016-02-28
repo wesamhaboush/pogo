@@ -11,16 +11,6 @@ public abstract class AbstractPogoSteps
 
     protected final PogoValidationSteps PogoValidationSteps = new PogoValidationSteps();
 
-    protected final OneDimentionalPojoValidationSteps oneDimentionalPojoValidationSteps = new
-    OneDimentionalPojoValidationSteps();
-
-    protected final PogoStrategySteps PogoStrategySteps = new PogoStrategySteps();
-
-    protected final RecursivePojoValidationSteps recursivePojoValidationSteps = new RecursivePojoValidationSteps();
-
-    protected final ConstructorSelfReferenceValidationSteps constructorSelfReferenceValidationSteps = new
-    ConstructorSelfReferenceValidationSteps();
-
     protected final ClassInfoValidationSteps classInfoValidationSteps = new ClassInfoValidationSteps();
 
     protected final WalkThroughSteps walkThroughSteps = new WalkThroughSteps();

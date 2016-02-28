@@ -1,123 +1,38 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class LongValuePojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class LongValuePojo
 {
-    private static final long serialVersionUID = 1L;
+    private long longPrimitive;
 
-    private long longFieldWithMinValueOnly;
+    private Long longObject;
 
-    private long longFieldWithMaxValueOnly;
-
-    private long longFieldWithMinAndMaxValue;
-
-    private long longFieldWithPreciseValue;
-
-    private Long longObjectFieldWithMinValueOnly;
-
-    private Long longObjectFieldWithMaxValueOnly;
-
-    private Long longObjectFieldWithMinAndMaxValue;
-
-    private Long longObjectFieldWithPreciseValue;
-
-    public long getLongFieldWithMinValueOnly()
+    public long getLongPrimitive()
     {
-        return longFieldWithMinValueOnly;
+        return longPrimitive;
     }
 
-    public void setLongFieldWithMinValueOnly( long longFieldWithMinValueOnly )
+    public void setLongPrimitive( long longPrimitive )
     {
-        this.longFieldWithMinValueOnly = longFieldWithMinValueOnly;
+        this.longPrimitive = longPrimitive;
     }
 
-    public long getLongFieldWithMaxValueOnly()
+    public Long getLongObject()
     {
-        return longFieldWithMaxValueOnly;
+        return longObject;
     }
 
-    public void setLongFieldWithMaxValueOnly( long longFieldWithMaxValueOnly )
+    public void setLongObject(
+        Long longObject )
     {
-        this.longFieldWithMaxValueOnly = longFieldWithMaxValueOnly;
-    }
-
-    public long getLongFieldWithMinAndMaxValue()
-    {
-        return longFieldWithMinAndMaxValue;
-    }
-
-    public void setLongFieldWithMinAndMaxValue( long longFieldWithMinAndMaxValue )
-    {
-        this.longFieldWithMinAndMaxValue = longFieldWithMinAndMaxValue;
-    }
-
-    public Long getLongObjectFieldWithMinValueOnly()
-    {
-        return longObjectFieldWithMinValueOnly;
-    }
-
-    public void setLongObjectFieldWithMinValueOnly(
-        Long longObjectFieldWithMinValueOnly )
-    {
-        this.longObjectFieldWithMinValueOnly = longObjectFieldWithMinValueOnly;
-    }
-
-    public Long getLongObjectFieldWithMaxValueOnly()
-    {
-        return longObjectFieldWithMaxValueOnly;
-    }
-
-    public void setLongObjectFieldWithMaxValueOnly(
-        Long longObjectFieldWithMaxValueOnly )
-    {
-        this.longObjectFieldWithMaxValueOnly = longObjectFieldWithMaxValueOnly;
-    }
-
-    public Long getLongObjectFieldWithMinAndMaxValue()
-    {
-        return longObjectFieldWithMinAndMaxValue;
-    }
-
-    public void setLongObjectFieldWithMinAndMaxValue(
-        Long longObjectFieldWithMinAndMaxValue )
-    {
-        this.longObjectFieldWithMinAndMaxValue = longObjectFieldWithMinAndMaxValue;
-    }
-
-    public long getLongFieldWithPreciseValue()
-    {
-        return longFieldWithPreciseValue;
-    }
-
-    public void setLongFieldWithPreciseValue( long longFieldWithPreciseValue )
-    {
-        this.longFieldWithPreciseValue = longFieldWithPreciseValue;
-    }
-
-    public Long getLongObjectFieldWithPreciseValue()
-    {
-        return longObjectFieldWithPreciseValue;
-    }
-
-    public void setLongObjectFieldWithPreciseValue(
-        Long longObjectFieldWithPreciseValue )
-    {
-        this.longObjectFieldWithPreciseValue = longObjectFieldWithPreciseValue;
+        this.longObject = longObject;
     }
 
     public String toString()
     {
-        final String TAB = "    ";
-        return "LongRangeValuesPojo ( " +
-               "longFieldWithMinValueOnly = " + this.longFieldWithMinValueOnly + TAB +
-               "longFieldWithMaxValueOnly = " + this.longFieldWithMaxValueOnly + TAB +
-               "longFieldWithMinAndMaxValue = " + this.longFieldWithMinAndMaxValue + TAB +
-               "longFieldWithPreciseValue = " + this.longFieldWithPreciseValue + TAB +
-               "longObjectFieldWithMinValueOnly = " + this.longObjectFieldWithMinValueOnly + TAB +
-               "longObjectFieldWithMaxValueOnly = " + this.longObjectFieldWithMaxValueOnly + TAB +
-               "longObjectFieldWithMinAndMaxValue = " + this.longObjectFieldWithMinAndMaxValue + TAB +
-               "longObjectFieldWithPreciseValue = " + this.longObjectFieldWithPreciseValue + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

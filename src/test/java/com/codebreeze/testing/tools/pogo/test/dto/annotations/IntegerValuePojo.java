@@ -1,123 +1,38 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class IntegerValuePojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class IntegerValuePojo
 {
-    private static final long serialVersionUID = 1L;
+    private int integerPrimitive;
 
-    private int intFieldWithMinValueOnly;
+    private Integer integerObject;
 
-    private int intFieldWithPreciseValue;
-
-    private int intFieldWithMaxValueOnly;
-
-    private int intFieldWithMinAndMaxValue;
-
-    private Integer integerObjectFieldWithMinValueOnly;
-
-    private Integer integerObjectFieldWithMaxValueOnly;
-
-    private Integer integerObjectFieldWithMinAndMaxValue;
-
-    private Integer integerObjectFieldWithPreciseValue;
-
-    public int getIntFieldWithMinValueOnly()
+    public int getIntegerPrimitive()
     {
-        return intFieldWithMinValueOnly;
+        return integerPrimitive;
     }
 
-    public void setIntFieldWithMinValueOnly( int intFieldWithMinValueOnly )
+    public void setIntegerPrimitive( int integerPrimitive )
     {
-        this.intFieldWithMinValueOnly = intFieldWithMinValueOnly;
+        this.integerPrimitive = integerPrimitive;
     }
 
-    public int getIntFieldWithMaxValueOnly()
+    public Integer getIntegerObject()
     {
-        return intFieldWithMaxValueOnly;
+        return integerObject;
     }
 
-    public void setIntFieldWithMaxValueOnly( int intFieldWithMaxValueOnly )
+    public void setIntegerObject(
+        Integer integerObject )
     {
-        this.intFieldWithMaxValueOnly = intFieldWithMaxValueOnly;
-    }
-
-    public int getIntFieldWithMinAndMaxValue()
-    {
-        return intFieldWithMinAndMaxValue;
-    }
-
-    public void setIntFieldWithMinAndMaxValue( int intFieldWithMinAndMaxValue )
-    {
-        this.intFieldWithMinAndMaxValue = intFieldWithMinAndMaxValue;
-    }
-
-    public Integer getIntegerObjectFieldWithMinValueOnly()
-    {
-        return integerObjectFieldWithMinValueOnly;
-    }
-
-    public void setIntegerObjectFieldWithMinValueOnly(
-        Integer integerObjectFieldWithMinValueOnly )
-    {
-        this.integerObjectFieldWithMinValueOnly = integerObjectFieldWithMinValueOnly;
-    }
-
-    public Integer getIntegerObjectFieldWithMaxValueOnly()
-    {
-        return integerObjectFieldWithMaxValueOnly;
-    }
-
-    public void setIntegerObjectFieldWithMaxValueOnly(
-        Integer integerObjectFieldWithMaxValueOnly )
-    {
-        this.integerObjectFieldWithMaxValueOnly = integerObjectFieldWithMaxValueOnly;
-    }
-
-    public Integer getIntegerObjectFieldWithMinAndMaxValue()
-    {
-        return integerObjectFieldWithMinAndMaxValue;
-    }
-
-    public void setIntegerObjectFieldWithMinAndMaxValue(
-        Integer integerObjectFieldWithMinAndMaxValue )
-    {
-        this.integerObjectFieldWithMinAndMaxValue = integerObjectFieldWithMinAndMaxValue;
-    }
-
-    public int getIntFieldWithPreciseValue()
-    {
-        return intFieldWithPreciseValue;
-    }
-
-    public void setIntFieldWithPreciseValue( int intFieldWithPreciseValue )
-    {
-        this.intFieldWithPreciseValue = intFieldWithPreciseValue;
-    }
-
-    public Integer getIntegerObjectFieldWithPreciseValue()
-    {
-        return integerObjectFieldWithPreciseValue;
-    }
-
-    public void setIntegerObjectFieldWithPreciseValue(
-        Integer integerObjectFieldWithPreciseValue )
-    {
-        this.integerObjectFieldWithPreciseValue = integerObjectFieldWithPreciseValue;
+        this.integerObject = integerObject;
     }
 
     public String toString()
     {
-        final String TAB = "    ";
-        return "IntegerRangeValuesPojo ( " +
-               "intFieldWithMinValueOnly = " + this.intFieldWithMinValueOnly + TAB +
-               "intFieldWithPreciseValue = " + this.intFieldWithPreciseValue + TAB +
-               "intFieldWithMaxValueOnly = " + this.intFieldWithMaxValueOnly + TAB +
-               "intFieldWithMinAndMaxValue = " + this.intFieldWithMinAndMaxValue + TAB +
-               "integerObjectFieldWithMinValueOnly = " + this.integerObjectFieldWithMinValueOnly + TAB +
-               "integerObjectFieldWithMaxValueOnly = " + this.integerObjectFieldWithMaxValueOnly + TAB +
-               "integerObjectFieldWithMinAndMaxValue = " + this.integerObjectFieldWithMinAndMaxValue + TAB +
-               "integerObjectFieldWithPreciseValue = " + this.integerObjectFieldWithPreciseValue + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

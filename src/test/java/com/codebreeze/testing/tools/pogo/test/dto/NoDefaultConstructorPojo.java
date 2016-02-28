@@ -1,23 +1,18 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class NoDefaultConstructorPojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class NoDefaultConstructorPojo
 {
-
-
-    private static final long serialVersionUID = 1L;
-
-
     private int intField;
-
 
     public NoDefaultConstructorPojo( int intField )
     {
         super();
         this.intField = intField;
     }
-
 
     public int getIntField()
     {
@@ -29,14 +24,9 @@ public class NoDefaultConstructorPojo implements Serializable
         this.intField = intField;
     }
 
-
-
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "NoDefaultConstructorPojo ( " + "intField = " +
-               intField + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
-
 }

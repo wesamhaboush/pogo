@@ -1,42 +1,26 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class StringValuePojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class StringValuePojo
 {
-    private static final long serialVersionUID = 1L;
+    private String string;
 
-    private String twentyLengthString;
-
-    private String preciseValueString;
-
-    public String getTwentyLengthString()
+    public String getString()
     {
-        return twentyLengthString;
+        return string;
     }
 
-    public void setTwentyLengthString( String twentyLengthString )
+    public void setString( String string )
     {
-        this.twentyLengthString = twentyLengthString;
-    }
-
-    public String getPreciseValueString()
-    {
-        return preciseValueString;
-    }
-
-    public void setPreciseValueString( String preciseValueString )
-    {
-        this.preciseValueString = preciseValueString;
+        this.string = string;
     }
 
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "StringValuesPojo ( " + "twentyLengthString = " +
-               twentyLengthString + TAB +
-               "preciseValueString = " + preciseValueString +
-               TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

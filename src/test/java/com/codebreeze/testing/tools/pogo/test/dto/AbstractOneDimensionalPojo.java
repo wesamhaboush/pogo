@@ -1,6 +1,10 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Calendar;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public abstract class AbstractOneDimensionalPojo
 {
@@ -32,10 +36,6 @@ public abstract class AbstractOneDimensionalPojo
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "AbstractOneDimensionalPojo ( " +
-               "parentIntField = " + parentIntField + TAB +
-               "parentCalendarField = " +
-               parentCalendarField.getTime() + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

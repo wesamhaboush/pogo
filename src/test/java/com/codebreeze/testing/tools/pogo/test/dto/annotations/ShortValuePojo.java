@@ -1,117 +1,39 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-public class ShortValuePojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class ShortValuePojo
 {
-    private static final long serialVersionUID = 1L;
+    private short shortPrimitive;
 
-    private short shortFieldWithMinValueOnly;
+    private Short shortObject;
 
-    private short shortFieldWithMaxValueOnly;
-
-    private short shortFieldWithMinAndMaxValue;
-
-    private Short shortObjectFieldWithMinValueOnly;
-
-    private Short shortObjectFieldWithMaxValueOnly;
-
-    private Short shortObjectFieldWithMinAndMaxValue;
-
-    private short shortFieldWithPreciseValue;
-
-    public short getShortFieldWithMinValueOnly()
+    public short getShortPrimitive()
     {
-        return shortFieldWithMinValueOnly;
+        return shortPrimitive;
     }
 
-    public void setShortFieldWithMinValueOnly( short shortFieldWithMinValueOnly )
+    public void setShortPrimitive( short shortPrimitive )
     {
-        this.shortFieldWithMinValueOnly = shortFieldWithMinValueOnly;
+        this.shortPrimitive = shortPrimitive;
     }
 
-    public short getShortFieldWithMaxValueOnly()
+    public Short getShortObject()
     {
-        return shortFieldWithMaxValueOnly;
+        return shortObject;
     }
 
-    public void setShortFieldWithMaxValueOnly( short shortFieldWithMaxValueOnly )
+    public void setShortObject(
+        Short shortObject )
     {
-        this.shortFieldWithMaxValueOnly = shortFieldWithMaxValueOnly;
-    }
-
-    public short getShortFieldWithMinAndMaxValue()
-    {
-        return shortFieldWithMinAndMaxValue;
-    }
-
-    public void setShortFieldWithMinAndMaxValue(
-        short shortFieldWithMinAndMaxValue )
-    {
-        this.shortFieldWithMinAndMaxValue = shortFieldWithMinAndMaxValue;
-    }
-
-    public Short getShortObjectFieldWithMinValueOnly()
-    {
-        return shortObjectFieldWithMinValueOnly;
-    }
-
-    public void setShortObjectFieldWithMinValueOnly(
-        Short shortObjectFieldWithMinValueOnly )
-    {
-        this.shortObjectFieldWithMinValueOnly = shortObjectFieldWithMinValueOnly;
-    }
-
-    public Short getShortObjectFieldWithMaxValueOnly()
-    {
-        return shortObjectFieldWithMaxValueOnly;
-    }
-
-    public void setShortObjectFieldWithMaxValueOnly(
-        Short shortObjectFieldWithMaxValueOnly )
-    {
-        this.shortObjectFieldWithMaxValueOnly = shortObjectFieldWithMaxValueOnly;
-    }
-
-    public Short getShortObjectFieldWithMinAndMaxValue()
-    {
-        return shortObjectFieldWithMinAndMaxValue;
-    }
-
-    public void setShortObjectFieldWithMinAndMaxValue(
-        Short shortObjectFieldWithMinAndMaxValue )
-    {
-        this.shortObjectFieldWithMinAndMaxValue = shortObjectFieldWithMinAndMaxValue;
-    }
-
-    public short getShortFieldWithPreciseValue()
-    {
-        return shortFieldWithPreciseValue;
-    }
-
-    public void setShortFieldWithPreciseValue( short shortFieldWithPreciseValue )
-    {
-        this.shortFieldWithPreciseValue = shortFieldWithPreciseValue;
+        this.shortObject = shortObject;
     }
 
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "ShortRangeValuesPojo ( " +
-               "shortFieldWithMinValueOnly = " +
-               shortFieldWithMinValueOnly + TAB +
-               "shortFieldWithMaxValueOnly = " +
-               shortFieldWithMaxValueOnly + TAB +
-               "shortFieldWithMinAndMaxValue = " +
-               shortFieldWithMinAndMaxValue + TAB +
-               "shortObjectFieldWithMinValueOnly = " +
-               shortObjectFieldWithMinValueOnly + TAB +
-               "shortObjectFieldWithMaxValueOnly = " +
-               shortObjectFieldWithMaxValueOnly + TAB +
-               "shortObjectFieldWithMinAndMaxValue = " +
-               shortObjectFieldWithMinAndMaxValue + TAB +
-               "shortFieldWithPreciseValue = " +
-               shortFieldWithPreciseValue + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

@@ -1,6 +1,10 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.Vector;
+
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 
 public abstract class GenericInStaticConstructorPojo
 {
@@ -15,5 +19,11 @@ public abstract class GenericInStaticConstructorPojo
     public Vector<String> getVector()
     {
         return vector;
+    }
+
+    @Override
+    public String toString()
+    {
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

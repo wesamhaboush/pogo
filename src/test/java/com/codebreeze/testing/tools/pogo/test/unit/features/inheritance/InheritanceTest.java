@@ -9,42 +9,50 @@ import com.codebreeze.testing.tools.pogo.test.dto.pdm42.B;
 import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
+
 public class InheritanceTest extends AbstractPogoSteps
 {
 
     @Test
-    public void PogoShouldHandleBasicInheritance() throws Exception
+    public void should_handle_basic_inheritance() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        OneDimensionalChildPojo pojo =
-            PogoInvocationSteps.whenIInvokeTheFactoryForClass( OneDimensionalChildPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-//        PogoValidationSteps.theIntFieldShouldHaveValueLessThen( pojo.getParentIntField(), maxValue );
-        PogoValidationSteps.theCalendarFieldShouldBeValid( pojo.getParentCalendarField() );
-        PogoValidationSteps.theIntFieldShouldNotBeZero( pojo.getIntField() );
-        PogoValidationSteps.theStringFieldCannotBeNullOrEmpty( pojo.getStrField() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        OneDimensionalChildPojo pojo = pogoFactory.manufacturePojo( OneDimensionalChildPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getParentCalendarField() ).isNotNull();
+        assertThat( pojo.getParentCalendarField().getTime() ).isNotNull();
+        assertThat( pojo.getIntField() ).isNotNull();
+        assertThat( pojo.getStrField() ).isNotNull().isNotEmpty();
     }
 
     @Test
-    public void PogoShouldHandleTheManufacturingOfPojosWhichInheritFromOtherClasses() throws Exception
+    public void should_handle_the_manufacturing_of_pojos_which_inherit_from_other_classes() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        ClassInheritedPojo pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass(
-                                      ClassInheritedPojo.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo.getClazz() );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( String.class, pojo.getClazz() );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        ClassInheritedPojo pojo = pogoFactory.manufacturePojo( ClassInheritedPojo.class );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getClazz() ).isNotNull().isEqualTo( String.class );
     }
 
 
     @Test
-    public void PogoShouldManufactureAllPojosInATreeHierarchy() throws Exception
+    public void should_manufacture_all_pojos_in_a_tree_hierarchy() throws Exception
     {
-        PogoFactory PogoFactory = new PogoFactoryImpl();
-        A pojo = PogoInvocationSteps.whenIInvokeTheFactoryForClass( A.class, PogoFactory );
-        PogoValidationSteps.theObjectShouldNotBeNull( pojo );
+        //given
+        PogoFactory pogoFactory = new PogoFactoryImpl();
+        //when
+        A pojo = pogoFactory.manufacturePojo( A.class );
         B b = pojo.getB();
-        PogoValidationSteps.theObjectShouldNotBeNull( b );
-        PogoValidationSteps.theObjectShouldNotBeNull( b.getCustomValue() );
+        //then
+        assertThat( pojo ).isNotNull();
+        assertThat( b ).isNotNull();
+        assertThat( b.getCustomValue() ).isNotNull();
     }
 }

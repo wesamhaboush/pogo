@@ -1,15 +1,13 @@
 package com.codebreeze.testing.tools.pogo.test.dto;
 
-import java.io.Serializable;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import java.util.List;
 
-public class NoSetterWithCollectionInConstructorPojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class NoSetterWithCollectionInConstructorPojo
 {
-
-
-    private static final long serialVersionUID = 1L;
-
-
     private final List<String> strList;
 
     private final int intField;
@@ -22,8 +20,6 @@ public class NoSetterWithCollectionInConstructorPojo implements Serializable
         this.intField = intField;
     }
 
-
-
     public List<String> getStrList()
     {
         return strList;
@@ -34,15 +30,9 @@ public class NoSetterWithCollectionInConstructorPojo implements Serializable
         return intField;
     }
 
-
-
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "NoSetterWithCollectionInConstructorPojo ( " +
-               "strList = " + strList + TAB +
-               "intField = " + intField + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }

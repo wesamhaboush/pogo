@@ -1,18 +1,19 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
-import com.codebreeze.testing.tools.pogo.test.utils.PogoTestConstants;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
-import java.io.Serializable;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
-public class CollectionAnnotationPojo implements Serializable
+import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+
+public class CollectionAnnotationPojo
 {
-
-    private static final long serialVersionUID = 1L;
-
     private List<String> strList = new ArrayList<>();
 
-    private String[] strArray = new String[PogoTestConstants.ANNOTATION_COLLECTION_NBR_ELEMENTS];
+    private String[] strArray = new String[5];
 
     private Map<String, String> stringMap = new HashMap<>();
 
@@ -49,11 +50,6 @@ public class CollectionAnnotationPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "CollectionAnnotationPojo ( " + "strList = " +
-               strList + TAB + "strArray = " +
-               Arrays.toString( strArray ) + TAB +
-               "stringMap = " + stringMap + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, JSON_STYLE );
     }
 }
