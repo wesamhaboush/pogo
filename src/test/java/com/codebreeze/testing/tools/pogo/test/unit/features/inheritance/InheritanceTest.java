@@ -6,12 +6,11 @@ import com.codebreeze.testing.tools.pogo.test.dto.ClassInheritedPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalChildPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm42.A;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm42.B;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class InheritanceTest extends AbstractPogoSteps
+public class InheritanceTest
 {
 
     @Test

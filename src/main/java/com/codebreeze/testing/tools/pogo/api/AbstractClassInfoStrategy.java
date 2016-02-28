@@ -35,14 +35,7 @@ public abstract class AbstractClassInfoStrategy implements ClassInfoStrategy,
     @Override
     public ClassInfo getClassInfo( Class<?> pojoClass )
     {
-        List<Method> localExtraMethods = extraMethods.get( pojoClass );
-
-        if ( null == localExtraMethods )
-        {
-            localExtraMethods = Collections.emptyList();
-        }
-
-        return PogoUtils.getClassInfo( pojoClass, this, localExtraMethods );
+        return PogoUtils.getClassInfo( pojoClass, this );
     }
 
     @Override

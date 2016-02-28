@@ -5,7 +5,6 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.ConstructorWithSelfReferencesPojoAndDefaultConstructor;
 import com.codebreeze.testing.tools.pogo.test.dto.ImmutableNoHierarchicalAnnotatedPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.*;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -14,7 +13,7 @@ import java.util.Map;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.condition.Not.not;
 
-public class AnnotationsTest extends AbstractPogoSteps
+public class AnnotationsTest
 {
 
 

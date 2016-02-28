@@ -9,12 +9,11 @@ import com.codebreeze.testing.tools.pogo.test.dto.docs.example.Address;
 import com.codebreeze.testing.tools.pogo.test.dto.docs.example.Article;
 import com.codebreeze.testing.tools.pogo.test.dto.docs.example.BankAccount;
 import com.codebreeze.testing.tools.pogo.test.dto.docs.example.OrderItem;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class WalkThroughExampleUnitTest extends AbstractPogoSteps
+public class WalkThroughExampleUnitTest
 {
     @Test
     public void article_setup() throws Exception

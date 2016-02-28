@@ -3,7 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.constructors;
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -12,7 +11,7 @@ import java.util.*;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ConstructorsUnitTest extends AbstractPogoSteps
+public class ConstructorsUnitTest
 {
     private Condition<? super Map<?, ?>> nonEmptyElements = new Condition<Map<?, ?>>()
     {

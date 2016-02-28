@@ -3,40 +3,48 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.classInfo;
 import com.codebreeze.testing.tools.pogo.api.ClassAttribute;
 import com.codebreeze.testing.tools.pogo.api.ClassAttributeApprover;
 import com.codebreeze.testing.tools.pogo.api.ClassInfo;
+import com.codebreeze.testing.tools.pogo.api.PogoUtils;
 import com.codebreeze.testing.tools.pogo.test.dto.EmptyTestPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
-public class ClassInfoTest extends AbstractPogoSteps
+import static org.assertj.core.api.Assertions.assertThat;
+
+public class ClassInfoTest
 {
 
     @Test
-    public void PogoShouldReturnAValidClassInfoForPojoWithNoAttributes()
+    public void should_return_a_valid_class_info_for_pojo_with_no_attributes()
     {
+        //given
         List<ClassAttribute> attributes = new ArrayList<>();
-        ClassInfo expectedClassInfo = PogoFactorySteps.givenAClassInfoForPojoWithNoAttributes( EmptyTestPojo.class,
-                                      attributes );
+        ClassInfo expectedClassInfo = new ClassInfo( EmptyTestPojo.class, attributes );
         ClassAttributeApprover nullApprover = null;
-        ClassInfo actualClassInfo = PogoInvocationSteps.getClassInfo( EmptyTestPojo.class, nullApprover );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( expectedClassInfo, actualClassInfo );
+        //when
+        ClassInfo actualClassInfo = PogoUtils.getClassInfo( EmptyTestPojo.class, nullApprover );
+        //then
+        assertThat( actualClassInfo ).isEqualTo( expectedClassInfo );
     }
 
     @Test
-    public void PogoShouldReturnAClassInfoObjectWhichContainsTheSameAttributesAsThePojoBeingProcessed()
+    public void should_return_a_class_info_object_which_contains_the_same_attributes_as_the_pojo_being_processed()
     {
+        //given
         ClassAttributeApprover nullApprover = null;
-        ClassInfo actualClassInfo = PogoInvocationSteps.getClassInfo( SimplePojoToTestSetters.class, nullApprover );
-        PogoValidationSteps.theObjectShouldNotBeNull( actualClassInfo );
-        PogoValidationSteps.theTwoObjectsShouldBeEqual( SimplePojoToTestSetters.class, actualClassInfo.getClassName() );
-        Set<String> attribs = new HashSet<>();
-        attribs.add( "stringField" );
-        attribs.add( "intField" );
-        classInfoValidationSteps.theClassInfoAttributesShouldMatchthePojoOnes( attribs, actualClassInfo.getClassAttributes() );
+        //when
+        ClassInfo actualClassInfo = PogoUtils.getClassInfo( SimplePojoToTestSetters.class, nullApprover );
+        //then
+        assertThat( actualClassInfo ).isNotNull();
+        assertThat( actualClassInfo.getClassName() ).isSameAs( SimplePojoToTestSetters.class );
+        assertThat( actualClassInfo.getClassAttributes() )
+        .hasSize( 2 )
+        .extracting( "attribute.name" )
+        .containsOnly( "stringField", "intField" );
+        assertThat( actualClassInfo.getClassAttributes() )
+        .filteredOn( attribute -> attribute.getGetters().size() != 1 || attribute.getSetters().size() != 1 )
+        .isEmpty();
     }
 }

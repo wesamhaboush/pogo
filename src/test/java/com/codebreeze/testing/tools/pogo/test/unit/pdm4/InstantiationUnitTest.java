@@ -29,7 +29,6 @@ public class InstantiationUnitTest
     {
         Pdm4PojoWithSetters pojo = factory.manufacturePojo( Pdm4PojoWithSetters.class );
         assertNull( "POJO should not be created", pojo );
-        System.out.println( Pdm4PojoWithSetters.invocationOrder );
         assertEquals( "Invocation order has changed", 4, Pdm4PojoWithSetters.invocationOrder.size() );
         assertEquals( "Invocation order has changed", "no-op", Pdm4PojoWithSetters.invocationOrder.get( 0 ) );
         assertEquals( "Invocation order has changed", "InputStream", Pdm4PojoWithSetters.invocationOrder.get( 1 ) );

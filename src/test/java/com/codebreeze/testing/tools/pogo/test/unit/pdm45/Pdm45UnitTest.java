@@ -131,13 +131,13 @@ public class Pdm45UnitTest
         checkMultiDimensionalCollection( pojo.getThreeDimensionalQueue(), Date.class );
         checkMultiDimensionalCollection( pojo.getThreeDimensionalSet(), Double.class );
         checkMultiDimensionalCollection( pojo.getThreeDimensionalCollection(), Long.class );
-        assertEquals( "The generated Array must have size=2!", 5, pojo.getThreeDimensionalArray().length );
-        assertEquals( "The generated Array must have size=2!", 5, pojo.getThreeDimensionalArray()[0].length );
-        assertEquals( "The generated Array must have size=2!", 5, pojo.getThreeDimensionalArray()[0][0].length );
+        assertEquals( 5, pojo.getThreeDimensionalArray().length );
+        assertEquals( 5, pojo.getThreeDimensionalArray()[0].length );
+        assertEquals( 5, pojo.getThreeDimensionalArray()[0][0].length );
         assertEquals( "The generated Array must be of String!", String.class,
                       pojo.getThreeDimensionalArray()[0][0][0].getClass() );
         // Boolean key is always true, so just have one element
-        assertEquals( "The generated Map must have size=1!", 2, pojo.getThreeDimensionalMap().size() );
+        assertEquals( 2, pojo.getThreeDimensionalMap().size() );
         Entry<Boolean, Map<Float, Map<Integer, Calendar>>> entry =
             pojo.getThreeDimensionalMap().entrySet().iterator().next();
         assertEquals( "The generated Map entry key must be of Boolean!", Boolean.class, entry.getKey().getClass() );

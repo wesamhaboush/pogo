@@ -5,7 +5,6 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyAbstract;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyComplexTypesPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ReadOnlyGenericComplexTypesPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -14,7 +13,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ReadOnlyComplexTypesTest extends AbstractPogoSteps
+public class ReadOnlyComplexTypesTest
 {
 
     @Test

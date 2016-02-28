@@ -27,9 +27,6 @@ public interface DataProviderStrategy
 
     Integer getInteger( AttributeMetadata attributeMetadata );
 
-    int getIntegerInRange( int minValue, int maxValue,
-                           AttributeMetadata attributeMetadata );
-
     Long getLong( AttributeMetadata attributeMetadata );
 
     Short getShort( AttributeMetadata attributeMetadata );

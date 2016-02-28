@@ -27,17 +27,9 @@ public final class PogoUtils
         throw new AssertionError();
     }
 
+
     public static ClassInfo getClassInfo( Class<?> clazz,
                                           ClassAttributeApprover attributeApprover )
-    {
-        return getClassInfo( clazz, attributeApprover,
-                             Collections.<Method>emptySet() );
-    }
-
-
-    public static ClassInfo getClassInfo( Class<?> clazz,
-                                          ClassAttributeApprover attributeApprover,
-                                          Collection<Method> extraMethods )
     {
         if ( null == attributeApprover )
         {
@@ -242,7 +234,8 @@ public final class PogoUtils
         }
         catch ( Exception e )
         {
-            System.out.println( e );
+            //ignoring, cz we only do our best. not guarantees
+//            System.out.println( e );
         }
 
         return retValue;
@@ -253,11 +246,6 @@ public final class PogoUtils
         int randomCharIdx =
             ( int ) ( Math.random() * ( NICE_ASCII_CHARACTERS.length - 1 ) + 0.5 );
         return NICE_ASCII_CHARACTERS[randomCharIdx];
-    }
-
-    public static long getLongInRange( long minValue, long maxValue )
-    {
-        return ( long ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
     }
 
     public static Class<?> primitiveToBoxedType( Class<?> primitiveType )

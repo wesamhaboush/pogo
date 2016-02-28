@@ -4,7 +4,6 @@ import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.*;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -13,7 +12,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class CollectionsTest extends AbstractPogoSteps
+public class CollectionsTest
 {
 
     private Condition<Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()

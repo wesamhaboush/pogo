@@ -3,7 +3,6 @@ package com.codebreeze.testing.tools.pogo.test.unit.features.dataProviderStrateg
 import com.codebreeze.testing.tools.pogo.api.*;
 import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
 import com.codebreeze.testing.tools.pogo.test.strategies.CustomRandomDataProviderStrategy;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import java.lang.reflect.Constructor;
@@ -15,7 +14,7 @@ import java.util.Map;
 import static com.codebreeze.testing.tools.pogo.common.PogoConstants.DEFAULT_NBR_COLLECTION_ELEMENTS;
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class RandomDataProviderStrategyImplInitialisationUnitTest extends AbstractPogoSteps
+public class RandomDataProviderStrategyImplInitialisationUnitTest
 {
 
 

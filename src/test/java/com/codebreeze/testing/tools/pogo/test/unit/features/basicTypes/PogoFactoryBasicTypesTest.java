@@ -6,7 +6,6 @@ import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm6.Parent;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm6.RecursiveList;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm6.RecursiveMap;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -17,7 +16,7 @@ import java.util.GregorianCalendar;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class PogoFactoryBasicTypesTest extends AbstractPogoSteps
+public class PogoFactoryBasicTypesTest
 {
 
     @Test

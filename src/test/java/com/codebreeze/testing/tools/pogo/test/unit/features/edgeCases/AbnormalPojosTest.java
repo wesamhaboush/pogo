@@ -8,7 +8,6 @@ import com.codebreeze.testing.tools.pogo.test.dto.*;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.NoDefaultPublicConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.PrivateOnlyConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.pdm33.ProtectedNonDefaultConstructorPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.ThrowableAssert.ThrowingCallable;
 import org.junit.Test;
 
@@ -18,7 +17,7 @@ import java.net.URL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatExceptionOfType;
 
-public class AbnormalPojosTest extends AbstractPogoSteps
+public class AbnormalPojosTest
 {
 
     @Test

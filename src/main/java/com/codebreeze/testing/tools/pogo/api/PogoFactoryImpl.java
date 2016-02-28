@@ -198,7 +198,8 @@ public class PogoFactoryImpl implements PogoFactory
             }
             catch ( Exception t )
             {
-                System.out.println( t );
+                //ignoring, cz we only do our best. not guarantees
+//                System.out.println( t );
             }
         }
 
@@ -224,7 +225,8 @@ public class PogoFactoryImpl implements PogoFactory
             }
             catch ( Exception e )
             {
-                System.out.println( e );
+                //ignoring, cz we only do our best. not guarantees
+//                System.out.println( e );
             }
 
             /* Then non-public constructors */
@@ -257,7 +259,8 @@ public class PogoFactoryImpl implements PogoFactory
                 }
                 catch ( Exception e )
                 {
-                    System.out.println( e );
+                    //ignoring, cz we only do our best. not guarantees
+//                    System.out.println( e );
                 }
             }
         }
@@ -483,7 +486,8 @@ public class PogoFactoryImpl implements PogoFactory
                     }
                     catch( Exception e )
                     {
-                        System.out.println( e );
+                        //ignoring, cz we only do our best. not guarantees
+//                        System.out.println( e );
                     }
 
                     if ( fieldValue != null )
@@ -825,7 +829,8 @@ public class PogoFactoryImpl implements PogoFactory
         }
         catch ( UnsupportedOperationException e )
         {
-            System.out.println( e );
+            //ignoring this cz we can do nothing about it.
+//            System.out.println( e );
         }
     }
 
@@ -1015,7 +1020,8 @@ public class PogoFactoryImpl implements PogoFactory
         }
         catch ( UnsupportedOperationException e )
         {
-            System.out.println( e );
+            //ignoring, cz we only do our best. not guarantees
+//            System.out.println( e );
         }
     }
 

@@ -7,16 +7,16 @@ import com.codebreeze.testing.tools.pogo.api.RandomDataProviderStrategyImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.MemoizationPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.RecursivePojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SimplePojoToTestSetters;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
 import javax.xml.ws.Holder;
-import java.util.*;
+import java.util.Currency;
+import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MemoizationTest extends AbstractPogoSteps
+public class MemoizationTest
 {
 
     @Test

@@ -19,9 +19,7 @@ public class EnumTypeManufacturerImpl extends AbstractTypeManufacturer
 
         if ( enumConstantsLength > 0 )
         {
-            int enumIndex = strategy.getIntegerInRange( 0,
-                            enumConstantsLength, attributeMetadata )
-                            % enumConstantsLength;
+            int enumIndex = Math.abs( strategy.getInteger( attributeMetadata ) % enumConstantsLength );
             retValue = realAttributeType.getEnumConstants()[enumIndex];
         }
 

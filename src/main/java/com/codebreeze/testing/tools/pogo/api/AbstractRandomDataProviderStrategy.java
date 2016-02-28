@@ -84,43 +84,20 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
     @Override
     public Integer getInteger( AttributeMetadata attributeMetadata )
     {
-        Integer retValue;
-
-        do
-        {
-            retValue = RANDOM.nextInt();
-        }
-        while ( retValue == 0 );
-
-        return retValue;
-    }
-
-    @Override
-    public int getIntegerInRange( int minValue, int maxValue,
-                                  AttributeMetadata attributeMetadata )
-    {
-        return ( int ) ( minValue + Math.random() * ( maxValue - minValue ) + 0.5 );
+        return RANDOM.nextInt();
     }
 
     @Override
     public Long getLong( AttributeMetadata attributeMetadata )
     {
-        return System.nanoTime();
+        return RANDOM.nextLong();
     }
 
 
     @Override
     public Short getShort( AttributeMetadata attributeMetadata )
     {
-        short retValue;
-
-        do
-        {
-            retValue = ( short ) RANDOM.nextInt( Byte.MAX_VALUE );
-        }
-        while ( retValue == 0 );
-
-        return retValue;
+        return ( short )RANDOM.nextInt( Short.MAX_VALUE + 1 );
     }
 
     @Override

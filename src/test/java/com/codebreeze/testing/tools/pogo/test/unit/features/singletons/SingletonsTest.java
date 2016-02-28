@@ -4,7 +4,6 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.OneDimensionalTestPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.SingletonWithParametersInStaticFactoryPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
 
@@ -12,7 +11,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class SingletonsTest extends AbstractPogoSteps
+public class SingletonsTest
 {
 
 
@@ -39,8 +38,6 @@ public class SingletonsTest extends AbstractPogoSteps
         assertThat( pojo.getFirstName() ).isNotNull().isNotEmpty();
         assertThat( pojo.getPojoList() ).isNotNull().isNotEmpty().hasAtLeastOneElementOfType( OneDimensionalTestPojo.class );
         assertThat( pojo.getPojoMap() ).isNotNull().isNotEmpty().has( atLeastOneNonEmptyElement );
-        Map<String, OneDimensionalTestPojo> pojoMap = pojo.getPojoMap();
-        PogoValidationSteps.theMapShouldContainAtLeastOneNonEmptyElement( pojoMap );
     }
 
 }

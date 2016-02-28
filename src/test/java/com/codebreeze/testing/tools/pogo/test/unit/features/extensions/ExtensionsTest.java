@@ -1,20 +1,21 @@
 package com.codebreeze.testing.tools.pogo.test.unit.features.extensions;
 
+import com.codebreeze.testing.tools.pogo.api.AbstractRandomDataProviderStrategy;
+import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
+import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.PojoClassic;
-import com.codebreeze.testing.tools.pogo.test.strategies.CustomRandomDataProviderStrategy;
 import com.codebreeze.testing.tools.pogo.test.dto.annotations.PojoSpecific;
+import com.codebreeze.testing.tools.pogo.test.strategies.CustomRandomDataProviderStrategy;
 import org.assertj.core.api.Condition;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.dto.PojoWithMapsAndCollections;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ExtensionsTest extends AbstractPogoSteps
+public class ExtensionsTest
 {
 
 
@@ -31,7 +32,21 @@ public class ExtensionsTest extends AbstractPogoSteps
     public void should_fill_the_attribute_metadata_with_the_attribute_names() throws Exception
     {
         //given
-        PogoFactory pogoFactory = PogoFactorySteps.givenAPogoExternalFactorytoTestAttributeMetadata();
+        PogoFactory pogoFactory = new PogoFactoryImpl( new AbstractRandomDataProviderStrategy()
+        {
+            @Override
+            public String getStringValue( AttributeMetadata attributeMetadata )
+            {
+                if ( attributeMetadata.getPojoClass() == PojoSpecific.class )
+                {
+                    return "specific";
+                }
+                else
+                {
+                    return "classic";
+                }
+            }
+        } );
         //when
         PojoClassic pojoClassic = pogoFactory.manufacturePojo( PojoClassic.class );
         PojoSpecific pojoSpecific = pogoFactory.manufacturePojo( PojoSpecific.class );

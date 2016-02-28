@@ -4,11 +4,10 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactory;
 import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.NonEJBPojo;
 import org.junit.Test;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NonEJBPojoTest extends AbstractPogoSteps
+public class NonEJBPojoTest
 {
 
     @Test

@@ -5,12 +5,11 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesHolderPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesListPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.MultipleInterfacesMapPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class MultipleInterfacesInheritanceTest extends AbstractPogoSteps
+public class MultipleInterfacesInheritanceTest
 {
     @Test
     public void cannot_instantiate_interfaces() throws Exception

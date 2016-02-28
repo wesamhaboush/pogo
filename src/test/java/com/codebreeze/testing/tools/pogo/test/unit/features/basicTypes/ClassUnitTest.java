@@ -5,12 +5,11 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassGenericConstructorPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassGenericPojo;
 import com.codebreeze.testing.tools.pogo.test.dto.ClassPojo;
-import com.codebreeze.testing.tools.pogo.test.unit.AbstractPogoSteps;
 import org.junit.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class ClassUnitTest extends AbstractPogoSteps
+public class ClassUnitTest
 {
 
     @Test
