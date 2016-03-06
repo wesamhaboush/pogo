@@ -2,6 +2,8 @@ package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 import com.codebreeze.testing.tools.pogo.api.AttributeMetadata;
 import com.codebreeze.testing.tools.pogo.api.DataProviderStrategy;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 public class TypeManufacturerParamsWrapper
 {
@@ -29,8 +31,6 @@ public class TypeManufacturerParamsWrapper
     @Override
     public String toString()
     {
-        return "TypeManufacturerParamsWrapper{" + "dataProviderStrategy=" + dataProviderStrategy +
-               ", attributeMetadata=" + attributeMetadata +
-               '}';
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public class OrderItem implements Serializable
@@ -58,11 +61,7 @@ public class OrderItem implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "OrderItem ( " + "id = " + id + TAB +
-               "note = " + note + TAB +
-               "lineAmount = " + lineAmount + TAB +
-               "article = " + article + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

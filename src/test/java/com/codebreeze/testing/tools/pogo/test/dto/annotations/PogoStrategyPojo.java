@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.annotations;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.*;
 
 public class PogoStrategyPojo
@@ -142,19 +145,6 @@ public class PogoStrategyPojo
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "PogoStrategyPojo ( " + "postCode = " +
-               postCode + TAB + "postCode2 = " +
-               postCode2 + TAB + "postCode3 = " +
-               postCode3 + TAB + "myBirthday = " +
-               myBirthday + TAB + "myBirthdays = " +
-               myBirthdays + TAB + "objectList = " +
-               objectList + TAB + "myBirthdaysMap = " +
-               myBirthdaysMap + TAB +
-               "nonGenericObjectList = " + nonGenericObjectList +
-               TAB + "myBirthdaysArray = " +
-               myBirthdaysArray + TAB +
-               "myObjectArray = " + myObjectArray + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

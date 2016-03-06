@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public class Country implements Serializable
@@ -40,11 +43,7 @@ public class Country implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "Country ( " + "countryId = " + countryId +
-               TAB + "countryCode = " + countryCode +
-               TAB + "description = " + description +
-               TAB + " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

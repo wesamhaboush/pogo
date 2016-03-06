@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class GenericAttributePojo
 {
 
@@ -18,6 +21,6 @@ public class GenericAttributePojo
     @Override
     public String toString()
     {
-        return "GenericAttributePojo [genericPojo=" + genericPojo + "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

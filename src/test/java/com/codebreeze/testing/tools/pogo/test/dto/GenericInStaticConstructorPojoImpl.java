@@ -10,7 +10,7 @@ public class GenericInStaticConstructorPojoImpl
     extends GenericInStaticConstructorPojo
 {
 
-    protected GenericInStaticConstructorPojoImpl( Vector<String> vector )
+    GenericInStaticConstructorPojoImpl( Vector<String> vector )
     {
         this.vector = vector;
     }

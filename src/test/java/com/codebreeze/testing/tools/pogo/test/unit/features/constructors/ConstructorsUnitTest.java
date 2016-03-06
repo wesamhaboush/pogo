@@ -13,7 +13,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class ConstructorsUnitTest
 {
-    private Condition<? super Map<?, ?>> nonEmptyElements = new Condition<Map<?, ?>>()
+    private final Condition<? super Map<?, ?>> nonEmptyElements = new Condition<Map<?, ?>>()
     {
         @Override
         public boolean matches( Map<?, ?> map )
@@ -24,7 +24,7 @@ public class ConstructorsUnitTest
         }
     };
 
-    private Condition<List<? extends String>> noNullElements = new Condition<List<? extends String>>()
+    private final Condition<List<? extends String>> noNullElements = new Condition<List<? extends String>>()
     {
         @Override
         public boolean matches( List<? extends String> list )
@@ -100,7 +100,7 @@ public class ConstructorsUnitTest
         //given
         PogoFactory pogoFactory = new PogoFactoryImpl();
         //when
-        MultipleGenericInConstructorPojo<?, ?, ?, ?> pojo = pogoFactory.manufacturePojo(
+        MultipleGenericInConstructorPojo<?, ? , ? , ?> pojo = pogoFactory.manufacturePojo(
                     MultipleGenericInConstructorPojo.class,
                     String.class,
                     Character.class,

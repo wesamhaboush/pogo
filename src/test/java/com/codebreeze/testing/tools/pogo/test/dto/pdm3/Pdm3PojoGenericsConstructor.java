@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm3;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.List;
 
 public class Pdm3PojoGenericsConstructor
@@ -39,8 +42,6 @@ public class Pdm3PojoGenericsConstructor
     @Override
     public String toString()
     {
-        return String.format(
-                   "{something: '%s'} {descendants: '%s'} {ancestors: '%s'}",
-                   something, descendants, ancestors );
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

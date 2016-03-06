@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.api;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -89,12 +92,7 @@ public class ClassAttribute implements Serializable
     @Override
     public String toString()
     {
-        return String.valueOf( attribute ) +
-               "={ getters: {" +
-               getters +
-               "}, { setters: {" +
-               setters +
-               "}}";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

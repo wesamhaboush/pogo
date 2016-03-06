@@ -1,9 +1,9 @@
 package com.codebreeze.testing.tools.pogo.typeManufacturers;
 
 
-public abstract class AbstractTypeManufacturer implements TypeManufacturer
+abstract class AbstractTypeManufacturer implements TypeManufacturer
 {
-    protected void checkWrapperIsValid( TypeManufacturerParamsWrapper wrapper )
+    void checkWrapperIsValid( TypeManufacturerParamsWrapper wrapper )
     {
         String errMsg;
 

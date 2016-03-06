@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class BusinessObjectWithErrors<ID extends Serializable> extends
+abstract class BusinessObjectWithErrors<ID extends Serializable> extends
     BusinessObject<ID>
 {
 

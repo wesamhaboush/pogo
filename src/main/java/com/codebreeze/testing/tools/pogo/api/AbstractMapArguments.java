@@ -5,7 +5,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.util.Map;
 
-public abstract class AbstractMapArguments
+abstract class AbstractMapArguments
 {
 
     private String attributeName;

@@ -159,9 +159,6 @@ public final class PogoUtils
             candidateField = Character.toLowerCase( candidateField.charAt( 0 ) )
                              + candidateField.substring( 1 );
         }
-        else
-        {
-        }
 
         return candidateField;
     }
@@ -183,9 +180,6 @@ public final class PogoUtils
         {
             candidateField = Character.toLowerCase( candidateField.charAt( 0 ) )
                              + candidateField.substring( 1 );
-        }
-        else
-        {
         }
 
         return candidateField;
@@ -227,9 +221,6 @@ public final class PogoUtils
                 @SuppressWarnings( "unchecked" )
                 T t = ( T ) field.get( pojo );
                 retValue = t;
-            }
-            else
-            {
             }
         }
         catch ( Exception e )

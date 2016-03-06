@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.unit.issue86;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public class ExtraMethodsPojo implements Serializable
@@ -65,8 +68,6 @@ public class ExtraMethodsPojo implements Serializable
     @Override
     public String toString()
     {
-        return "ExtraMethodsPojo{" + "serialVersionUID=" + serialVersionUID +
-               ", myHolder=" + myHolder +
-               '}';
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

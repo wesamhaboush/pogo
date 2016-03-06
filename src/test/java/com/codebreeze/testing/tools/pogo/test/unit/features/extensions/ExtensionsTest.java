@@ -19,7 +19,7 @@ public class ExtensionsTest
 {
 
 
-    private Condition<? super Map<Integer, Long>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
+    private final Condition<? super Map<Integer, Long>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
     {
         @Override
         public boolean matches( Map<?, ?> map )

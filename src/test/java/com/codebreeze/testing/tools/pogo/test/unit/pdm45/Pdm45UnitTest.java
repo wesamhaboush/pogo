@@ -15,6 +15,7 @@ import java.lang.reflect.ParameterizedType;
 import java.util.*;
 import java.util.Map.Entry;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
@@ -154,13 +155,13 @@ public class Pdm45UnitTest
     @SuppressWarnings( "unchecked" )
     private <T> void checkMultiDimensionalCollection( final Collection<?> collection, Class<T> type )
     {
-        assertEquals( "The generated List must have size=2!", 5, collection.size() );
+        assertThat( collection.size() ).as( "generated List size" ).isEqualTo( 5 );
         Collection<?> subcollection = ( Collection<?> )collection.iterator().next();
-        assertEquals( "The generated List must have size=2!", 5, subcollection.size() );
+        assertThat( subcollection.size() ).as( "generated List size" ).isEqualTo( 5 );
         subcollection = ( Collection<?> )subcollection.iterator().next();
-        assertEquals( "The generated List must have size=2!", 5, subcollection.size() );
+        assertThat( subcollection.size() ).as( "generated List size" ).isEqualTo( 5 );
         T element = ( T ) subcollection.iterator().next();
-        assertEquals( "The generated List must be of " + type + "!", type, element.getClass() );
+        assertThat( element.getClass() ).as( "element type of generated list" ).isEqualTo( type );
     }
 
 }

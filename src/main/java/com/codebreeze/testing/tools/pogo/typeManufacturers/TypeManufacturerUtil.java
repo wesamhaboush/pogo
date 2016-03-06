@@ -143,15 +143,14 @@ public final class TypeManufacturerUtil
     public static boolean isWrapper( Class<?> candidateWrapperClass )
     {
         return candidateWrapperClass.equals( Byte.class ) || ( candidateWrapperClass.equals( Boolean.class ) ||
-                ( candidateWrapperClass.equals( Character.class ) ? true
-                  : candidateWrapperClass.equals( Short.class ) ? true
-                  : candidateWrapperClass
-                  .equals( Integer.class ) ? true
-                  : candidateWrapperClass
-                  .equals( Long.class ) ? true
-                  : candidateWrapperClass
-                  .equals( Float.class ) || candidateWrapperClass
-                  .equals( Double.class ) ) );
+                ( candidateWrapperClass.equals( Character.class ) || ( candidateWrapperClass.equals( Short.class ) ? true
+                        : candidateWrapperClass
+                        .equals( Integer.class ) ? true
+                        : candidateWrapperClass
+                        .equals( Long.class ) ? true
+                        : candidateWrapperClass
+                        .equals( Float.class ) || candidateWrapperClass
+                        .equals( Double.class ) ) ) );
     }
 
     public static Type[] mergeActualAndSuppliedGenericTypes(
@@ -293,10 +292,7 @@ public final class TypeManufacturerUtil
             WildcardType wType = ( WildcardType ) paramType;
             Type[] bounds = wType.getLowerBounds();
 
-            if ( bounds != null && bounds.length > 0 )
-            {
-            }
-            else
+            if ( bounds == null || bounds.length == 0 )
             {
                 bounds = wType.getUpperBounds();
             }

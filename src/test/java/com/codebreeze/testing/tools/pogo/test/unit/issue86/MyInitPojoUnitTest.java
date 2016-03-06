@@ -6,8 +6,7 @@ import com.codebreeze.testing.tools.pogo.api.PogoFactoryImpl;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertNotSame;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class MyInitPojoUnitTest
 {
@@ -27,8 +26,8 @@ public class MyInitPojoUnitTest
     public void testMyInitPojo() throws Exception
     {
         MyInitPojo pojo = Pogo.manufacturePojo( MyInitPojo.class );
-        assertNotNull( pojo );
-        assertNotSame( pojo.getString1(), pojo.getBackupString1() );
-        assertNotSame( pojo.getString2(), pojo.getBackupString2() );
+        assertThat( pojo ).isNotNull();
+        assertThat( pojo.getString1() ).isNotSameAs( pojo.getBackupString1() );
+        assertThat( pojo.getString2() ).isNotSameAs( pojo.getBackupString2() );
     }
 }

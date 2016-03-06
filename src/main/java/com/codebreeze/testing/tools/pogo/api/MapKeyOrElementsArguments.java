@@ -1,6 +1,8 @@
 package com.codebreeze.testing.tools.pogo.api;
 
 import com.codebreeze.testing.tools.pogo.common.AttributeStrategy;
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 import java.io.Serializable;
 import java.lang.reflect.Type;
@@ -51,14 +53,6 @@ public class MapKeyOrElementsArguments extends AbstractMapArguments implements
     @Override
     public String toString()
     {
-        return "MapKeyOrElementsArguments [toString()=" +
-               super.toString() +
-               ", keyOrValueType=" +
-               keyOrValueType +
-               ", elementStrategy=" +
-               elementStrategy +
-               ", genericTypeArgs=" +
-               Arrays.toString( genericTypeArgs ) +
-               "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

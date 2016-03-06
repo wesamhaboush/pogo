@@ -16,12 +16,4 @@ public final class RandomDataProviderStrategyImpl extends
         setMemoization( enableMemoization );
         setDefaultNumberOfCollectionElements( nbrCollectionElements );
     }
-
-    public static RandomDataProviderStrategyImpl getInstance(
-        int nbrCollectionElements, boolean enableMemoization )
-    {
-        RandomDataProviderStrategyImpl strategy = new RandomDataProviderStrategyImpl( nbrCollectionElements,
-                enableMemoization );
-        return strategy;
-    }
 }

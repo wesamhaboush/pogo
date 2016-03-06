@@ -1,15 +1,15 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class Client implements Serializable
+public class Client
 {
-
-    private static final long serialVersionUID = 1L;
-
     private String firstName;
 
     private String lastName;
@@ -86,14 +86,7 @@ public class Client implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "Client ( " + "firstName = " + firstName +
-               TAB + "lastName = " + lastName + TAB +
-               "dateCreated = " + dateCreated.getTime() +
-               TAB + "orders = " + orders + TAB +
-               "addresses = " + addresses + TAB +
-               "bankAccounts = " + bankAccounts + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

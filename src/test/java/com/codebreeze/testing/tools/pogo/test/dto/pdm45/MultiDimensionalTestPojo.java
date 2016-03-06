@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.*;
 
 public class MultiDimensionalTestPojo
@@ -22,7 +25,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalList;
     }
 
-    public void setThreeDimensionalList(
+    void setThreeDimensionalList(
         List<List<List<String>>> threeDimensionalList )
     {
         this.threeDimensionalList = threeDimensionalList;
@@ -33,7 +36,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalSet;
     }
 
-    public void setThreeDimensionalSet( Set<Set<Set<Double>>> threeDimensionalSet )
+    void setThreeDimensionalSet( Set<Set<Set<Double>>> threeDimensionalSet )
     {
         this.threeDimensionalSet = threeDimensionalSet;
     }
@@ -43,7 +46,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalCollection;
     }
 
-    public void setThreeDimensionalCollection(
+    void setThreeDimensionalCollection(
         Collection<Collection<Collection<Long>>> threeDimensionalCollection )
     {
         this.threeDimensionalCollection = threeDimensionalCollection;
@@ -54,7 +57,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalMap;
     }
 
-    public void setThreeDimensionalMap(
+    void setThreeDimensionalMap(
         Map<Boolean, Map<Float, Map<Integer, Calendar>>> threeDimensionalMap )
     {
         this.threeDimensionalMap = threeDimensionalMap;
@@ -65,7 +68,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalQueue;
     }
 
-    public void setThreeDimensionalQueue(
+    void setThreeDimensionalQueue(
         Queue<Queue<Queue<Date>>> threeDimensionalQueue )
     {
         this.threeDimensionalQueue = threeDimensionalQueue;
@@ -76,7 +79,7 @@ public class MultiDimensionalTestPojo
         return threeDimensionalArray;
     }
 
-    public void setThreeDimensionalArray( String[][][] threeDimensionalArray )
+    void setThreeDimensionalArray( String[][][] threeDimensionalArray )
     {
         this.threeDimensionalArray = threeDimensionalArray;
     }
@@ -84,35 +87,6 @@ public class MultiDimensionalTestPojo
     @Override
     public String toString()
     {
-        return "MultiDimensionalTestPojo\n"
-               + "[threeDimensionalList=" + threeDimensionalList + ",\n"
-               + "threeDimensionalSet=" + threeDimensionalSet + ",\n"
-               + "threeDimensionalCollection=" + threeDimensionalCollection + ",\n"
-               + "threeDimensionalMap=" + threeDimensionalMap + ",\n"
-               + "threeDimensionalQueue=" + threeDimensionalQueue + ",\n"
-               + "threeDimensionalArray=" + printArrayRecursively( threeDimensionalArray ) + "]";
-    }
-
-    private String printArrayRecursively( Object[] array )
-    {
-        StringBuilder sb = new StringBuilder( "[" );
-
-        for ( Object object : array )
-        {
-            if ( object.getClass().isArray() )
-            {
-                sb.append( printArrayRecursively( ( Object[] ) object ) );
-            }
-            else
-            {
-                sb.append( object.toString() );
-            }
-
-            sb.append( ", " );
-        }
-
-        sb.setLength( sb.length() - 2 );
-        sb.append( "]" );
-        return sb.toString();
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

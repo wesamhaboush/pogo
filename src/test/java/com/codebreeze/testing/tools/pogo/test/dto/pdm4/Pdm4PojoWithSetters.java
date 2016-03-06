@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm4;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
@@ -48,6 +51,6 @@ public class Pdm4PojoWithSetters
     @Override
     public String toString()
     {
-        return String.format( "{value: '%s'}", value );
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.api;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.lang.reflect.Type;
 import java.util.Arrays;
@@ -60,17 +63,6 @@ public class MapArguments extends AbstractMapArguments implements Serializable
     @Override
     public String toString()
     {
-        return "MapArguments [toString()=" +
-               super.toString() +
-               ", keyClass=" +
-               keyClass +
-               ", elementClass=" +
-               elementClass +
-               ", keyGenericTypeArgs=" +
-               Arrays.toString( keyGenericTypeArgs ) +
-               ", elementGenericTypeArgs=" +
-               Arrays.toString( elementGenericTypeArgs ) +
-               "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
-
 }

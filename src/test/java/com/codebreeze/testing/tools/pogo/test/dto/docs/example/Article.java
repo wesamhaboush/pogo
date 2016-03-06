@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 
@@ -42,11 +45,7 @@ public class Article implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "Article ( " + "id = " + id + TAB +
-               "description = " + description + TAB +
-               "itemCost = " + itemCost + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

@@ -1,6 +1,9 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm42;
 
-public class FieldInfo
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
+class FieldInfo
 {
 
     private String fieldName;
@@ -51,14 +54,6 @@ public class FieldInfo
 
     public String toString()
     {
-        final String TAB = "    ";
-        return "FieldInfo ( " +
-               super.toString() + TAB +
-               "fieldName = " + this.fieldName + TAB +
-               "namespace = " + this.namespace + TAB +
-               "namespacePrefix = " + this.namespacePrefix + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
-
-
 }

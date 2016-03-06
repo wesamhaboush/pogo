@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm5;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class InvisibleConstructorAndNoSettersPojo
 {
 
@@ -18,6 +21,6 @@ public class InvisibleConstructorAndNoSettersPojo
     @Override
     public String toString()
     {
-        return String.format( "{value: '%s'}", value );
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

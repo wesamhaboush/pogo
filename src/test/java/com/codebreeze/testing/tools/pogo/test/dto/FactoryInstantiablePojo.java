@@ -19,7 +19,7 @@ public abstract class FactoryInstantiablePojo<T>
         return typedValue;
     }
 
-    public void setTypedValue( T typedValue )
+    void setTypedValue( T typedValue )
     {
         this.typedValue = typedValue;
     }

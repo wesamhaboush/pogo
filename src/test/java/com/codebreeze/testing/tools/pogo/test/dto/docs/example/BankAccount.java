@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 
@@ -58,13 +61,7 @@ public class BankAccount implements Serializable
 
     public String toString()
     {
-        final String TAB = "    ";
-        return "BankAccount ( " +
-               "account = " + this.account + TAB +
-               "bank = " + this.bank + TAB +
-               "sortCode = " + this.sortCode + TAB +
-               "balance = " + this.balance + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

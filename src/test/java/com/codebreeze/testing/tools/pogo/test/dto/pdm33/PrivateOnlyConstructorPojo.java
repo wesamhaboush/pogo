@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm33;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public class PrivateOnlyConstructorPojo implements Serializable
@@ -38,9 +41,6 @@ public class PrivateOnlyConstructorPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "PrivateOnlyPojo ( " + "firstName = " +
-               firstName + TAB + "intField = " +
-               intField + TAB + " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

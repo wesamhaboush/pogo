@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm3;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 public class Pdm3PojoConstructor<T extends RuntimeException>
 {
 
@@ -18,6 +21,6 @@ public class Pdm3PojoConstructor<T extends RuntimeException>
     @Override
     public String toString()
     {
-        return String.format( "{name: '%s'}", name );
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

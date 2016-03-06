@@ -61,9 +61,6 @@ public class GenericTypeManufacturerImpl extends AbstractTypeManufacturer
             retValue = TypeManufacturerUtil.resolveGenericParameter( paremeterType,
                        typeArgumentsMap, elementGenericTypeArgs );
         }
-        else
-        {
-        }
 
         return retValue;
     }

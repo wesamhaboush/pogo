@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.docs.example;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -61,12 +64,7 @@ public class Order implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "Order ( " + "id = " + id + TAB +
-               "createDate = " + createDate.getTime() +
-               TAB + "totalAmount = " + totalAmount +
-               TAB + "orderItems = " + orderItems +
-               TAB + " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

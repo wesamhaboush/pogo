@@ -161,7 +161,7 @@ public class PogoFactoryImpl implements PogoFactory
         Class<?> pojoClass, ManufacturingContext manufacturingCtx,
         Map<String, Type> typeArgsMap, Type... genericTypeArgs )
     throws InstantiationException, IllegalAccessException,
-               InvocationTargetException, ClassNotFoundException
+        InvocationTargetException, ClassNotFoundException
     {
         Object retValue = null;
         // If no publicly accessible constructors are available,
@@ -526,13 +526,7 @@ public class PogoFactoryImpl implements PogoFactory
                             populatePojoInternal( fieldValue, manufacturingCtx, paramTypeArgsMap, genericTypeArgsAll );
                             manufacturingCtx.getPojos().put( fieldClass, depth );
                         }
-                        else
-                        {
-                        }
                     }
-                }
-                else
-                {
                 }
             }
         }

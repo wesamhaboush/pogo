@@ -7,7 +7,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 class FactoryInstantiablePojoImpl<T> extends FactoryInstantiablePojo<T>
 {
 
-    protected FactoryInstantiablePojoImpl( T typedValue )
+    FactoryInstantiablePojoImpl( T typedValue )
     {
         setTypedValue( typedValue );
     }

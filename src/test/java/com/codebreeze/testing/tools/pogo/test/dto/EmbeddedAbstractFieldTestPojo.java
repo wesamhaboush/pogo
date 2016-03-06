@@ -4,6 +4,7 @@ import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 import org.junit.Assert;
 
 import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class EmbeddedAbstractFieldTestPojo
 {
@@ -12,7 +13,7 @@ public class EmbeddedAbstractFieldTestPojo
 
     public EmbeddedAbstractFieldTestPojo( final AbstractTestPojo pojo )
     {
-        Assert.assertNotNull( pojo );
+        assertThat( pojo ).isNotNull();
         testPojo = pojo;
     }
 

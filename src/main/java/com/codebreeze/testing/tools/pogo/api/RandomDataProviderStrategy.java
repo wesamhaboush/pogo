@@ -4,7 +4,7 @@ import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.Comparator;
 
-public interface RandomDataProviderStrategy extends DataProviderStrategy
+interface RandomDataProviderStrategy extends DataProviderStrategy
 {
     Comparator<Constructor<?>> getConstructorLightComparator();
 

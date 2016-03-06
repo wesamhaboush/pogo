@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class CollectionsTest
 {
 
-    private Condition<Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
+    private final Condition<Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
     {
         @Override
         public boolean matches( Map<?, ?> map )
@@ -24,7 +24,7 @@ public class CollectionsTest
         }
     };
 
-    private Condition<List> empty = new Condition<List>()
+    private final Condition<List> empty = new Condition<List>()
     {
         @Override
         public boolean matches( List list )
@@ -33,7 +33,7 @@ public class CollectionsTest
         }
     };
 
-    private Condition<Map> emptyMap = new Condition<Map>()
+    private final Condition<Map> emptyMap = new Condition<Map>()
     {
         @Override
         public boolean matches( Map map )
@@ -42,7 +42,7 @@ public class CollectionsTest
         }
     };
 
-    private Condition<Map> nullElements = new Condition<Map>()
+    private final Condition<Map> nullElements = new Condition<Map>()
     {
         @Override
         public boolean matches( Map map )
@@ -51,7 +51,7 @@ public class CollectionsTest
         }
     };
 
-    private Condition<Set> noNullElements = new Condition<Set>()
+    private final Condition<Set> noNullElements = new Condition<Set>()
     {
         @Override
         public boolean matches( Set set )

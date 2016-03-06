@@ -9,7 +9,7 @@ import static org.apache.commons.lang3.builder.ToStringStyle.JSON_STYLE;
 public abstract class GenericInStaticConstructorPojo
 {
 
-    protected Vector<String> vector;
+    Vector<String> vector;
 
     public static GenericInStaticConstructorPojo getInstance( Vector<String> vector )
     {

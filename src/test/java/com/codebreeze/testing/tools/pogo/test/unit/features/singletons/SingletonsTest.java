@@ -15,7 +15,7 @@ public class SingletonsTest
 {
 
 
-    private Condition<? super Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
+    private final Condition<? super Map<?, ?>> atLeastOneNonEmptyElement = new Condition<Map<?, ?>>()
     {
         @Override
         public boolean matches( Map<?, ?> map )

@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm33;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 
 public class ProtectedNonDefaultConstructorPojo implements Serializable
@@ -40,9 +43,6 @@ public class ProtectedNonDefaultConstructorPojo implements Serializable
     @Override
     public String toString()
     {
-        final String TAB = "    ";
-        return "ProtectedNonDefaultConstructorPojo ( " + "firstName = " +
-               firstName + TAB + "intField = " + intField + TAB +
-               " )";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

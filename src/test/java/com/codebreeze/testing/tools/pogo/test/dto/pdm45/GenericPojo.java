@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.test.dto.pdm45;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -66,9 +69,6 @@ public class GenericPojo<F, S>
     @Override
     public String toString()
     {
-        return "GenericPojo [firstValue=" + firstValue + ", secondValue="
-               + secondValue + ", firstList=" + firstList + ", secondArray="
-               + Arrays.toString( secondArray ) + ", firstSecondMap="
-               + firstSecondMap + "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 }

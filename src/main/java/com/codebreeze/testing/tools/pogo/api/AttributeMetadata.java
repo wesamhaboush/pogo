@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.api;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serializable;
 import java.lang.reflect.Type;
 
@@ -57,13 +60,7 @@ public class AttributeMetadata implements Serializable
     @Override
     public String toString()
     {
-        return "AttributeMetadata [attributeName=" +
-               attributeName +
-               ", attributeType=" +
-               attributeType +
-               ", pojoClass=" +
-               pojoClass +
-               "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }

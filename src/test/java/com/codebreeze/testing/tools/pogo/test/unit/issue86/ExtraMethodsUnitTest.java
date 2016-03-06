@@ -4,8 +4,7 @@ import com.codebreeze.testing.tools.pogo.api.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class ExtraMethodsUnitTest
 {
@@ -28,9 +27,13 @@ public class ExtraMethodsUnitTest
     public void testExtraMethods() throws Exception
     {
         ExtraMethodsPojo pojo = Pogo.manufacturePojo( ExtraMethodsPojo.class );
-        assertNotNull( "The pojo cannot be null", pojo );
-        assertNotNull( "The long value cannot be zero", pojo.getMyLong() );
-        assertNotNull( "The string value cannot be null", pojo.getMyString() );
-        assertTrue( "The string value cannot be empty", pojo.getMyString().length() > 0 );
+        assertThat( pojo ).as( "The pojo cannot be null" )
+        .isNotNull();
+        assertThat( pojo.getMyLong() ).as( "The long value cannot be zero" )
+        .isNotNull();
+        assertThat( pojo.getMyString() ).as( "The string value cannot be null" )
+        .isNotNull();
+        assertThat( pojo.getMyString().length() ).as( "The string value cannot be empty" )
+        .isGreaterThan( 0 );
     }
 }
