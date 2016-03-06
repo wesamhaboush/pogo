@@ -23,6 +23,7 @@ public class CollectionsTest
             return map.entrySet().stream().anyMatch( e -> e.getKey() != null && e.getValue() != null );
         }
     };
+
     private Condition<List> empty = new Condition<List>()
     {
         @Override
@@ -40,6 +41,7 @@ public class CollectionsTest
             return map.size() <= 0;
         }
     };
+
     private Condition<Map> nullElements = new Condition<Map>()
     {
         @Override
@@ -258,7 +260,6 @@ public class CollectionsTest
         .isNotNull()
         .has( entriesWithKeyValueTypes( Object.class, Object.class ) );
     }
-
 
     private void testMap( Class<? extends Map> mapType )
     {

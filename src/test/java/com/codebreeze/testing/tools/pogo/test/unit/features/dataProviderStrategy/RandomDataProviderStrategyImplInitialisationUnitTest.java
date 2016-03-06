@@ -28,9 +28,9 @@ public class RandomDataProviderStrategyImplInitialisationUnitTest
         assertThat( dataProviderStrategy.getNumberOfCollectionElements( Object.class ) ).isEqualTo(
             DEFAULT_NBR_COLLECTION_ELEMENTS );
         //when
-        dataProviderStrategy.setDefaultNumberOfCollectionElements( 3 );
+        DataProviderStrategy dataProviderStrategy2 = new RandomDataProviderStrategyImpl( 3, true );
         //then
-        assertThat( dataProviderStrategy.getNumberOfCollectionElements( Object.class ) ).isEqualTo( 3 );
+        assertThat( dataProviderStrategy2.getNumberOfCollectionElements( Object.class ) ).isEqualTo( 3 );
     }
 
     @Test

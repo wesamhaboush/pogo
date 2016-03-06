@@ -127,8 +127,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         return nbrOfCollectionElements;
     }
 
-    @Override
-    public void setDefaultNumberOfCollectionElements( int newNumberOfCollectionElements )
+    protected void setDefaultNumberOfCollectionElements( int newNumberOfCollectionElements )
     {
         nbrOfCollectionElements = newNumberOfCollectionElements;
     }
@@ -140,8 +139,7 @@ public abstract class AbstractRandomDataProviderStrategy implements RandomDataPr
         return MAX_DEPTH;
     }
 
-    @Override
-    public void setMemoization( boolean isMemoizationEnabled )
+    protected void setMemoization( boolean isMemoizationEnabled )
     {
         this.isMemoizationEnabled = isMemoizationEnabled;
     }

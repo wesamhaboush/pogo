@@ -37,11 +37,7 @@ public interface DataProviderStrategy
 
     int getNumberOfCollectionElements( Class<?> type );
 
-    void setDefaultNumberOfCollectionElements( int newNumberOfCollectionElements );
-
     int getMaxDepth( Class<?> type );
-
-    void setMemoization( boolean isMemoizationEnabled );
 
     Object getMemoizedObject( AttributeMetadata attributeMetadata );
 

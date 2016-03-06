@@ -23,8 +23,7 @@ public class MemoizationTest
     public void ahould_return_the_same_instance_for_different_invocations_whenMemoization_is_enabled() throws Exception
     {
         //given
-        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl();
-        strategy.setMemoization( true );
+        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl( 3, true );
         PogoFactory pogoFactory = new PogoFactoryImpl( strategy );
         //when
         SimplePojoToTestSetters pojo1 = pogoFactory.manufacturePojo( SimplePojoToTestSetters.class );
@@ -40,8 +39,8 @@ public class MemoizationTest
     public void should_return_different_instances_for_different_invocations_when_memoization_is_disabled() throws Exception
     {
         //given
-        PogoFactory pogoFactory = new PogoFactoryImpl();
-        pogoFactory.getStrategy().setMemoization( false );
+        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl( 3, false );
+        PogoFactory pogoFactory = new PogoFactoryImpl( strategy );
         //when
         SimplePojoToTestSetters pojo1 = pogoFactory.manufacturePojo( SimplePojoToTestSetters.class );
         SimplePojoToTestSetters pojo2 = pogoFactory.manufacturePojo( SimplePojoToTestSetters.class );
@@ -55,8 +54,7 @@ public class MemoizationTest
     public void should_allow_memoization_for_for_recursive_pojos() throws Exception
     {
         //given
-        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl();
-        strategy.setMemoization( true );
+        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl( 3, true );
         PogoFactory pogoFactory = new PogoFactoryImpl( strategy );
         //when
         RecursivePojo pojo = pogoFactory.manufacturePojo( RecursivePojo.class );
@@ -69,8 +67,7 @@ public class MemoizationTest
     public void should_allow_memoization_with_generics() throws Exception
     {
         //given
-        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl();
-        strategy.setMemoization( true );
+        DataProviderStrategy strategy = new RandomDataProviderStrategyImpl( 3, true );
         PogoFactory pogoFactory = new PogoFactoryImpl( strategy );
         //given
         Holder<String> pojo1 = pogoFactory.manufacturePojo( Holder.class, String.class );

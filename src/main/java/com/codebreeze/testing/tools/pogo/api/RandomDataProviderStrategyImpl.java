@@ -10,11 +10,18 @@ public final class RandomDataProviderStrategyImpl extends
         setMemoization( false );
     }
 
-    public static RandomDataProviderStrategyImpl getInstance(
-        int nbrCollectionElements )
+    public RandomDataProviderStrategyImpl( int nbrCollectionElements, boolean enableMemoization )
     {
-        RandomDataProviderStrategyImpl strategy = new RandomDataProviderStrategyImpl();
-        strategy.setDefaultNumberOfCollectionElements( nbrCollectionElements );
+        super();
+        setMemoization( enableMemoization );
+        setDefaultNumberOfCollectionElements( nbrCollectionElements );
+    }
+
+    public static RandomDataProviderStrategyImpl getInstance(
+        int nbrCollectionElements, boolean enableMemoization )
+    {
+        RandomDataProviderStrategyImpl strategy = new RandomDataProviderStrategyImpl( nbrCollectionElements,
+                enableMemoization );
         return strategy;
     }
 }

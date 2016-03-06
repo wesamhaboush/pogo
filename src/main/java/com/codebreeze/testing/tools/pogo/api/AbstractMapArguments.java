@@ -1,5 +1,8 @@
 package com.codebreeze.testing.tools.pogo.api;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.util.Map;
 
 public abstract class AbstractMapArguments
@@ -32,9 +35,7 @@ public abstract class AbstractMapArguments
     @Override
     public String toString()
     {
-        return "AbstractMapArguments [mapToBeFilled=" +
-               mapToBeFilled.getClass() +
-               "]";
+        return ReflectionToStringBuilder.toString( this, ToStringStyle.JSON_STYLE );
     }
 
 }
